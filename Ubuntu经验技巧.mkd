@@ -1,0 +1,14 @@
+# Ubuntu经验技巧
+
+标签（空格分隔）： 未分类
+
+---
+
+|  用途                                 |        包                |
+|---------                              |------------------        |
+|受限软件（视频解码器、ms字体、flash）  | ubuntu-restricted-extras |
+| 32位库                                | <包名>:i386              |
+| ssh服务                               | openssh-server           |
+| fcitx输入法                           | fcitx fcitx-googlepinyin im-switch |
+| 增加“在终端打开”文件夹菜单            | nautilus-open-terminal   |
+
