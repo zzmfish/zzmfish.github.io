@@ -9,36 +9,81 @@
 <h1>Ubuntu经验技巧</h1>
 <p>标签（空格分隔）： 未分类</p>
 <hr />
+<h2>常用软件包</h2>
 <table>
 <thead>
 <tr>
 <th>用途</th>
-<th>包</th>
+<th>软件包</th>
+<th>其他操作</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>受限软件（视频解码器、ms字体、flash）</td>
 <td>ubuntu-restricted-extras</td>
+<td></td>
 </tr>
 <tr>
 <td>32位库</td>
 <td>&lt;包名&gt;:i386</td>
+<td></td>
 </tr>
 <tr>
 <td>ssh服务</td>
 <td>openssh-server</td>
+<td></td>
 </tr>
 <tr>
 <td>fcitx输入法</td>
-<td>fcitx fcitx-googlepinyin im-switch</td>
+<td>fcitx,fcitx-googlepinyin,im-switch</td>
+<td>im-switch -s fcitx</td>
 </tr>
 <tr>
 <td>增加“在终端打开”文件夹菜单</td>
 <td>nautilus-open-terminal</td>
+<td>nautilus -q</td>
+</tr>
+<tr>
+<td>wxWidget for Python</td>
+<td>python-wxgtk2.8</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<h2>软件包管理</h2>
+<p>显示软件信息：<code>sudo apt-cache show -a &lt;包名&gt;</code><br />
+显示文件所属软件：<code>apt-file search &lt;文件名&gt;</code><br />
+添加PPA源：<code>sudo add-apt-repository &lt;名称&gt;</code><br />
+重新安装软件：<code>sudo apt-get install &lt;包名&gt; --reinstall</code>  </p>
+<h2>引导和安装</h2>
+<p>安装windowns之后恢复ubuntu引导，从ubuntu安装光盘引导<br />
+    mount /dev/sda10 /mnt<br />
+    grub-install --root-directory=/mnt /dev/sda<br />
+    update-grub2（不是必要）<br />
+重启</p>
+<hr />
+<p><a href="http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux">硬盘安装</a><br />
+    menuentry "Kubuntu ISO" {<br />
+        set isofile="/boot/iso/kubuntu-12.04.iso"<br />
+        loopback loop (hd0,8)$isofile<br />
+        linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject<br />
+        initrd (loop)/casper/initrd.lz<br />
+    }<br />
+或<br />
+    title Install Ubuntu<br />
+    root (hd0,0)<br />
+    kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-13.10-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8<br />
+    initrd (hd0,0)/initrd.lz  </p>
+<h2>其他</h2>
+<p>查看时间设置：<code>timedatectl status</code><br />
+查看显卡信息：<code>sudo lshw -class video</code><br />
+VirtualBox使用usb设备要加入vboxusers组：<code>sudo adduser zhouzm vboxusers</code><br />
+显示分辨率太小，增大<code>/etc/X11/xorg.conf</code>的<code>HorizSync</code>范围<br />
+安装新字体（包括微软字体）：复制字体文件到<code>~/.fonts</code>  </p>
+<hr />
+<p>无法访问.local内部域名，可编辑<code>/etc/nsswitch.conf</code>：<code>hosts:          files dns</code><br />
+或<code>sudo service avahi-daemon stop; sudo update-rc.d avahi-daemon remove</code></p>
 </body>
 </html>
 
