@@ -1,0 +1,49 @@
+# Python经验技巧
+
+## 常用函数
+匹配开头：`re.match(pattern, string)`  
+匹配任意位置：`re.search(pattern, string)`  
+匹配全部：`re.findall(pattern, string)`  
+指定文件编码：`f = codecs.open('out.txt', mode="w", encoding="utf-8")`  
+url编码：`urllib.quote(str)`  
+url解码：`urllib.unquote(str)`  
+深度拷贝：`obj2 = copy.deepcopy(obj1)`  
+
+
+## 调试分析
+### gc
+得到引用列表：`gc.get_referrers(obj)`
+
+### objgraph
+显示引用关系图：
+```
+import objgraph
+browsers = objgraph.by_type('user_browser')
+objgraph.show_backrefs(browsers[0], max_depth=10, filename="browser.dot")
+```
+显示数量最多的类型：`objgraph.show_most_common_types(20)`
+
+### line\_profiler
+```
+kernprof.py -l -v <python脚本和参数> 
+```
+
+### pdb
+断点：`pdb.set_trace()`
+
+### traceback
+显示堆栈：`traceback.print_stack()`
+
+## 模块安装
+### 编译安装到$HOME/local
+```
+export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
+python setup.py build
+python setup.py install --prefix=$HOME/local
+```
+
+### pip安装库
+```
+sudo apt-get install python-pip
+sudo pip install <库名>
+```
