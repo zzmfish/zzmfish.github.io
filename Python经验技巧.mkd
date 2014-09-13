@@ -1,5 +1,8 @@
 # Python经验技巧
 
+## 目录
+[TOC] 
+
 ## 常用函数
 匹配开头：`re.match(pattern, string)`  
 匹配任意位置：`re.search(pattern, string)`  
