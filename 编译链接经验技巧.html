@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>编译链接经验技巧</title>
+</head>
+<body>
+<h1 id="_1">编译链接经验技巧</h1>
+<h2 id="gcc">gcc选项</h2>
+<p><code>-fsanitize=address</code>：检测内存错误<br />
+<code>-finstrument-functions</code>：函数跟踪<br />
+<code>-ffunction-sections</code>：将不同函数编译到不同的section<br />
+<code>-fdata-sections</code>：将不同数据编译到不同的section<br />
+<code>--gc-sections</code>：去掉不用的函数section<br />
+<code>-pipe</code>：通过管道传递中间结果 <br />
+<code>-E</code>: 预处理后停止<br />
+<code>-MM</code>：生成.d依赖文件<br />
+<code>-std=</code>c++98/c++03/c++11/gnu++98/gnu++03/gnu++11  </p>
+<h2 id="_2">静态库</h2>
+<p>创建静态库：<code>ar rcs libfoo.a foo.o</code><br />
+解压静态库：<code>ar x libfoo.a</code>  </p>
+<h2 id="_3">动态库</h2>
+<p>创建动态库：</p>
+<pre><code>gcc -o foo.o -fPIC foo.c
+gcc -shared -o libfoo.so foo.o
+</code></pre>
+
+<p>显示依赖的动态库：<code>ldd libfoo.so</code></p>
+<h2 id="_4">符号信息</h2>
+<p>查看符号表：<code>objdump -t libfoo.so</code><br />
+显示符号：<code>nm libfoo.so</code></p>
+<h2 id="makefile">Makefile</h2>
+<p>编译规则</p>
+<pre><code>%.o : %.c
+    $(CC) -c $(CFLAGS) $(CPPFLAGS) $&lt; -o $@
+</code></pre>
+
+<p>其中<code>%</code>表示文件名，<code>$&lt;</code>表示依赖目标，<code>$@</code>表示目标</p>
+<p>后缀替换：<code>OBJS=$(SRCS:.cpp=.o)</code></p>
+</body>
+</html>
+
