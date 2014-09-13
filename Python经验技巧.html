@@ -7,30 +7,7 @@
 </head>
 <body>
 <h1 id="python">Python经验技巧</h1>
-<h2 id="_1">目录</h2>
-<div class="toc">
-<ul>
-<li><a href="#python">Python经验技巧</a><ul>
-<li><a href="#_1">目录</a></li>
-<li><a href="#_2">常用函数</a></li>
-<li><a href="#_3">调试分析</a><ul>
-<li><a href="#gc">gc</a></li>
-<li><a href="#objgraph">objgraph</a></li>
-<li><a href="#line95profiler">line_profiler</a></li>
-<li><a href="#pdb">pdb</a></li>
-<li><a href="#traceback">traceback</a></li>
-</ul>
-</li>
-<li><a href="#_4">模块安装</a><ul>
-<li><a href="#homelocal">编译安装到$HOME/local</a></li>
-<li><a href="#pip">pip安装库</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<h2 id="_2">常用函数</h2>
+<h2 id="_1">常用函数</h2>
 <p>匹配开头：<code>re.match(pattern, string)</code><br />
 匹配任意位置：<code>re.search(pattern, string)</code><br />
 匹配全部：<code>re.findall(pattern, string)</code><br />
@@ -38,6 +15,9 @@
 url编码：<code>urllib.quote(str)</code><br />
 url解码：<code>urllib.unquote(str)</code><br />
 深度拷贝：<code>obj2 = copy.deepcopy(obj1)</code>  </p>
+<h2 id="_2">预定义变量</h2>
+<p><code>__builtins__</code>：全局的内置符号，可以添加删除项<br />
+<code>__file__</code>：py文件全路径  </p>
 <h2 id="_3">调试分析</h2>
 <h3 id="gc">gc</h3>
 <p>得到引用列表：<code>gc.get_referrers(obj)</code></p>

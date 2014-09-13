@@ -1,8 +1,5 @@
 # Python经验技巧
 
-## 目录
-[TOC] 
-
 ## 常用函数
 匹配开头：`re.match(pattern, string)`  
 匹配任意位置：`re.search(pattern, string)`  
@@ -12,6 +9,9 @@ url编码：`urllib.quote(str)`
 url解码：`urllib.unquote(str)`  
 深度拷贝：`obj2 = copy.deepcopy(obj1)`  
 
+## 预定义变量
+`__builtins__`：全局的内置符号，可以添加删除项  
+`__file__`：py文件全路径  
 
 ## 调试分析
 ### gc
