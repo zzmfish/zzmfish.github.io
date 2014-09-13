@@ -23,23 +23,29 @@
 
 ## 引导和安装
 安装windowns之后恢复ubuntu引导，从ubuntu安装光盘引导  
-    mount /dev/sda10 /mnt  
-    grub-install --root-directory=/mnt /dev/sda  
-    update-grub2（不是必要）  
+```
+mount /dev/sda10 /mnt  
+grub-install --root-directory=/mnt /dev/sda  
+update-grub2（不是必要）  
+```
 重启
 ---
 [硬盘安装](http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux)  
-    menuentry "Kubuntu ISO" {  
-        set isofile="/boot/iso/kubuntu-12.04.iso"  
-        loopback loop (hd0,8)$isofile  
-        linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject  
-        initrd (loop)/casper/initrd.lz  
-    }  
+```
+menuentry "Kubuntu ISO" {
+    set isofile="/boot/iso/kubuntu-12.04.iso"  
+    loopback loop (hd0,8)$isofile  
+    linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject  
+    initrd (loop)/casper/initrd.lz  
+}  
+```
 或  
-    title Install Ubuntu  
-    root (hd0,0)  
-    kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-13.10-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8  
-    initrd (hd0,0)/initrd.lz  
+```
+title Install Ubuntu  
+root (hd0,0)  
+kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-13.10-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8  
+initrd (hd0,0)/initrd.lz  
+```
 
 ## 其他
 查看时间设置：`timedatectl status`  
@@ -49,6 +55,10 @@ VirtualBox使用usb设备要加入vboxusers组：`sudo adduser zhouzm vboxusers`
 安装新字体（包括微软字体）：复制字体文件到`~/.fonts`  
 ---
 无法访问.local内部域名，可编辑`/etc/nsswitch.conf`：`hosts:          files dns`  
-或`sudo service avahi-daemon stop; sudo update-rc.d avahi-daemon remove`
+或
+```
+sudo service avahi-daemon stop
+sudo update-rc.d avahi-daemon remove
+```
 
 

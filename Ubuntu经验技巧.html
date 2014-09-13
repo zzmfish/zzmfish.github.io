@@ -57,24 +57,29 @@
 添加PPA源：<code>sudo add-apt-repository &lt;名称&gt;</code><br />
 重新安装软件：<code>sudo apt-get install &lt;包名&gt; --reinstall</code>  </p>
 <h2>引导和安装</h2>
-<p>安装windowns之后恢复ubuntu引导，从ubuntu安装光盘引导<br />
-    mount /dev/sda10 /mnt<br />
-    grub-install --root-directory=/mnt /dev/sda<br />
-    update-grub2（不是必要）<br />
-重启</p>
-<hr />
-<p><a href="http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux">硬盘安装</a><br />
-    menuentry "Kubuntu ISO" {<br />
-        set isofile="/boot/iso/kubuntu-12.04.iso"<br />
-        loopback loop (hd0,8)$isofile<br />
-        linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject<br />
-        initrd (loop)/casper/initrd.lz<br />
-    }<br />
-或<br />
-    title Install Ubuntu<br />
-    root (hd0,0)<br />
-    kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-13.10-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8<br />
-    initrd (hd0,0)/initrd.lz  </p>
+<p>安装windowns之后恢复ubuntu引导，从ubuntu安装光盘引导  </p>
+<pre><code>mount /dev/sda10 /mnt  
+grub-install --root-directory=/mnt /dev/sda  
+update-grub2（不是必要）  
+</code></pre>
+
+<h2>重启</h2>
+<p><a href="http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux">硬盘安装</a>  </p>
+<pre><code>menuentry &quot;Kubuntu ISO&quot; {
+    set isofile=&quot;/boot/iso/kubuntu-12.04.iso&quot;  
+    loopback loop (hd0,8)$isofile  
+    linux (loop)/casper/vmlinuz.efi boot=casper iso-scan/filename=$isofile noprompt noeject  
+    initrd (loop)/casper/initrd.lz  
+}  
+</code></pre>
+
+<p>或  </p>
+<pre><code>title Install Ubuntu  
+root (hd0,0)  
+kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-13.10-desktop-i386.iso ro quiet splash locale=zh_CN.UTF-8  
+initrd (hd0,0)/initrd.lz  
+</code></pre>
+
 <h2>其他</h2>
 <p>查看时间设置：<code>timedatectl status</code><br />
 查看显卡信息：<code>sudo lshw -class video</code><br />
@@ -83,7 +88,10 @@ VirtualBox使用usb设备要加入vboxusers组：<code>sudo adduser zhouzm vboxu
 安装新字体（包括微软字体）：复制字体文件到<code>~/.fonts</code>  </p>
 <hr />
 <p>无法访问.local内部域名，可编辑<code>/etc/nsswitch.conf</code>：<code>hosts:          files dns</code><br />
-或<code>sudo service avahi-daemon stop; sudo update-rc.d avahi-daemon remove</code></p>
+或</p>
+<pre><code>sudo service avahi-daemon stop
+sudo update-rc.d avahi-daemon remove
+</code></pre>
 </body>
 </html>
 
