@@ -1,0 +1,14 @@
+# MySQL
+## 命令
+导出表：`mysqldump -u <用户名> -p <库名> <表名> > <文件名>`  
+登录：`mysql -u root -p`
+
+## SQL语句
+列出数据库：`show databases`  
+选择数据库：`use <数据库名>`  
+显示数据库信息：`status`  
+列出表：`show tables`  
+显示表信息：`show table status`  
+
+## mysql命令
+执行sql文件：`source <sql文件名>`  

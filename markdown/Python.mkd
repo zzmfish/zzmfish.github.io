@@ -13,6 +13,10 @@ url解码：`urllib.unquote(str)`
 `__builtins__`：全局的内置符号，可以添加删除项  
 `__file__`：py文件全路径  
 
+## 第三方库
+网络爬虫：`Scrapy`  
+网站开发：`tornado`  
+
 ## 调试分析
 ### gc
 得到引用列表：`gc.get_referrers(obj)`

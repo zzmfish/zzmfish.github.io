@@ -2,8 +2,7 @@
 
 浏览器的html5特性：`http://caniuse.com`  
 
-## 数据挖掘
-正确率  
-召回率  
-半监督学习  
-LibShortText
+
+
+
+

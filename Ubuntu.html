@@ -63,7 +63,7 @@ grub-install --root-directory=/mnt /dev/sda
 update-grub2（不是必要）  
 </code></pre>
 
-<h2 id="_4">重启</h2>
+<hr />
 <p><a href="http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux">硬盘安装</a>  </p>
 <pre><code>menuentry &quot;Kubuntu ISO&quot; {
     set isofile=&quot;/boot/iso/kubuntu-12.04.iso&quot;  
@@ -80,7 +80,7 @@ kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-13.10-desktop-i
 initrd (hd0,0)/initrd.lz  
 </code></pre>
 
-<h2 id="_5">其他</h2>
+<h2 id="_4">其他</h2>
 <p>查看时间设置：<code>timedatectl status</code><br />
 查看显卡信息：<code>sudo lshw -class video</code><br />
 VirtualBox使用usb设备要加入vboxusers组：<code>sudo adduser zhouzm vboxusers</code><br />

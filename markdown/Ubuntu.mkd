@@ -28,7 +28,6 @@ mount /dev/sda10 /mnt
 grub-install --root-directory=/mnt /dev/sda  
 update-grub2（不是必要）  
 ```
-重启
 ---
 [硬盘安装](http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux)  
 ```
