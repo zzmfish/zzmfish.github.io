@@ -1,0 +1,26 @@
+#!/usr/bin/python
+import re
+import sys
+import markdown
+src = open(sys.argv[1], 'r').read().decode('utf-8')
+
+converter = markdown.Markdown(extensions=['tables', 'fenced_code', 'toc'])
+title = ''
+match = re.search(r'#.*', src)
+if match:
+    title = match.group(0).strip('# ')
+
+body = converter.convert(src)
+print '''<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>%s</title>
+</head>
+<body>
+%s
+</body>
+</html>
+''' % (title.encode('utf-8'), body.encode('utf-8'))
+

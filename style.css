@@ -1,138 +1,131 @@
-h1, h2, h3, h4, h5, h6, p, blockquote {
-   margin: 0;
-   padding: 0;
+@charset "utf-8";
+ 
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+ 
+body{
+    color:#444;
+    font-size:13px;
+    line-height:1.5em;
+    padding:1em;
+    margin:auto;
+    max-width:42em;
+    background:#fefefe;
 }
-body {
-   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-   font-size: 13px;
-   line-height: 18px;
-   color: #fff;
-   background-color: #110F14;
-   margin: 10px 13px 10px 13px;
-}
-table {
-	 margin: 10px 0 15px 0;
-	 border-collapse: collapse;
-}
-td,th {	
-	 border: 1px solid #ddd;
-	 padding: 3px 10px;
-}
-th {
-	 padding: 5px 10px;	
-}
-a {
-   color: #59acf3;
-}
-a:hover {
-   color: #a7d8ff;
-   text-decoration: none;
-}
-a img {
-   border: none;
-}
-p {
-   margin-bottom: 9px;
-}
+ 
 h1, h2, h3, h4, h5, h6 {
-   color: #fff;
-   line-height: 36px;
+    font-weight: bold;
 }
+ 
 h1 {
-   margin-bottom: 18px;
-   font-size: 30px;
+    color: #000000;
+    font-size: 28px;
 }
+ 
 h2 {
-   font-size: 24px;
+    border-bottom: 2px solid #CCCCCC;
+    color: #000000;
+    font-size: 24px;
 }
+ 
 h3 {
-   font-size: 18px;
+    border-bottom: 2px solid #CCCCCC;
+    font-size: 18px;
 }
+ 
 h4 {
-   font-size: 16px;
+    font-size: 16px;
 }
+ 
 h5 {
-   font-size: 14px;
+    font-size: 14px;
 }
+ 
 h6 {
-   font-size: 13px;
+    color: #777777;
+    background-color: inherit;
+    font-size: 14px;
+    margin: 0.2em;
 }
+ 
 hr {
-   margin: 0 0 19px;
-   border: 0;
-   border-bottom: 1px solid #ccc;
+    height: 0.2em;
+    border: 0;
+    color: #CCCCCC;
+    background-color: #CCCCCC;
 }
-blockquote {
-   padding: 13px 13px 21px 15px;
-   margin-bottom: 18px;
-   font-family:georgia,serif;
-   font-style: italic;
+ 
+p, blockquote, ul, ol, dl, li, table, pre {
+    margin: 15px 0;
 }
-blockquote:before {
-   content:"\201C";
-   font-size:40px;
-   margin-left:-10px;
-   font-family:georgia,serif;
-   color:#eee;
+ 
+p{
+    margin:1em 0;
 }
-blockquote p {
-   font-size: 14px;
-   font-weight: 300;
-   line-height: 18px;
-   margin-bottom: 0;
-   font-style: italic;
-}
-
-code, pre {
-   font-family: Menlo, Monaco, Andale Mono, Courier New, monospace;
-}
-
-code {
-   padding: 1px 3px;
-   font-size: 12px;
-   -webkit-border-radius: 3px;
-   -moz-border-radius: 3px;
-   border-radius: 3px;
-   background: #334;
-}
-
+ 
 pre {
-   display: block;
-   padding: 14px;
-   margin: 0 0 18px;
-   line-height: 16px;
-   font-size: 11px;
-   border: 1px solid #334;
-   white-space: pre;
-   white-space: pre-wrap;
-   word-wrap: break-word;
-   background-color: #282a36;
-   border-radius: 6px;
+    background-color: #F8F8F8;   
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    overflow: auto;
+    padding: 5px;
 }
+ 
 pre code {
-   font-size: 11px;
-   padding: 0;
-   background: transparent;
+    background-color: #F8F8F8;
+    border: none;   
+    padding: 0;
 }
-sup {
-   font-size: 0.83em;
-   vertical-align: super;
-   line-height: 0;
+ 
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    background-color:#F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px;
+    padding: 0 0.2em;
+    line-height: 1;
 }
-* {
-	 -webkit-print-color-adjust: exact;
+ 
+pre > code {
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
-@media screen and (min-width: 914px) {
-   body {
-      width: 854px;
-      margin:10px auto;
-   }
+ 
+ 
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+ 
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+ 
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+ 
+blockquote{
+    color:#666666;
+    margin:0;
+    padding-left: 3em;
+    border-left: 0.5em #EEE solid;
 }
-@media print {
-	 body,code,pre code,h1,h2,h3,h4,h5,h6 {
-		  color: black;
-	 }
-	 table, pre {
-		  page-break-inside: avoid;
-	 }
+ 
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+ 
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; max-width:100%;}
+ 
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+table, tr, td { border: 1px solid #CCCCCC }
+ 
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+ 
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>SVN经验技巧</title>
+</head>
+<body>
+<h1 id="svn">SVN经验技巧</h1>
+<h2 id="_1">工作区</h2>
+<p>撤销本地修改：<code>svn revert &lt;文件&gt;</code><br />
+回滚代码：<code>svn merge -r&lt;版本2&gt;:&lt;版本1&gt;</code><br />
+解决冲突，使用我的版本：<code>svn resolve --accept mine-full  &lt;文件&gt;</code><br />
+更新到指定版本：<code>svn update -r&lt;版本&gt; &lt;文件&gt;</code><br />
+更新到最新版本：<code>svn update &lt;文件&gt;</code>  </p>
+<h2 id="_2">分支</h2>
+<p>创建分支：<code>svn copy &lt;原分支url&gt; &lt;新分支url&gt; -m "message"</code><br />
+列出所有tag：<code>svn ls "^/tags"</code><br />
+合并分支：<code>svn merge &lt;分支url&gt;</code><br />
+合并版本间的修改：<code>svn merge &lt;分支url&gt; -r&lt;版本1&gt;:&lt;版本2&gt;</code>  </p>
+<h2 id="_3">其他</h2>
+<p>切换服务器：<code>svn switch --relocate &lt;原url&gt; &lt;新url&gt;</code>  </p>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Python经验技巧</title>
+</head>
+<body>
+<h1 id="python">Python经验技巧</h1>
+<h2 id="_1">常用函数</h2>
+<p>匹配开头：<code>re.match(pattern, string)</code><br />
+匹配任意位置：<code>re.search(pattern, string)</code><br />
+匹配全部：<code>re.findall(pattern, string)</code><br />
+指定文件编码：<code>f = codecs.open('out.txt', mode="w", encoding="utf-8")</code><br />
+url编码：<code>urllib.quote(str)</code><br />
+url解码：<code>urllib.unquote(str)</code><br />
+深度拷贝：<code>obj2 = copy.deepcopy(obj1)</code>  </p>
+<h2 id="_2">预定义变量</h2>
+<p><code>__builtins__</code>：全局的内置符号，可以添加删除项<br />
+<code>__file__</code>：py文件全路径  </p>
+<h2 id="_3">调试分析</h2>
+<h3 id="gc">gc</h3>
+<p>得到引用列表：<code>gc.get_referrers(obj)</code></p>
+<h3 id="objgraph">objgraph</h3>
+<p>显示引用关系图：</p>
+<pre><code>import objgraph
+browsers = objgraph.by_type('user_browser')
+objgraph.show_backrefs(browsers[0], max_depth=10, filename=&quot;browser.dot&quot;)
+</code></pre>
+
+<p>显示数量最多的类型：<code>objgraph.show_most_common_types(20)</code></p>
+<h3 id="line95profiler">line_profiler</h3>
+<pre><code>kernprof.py -l -v &lt;python脚本和参数&gt; 
+</code></pre>
+
+<h3 id="pdb">pdb</h3>
+<p>断点：<code>pdb.set_trace()</code></p>
+<h3 id="traceback">traceback</h3>
+<p>显示堆栈：<code>traceback.print_stack()</code></p>
+<h2 id="_4">模块安装</h2>
+<h3 id="homelocal">编译安装到$HOME/local</h3>
+<pre><code>export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
+python setup.py build
+python setup.py install --prefix=$HOME/local
+</code></pre>
+
+<h3 id="pip">pip安装库</h3>
+<pre><code>sudo apt-get install python-pip
+sudo pip install &lt;库名&gt;
+</code></pre>
+</body>
+</html>
+

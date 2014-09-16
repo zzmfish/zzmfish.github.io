@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Vim经验技巧</title>
+</head>
+<body>
+<h1 id="vim">Vim经验技巧</h1>
+<h2 id="_1">查找和替换</h2>
+<p>查找不分大小写：<code>/要超找的字符串\c</code><br />
+去掉全部script：<code>:%s/&lt;scrip[^&gt;]*&gt;\_.\{-}&lt;\/script&gt;//g</code>  </p>
+<h2 id="_2">正则表达式</h2>
+<p><code>\_.</code>：匹配任意字符和换行<br />
+<code>\{-}</code>：非贪婪匹配  </p>
+<h2 id="_3">脚本</h2>
+<p>变量赋值: <code>left name = 'jay'</code>  </p>
+<p>变量作用域<br />
+<code>a</code>：函数参数<br />
+<code>s</code>：脚本<br />
+<code>b</code>：buffer<br />
+<code>w</code>：window<br />
+<code>g</code>：全局  </p>
+<h2 id="_4">代码折叠</h2>
+<p>折叠{,}</p>
+<pre><code>set foldmarker={,}
+set foldmethod=marker
+</code></pre>
+
+<h2 id="_5">其他</h2>
+<p>保存语法高亮到html：<code>runtime! syntax/2html.vim</code><br />
+重新加载文件：<code>edit</code>  </p>
+</body>
+</html>
+
