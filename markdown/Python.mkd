@@ -9,6 +9,10 @@ url编码：`urllib.quote(str)`
 url解码：`urllib.unquote(str)`  
 深度拷贝：`obj2 = copy.deepcopy(obj1)`  
 
+## 列表
+列表推导式：`squares = [x**2 for x in range(10)]`  
+排序：`list.sort()`  
+
 ## 预定义变量
 `__builtins__`：全局的内置符号，可以添加删除项  
 `__file__`：py文件全路径  
