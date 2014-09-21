@@ -1,0 +1,76 @@
+<html>
+<head>
+<script>
+function EditFile(fileName)
+{
+    //发起http请求：获取markdown文件内容
+    var req = new XMLHttpRequest();
+    req.open('GET', '/GetFile?f=' + encodeURIComponent(fileName), false);
+    req.onreadystatechange = function() {
+        if (req.readyState == 4 && req.status == 200) {
+            //得到文件内容，并设置到编辑器
+            document.getElementById('Editor').textContent = req.responseText;
+        }
+    }
+    req.send();
+}
+
+var is_rendering = false;
+
+function Render()
+{
+    if (is_rendering) return;
+    is_rendering = true;
+
+    //发起http请求：把markdown渲染成html
+    var req_content = 'text=' + encodeURIComponent(document.getElementById('Editor').textContent);
+    var req = new XMLHttpRequest();
+    req.open('POST', '/Render', false);
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", req_content.length);
+    req.setRequestHeader("Connection", "close");
+    req.onreadystatechange = function() {
+        if (req.readyState == 4) {
+            if (req.status == 200) {
+                //得到渲染的html，并在iframe显示
+                document.getElementById('Renderer').src = 'data:text/html;base64,' + req.responseText;
+            }
+            is_rendering = false;
+        }
+    }
+    req.send(req_content);
+}
+
+function OnContentChange()
+{
+    console.log('OnContentChange');
+    Render();
+}
+</script>
+</head>
+<body>
+<table style="width:100%; height:100%">
+<tr>
+    <td valign="top" style="width:300px;">
+        <ul style="list-style-type:none; padding:0px;">
+            {% for f in files %}
+            <li><a href="javascript:EditFile('{{ url_escape(f) }}')">{{ f }}</a></li>
+            {% end %}
+        </ul>
+    </td>
+    <td valign="top">
+        <table style="width:100%; height:100%;">
+        <tr>
+        <td style="width:50%">
+            <textarea id="Editor" style="width:100%; height:100%" oninput="OnContentChange()"></textarea>
+        </td>
+        <td style="width:50%">
+            <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
+        </td>
+        </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</body>
+</html>
