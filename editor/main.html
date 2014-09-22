@@ -1,31 +1,55 @@
 <html>
 <head>
 <script>
+var gIsRendering = false;
+var gFileName = null;
+
 function EditFile(fileName)
 {
     //发起http请求：获取markdown文件内容
     var req = new XMLHttpRequest();
-    req.open('GET', '/GetFile?f=' + encodeURIComponent(fileName), false);
+    req.open('GET', '/GetFile?f=' + encodeURIComponent(fileName), true);
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             //得到文件内容，并设置到编辑器
-            document.getElementById('Editor').textContent = req.responseText;
+            document.getElementById('Editor').value = req.responseText;
+            document.getElementById('EditorContainer').style.display = '';
+            document.getElementById('SaveButton').setAttribute('disabled', '');
+            gFileName = fileName;
+            Render();
         }
     }
     req.send();
 }
 
-var is_rendering = false;
+function SaveFile()
+{
+    if (!gFileName)
+        return;
+    //发起http请求：保存文件
+    var req_content = 'text=' + encodeURIComponent(document.getElementById('Editor').value)
+            + '&f=' + encodeURIComponent(gFileName);
+    var req = new XMLHttpRequest();
+    req.open('POST', '/SaveFile', false);
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", req_content.length);
+    req.send(req_content);
+    if (req.status == 200)
+        document.getElementById('Status').textContent = '文件保存成功！';
+    else
+        document.getElementById('Status').textContent = '文件保存失败！';
+
+}
 
 function Render()
 {
-    if (is_rendering) return;
-    is_rendering = true;
+    if (gIsRendering) return;
+    gIsRendering = true;
 
     //发起http请求：把markdown渲染成html
-    var req_content = 'text=' + encodeURIComponent(document.getElementById('Editor').textContent);
+    var req_content = 'text=' + encodeURIComponent(document.getElementById('Editor').value);
     var req = new XMLHttpRequest();
-    req.open('POST', '/Render', false);
+    req.open('POST', '/Render', true);
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     req.setRequestHeader("Content-length", req_content.length);
     req.setRequestHeader("Connection", "close");
@@ -35,7 +59,7 @@ function Render()
                 //得到渲染的html，并在iframe显示
                 document.getElementById('Renderer').src = 'data:text/html;base64,' + req.responseText;
             }
-            is_rendering = false;
+            gIsRendering = false;
         }
     }
     req.send(req_content);
@@ -43,7 +67,8 @@ function Render()
 
 function OnContentChange()
 {
-    console.log('OnContentChange');
+    document.getElementById('SaveButton').removeAttribute('disabled');
+    document.getElementById('Status').textContent = '';
     Render();
 }
 </script>
@@ -59,15 +84,21 @@ function OnContentChange()
         </ul>
     </td>
     <td valign="top">
-        <table style="width:100%; height:100%;">
-        <tr>
-        <td style="width:50%">
-            <textarea id="Editor" style="width:100%; height:100%" oninput="OnContentChange()"></textarea>
-        </td>
-        <td style="width:50%">
-            <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
-        </td>
-        </tr>
+        <table style="width:100%; height:100%; display:none;" id="EditorContainer">
+            <tr>
+                <td style="width:50%">
+                    <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
+                </td>
+                <td style="width:50%">
+                    <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
+                </td>
+            </tr>
+            <tr style="height:20px;">
+                <td style="text-align:right;">
+                    <span id="Status"></span>
+                    <button id="SaveButton" onclick="SaveFile()" disabled>保存</button>
+                </td>
+            </tr>
         </table>
     </td>
 </tr>
