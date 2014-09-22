@@ -17,6 +17,7 @@ function EditFile(fileName)
             document.getElementById('EditorContainer').style.display = '';
             document.getElementById('SaveButton').setAttribute('disabled', '');
             gFileName = fileName;
+            location.hash = fileName
             Render();
         }
     }
@@ -130,6 +131,8 @@ function ToggleMenu()
 
 <script>
 ToggleMenu()
+if (location.hash)
+    EditFile(location.hash.substr(1));
 </script>
 </body>
 </html>
