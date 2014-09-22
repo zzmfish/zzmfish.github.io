@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>笔记编辑</title>
 <script>
 var gIsRendering = false;
 var gFileName = null;
@@ -57,7 +58,12 @@ function Render()
         if (req.readyState == 4) {
             if (req.status == 200) {
                 //得到渲染的html，并在iframe显示
-                document.getElementById('Renderer').src = 'data:text/html;base64,' + req.responseText;
+                var renderer = document.getElementById('Renderer');
+                var scrollY = renderer.contentWindow.scrollY;
+                renderer.src = 'data:text/html;base64,' + req.responseText;
+                renderer.onload = function() {
+                    renderer.contentWindow.scrollTo(0, scrollY);
+                }
             }
             gIsRendering = false;
         }
@@ -71,20 +77,37 @@ function OnContentChange()
     document.getElementById('Status').textContent = '';
     Render();
 }
+
+function ToggleMenu()
+{
+    var button = document.getElementById('ToggleMenuButton');
+    var container = document.getElementById('MenuContainer');
+    var fileList = document.getElementById('FileList');
+    if (button.textContent != '目录<<') {
+        container.style.width = '300px';
+        fileList.style.display = '';
+        button.textContent = '目录<<';
+    }
+    else {
+        container.style.width = '0px';
+        fileList.style.display = 'none';
+        button.textContent = '目录>>';
+    }
+}
 </script>
 </head>
 <body>
 <table style="width:100%; height:100%">
 <tr>
-    <td valign="top" style="width:300px;">
-        <ul style="list-style-type:none; padding:0px;">
+    <td valign="top" style="width:300px;" id="MenuContainer">
+        <ul style="list-style-type:none; padding:0px;" id="FileList">
             {% for f in files %}
             <li><a href="javascript:EditFile('{{ url_escape(f) }}')">{{ f }}</a></li>
             {% end %}
         </ul>
     </td>
     <td valign="top">
-        <table style="width:100%; height:100%; display:none;" id="EditorContainer">
+        <table style="width:100%; height:100%;" id="EditorContainer">
             <tr>
                 <td style="width:50%">
                     <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
@@ -94,14 +117,19 @@ function OnContentChange()
                 </td>
             </tr>
             <tr style="height:20px;">
-                <td style="text-align:right;">
+                <td>
+                    <a id="ToggleMenuButton" href="javascript:ToggleMenu()"></a>
                     <span id="Status"></span>
-                    <button id="SaveButton" onclick="SaveFile()" disabled>保存</button>
+                    <button id="SaveButton" onclick="SaveFile()" disabled style="float:right">保存</button>
                 </td>
             </tr>
         </table>
     </td>
 </tr>
 </table>
+
+<script>
+ToggleMenu()
+</script>
 </body>
 </html>
