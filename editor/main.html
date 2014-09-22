@@ -5,8 +5,18 @@
 var gIsRendering = false;
 var gFileName = null;
 
+function CheckUnsavedFile()
+{
+    if (! document.getElementById('SaveButton').hasAttribute('disabled')) {
+        if (confirm("是否保存文件？"))
+            SaveFile();
+    }
+}
+
 function EditFile(fileName)
 {
+    CheckUnsavedFile();
+
     //发起http请求：获取markdown文件内容
     var req = new XMLHttpRequest();
     req.open('GET', '/GetFile?f=' + encodeURIComponent(fileName), true);
