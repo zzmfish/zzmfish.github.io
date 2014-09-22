@@ -71,9 +71,13 @@ function Render()
                 //得到渲染的html，并在iframe显示
                 var renderer = document.getElementById('Renderer');
                 var scrollY = renderer.contentWindow.scrollY;
+                var scrollMaxY = renderer.contentWindow.scrollMaxY;
                 renderer.src = 'data:text/html;base64,' + req.responseText;
                 renderer.onload = function() {
-                    renderer.contentWindow.scrollTo(0, scrollY);
+                    if (scrollY >= scrollMaxY)
+                        renderer.contentWindow.scrollTo(0, renderer.contentWindow.scrollMaxY);
+                    else
+                        renderer.contentWindow.scrollTo(0, scrollY);
                 }
             }
             gIsRendering = false;
@@ -107,8 +111,8 @@ function ToggleMenu()
 }
 </script>
 </head>
-<body>
-<table style="width:100%; height:100%">
+<body style="padding:0px;margin:0px;">
+<table style="width:100%; height:100%" border="0" cellspacing="0">
 <tr>
     <td valign="top" style="width:300px;" id="MenuContainer">
         <ul style="list-style-type:none; padding:0px;" id="FileList">
@@ -118,12 +122,12 @@ function ToggleMenu()
         </ul>
     </td>
     <td valign="top">
-        <table style="width:100%; height:100%;" id="EditorContainer">
+        <table style="width:100%; height:100%;" id="EditorContainer" border="0" cellspacing="0">
             <tr>
                 <td style="width:50%">
                     <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
                 </td>
-                <td style="width:50%">
+                <td style="width:50%" rowspan="2">
                     <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
                 </td>
             </tr>
