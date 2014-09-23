@@ -29,7 +29,6 @@ class SaveFileHandler(tornado.web.RequestHandler):
         global MD_DIR
         text = self.get_body_argument('text')
         f = self.get_body_argument('f')
-        print f
         f = os.path.join(MD_DIR, f)
         open(f, 'w').write(text.encode('utf-8'))
         self.write('OK')

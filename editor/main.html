@@ -5,17 +5,21 @@
 var gIsRendering = false;
 var gFileName = null;
 
-function CheckUnsavedFile()
+function NeedSaveFile()
 {
-    if (! document.getElementById('SaveButton').hasAttribute('disabled')) {
-        if (confirm("是否保存文件？"))
-            SaveFile();
-    }
+    return ! document.getElementById('SaveButton').hasAttribute('disabled')
+            && document.getElementById('Editor').value;
+}
+
+function ConfirmUnsavedFile()
+{
+    if (NeedSaveFile() && confirm("是否保存文件？"))
+        SaveFile();
 }
 
 function EditFile(fileName)
 {
-    CheckUnsavedFile();
+    ConfirmUnsavedFile();
 
     //发起http请求：获取markdown文件内容
     var req = new XMLHttpRequest();
@@ -49,8 +53,10 @@ function SaveFile()
 
     //显示保存成功或失败
     var statusElem = document.getElementById('Status');
-    if (req.status == 200)
+    if (req.status == 200) {
         statusElem.textContent = '文件保存成功！';
+        document.getElementById('SaveButton').setAttribute('disabled', '');
+    }
     else
         statusElem.textContent = '文件保存失败！';
 
@@ -152,8 +158,14 @@ function ToggleMenu()
 
 <script>
 ToggleMenu()
+document.getElementById('Editor').value = '';
 if (location.hash)
     EditFile(location.hash.substr(1));
+
+window.onbeforeunload = function() {
+    if (NeedSaveFile())
+        return "文档没保存，是否离开？"
+}
 </script>
 </body>
 </html>
