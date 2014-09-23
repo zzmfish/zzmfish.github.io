@@ -33,9 +33,10 @@
 解压并更改目录名称：<code>mkdir &lt;目录&gt; &amp;&amp; tar zxf hello.tgz -C &lt;目录&gt; --strip-components 1</code> </p>
 <h2 id="_4">其他</h2>
 <p>重新连接screen会话，必要时先detach：</p>
-<pre><code>kill -HUP &lt;screen pid&gt;
-screen -d -r
-</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">kill <span style="color: #666666">-</span>HUP <span style="color: #666666">&lt;</span>screen pid<span style="color: #666666">&gt;</span>
+screen <span style="color: #666666">-</span>d <span style="color: #666666">-</span>r
+</pre></div>
+
 
 <p>bash下编辑命令：输完命令后按<code>Ctrl</code>-<code>x</code> <code>Ctrl</code>-<code>e</code><br />
 脚本退出杀掉所有子进程：<code>trap "kill 0" SIGINT SIGTERM EXIT</code><br />

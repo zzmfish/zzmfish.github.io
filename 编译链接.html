@@ -22,9 +22,10 @@
 解压静态库：<code>ar x libfoo.a</code>  </p>
 <h2 id="_3">动态库</h2>
 <p>创建动态库：</p>
-<pre><code>gcc -o foo.o -fPIC foo.c
-gcc -shared -o libfoo.so foo.o
-</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gcc <span style="color: #666666">-</span>o foo.o <span style="color: #666666">-</span>fPIC foo.c
+gcc <span style="color: #666666">-</span>shared <span style="color: #666666">-</span>o libfoo.so foo.o
+</pre></div>
+
 
 <p>显示依赖的动态库：<code>ldd libfoo.so</code></p>
 <h2 id="_4">符号信息</h2>
@@ -32,18 +33,19 @@ gcc -shared -o libfoo.so foo.o
 显示符号：<code>nm libfoo.so</code></p>
 <h2 id="makefile">Makefile</h2>
 <p>编译规则</p>
-<pre><code>%.o : %.c
-    $(CC) -c $(CFLAGS) $(CPPFLAGS) $&lt; -o $@
-</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">%.o : %.c</span>
+    $(CC) <span style="color: #666666">-</span>c $(CFLAGS) $(CPPFLAGS) $<span style="color: #666666">&lt;</span> <span style="color: #666666">-</span>o $@
+</pre></div>
+
 
 <p>其中<code>%</code>表示文件名，<code>$&lt;</code>表示依赖目标，<code>$@</code>表示目标</p>
 <p>后缀替换：<code>OBJS=$(SRCS:.cpp=.o)</code></p>
 <h2 id="cmake">CMake</h2>
 <p>项目编译和安装：</p>
-<pre><code>cmake -DCMAKE_INSTALL_PREFIX:PATH=$HOME/local 
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cmake <span style="color: #666666">-</span>DCMAKE_INSTALL_PREFIX<span style="color: #666666">:</span>PATH<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>HOME<span style="color: #666666">/</span>local 
 make
-make install`  
-</code></pre>
+make install<span style="border: 1px solid #FF0000">`</span>  
+</pre></div>
 </body>
 </html>
 
