@@ -1,6 +1,8 @@
 <html>
 <head>
 <title>笔记编辑</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script src="/js/slidebar.js"></script>
 <script>
 var gIsRendering = false;
 var gFileName = null;
@@ -105,62 +107,41 @@ function OnContentChange()
     document.getElementById('Status').textContent = '';
     Render();
 }
-
-function ToggleMenu()
-{
-    var button = document.getElementById('ToggleMenuButton');
-    var container = document.getElementById('MenuContainer');
-    var fileList = document.getElementById('FileList');
-    if (button.textContent != '目录<<') {
-        container.style.width = '300px';
-        fileList.style.display = '';
-        button.textContent = '目录<<';
-    }
-    else {
-        container.style.width = '0px';
-        fileList.style.display = 'none';
-        button.textContent = '目录>>';
-    }
-}
 </script>
 </head>
 <body style="padding:0px;margin:0px;">
-<table style="width:100%; height:100%" border="0" cellspacing="0">
-<tr>
-    <td valign="top" style="width:300px;" id="MenuContainer">
-        <ul style="list-style-type:none; padding:0px;" id="FileList">
-            {% for f in files %}
-            <li><a href="javascript:EditFile('{{ url_escape(f) }}')">{{ f }}</a></li>
-            {% end %}
-        </ul>
-    </td>
-    <td valign="top">
-        <table style="width:100%; height:100%;" id="EditorContainer" border="0" cellspacing="0">
-            <tr>
-                <td style="width:50%">
-                    <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
-                </td>
-                <td style="width:50%" rowspan="2">
-                    <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
-                </td>
-            </tr>
-            <tr style="height:20px;">
-                <td style="text-align:center;">
-                    <a id="ToggleMenuButton" href="javascript:ToggleMenu()" style="float:left;"></a>
-                    <span id="Status"></span>
-                    <button id="SaveButton" onclick="SaveFile()" disabled style="float:right">保存</button>
-                </td>
-            </tr>
-        </table>
-    </td>
-</tr>
+
+<div id="SlideBar" style="position:absolute; width:300px; top:0px; left: -300px;">
+    <ul>
+        {% for f in files %}
+        <li><a href="javascript:EditFile('{{ url_escape(f) }}')">{{ f }}</a></li>
+        {% end %}
+    </ul>
+</div>
+
+<table style="width:100%; height:100%;" id="EditorContainer" border="0" cellspacing="0">
+    <tr>
+        <td style="width:50%">
+            <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
+        </td>
+        <td style="width:50%" rowspan="2">
+            <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
+        </td>
+    </tr>
+    <tr style="height:20px;">
+        <td style="text-align:center;">
+            <div id="SlideTrigger" style="float:left;">菜单</div>
+            <span id="Status"></span>
+            <button id="SaveButton" onclick="SaveFile()" disabled style="float:right">保存</button>
+        </td>
+    </tr>
 </table>
 
 <script>
-ToggleMenu()
 document.getElementById('Editor').value = '';
 if (location.hash)
     EditFile(location.hash.substr(1));
+InitSlideBar('SlideBar', 'SlideTrigger');
 
 window.onbeforeunload = function() {
     if (NeedSaveFile())

@@ -40,6 +40,12 @@ class RenderHandler(tornado.web.RequestHandler):
         html = tools.make_html.make_html(text, css)
         self.write(base64.b64encode(html))
         
+class ResourceHandler(tornado.web.RequestHandler):
+    def get(self):
+        path = self.request.uri.strip('/')
+        content = open(os.path.join('./res', path), 'r').read()
+        self.write(content)
+        
 from tornado.log import enable_pretty_logging
 enable_pretty_logging()
 application = tornado.web.Application([
@@ -47,6 +53,8 @@ application = tornado.web.Application([
     (r"/GetFile", GetFileHandler),
     (r"/SaveFile", SaveFileHandler),
     (r"/Render", RenderHandler),
+    (r"/css/.*", ResourceHandler),
+    (r"/js/.*", ResourceHandler),
 ])
 application.listen(8889)
 tornado.ioloop.IOLoop.instance().start()
