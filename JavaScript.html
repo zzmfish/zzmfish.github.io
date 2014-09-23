@@ -10,33 +10,35 @@
 <p>url编码：<code>encodeURIComponent</code><br />
 保存文件：<a href="https://github.com/eligrey/FileSaver.js">FileSaver.js</a></p>
 <h3 id="http">http请求</h3>
-<pre><code>var req = new XMLHttpRequest();
-req.open('GET', url);
-req.onreadystatechange = function() {
-    if (req.readyState == 4 &amp;&amp; req.status == 200) {`
-        //得到req.responseText;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">var</span> req <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> XMLHttpRequest();
+req.open(<span style="color: #BA2121">&#39;GET&#39;</span>, url);
+req.onreadystatechange <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">function</span>() {
+    <span style="color: #008000; font-weight: bold">if</span> (req.readyState <span style="color: #666666">==</span> <span style="color: #666666">4</span> <span style="color: #666666">&amp;&amp;</span> req.status <span style="color: #666666">==</span> <span style="color: #666666">200</span>) {<span style="border: 1px solid #FF0000">`</span>
+        <span style="color: #408080; font-style: italic">//得到req.responseText;</span>
     }
 }
 req.send();
-</code></pre>
+</pre></div>
+
 
 <h3 id="http-post">http POST请求</h3>
-<pre><code>var req_content = 'text=' + encodeURIComponent(document.getElementById('Editor').textContent);
-var req = new XMLHttpRequest();
-req.open('POST', '/Render', false);
-req.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
-req.setRequestHeader(&quot;Content-length&quot;, req_content.length);
-req.setRequestHeader(&quot;Connection&quot;, &quot;close&quot;);
-req.onreadystatechange = function() {
-    if (req.readyState == 4) {
-        if (req.status == 200) {
-            document.getElementById('Renderer').src = 'data:text/html;base64,' + req.responseText;
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">var</span> req_content <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;text=&#39;</span> <span style="color: #666666">+</span> <span style="color: #008000">encodeURIComponent</span>(<span style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&#39;Editor&#39;</span>).textContent);
+<span style="color: #008000; font-weight: bold">var</span> req <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> XMLHttpRequest();
+req.open(<span style="color: #BA2121">&#39;POST&#39;</span>, <span style="color: #BA2121">&#39;/Render&#39;</span>, <span style="color: #008000; font-weight: bold">false</span>);
+req.setRequestHeader(<span style="color: #BA2121">&quot;Content-type&quot;</span>, <span style="color: #BA2121">&quot;application/x-www-form-urlencoded&quot;</span>);
+req.setRequestHeader(<span style="color: #BA2121">&quot;Content-length&quot;</span>, req_content.length);
+req.setRequestHeader(<span style="color: #BA2121">&quot;Connection&quot;</span>, <span style="color: #BA2121">&quot;close&quot;</span>);
+req.onreadystatechange <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">function</span>() {
+    <span style="color: #008000; font-weight: bold">if</span> (req.readyState <span style="color: #666666">==</span> <span style="color: #666666">4</span>) {
+        <span style="color: #008000; font-weight: bold">if</span> (req.status <span style="color: #666666">==</span> <span style="color: #666666">200</span>) {
+            <span style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&#39;Renderer&#39;</span>).src <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;data:text/html;base64,&#39;</span> <span style="color: #666666">+</span> req.responseText;
         }
-        rendering = false;
+        rendering <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">false</span>;
     }
 }
 req.send(req_content);
-</code></pre>
+</pre></div>
+
 
 <p>访问iframe子文档：<code>iframeElem.contentDocument</code>  </p>
 <h2 id="_1">参考资料</h2>

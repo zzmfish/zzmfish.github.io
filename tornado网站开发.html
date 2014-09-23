@@ -10,21 +10,22 @@
 <h2 id="_1">安装</h2>
 <p><code>sudo apt-get install python-tornado</code>  </p>
 <h2 id="hello-world">hello world</h2>
-<pre><code>import tornado.ioloop
-import tornado.web
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #008000; font-weight: bold">tornado</span><span style="color: #0000FF; font-weight: bold">.ioloop</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #008000; font-weight: bold">tornado</span><span style="color: #0000FF; font-weight: bold">.web</span>
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write(&quot;Hello, world&quot;)
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #008000; font-weight: bold">MainHandler</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">tornado</span><span style="color: #0000FF; font-weight: bold">.web.RequestHandler</span><span style="color: #666666">):</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #008000; font-weight: bold">get</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">self</span><span style="color: #666666">):</span>
+        <span style="color: #008000; font-weight: bold">self</span><span style="color: #0000FF; font-weight: bold">.write</span><span style="color: #666666">(</span><span style="color: #BA2121">&quot;Hello, world&quot;</span><span style="color: #666666">)</span>
 
-application = tornado.web.Application([
-    (r&quot;/&quot;, MainHandler),
-])
+<span style="color: #008000; font-weight: bold">application</span> <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">tornado</span><span style="color: #0000FF; font-weight: bold">.web.Application</span><span style="color: #666666">(</span><span style="color: #BC7A00">[</span>
+    (<span style="color: #008000">r</span><span style="color: #BA2121">&quot;/&quot;</span>, MainHandler),
+<span style="color: #BC7A00">]</span><span style="color: #666666">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    application.listen(8888)
-    tornado.ioloop.IOLoop.instance().start()
-</code></pre>
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000; font-weight: bold">__name__</span> <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;__main__&quot;</span><span style="color: #666666">:</span>
+    <span style="color: #008000; font-weight: bold">application</span><span style="color: #0000FF; font-weight: bold">.listen</span><span style="color: #666666">(</span><span style="color: #008000; font-weight: bold">8888</span><span style="color: #666666">)</span>
+    <span style="color: #008000; font-weight: bold">tornado</span><span style="color: #0000FF; font-weight: bold">.ioloop.IOLoop.instance</span><span style="color: #666666">()</span><span style="color: #0000FF; font-weight: bold">.start</span><span style="color: #666666">()</span>
+</pre></div>
+
 
 <p>模板
 ```

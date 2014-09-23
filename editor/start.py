@@ -9,15 +9,21 @@ import tools.make_html
 
 MD_DIR = '../markdown'
 
+def check_ip(request):
+    if request.remote_ip != '127.0.0.1':
+        raise Exception('unauthorized ip')
+    
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         global MD_DIR
+        check_ip(self.request)
         files = os.listdir(MD_DIR)
         self.render('main.html', files=files)
 
 class GetFileHandler(tornado.web.RequestHandler):
     def get(self):
         global MD_DIR
+        check_ip(self.request)
         f = self.get_argument('f')
         text = ''
         if f:
@@ -27,6 +33,7 @@ class GetFileHandler(tornado.web.RequestHandler):
 class SaveFileHandler(tornado.web.RequestHandler):
     def post(self):
         global MD_DIR
+        check_ip(self.request)
         text = self.get_body_argument('text')
         f = self.get_body_argument('f')
         f = os.path.join(MD_DIR, f)
@@ -35,6 +42,7 @@ class SaveFileHandler(tornado.web.RequestHandler):
  
 class RenderHandler(tornado.web.RequestHandler):
     def post(self):
+        check_ip(self.request)
         text = self.get_body_argument('text')
         css = open('../style.css', 'r').read()
         html = tools.make_html.make_html(text, css)

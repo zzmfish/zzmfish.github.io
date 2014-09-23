@@ -34,15 +34,17 @@ url解码：<code>urllib.unquote(str)</code><br />
 <p>得到引用列表：<code>gc.get_referrers(obj)</code></p>
 <h3 id="objgraph">objgraph</h3>
 <p>显示引用关系图：</p>
-<pre><code>import objgraph
-browsers = objgraph.by_type('user_browser')
-objgraph.show_backrefs(browsers[0], max_depth=10, filename=&quot;browser.dot&quot;)
-</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">import objgraph
+browsers <span style="color: #666666">=</span> objgraph.by_type(<span style="border: 1px solid #FF0000">&#39;</span>user_browser<span style="border: 1px solid #FF0000">&#39;</span>)
+objgraph.show_backrefs(browsers[<span style="color: #666666">0</span>], max_depth<span style="color: #666666">=10</span>, filename<span style="color: #666666">=</span><span style="color: #BA2121">&quot;browser.dot&quot;</span>)
+</pre></div>
+
 
 <p>显示数量最多的类型：<code>objgraph.show_most_common_types(20)</code></p>
 <h3 id="line95profiler">line_profiler</h3>
-<pre><code>kernprof.py -l -v &lt;python脚本和参数&gt; 
-</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">kernprof.py <span style="color: #666666">-</span>l <span style="color: #666666">-</span>v <span style="color: #666666">&lt;</span>python<span style="border: 1px solid #FF0000">脚本和参数</span><span style="color: #666666">&gt;</span> 
+</pre></div>
+
 
 <h3 id="pdb">pdb</h3>
 <p>断点：<code>pdb.set_trace()</code></p>
@@ -50,15 +52,16 @@ objgraph.show_backrefs(browsers[0], max_depth=10, filename=&quot;browser.dot&quo
 <p>显示堆栈：<code>traceback.print_stack()</code></p>
 <h2 id="_7">模块安装</h2>
 <h3 id="homelocal">编译安装到$HOME/local</h3>
-<pre><code>export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">export PYTHONPATH<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>HOME<span style="color: #666666">/</span>local<span style="color: #666666">/</span>lib<span style="color: #666666">/</span>python2<span style="color: #666666">.7/</span>site<span style="color: #666666">-</span>packages<span style="color: #666666">:</span><span style="border: 1px solid #FF0000">$</span>PYTHONPATH
 python setup.py build
-python setup.py install --prefix=$HOME/local
-</code></pre>
+python setup.py install <span style="color: #666666">--</span>prefix<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>HOME<span style="color: #666666">/</span>local
+</pre></div>
+
 
 <h3 id="pip">pip安装库</h3>
-<pre><code>sudo apt-get install python-pip
-sudo pip install &lt;库名&gt;
-</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt<span style="color: #666666">-</span>get install python<span style="color: #666666">-</span>pip
+sudo pip install <span style="color: #666666">&lt;</span><span style="border: 1px solid #FF0000">库名</span><span style="color: #666666">&gt;</span>
+</pre></div>
 </body>
 </html>
 
