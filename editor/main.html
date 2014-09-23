@@ -4,6 +4,12 @@
 <script>
 var gIsRendering = false;
 var gFileName = null;
+var gNeedRendering = false;
+
+function debug(msg)
+{
+    console.log(msg);
+}
 
 function NeedSaveFile()
 {
@@ -19,6 +25,7 @@ function ConfirmUnsavedFile()
 
 function EditFile(fileName)
 {
+    debug('EditFile(' + fileName + ')');
     ConfirmUnsavedFile();
 
     //发起http请求：获取markdown文件内容
@@ -32,6 +39,7 @@ function EditFile(fileName)
             document.getElementById('SaveButton').setAttribute('disabled', '');
             gFileName = fileName;
             location.hash = fileName
+            gNeedRendering = true;
             Render();
         }
     }
@@ -68,6 +76,7 @@ function SaveFile()
 
 function Render()
 {
+    if (!gNeedRendering) return;
     if (gIsRendering) return;
     gIsRendering = true;
 
@@ -94,6 +103,7 @@ function Render()
                 }
             }
             gIsRendering = false;
+            gNeedRendering = false;
         }
     }
     req.send(req_content);
@@ -103,7 +113,8 @@ function OnContentChange()
 {
     document.getElementById('SaveButton').removeAttribute('disabled');
     document.getElementById('Status').textContent = '';
-    Render();
+    gNeedRendering = true;
+    setTimeout(Render, 1500);
 }
 
 function ToggleMenu()
