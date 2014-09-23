@@ -2,12 +2,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style.css" />
     <title>Python经验技巧</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="python">Python经验技巧</h1>
-<h2 id="_1">常用函数</h2>
+<h2 id="_1">未分类</h2>
+<p>最大整数：<code>sys.maxint</code><br />
+输出成json：<code>json.dumps(s)</code>  </p>
+<h2 id="_2">常用函数</h2>
 <p>匹配开头：<code>re.match(pattern, string)</code><br />
 匹配任意位置：<code>re.search(pattern, string)</code><br />
 匹配全部：<code>re.findall(pattern, string)</code><br />
@@ -15,13 +18,18 @@
 url编码：<code>urllib.quote(str)</code><br />
 url解码：<code>urllib.unquote(str)</code><br />
 深度拷贝：<code>obj2 = copy.deepcopy(obj1)</code>  </p>
-<h2 id="_2">预定义变量</h2>
+<h2 id="_3">列表</h2>
+<p>列表推导式：<code>squares = [x**2 for x in range(10)]</code><br />
+排序：<code>list.sort()</code><br />
+删除给定索引的元素：<code>del list[i]</code><br />
+删除给定值的元素：<code>list.remove(v)</code>  </p>
+<h2 id="_4">预定义变量</h2>
 <p><code>__builtins__</code>：全局的内置符号，可以添加删除项<br />
 <code>__file__</code>：py文件全路径  </p>
-<h2 id="_3">第三方库</h2>
+<h2 id="_5">第三方库</h2>
 <p>网络爬虫：<code>Scrapy</code><br />
 网站开发：<code>tornado</code>  </p>
-<h2 id="_4">调试分析</h2>
+<h2 id="_6">调试分析</h2>
 <h3 id="gc">gc</h3>
 <p>得到引用列表：<code>gc.get_referrers(obj)</code></p>
 <h3 id="objgraph">objgraph</h3>
@@ -40,7 +48,7 @@ objgraph.show_backrefs(browsers[0], max_depth=10, filename=&quot;browser.dot&quo
 <p>断点：<code>pdb.set_trace()</code></p>
 <h3 id="traceback">traceback</h3>
 <p>显示堆栈：<code>traceback.print_stack()</code></p>
-<h2 id="_5">模块安装</h2>
+<h2 id="_7">模块安装</h2>
 <h3 id="homelocal">编译安装到$HOME/local</h3>
 <pre><code>export PYTHONPATH=$HOME/local/lib/python2.7/site-packages:$PYTHONPATH
 python setup.py build

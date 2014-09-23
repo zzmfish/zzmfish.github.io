@@ -14,4 +14,4 @@
 合并版本间的修改：`svn merge <分支url> -r<版本1>:<版本2> `  
 
 ## 其他
-切换服务器：`svn switch --relocate <原url> <新url>`  
+切换服务器：`svn switch --relocate <原url> <新url>`

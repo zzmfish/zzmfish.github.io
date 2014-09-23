@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="javascript">JavaScript</h1>
+<p>url编码：<code>encodeURIComponent</code><br />
+保存文件：<a href="https://github.com/eligrey/FileSaver.js">FileSaver.js</a></p>
+<h3 id="http">http请求</h3>
+<pre><code>var req = new XMLHttpRequest();
+req.open('GET', url);
+req.onreadystatechange = function() {
+    if (req.readyState == 4 &amp;&amp; req.status == 200) {`
+        //得到req.responseText;
+    }
+}
+req.send();
+</code></pre>
+
+<h3 id="http-post">http POST请求</h3>
+<pre><code>var req_content = 'text=' + encodeURIComponent(document.getElementById('Editor').textContent);
+var req = new XMLHttpRequest();
+req.open('POST', '/Render', false);
+req.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;);
+req.setRequestHeader(&quot;Content-length&quot;, req_content.length);
+req.setRequestHeader(&quot;Connection&quot;, &quot;close&quot;);
+req.onreadystatechange = function() {
+    if (req.readyState == 4) {
+        if (req.status == 200) {
+            document.getElementById('Renderer').src = 'data:text/html;base64,' + req.responseText;
+        }
+        rendering = false;
+    }
+}
+req.send(req_content);
+</code></pre>
+
+<p>访问iframe子文档：<code>iframeElem.contentDocument</code>  </p>
+<h2 id="_1">参考资料</h2>
+<ul>
+<li><a href="http://www.w3school.com.cn/jquery/index.asp">W3School jQuery教程</a></li>
+</ul>
+</body>
+</html>
+

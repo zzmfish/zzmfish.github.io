@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style.css" />
     <title>Linux经验技巧</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="linux">Linux经验技巧</h1>
@@ -41,7 +41,8 @@ screen -d -r
 脚本退出杀掉所有子进程：<code>trap "kill 0" SIGINT SIGTERM EXIT</code><br />
 上传文件：<code>rz</code><br />
 下载文件：<code>sz &lt;文件名&gt;</code><br />
-小写转大写：<code>tr '[a-z]' '[A-Z]'</code>  </p>
+小写转大写：<code>tr '[a-z]' '[A-Z]'</code><br />
+显示第100行：<code>sed '100q;d' &lt;文件名&gt;</code> </p>
 </body>
 </html>
 

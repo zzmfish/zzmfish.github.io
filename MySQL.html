@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="style.css" />
     <title>MySQL</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="mysql">MySQL</h1>
@@ -14,8 +14,15 @@
 <p>列出数据库：<code>show databases</code><br />
 选择数据库：<code>use &lt;数据库名&gt;</code><br />
 显示数据库信息：<code>status</code><br />
+显示数据库字符集设置：<code>show variables like 'character_%'</code><br />
 列出表：<code>show tables</code><br />
-显示表信息：<code>show table status</code>  </p>
+显示表信息：<code>show table status</code><br />
+显示列名：<code>show columns from &lt;表名&gt;;</code></p>
+<h2 id="_2">查询语句</h2>
+<p>所有取值：<code>select DISTINCT &lt;列名&gt; from &lt;表名&gt;;</code><br />
+降序排名前10：<code>select * from &lt;表名&gt; ORDER BY &lt;列名&gt; DESC limit 10;</code><br />
+降序排名10-20：<code>select * from &lt;表名&gt; ORDER BY &lt;列名&gt; DESC limit 10,20;</code><br />
+每天条目数：<code>select date, COUNT(*) from &lt;表名&gt; GROUP BY date;</code>  </p>
 <h2 id="mysql_1">mysql命令</h2>
 <p>执行sql文件：<code>source &lt;sql文件名&gt;</code>  </p>
 </body>

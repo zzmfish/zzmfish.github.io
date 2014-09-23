@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>tornado网站开发</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="tornado">tornado网站开发</h1>
+<h2 id="_1">安装</h2>
+<p><code>sudo apt-get install python-tornado</code>  </p>
+<h2 id="hello-world">hello world</h2>
+<pre><code>import tornado.ioloop
+import tornado.web
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write(&quot;Hello, world&quot;)
+
+application = tornado.web.Application([
+    (r&quot;/&quot;, MainHandler),
+])
+
+if __name__ == &quot;__main__&quot;:
+    application.listen(8888)
+    tornado.ioloop.IOLoop.instance().start()
+</code></pre>
+
+<p>模板
+```
+self.render('main.html', files=files)</p>
+</body>
+</html>
+

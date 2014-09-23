@@ -1,5 +1,9 @@
 # Python经验技巧
 
+## 未分类
+最大整数：`sys.maxint`  
+输出成json：`json.dumps(s)`  
+
 ## 常用函数
 匹配开头：`re.match(pattern, string)`  
 匹配任意位置：`re.search(pattern, string)`  
@@ -12,6 +16,8 @@ url解码：`urllib.unquote(str)`
 ## 列表
 列表推导式：`squares = [x**2 for x in range(10)]`  
 排序：`list.sort()`  
+删除给定索引的元素：`del list[i]`  
+删除给定值的元素：`list.remove(v)`  
 
 ## 预定义变量
 `__builtins__`：全局的内置符号，可以添加删除项  
