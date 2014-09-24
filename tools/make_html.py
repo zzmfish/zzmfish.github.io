@@ -10,6 +10,7 @@ def make_html(src, css):
             extension_configs={
                 'codehilite':
                 {
+                    'linenums': False,
                     'noclasses': True,
                 }
             })
