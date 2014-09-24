@@ -7,60 +7,132 @@
 </head>
 <body>
 <h1 id="python">Python经验技巧</h1>
-<h2 id="_1">未分类</h2>
-<p>最大整数：<code>sys.maxint</code><br />
-输出成json：<code>json.dumps(s)</code>  </p>
-<h2 id="_2">常用函数</h2>
-<p>匹配开头：<code>re.match(pattern, string)</code><br />
-匹配任意位置：<code>re.search(pattern, string)</code><br />
-匹配全部：<code>re.findall(pattern, string)</code><br />
-指定文件编码：<code>f = codecs.open('out.txt', mode="w", encoding="utf-8")</code><br />
-url编码：<code>urllib.quote(str)</code><br />
-url解码：<code>urllib.unquote(str)</code><br />
-深度拷贝：<code>obj2 = copy.deepcopy(obj1)</code>  </p>
-<h2 id="_3">列表</h2>
-<p>列表推导式：<code>squares = [x**2 for x in range(10)]</code><br />
-排序：<code>list.sort()</code><br />
-删除给定索引的元素：<code>del list[i]</code><br />
-删除给定值的元素：<code>list.remove(v)</code>  </p>
-<h2 id="_4">预定义变量</h2>
-<p><code>__builtins__</code>：全局的内置符号，可以添加删除项<br />
-<code>__file__</code>：py文件全路径  </p>
-<h2 id="_5">第三方库</h2>
-<p>网络爬虫：<code>Scrapy</code><br />
-网站开发：<code>tornado</code>  </p>
-<h2 id="_6">调试分析</h2>
-<h3 id="gc">gc</h3>
-<p>得到引用列表：<code>gc.get_referrers(obj)</code></p>
-<h3 id="objgraph">objgraph</h3>
-<p>显示引用关系图：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">import objgraph
-browsers <span style="color: #666666">=</span> objgraph.by_type(<span style="border: 1px solid #FF0000">&#39;</span>user_browser<span style="border: 1px solid #FF0000">&#39;</span>)
-objgraph.show_backrefs(browsers[<span style="color: #666666">0</span>], max_depth<span style="color: #666666">=10</span>, filename<span style="color: #666666">=</span><span style="color: #BA2121">&quot;browser.dot&quot;</span>)
+<div class="toc">
+<ul>
+<li><a href="#python">Python经验技巧</a><ul>
+<li><a href="#_1">数据类型</a><ul>
+<li><a href="#_2">常量</a></li>
+<li><a href="#_3">整数</a></li>
+<li><a href="#_4">列表</a></li>
+<li><a href="#_5">一般</a></li>
+</ul>
+</li>
+<li><a href="#_6">内置库</a><ul>
+<li><a href="#_7">正则表达式</a></li>
+<li><a href="#_8">字符集</a></li>
+<li><a href="#_9">数据编码</a></li>
+</ul>
+</li>
+<li><a href="#_10">第三方库</a></li>
+<li><a href="#_11">调试分析</a><ul>
+<li><a href="#pdb">pdb</a></li>
+<li><a href="#traceback">traceback</a></li>
+<li><a href="#gc">gc</a></li>
+<li><a href="#objgraph">objgraph</a></li>
+<li><a href="#line95profiler">line_profiler</a></li>
+</ul>
+</li>
+<li><a href="#_12">模块安装</a><ul>
+<li><a href="#homelocal">编译安装到$HOME/local</a></li>
+<li><a href="#pip">pip安装库</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_1">数据类型</h2>
+<h3 id="_2">常量</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">__builtins__    <span style="color: #408080; font-style: italic">#全局的内置符号，可以添加删除项  </span>
+__file__         <span style="color: #408080; font-style: italic">#py文件全路径  </span>
 </pre></div>
 
 
-<p>显示数量最多的类型：<code>objgraph.show_most_common_types(20)</code></p>
-<h3 id="line95profiler">line_profiler</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">kernprof.py <span style="color: #666666">-</span>l <span style="color: #666666">-</span>v <span style="color: #666666">&lt;</span>python<span style="border: 1px solid #FF0000">脚本和参数</span><span style="color: #666666">&gt;</span> 
+<h3 id="_3">整数</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sys<span style="color: #666666">.</span>maxint   <span style="color: #408080; font-style: italic">#最大整数</span>
 </pre></div>
 
 
+<h3 id="_4">列表</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">squares <span style="color: #666666">=</span> [x<span style="color: #666666">**2</span> <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>)]    <span style="color: #408080; font-style: italic">#列表推导式</span>
+<span style="color: #008000">list</span><span style="color: #666666">.</span>sort()                                                  <span style="color: #408080; font-style: italic">#排序</span>
+<span style="color: #008000; font-weight: bold">del</span> <span style="color: #008000">list</span>[i]                                                  <span style="color: #408080; font-style: italic">#删除给定索引的元素</span>
+<span style="color: #008000">list</span><span style="color: #666666">.</span>remove(v)                                         <span style="color: #408080; font-style: italic">#删除给定值的元素</span>
+</pre></div>
+
+
+<h3 id="_5">一般</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">obj2 <span style="color: #666666">=</span> copy<span style="color: #666666">.</span>deepcopy(obj1)     <span style="color: #408080; font-style: italic">#深度拷贝</span>
+<span style="color: #008000">type</span>(<span style="color: #BA2121">u&#39;123&#39;</span>) <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">unicode</span>              <span style="color: #408080; font-style: italic">#类型判断</span>
+</pre></div>
+
+
+<h2 id="_6">内置库</h2>
+<h3 id="_7">正则表达式</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">re<span style="color: #666666">.</span>match(pattern, string)    <span style="color: #408080; font-style: italic">#匹配开头</span>
+re<span style="color: #666666">.</span>search(pattern, string)   <span style="color: #408080; font-style: italic">#匹配任意位置  </span>
+re<span style="color: #666666">.</span>findall(pattern, string)    <span style="color: #408080; font-style: italic">#匹配全部</span>
+</pre></div>
+
+
+<h3 id="_8">字符集</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> codecs<span style="color: #666666">.</span>open(<span style="color: #BA2121">&#39;out.txt&#39;</span>, mode<span style="color: #666666">=</span><span style="color: #BA2121">&quot;w&quot;</span>, encoding<span style="color: #666666">=</span><span style="color: #BA2121">&quot;utf-8&quot;</span>) <span style="color: #408080; font-style: italic">#以指定编码打开文件</span>
+</pre></div>
+
+
+<h3 id="_9">数据编码</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">json<span style="color: #666666">.</span>dumps(s)                 <span style="color: #408080; font-style: italic">#输出json</span>
+base64<span style="color: #666666">.</span>b64encode(s)   <span style="color: #408080; font-style: italic">#输出成base64</span>
+urllib<span style="color: #666666">.</span>quote(<span style="color: #008000">str</span>)              <span style="color: #408080; font-style: italic">#url编码</span>
+urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">str</span>)         <span style="color: #408080; font-style: italic">#url解码</span>
+</pre></div>
+
+
+<h2 id="_10">第三方库</h2>
+<p>网络爬虫：<strong><em>Scrapy</em></strong><br />
+网站开发：<strong><em>tornado</em></strong><br />
+代码高亮：<strong><em>Pygments</em></strong>    </p>
+<h2 id="_11">调试分析</h2>
 <h3 id="pdb">pdb</h3>
-<p>断点：<code>pdb.set_trace()</code></p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">pdb<span style="color: #666666">.</span>set_trace()            <span style="color: #408080; font-style: italic">#设置断点</span>
+</pre></div>
+
+
 <h3 id="traceback">traceback</h3>
-<p>显示堆栈：<code>traceback.print_stack()</code></p>
-<h2 id="_7">模块安装</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">traceback<span style="color: #666666">.</span>print_stack()    <span style="color: #408080; font-style: italic">#显示堆栈</span>
+</pre></div>
+
+
+<h3 id="gc">gc</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gc<span style="color: #666666">.</span>get_referrers(obj)         <span style="color: #408080; font-style: italic">#得到引用列表</span>
+</pre></div>
+
+
+<h3 id="objgraph">objgraph</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">objgraph</span>
+browsers <span style="color: #666666">=</span> objgraph<span style="color: #666666">.</span>by_type(<span style="color: #BA2121">&#39;user_browser&#39;</span>)
+<span style="color: #408080; font-style: italic">#显示引用关系</span>
+objgraph<span style="color: #666666">.</span>show_backrefs(browsers[<span style="color: #666666">0</span>], max_depth<span style="color: #666666">=10</span>, filename<span style="color: #666666">=</span><span style="color: #BA2121">&quot;browser.dot&quot;</span>) 
+objgraph<span style="color: #666666">.</span>show_most_common_types(<span style="color: #666666">20</span>)  <span style="color: #408080; font-style: italic">#显示数量最多的类型</span>
+</pre></div>
+
+
+<h3 id="line95profiler">line_profiler</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">kernprof.py -l -v <span style="color: #19177C">$PyFile</span> <span style="color: #19177C">$PyArgs</span>
+</pre></div>
+
+
+<h2 id="_12">模块安装</h2>
 <h3 id="homelocal">编译安装到$HOME/local</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">export PYTHONPATH<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>HOME<span style="color: #666666">/</span>local<span style="color: #666666">/</span>lib<span style="color: #666666">/</span>python2<span style="color: #666666">.7/</span>site<span style="color: #666666">-</span>packages<span style="color: #666666">:</span><span style="border: 1px solid #FF0000">$</span>PYTHONPATH
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">export </span><span style="color: #19177C">PYTHONPATH</span><span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local/lib/python2.7/site-packages:<span style="color: #19177C">$PYTHONPATH</span>
 python setup.py build
-python setup.py install <span style="color: #666666">--</span>prefix<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>HOME<span style="color: #666666">/</span>local
+python setup.py install --prefix<span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local
 </pre></div>
 
 
 <h3 id="pip">pip安装库</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt<span style="color: #666666">-</span>get install python<span style="color: #666666">-</span>pip
-sudo pip install <span style="color: #666666">&lt;</span><span style="border: 1px solid #FF0000">库名</span><span style="color: #666666">&gt;</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install python-pip
+sudo pip install &lt;库名&gt;
 </pre></div>
 </body>
 </html>
