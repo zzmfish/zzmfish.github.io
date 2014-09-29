@@ -5,6 +5,7 @@
 
 ## hello world
 ```
+#!python
 import tornado.ioloop
 import tornado.web
 
@@ -25,4 +26,6 @@ if __name__ == "__main__":
 
 模板
 ```
+#!python
 self.render('main.html', files=files)
+```

@@ -2,48 +2,121 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>JavaScript</title>
+    <title>广告智能识别程序开发</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1 id="javascript">JavaScript</h1>
-<p>url编码：<code>encodeURIComponent</code><br />
-保存文件：<a href="https://github.com/eligrey/FileSaver.js">FileSaver.js</a></p>
-<h3 id="http">http请求</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">var</span> req <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> XMLHttpRequest();
-req.open(<span style="color: #BA2121">&#39;GET&#39;</span>, url);
-req.onreadystatechange <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">function</span>() {
-    <span style="color: #008000; font-weight: bold">if</span> (req.readyState <span style="color: #666666">==</span> <span style="color: #666666">4</span> <span style="color: #666666">&amp;&amp;</span> req.status <span style="color: #666666">==</span> <span style="color: #666666">200</span>) {<span style="border: 1px solid #FF0000">`</span>
-        <span style="color: #408080; font-style: italic">//得到req.responseText;</span>
-    }
-}
-req.send();
-</pre></div>
-
-
-<h3 id="http-post">http POST请求</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">var</span> req_content <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;text=&#39;</span> <span style="color: #666666">+</span> <span style="color: #008000">encodeURIComponent</span>(<span style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&#39;Editor&#39;</span>).textContent);
-<span style="color: #008000; font-weight: bold">var</span> req <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">new</span> XMLHttpRequest();
-req.open(<span style="color: #BA2121">&#39;POST&#39;</span>, <span style="color: #BA2121">&#39;/Render&#39;</span>, <span style="color: #008000; font-weight: bold">false</span>);
-req.setRequestHeader(<span style="color: #BA2121">&quot;Content-type&quot;</span>, <span style="color: #BA2121">&quot;application/x-www-form-urlencoded&quot;</span>);
-req.setRequestHeader(<span style="color: #BA2121">&quot;Content-length&quot;</span>, req_content.length);
-req.setRequestHeader(<span style="color: #BA2121">&quot;Connection&quot;</span>, <span style="color: #BA2121">&quot;close&quot;</span>);
-req.onreadystatechange <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">function</span>() {
-    <span style="color: #008000; font-weight: bold">if</span> (req.readyState <span style="color: #666666">==</span> <span style="color: #666666">4</span>) {
-        <span style="color: #008000; font-weight: bold">if</span> (req.status <span style="color: #666666">==</span> <span style="color: #666666">200</span>) {
-            <span style="color: #008000">document</span>.getElementById(<span style="color: #BA2121">&#39;Renderer&#39;</span>).src <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;data:text/html;base64,&#39;</span> <span style="color: #666666">+</span> req.responseText;
-        }
-        rendering <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">false</span>;
-    }
-}
-req.send(req_content);
-</pre></div>
-
-
-<p>访问iframe子文档：<code>iframeElem.contentDocument</code>  </p>
-<h2 id="_1">参考资料</h2>
+<h1 id="_1">广告智能识别程序开发</h1>
+<div class="toc">
 <ul>
-<li><a href="http://www.w3school.com.cn/jquery/index.asp">W3School jQuery教程</a></li>
+<li><a href="#_1">广告智能识别程序开发</a><ul>
+<li><a href="#_2">目标</a></li>
+<li><a href="#_3">特征</a></li>
+<li><a href="#_4">工具</a></li>
+<li><a href="#firefox-add-on-sdk">Firefox Add-on SDK</a><ul>
+<li><a href="#_5">安装</a></li>
+<li><a href="#_6">创建项目</a></li>
+<li><a href="#_7">运行</a></li>
+<li><a href="#_8">打包</a></li>
+<li><a href="#_9">参考</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_2">目标</h2>
+<p>能够根据其他广告过滤软件输出的结果，训练模型并形成对应的广告智能识别，一期的准确率达到85%以上</p>
+<h2 id="_3">特征</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>JavaScript</th>
+<th>Iframe</th>
+<th>图片</th>
+<th>Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>容器id/class包含"ad"</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>在异域网站出现次数多</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>条形</td>
+<td></td>
+<td></td>
+<td>比较多</td>
+<td>比较多</td>
+</tr>
+<tr>
+<td>absolute/fixed定位</td>
+<td></td>
+<td>Y</td>
+<td>比较多</td>
+<td>比较多</td>
+</tr>
+<tr>
+<td>在正文外</td>
+<td></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>大网站都采用站内的广告平台</li>
+<li>小网站都采用第三方广告平台</li>
+</ul>
+<h2 id="_4">工具</h2>
+<ul>
+<li><a href="https://github.com/adblockplus/adblockplus">Adblock Plus for Firefox</a></li>
+<li><a href="https://github.com/adblockplus/abpcrawler">abpcrawler</a></li>
+<li><a href="https://github.com/adblockplus/buildtools">buildtools</a></li>
+</ul>
+<h2 id="firefox-add-on-sdk">Firefox Add-on SDK</h2>
+<h3 id="_5"><a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation">安装</a></h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">wget https://ftp.mozilla.org/pub/mozilla.org/labs/jetpack/jetpack-sdk-latest.tar.gz
+tar zxf jetpack-sdk-latest.tar.gz
+<span style="color: #008000">cd </span>addon-sdk-1.17
+<span style="color: #008000">source </span>bin/activate
+</pre></div>
+
+
+<h3 id="_6">创建项目</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">mkdir <span style="color: #19177C">$AddOnDir</span>
+<span style="color: #008000">cd</span> <span style="color: #19177C">$AddOnDir</span>
+cfx init
+</pre></div>
+
+
+<h3 id="_7">运行</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cfx run
+cfx -p dev run
+</pre></div>
+
+
+<h3 id="_8">打包</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cfx xpi
+</pre></div>
+
+
+<h3 id="_9">参考</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/SDK">SDK说明</a></li>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/system_child_process">child_process.spawn</a></li>
 </ul>
 </body>
 </html>

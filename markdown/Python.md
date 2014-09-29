@@ -1,5 +1,7 @@
 # Python经验技巧
 
+[TOC]
+
 ## 数据类型
 ### 常量
 ```
@@ -57,6 +59,7 @@ urllib.unquote(str)         #url解码
 网络爬虫：***Scrapy***  
 网站开发：***tornado***  
 代码高亮：***Pygments***    
+模板引擎：***jinja2***  
 
 ## 调试分析
 ### pdb
@@ -93,7 +96,8 @@ objgraph.show_most_common_types(20)  #显示数量最多的类型
 kernprof.py -l -v $PyFile $PyArgs
 ```
 
-
+## 性能优化
+### PyPy解析器
 
 ## 模块安装
 ### 编译安装到$HOME/local

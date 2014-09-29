@@ -13,12 +13,16 @@
 分析进程IO：<code>iotop</code><br />
 查看线程的CPU占用：<code>top -H -p &lt;进程pid&gt;</code>  </p>
 <h2 id="_2">系统管理</h2>
-<p>增加最大文件数<br />
-1. 编辑<code>/etc/security/limits.conf</code>：<br />
-<code>zhouzm          hard nofile     10240</code><br />
-2. 重启，执行命令：<code>ulimit -n 10240</code><br />
-用户管理：<code>useradd 用户名</code><br />
-设置时间: <code>date -s "20:16"</code>  </p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># 增加最大文件数</span>
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;zhouzm          hard nofile     10240&quot;</span> &gt;&gt; /etc/security/limits.conf  <span style="color: #408080; font-style: italic">#重启生效</span>
+<span style="color: #008000">ulimit</span> -n 10240
+<span style="color: #408080; font-style: italic"># 添加用户</span>
+useradd <span style="color: #19177C">$UserName</span>
+<span style="color: #408080; font-style: italic"># 设置时间</span>
+date -s <span style="color: #BA2121">&quot;20:16&quot;</span>
+</pre></div>
+
+
 <h2 id="ssh">SSH</h2>
 <p>ssh挂载：<code>sshfs -p &lt;端口&gt; &lt;用户名&gt;@&lt;目标主机&gt;:&lt;远程目录&gt; &lt;本地目录&gt;</code>  </p>
 <h3 id="ssh_1">ssh无密码登录</h3>
@@ -43,7 +47,7 @@ screen <span style="color: #666666">-</span>d <span style="color: #666666">-</sp
 上传文件：<code>rz</code><br />
 下载文件：<code>sz &lt;文件名&gt;</code><br />
 小写转大写：<code>tr '[a-z]' '[A-Z]'</code><br />
-显示第100行：<code>sed '100q;d' &lt;文件名&gt;</code> </p>
+显示第100行：<code>sed '100q;d' &lt;文件名&gt;</code></p>
 </body>
 </html>
 

@@ -1,11 +1,14 @@
 # SVN经验技巧
 
 ## 工作区
-撤销本地修改：`svn revert <文件>`  
-回滚代码：`svn merge -r<版本2>:<版本1>`  
-解决冲突，使用我的版本：`svn resolve --accept mine-full  <文件>`  
-更新到指定版本：`svn update -r<版本> <文件>`  
-更新到最新版本：`svn update <文件>`  
+```
+#!bash
+svn revert <文件>                                                         #撤销本地修改
+svn revert $DirName -R                                              #撤销目录修改、撤销添加目录
+svn merge -r$Version2:$Version1>                           #回滚代码
+svn resolve --accept mine-full  $FileName              #冲突使用本地版本
+svn update -r$Version $FileName                            #更新到执行版本
+```
 
 ## 分支
 创建分支：`svn copy <原分支url> <新分支url> -m "message" `  

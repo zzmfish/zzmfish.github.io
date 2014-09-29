@@ -19,12 +19,15 @@
 显示表信息：<code>show table status</code><br />
 显示列名：<code>show columns from &lt;表名&gt;;</code></p>
 <h2 id="_2">查询语句</h2>
-<p>所有取值：<code>select DISTINCT &lt;列名&gt; from &lt;表名&gt;;</code><br />
-降序排名前10：<code>select * from &lt;表名&gt; ORDER BY &lt;列名&gt; DESC limit 10;</code><br />
-降序排名10-20：<code>select * from &lt;表名&gt; ORDER BY &lt;列名&gt; DESC limit 10,20;</code><br />
-每天条目数：<code>select date, COUNT(*) from &lt;表名&gt; GROUP BY date;</code>  </p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">select</span> <span style="color: #666666">*</span> <span style="color: #008000; font-weight: bold">from</span> TableName <span style="color: #008000; font-weight: bold">ORDER</span> <span style="color: #008000; font-weight: bold">BY</span> ColumnName <span style="color: #008000; font-weight: bold">DESC</span> <span style="color: #008000; font-weight: bold">limit</span> <span style="color: #666666">10</span>;                    <span style="color: #408080; font-style: italic">#降序排名前10</span>
+<span style="color: #008000; font-weight: bold">select</span> <span style="color: #666666">*</span> <span style="color: #008000; font-weight: bold">from</span> TableName <span style="color: #008000; font-weight: bold">ORDER</span> <span style="color: #008000; font-weight: bold">BY</span> ColumnName <span style="color: #008000; font-weight: bold">DESC</span> <span style="color: #008000; font-weight: bold">limit</span> <span style="color: #666666">10</span>,<span style="color: #666666">20</span>;                 <span style="color: #408080; font-style: italic">#降序排名10-20</span>
+<span style="color: #008000; font-weight: bold">select</span> ColumnName, <span style="color: #0000FF">COUNT</span>(<span style="color: #666666">*</span>) <span style="color: #008000; font-weight: bold">from</span> TableName <span style="color: #008000; font-weight: bold">GROUP</span> <span style="color: #008000; font-weight: bold">BY</span> ColumnName;    <span style="color: #408080; font-style: italic">#每种取值的条目数</span>
+<span style="color: #008000; font-weight: bold">select</span> <span style="color: #008000; font-weight: bold">DISTINCT</span> ColumnName <span style="color: #008000; font-weight: bold">from</span> TableName;                                                    <span style="color: #408080; font-style: italic">#所有取值</span>
+</pre></div>
+
+
 <h2 id="mysql_1">mysql命令</h2>
-<p>执行sql文件：<code>source &lt;sql文件名&gt;</code>  </p>
+<p>执行sql文件：<code>source &lt;sql文件名&gt;</code></p>
 </body>
 </html>
 

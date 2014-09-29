@@ -32,7 +32,11 @@
 <li><a href="#line95profiler">line_profiler</a></li>
 </ul>
 </li>
-<li><a href="#_12">模块安装</a><ul>
+<li><a href="#_12">性能优化</a><ul>
+<li><a href="#pypy">PyPy解析器</a></li>
+</ul>
+</li>
+<li><a href="#_13">模块安装</a><ul>
 <li><a href="#homelocal">编译安装到$HOME/local</a></li>
 <li><a href="#pip">pip安装库</a></li>
 </ul>
@@ -91,7 +95,8 @@ urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">
 <h2 id="_10">第三方库</h2>
 <p>网络爬虫：<strong><em>Scrapy</em></strong><br />
 网站开发：<strong><em>tornado</em></strong><br />
-代码高亮：<strong><em>Pygments</em></strong>    </p>
+代码高亮：<strong><em>Pygments</em></strong>  <br />
+模板引擎：<strong><em>jinja2</em></strong>  </p>
 <h2 id="_11">调试分析</h2>
 <h3 id="pdb">pdb</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">pdb<span style="color: #666666">.</span>set_trace()            <span style="color: #408080; font-style: italic">#设置断点</span>
@@ -122,7 +127,9 @@ objgraph<span style="color: #666666">.</span>show_most_common_types(<span style=
 </pre></div>
 
 
-<h2 id="_12">模块安装</h2>
+<h2 id="_12">性能优化</h2>
+<h3 id="pypy">PyPy解析器</h3>
+<h2 id="_13">模块安装</h2>
 <h3 id="homelocal">编译安装到$HOME/local</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">export </span><span style="color: #19177C">PYTHONPATH</span><span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local/lib/python2.7/site-packages:<span style="color: #19177C">$PYTHONPATH</span>
 python setup.py build

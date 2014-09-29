@@ -1,16 +1,16 @@
 
-MKD_FILES=$(shell ls markdown/*.mkd)
-HTML_FILES=$(foreach path, $(MKD_FILES:.mkd=.html), $(shell basename $(path)))
+MKD_FILES=$(shell ls markdown/*.md)
+HTML_FILES=$(foreach path, $(MKD_FILES:.md=.html), $(shell basename $(path)))
 
 TARGET: $(HTML_FILES) index
 
-%.html: markdown/%.mkd
+%.html: markdown/%.md
 	./tools/make_html $< > $@
 
 index:
-	./tools/make_index > index.mkd
-	./tools/make_html index.mkd > index.html
-	rm index.mkd
+	./tools/make_index > index.md
+	./tools/make_html index.md > index.html
+	rm index.md
 
 clean:
 	rm -f $(HTML_FILES) index.html

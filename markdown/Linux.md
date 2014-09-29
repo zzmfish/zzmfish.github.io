@@ -7,12 +7,16 @@
 查看线程的CPU占用：`top -H -p <进程pid>`  
 
 ## 系统管理
-增加最大文件数  
-1. 编辑`/etc/security/limits.conf`：  
-`zhouzm          hard nofile     10240`  
-2. 重启，执行命令：`ulimit -n 10240`  
-用户管理：`useradd 用户名`  
-设置时间: `date -s "20:16"`  
+```
+#!bash
+# 增加最大文件数
+echo "zhouzm          hard nofile     10240" >> /etc/security/limits.conf  #重启生效
+ulimit -n 10240
+# 添加用户
+useradd $UserName
+# 设置时间
+date -s "20:16"
+```
 
 ## SSH
 ssh挂载：`sshfs -p <端口> <用户名>@<目标主机>:<远程目录> <本地目录>`  
@@ -38,4 +42,4 @@ bash下编辑命令：输完命令后按`Ctrl`-`x` `Ctrl`-`e`
 上传文件：`rz`  
 下载文件：`sz <文件名>`  
 小写转大写：`tr '[a-z]' '[A-Z]'`  
-显示第100行：`sed '100q;d' <文件名>` 
+显示第100行：`sed '100q;d' <文件名>`

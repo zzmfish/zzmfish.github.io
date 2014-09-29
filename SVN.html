@@ -8,11 +8,14 @@
 <body>
 <h1 id="svn">SVN经验技巧</h1>
 <h2 id="_1">工作区</h2>
-<p>撤销本地修改：<code>svn revert &lt;文件&gt;</code><br />
-回滚代码：<code>svn merge -r&lt;版本2&gt;:&lt;版本1&gt;</code><br />
-解决冲突，使用我的版本：<code>svn resolve --accept mine-full  &lt;文件&gt;</code><br />
-更新到指定版本：<code>svn update -r&lt;版本&gt; &lt;文件&gt;</code><br />
-更新到最新版本：<code>svn update &lt;文件&gt;</code>  </p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">svn revert &lt;文件&gt;                                                         <span style="color: #408080; font-style: italic">#撤销本地修改</span>
+svn revert <span style="color: #19177C">$DirName</span> -R                                              <span style="color: #408080; font-style: italic">#撤销目录修改、撤销添加目录</span>
+svn merge -r<span style="color: #19177C">$Version2</span>:<span style="color: #19177C">$Version1</span>&gt;                           <span style="color: #408080; font-style: italic">#回滚代码</span>
+svn resolve --accept mine-full  <span style="color: #19177C">$FileName</span>              <span style="color: #408080; font-style: italic">#冲突使用本地版本</span>
+svn update -r<span style="color: #19177C">$Version</span> <span style="color: #19177C">$FileName</span>                            <span style="color: #408080; font-style: italic">#更新到执行版本</span>
+</pre></div>
+
+
 <h2 id="_2">分支</h2>
 <p>创建分支：<code>svn copy &lt;原分支url&gt; &lt;新分支url&gt; -m "message"</code><br />
 列出所有tag：<code>svn ls "^/tags"</code><br />

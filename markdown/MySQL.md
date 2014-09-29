@@ -13,10 +13,13 @@
 显示列名：`show columns from <表名>;`
   
 ## 查询语句
-所有取值：`select DISTINCT <列名> from <表名>;`  
-降序排名前10：`select * from <表名> ORDER BY <列名> DESC limit 10;`  
-降序排名10-20：`select * from <表名> ORDER BY <列名> DESC limit 10,20;`  
-每天条目数：`select date, COUNT(*) from <表名> GROUP BY date;`  
+```
+#!mysql
+select * from TableName ORDER BY ColumnName DESC limit 10;                    #降序排名前10
+select * from TableName ORDER BY ColumnName DESC limit 10,20;                 #降序排名10-20
+select ColumnName, COUNT(*) from TableName GROUP BY ColumnName;    #每种取值的条目数
+select DISTINCT ColumnName from TableName;                                                    #所有取值
+```
 
 ## mysql命令
-执行sql文件：`source <sql文件名>`  
+执行sql文件：`source <sql文件名>`
