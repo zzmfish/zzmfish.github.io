@@ -133,17 +133,23 @@ function OnContentChange()
 <table style="width:100%; height:100%;" id="EditorContainer" border="0" cellspacing="0">
     <tr>
         <td style="width:50%">
-            <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
+            <table border="0" cellspacing="0" style="width:100%; height:100%">
+                <tr>
+                    <td>
+                        <textarea id="Editor" style="width:100%; height:100%;" oninput="OnContentChange()"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height:20px;">
+                        <div id="SlideTrigger" style="float:left;">菜单</div>
+                        <span id="Status"></span>
+                        <button id="SaveButton" onclick="SaveFile()" disabled style="float:right">保存</button>
+                    </td>
+                </tr>
+            </table>
         </td>
-        <td style="width:50%" rowspan="2">
+        <td style="width:50%">
             <iframe id="Renderer" style="width:100%; height:100%; border:0px;" border=0></iframe>
-        </td>
-    </tr>
-    <tr style="height:20px;">
-        <td style="text-align:center;">
-            <div id="SlideTrigger" style="float:left;">菜单</div>
-            <span id="Status"></span>
-            <button id="SaveButton" onclick="SaveFile()" disabled style="float:right">保存</button>
         </td>
     </tr>
 </table>
