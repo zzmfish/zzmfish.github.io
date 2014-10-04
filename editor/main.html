@@ -38,7 +38,8 @@ function EditFile(fileName)
     req.onreadystatechange = function() {
         if (req.readyState == 4 && req.status == 200) {
             //得到文件内容，并设置到编辑器
-            editor.setValue(req.responseText);
+            editor.setValue(req.responseText, -1);
+            editor.focus();
             document.getElementById('EditorContainer').style.display = '';
             document.getElementById('SaveButton').setAttribute('disabled', '');
             gFileName = fileName;
@@ -173,7 +174,11 @@ function OnContentChange()
 //初始化编辑器
 var editor = ace.edit("Editor");
 var MarkdownMode = require("ace/mode/markdown").Mode;
+editor.renderer.setOption('showLineNumbers', false);
+editor.renderer.setOption('showGutter', false);
+editor.renderer.setOption('showPrintMargin', false);
 editor.getSession().setMode(new MarkdownMode());
+editor.getSession().setUseWrapMode(true);
 editor.on("change", OnContentChange);
 
 if (location.hash)
