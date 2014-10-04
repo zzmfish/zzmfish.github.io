@@ -8,46 +8,92 @@
 <body>
 <h1 id="linux">Linux经验技巧</h1>
 <h2 id="_1">系统监控</h2>
-<p>查看监听端口：<code>netstat -lnp --inet</code><br />
-统计系统调用的耗时：<code>strace -c -p 程序PID</code><br />
-分析进程IO：<code>iotop</code><br />
-查看线程的CPU占用：<code>top -H -p &lt;进程pid&gt;</code>  </p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看监听端口</span>
+netstat -lnp --inet
+
+<span style="color: #408080; font-style: italic">#统计系统调用的耗时</span>
+strace -c -p <span style="color: #19177C">$Pid</span>
+
+<span style="color: #408080; font-style: italic">#分析进程IO</span>
+iotop
+
+<span style="color: #408080; font-style: italic">#查看线程的CPU占用</span>
+top -H -p <span style="color: #19177C">$Pid</span>
+</pre></div>
+
+
 <h2 id="_2">系统管理</h2>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># 增加最大文件数</span>
-<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;zhouzm          hard nofile     10240&quot;</span> &gt;&gt; /etc/security/limits.conf  <span style="color: #408080; font-style: italic">#重启生效</span>
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;zhouzm hard nofile 10240&quot;</span> &gt;&gt; /etc/security/limits.conf
+restart
 <span style="color: #008000">ulimit</span> -n 10240
+
 <span style="color: #408080; font-style: italic"># 添加用户</span>
 useradd <span style="color: #19177C">$UserName</span>
+
 <span style="color: #408080; font-style: italic"># 设置时间</span>
 date -s <span style="color: #BA2121">&quot;20:16&quot;</span>
 </pre></div>
 
 
 <h2 id="ssh">SSH</h2>
-<p>ssh挂载：<code>sshfs -p &lt;端口&gt; &lt;用户名&gt;@&lt;目标主机&gt;:&lt;远程目录&gt; &lt;本地目录&gt;</code>  </p>
-<h3 id="ssh_1">ssh无密码登录</h3>
-<ol>
-<li>本机执行<code>ssh-keygen -t rsa</code>  </li>
-<li>把<code>~/.ssh/id_rsa.pub</code>的内容添加到目标主机<code>~/.ssh/authorized_keys</code>  </li>
-<li>设置目标主文件权限： <code>chmod 700 ~/.ssh &amp;&amp; chmod 600 ~/.ssh/authorized_keys</code></li>
-</ol>
-<h2 id="_3">文件管理</h2>
-<p>查找24小时内修改过的文件: <code>find -mtime 0</code><br />
-查找断开的符号链接： <code>find . -type l -! -exec test -e {} \; -print</code><br />
-解压并更改目录名称：<code>mkdir &lt;目录&gt; &amp;&amp; tar zxf hello.tgz -C &lt;目录&gt; --strip-components 1</code> </p>
-<h2 id="_4">其他</h2>
-<p>重新连接screen会话，必要时先detach：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">kill <span style="color: #666666">-</span>HUP <span style="color: #666666">&lt;</span>screen pid<span style="color: #666666">&gt;</span>
-screen <span style="color: #666666">-</span>d <span style="color: #666666">-</span>r
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看线程的CPU占用</span>
+sshfs -p <span style="color: #19177C">$Port</span> <span style="color: #19177C">$User</span>@<span style="color: #19177C">$Host</span>:<span style="color: #19177C">$Path</span> <span style="color: #19177C">$LocalPath</span>
 </pre></div>
 
 
-<p>bash下编辑命令：输完命令后按<code>Ctrl</code>-<code>x</code> <code>Ctrl</code>-<code>e</code><br />
-脚本退出杀掉所有子进程：<code>trap "kill 0" SIGINT SIGTERM EXIT</code><br />
-上传文件：<code>rz</code><br />
-下载文件：<code>sz &lt;文件名&gt;</code><br />
-小写转大写：<code>tr '[a-z]' '[A-Z]'</code><br />
-显示第100行：<code>sed '100q;d' &lt;文件名&gt;</code></p>
+<h3 id="ssh_1">ssh无密码登录</h3>
+<ol>
+<li>本机生成密钥对</li>
+</ol>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">ssh-keygen -t rsa
+</pre></div>
+
+
+<ol>
+<li>把<code>~/.ssh/id_rsa.pub</code>的内容添加到目标主机<code>~/.ssh/authorized_keys</code>  </li>
+<li>设置目标主文件权限：</li>
+</ol>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+</pre></div>
+
+
+<h2 id="_3">文件管理</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查找24小时内修改过的文件</span>
+find -mtime 0
+
+<span style="color: #408080; font-style: italic">#查找断开的符号链接</span>
+find . -type l -! -exec <span style="color: #008000">test</span> -e <span style="color: #666666">{}</span> <span style="color: #BB6622; font-weight: bold">\;</span> -print
+
+<span style="color: #408080; font-style: italic">#解压并更改目录名称</span>
+mkdir <span style="color: #19177C">$DirName</span>
+tar zxf hello.tgz -C <span style="color: #19177C">$DirName</span> --strip-components 1
+</pre></div>
+
+
+<h2 id="_4">其他</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#重新连接screen会话，必要时先detach</span>
+<span style="color: #008000">kill</span> -HUP <span style="color: #19177C">$ScreenPid</span> <span style="color: #666666">&amp;&amp;</span> screen -d -r
+
+<span style="color: #408080; font-style: italic">#脚本退出杀掉所有子进程</span>
+<span style="color: #008000">trap</span> <span style="color: #BA2121">&quot;kill 0&quot;</span> SIGINT SIGTERM EXIT
+
+<span style="color: #408080; font-style: italic">#小写转大写</span>
+tr <span style="color: #BA2121">&#39;[a-z]&#39;</span> <span style="color: #BA2121">&#39;[A-Z]&#39;</span>
+
+<span style="color: #408080; font-style: italic">#显示第100行</span>
+sed <span style="color: #BA2121">&#39;100q;d&#39;</span> <span style="color: #19177C">$File</span>
+
+<span style="color: #408080; font-style: italic">#上传文件</span>
+rz
+
+<span style="color: #408080; font-style: italic">#下载文件</span>
+sz <span style="color: #19177C">$File</span>
+</pre></div>
+
+
+<p>bash下编辑命令：输完命令后按<strong><em>Ctrl-x Ctrl-e</em></strong></p>
 </body>
 </html>
 
