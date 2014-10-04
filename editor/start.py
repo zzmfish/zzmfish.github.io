@@ -63,6 +63,7 @@ application = tornado.web.Application([
     (r"/Render", RenderHandler),
     (r"/css/.*", ResourceHandler),
     (r"/js/.*", ResourceHandler),
+    (r"/lib/.*", ResourceHandler),
 ])
 application.listen(8889)
 tornado.ioloop.IOLoop.instance().start()
