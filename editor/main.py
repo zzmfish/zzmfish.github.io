@@ -46,7 +46,8 @@ class RenderHandler(tornado.web.RequestHandler):
         text = self.get_body_argument('text')
         css = open('../style.css', 'r').read()
         html = tools.make_html.make_html(text, css)
-        self.write(base64.b64encode(html))
+        #html = base64.b64encode(html)
+        self.write(html)
         
 class ResourceHandler(tornado.web.RequestHandler):
     def get(self):

@@ -94,17 +94,30 @@ function Render()
     req.onreadystatechange = function() {
         if (req.readyState == 4) {
             if (req.status == 200) {
-                //得到渲染的html，并在iframe显示
+                //得到子文档对象
                 var renderer = document.getElementById('Renderer');
-                var scrollY = renderer.contentWindow.scrollY;
-                var scrollMaxY = renderer.contentWindow.scrollMaxY;
-                renderer.src = 'data:text/html;base64,' + req.responseText;
+                var wnd = renderer.contentWindow;
+                var doc = wnd.document;
+
+                //得到子文档滚动位置
+                var docY = wnd.scrollY;
+                var maxY = doc.height - wnd.innerHeight;
+                console.log('Render: docY=' + docY + ', maxY=' + maxY);
+
+                //在子文档显示渲染的html
+                doc.open();
+                doc.write(req.responseText);
+
+                //定位到末尾
                 renderer.onload = function() {
-                    if (scrollY >= scrollMaxY)
-                        renderer.contentWindow.scrollTo(0, renderer.contentWindow.scrollMaxY);
-                    else
-                        renderer.contentWindow.scrollTo(0, scrollY);
+                    if (maxY > 0 && docY >= maxY) {
+                        wnd.scrollTo(0, 9999);
+                    }
+                    else {
+                        wnd.scrollTo(0, docY);
+                    }
                 }
+                doc.close(); //触发onload
             }
             gIsRendering = false;
             gNeedRendering = false;
