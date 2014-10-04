@@ -52,49 +52,51 @@
 </tbody>
 </table>
 <h2 id="_2">软件包管理</h2>
-<p>显示软件信息：<code>sudo apt-cache show -a &lt;包名&gt;</code><br />
-显示文件所属软件：<code>apt-file search &lt;文件名&gt;</code><br />
-添加PPA源：<code>sudo add-apt-repository &lt;名称&gt;</code><br />
-重新安装软件：<code>sudo apt-get install &lt;包名&gt; --reinstall</code>  </p>
-<h2 id="_3">引导和安装</h2>
-<p>安装windowns之后恢复ubuntu引导，从ubuntu安装光盘引导  </p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">mount <span style="color: #666666">/</span>dev<span style="color: #666666">/</span>sda10 <span style="color: #666666">/</span>mnt  
-grub<span style="color: #666666">-</span>install <span style="color: #666666">--</span>root<span style="color: #666666">-</span>directory<span style="color: #666666">=/</span>mnt <span style="color: #666666">/</span>dev<span style="color: #666666">/</span>sda  
-update<span style="color: #666666">-</span>grub2<span style="border: 1px solid #FF0000">（不是必要）</span>  
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#显示软件信息</span>
+sudo apt-cache show -a <span style="color: #19177C">$Package</span>  
+
+<span style="color: #408080; font-style: italic">#显示文件所属软件</span>
+apt-file search <span style="color: #19177C">$File</span>
+
+<span style="color: #408080; font-style: italic">#添加PPA源</span>
+sudo add-apt-repository <span style="color: #19177C">$Package</span>
+
+<span style="color: #408080; font-style: italic">#重新安装软件</span>
+sudo apt-get install <span style="color: #19177C">$Package</span> --reinstall  
 </pre></div>
 
 
-<hr />
-<p><a href="http://askubuntu.com/questions/340156/install-ubuntu-from-iso-image-directly-from-hard-disk-of-a-system-running-linux">硬盘安装</a>  </p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">menuentry <span style="color: #BA2121">&quot;Kubuntu ISO&quot;</span> {
-    set isofile<span style="color: #666666">=</span><span style="color: #BA2121">&quot;/boot/iso/kubuntu-12.04.iso&quot;</span>  
-    loopback loop (hd0,<span style="color: #666666">8</span>)<span style="border: 1px solid #FF0000">$</span>isofile  
-    linux (loop)<span style="color: #666666">/</span>casper<span style="color: #666666">/</span>vmlinuz.efi boot<span style="color: #666666">=</span>casper iso<span style="color: #666666">-</span>scan<span style="color: #666666">/</span>filename<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>isofile noprompt noeject  
-    initrd (loop)<span style="color: #666666">/</span>casper<span style="color: #666666">/</span>initrd.lz  
-}  
-</pre></div>
-
-
-<p>或  </p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">title Install Ubuntu  
-root (hd0,<span style="color: #666666">0</span>)  
-kernel (hd0,<span style="color: #666666">0</span>)<span style="color: #666666">/</span>vmlinuz.efi boot<span style="color: #666666">=</span>casper iso<span style="color: #666666">-</span>scan<span style="color: #666666">/</span>filename<span style="color: #666666">=/</span>ubuntu<span style="color: #666666">-13.10-</span>desktop<span style="color: #666666">-</span>i386.iso ro quiet splash locale<span style="color: #666666">=</span>zh_CN.UTF<span style="color: #666666">-8</span>  
-initrd (hd0,<span style="color: #666666">0</span>)<span style="color: #666666">/</span>initrd.lz  
+<h2 id="_3">系统安装</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#安装windows后恢复Ubuntu引导，先从Ubuntu光盘引导</span>
+mount /dev/sda10 /mnt  
+grub-install --root-directory<span style="color: #666666">=</span>/mnt /dev/sda  
+update-grub2 <span style="color: #408080; font-style: italic">#不是必须</span>
 </pre></div>
 
 
 <h2 id="_4">其他</h2>
-<p>查看时间设置：<code>timedatectl status</code><br />
-查看显卡信息：<code>sudo lshw -class video</code><br />
-VirtualBox使用usb设备要加入vboxusers组：<code>sudo adduser zhouzm vboxusers</code><br />
-显示分辨率太小，增大<code>/etc/X11/xorg.conf</code>的<code>HorizSync</code>范围<br />
-安装新字体（包括微软字体）：复制字体文件到<code>~/.fonts</code>  </p>
-<hr />
-<p>无法访问.local内部域名，可编辑<code>/etc/nsswitch.conf</code>：<code>hosts:          files dns</code><br />
-或</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo service avahi<span style="color: #666666">-</span>daemon stop
-sudo update<span style="color: #666666">-</span>rc.d avahi<span style="color: #666666">-</span>daemon remove
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看时间设置</span>
+timedatectl status
+
+<span style="color: #408080; font-style: italic">#查看显卡信息</span>
+sudo lshw -class video
+
+<span style="color: #408080; font-style: italic">#VirtualBox使用usb设备要加入vboxusers组</span>
+sudo adduser zhouzm vboxusers  
+
+<span style="color: #408080; font-style: italic">#安装新字体（包括微软字体）</span>
+cp <span style="color: #19177C">$FontFile</span> ~/.fonts
+
+<span style="color: #408080; font-style: italic">#解决无法访问.local域名（方法1）</span>
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;hosts: files dns&quot;</span> &gt;&gt; /etc/nsswitch.conf
+
+<span style="color: #408080; font-style: italic">#解决无法访问.local域名（方法2）</span>
+sudo service avahi-daemon stop
+sudo update-rc.d avahi-daemon remove
 </pre></div>
+
+
+<p>显示分辨率太小，增大<code>/etc/X11/xorg.conf</code>的<code>HorizSync</code>范围</p>
 </body>
 </html>
 
