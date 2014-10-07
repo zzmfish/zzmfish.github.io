@@ -3,7 +3,7 @@
 ## 工作区
 ```
 #!bash
-svn revert <文件>                                                         #撤销本地修改
+svn revert <文件>                                                    #撤销本地修改
 svn revert $DirName -R                                              #撤销目录修改、撤销添加目录
 svn merge -r$Version2:$Version1>                           #回滚代码
 svn resolve --accept mine-full  $FileName              #冲突使用本地版本

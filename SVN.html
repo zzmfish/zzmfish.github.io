@@ -8,7 +8,7 @@
 <body>
 <h1 id="svn">SVN经验技巧</h1>
 <h2 id="_1">工作区</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">svn revert &lt;文件&gt;                                                         <span style="color: #408080; font-style: italic">#撤销本地修改</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">svn revert &lt;文件&gt;                                                    <span style="color: #408080; font-style: italic">#撤销本地修改</span>
 svn revert <span style="color: #19177C">$DirName</span> -R                                              <span style="color: #408080; font-style: italic">#撤销目录修改、撤销添加目录</span>
 svn merge -r<span style="color: #19177C">$Version2</span>:<span style="color: #19177C">$Version1</span>&gt;                           <span style="color: #408080; font-style: italic">#回滚代码</span>
 svn resolve --accept mine-full  <span style="color: #19177C">$FileName</span>              <span style="color: #408080; font-style: italic">#冲突使用本地版本</span>

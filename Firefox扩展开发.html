@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Firefox扩展开发</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="firefox">Firefox扩展开发</h1>
+<h2 id="sdk">安装和设置SDK</h2>
+<h3 id="_1">下载和解压</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">wget https://ftp.mozilla.org/pub/mozilla.org/labs/jetpack/jetpack-sdk-latest.tar.gz
+tar zxf jetpack-sdk-latest.tar.gz
+</pre></div>
+
+
+<h3 id="_2">设置环境</h3>
+<p>每次开发前都要一次，只在当前终端生效：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cd addon<span style="color: #666666">-</span>sdk<span style="color: #666666">-1.17</span>
+source bin<span style="color: #666666">/</span>activate
+</pre></div>
+
+
+<p>终端提示符会出现”(firefox-addon-sdk-1.7)“字样，表示设置生效。</p>
+<h2 id="_3">开发扩展</h2>
+<h3 id="_4">创建项目</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#先创建目录，目录名同时也是扩展名称</span>
+mkdir <span style="color: #19177C">$AddOnName</span>
+<span style="color: #008000">cd</span> <span style="color: #19177C">$AddOnName</span>
+<span style="color: #408080; font-style: italic">#初始化扩展，生成一些目录和文件，可以编译成Firefox扩展，但没有实际功能</span>
+cfx init
+</pre></div>
+
+
+<h3 id="_5">开发功能</h3>
+<p>lib/main.js是扩展入口文件，一般从这里开始修改。可以参考这个<a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_started">例子</a>。</p>
+<h2 id="_6">测试运行</h2>
+<h3 id="profile">使用干净profile</h3>
+<p>运行过程中任何Firefox设置都不会保留：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cfx run
+</pre></div>
+
+
+<h3 id="profile_1">使用指定profile</h3>
+<p>可以安装其他扩展，任何Firefox设置都会保留。比如使用名为dev的profile：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cfx <span style="color: #666666">-</span>p dev run
+</pre></div>
+
+
+<p>当前目录下会生成名dev的目录，里面保存了profile数据，注意不要提交到svn。</p>
+<h2 id="_7">调试</h2>
+<p>点击工具栏菜单上的”<strong><em>附加组件</em></strong>“按钮，进入“<strong><em>附加组建管理器</em></strong>”，选“<strong><em>扩展</em></strong>”，点击对应扩展旁边的”<strong><em>调试</em></strong>“按钮，点”<strong><em>确定</em></strong>“允许连接，即进入调试界面，可以设置断点、查看变量值等。</p>
+<h2 id="_8">打包发布</h2>
+<p>打包成xpi文件，在Firefox打开这个文件，即可以安装扩展。</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cfx xpi
+</pre></div>
+
+
+<h2 id="_9">参考</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation">安装</a></li>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/system_child_process">child_process.spawn</a></li>
+</ul>
+</body>
+</html>
+

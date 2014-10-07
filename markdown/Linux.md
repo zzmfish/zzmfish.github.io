@@ -34,7 +34,7 @@ date -s "20:16"
 ## SSH
 ```
 #!bash
-#查看线程的CPU占用
+#挂载远程目录
 sshfs -p $Port $User@$Host:$Path $LocalPath
 ```
 ### ssh无密码登录

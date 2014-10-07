@@ -1,24 +1,54 @@
 # MySQL
+
 ## 命令
-导出表：`mysqldump -u <用户名> -p <库名> <表名> > <文件名>`  
-登录：`mysql -u root -p`
+```
+#!bash
+#导出表
+mysqldump -u $User -p $Database $Table > $File
+
+#登录
+mysql -u root -p
+```
 
 ## SQL语句
-列出数据库：`show databases`  
-选择数据库：`use <数据库名>`  
-显示数据库信息：`status`  
-显示数据库字符集设置：`show variables like 'character_%'`  
-列出表：`show tables`  
-显示表信息：`show table status`  
-显示列名：`show columns from <表名>;`
+```
+#!mysql
+#所有数据库
+show databases;
+
+#进入数据库
+use DatabaseName;
+
+#数据库信息
+status;
+
+#数据库字符集设置
+show variables like 'character_%';
+
+#所有表
+show tables;
+
+#表信息
+show table status;
+
+#所有列
+show columns from TableName;
+```
   
 ## 查询语句
 ```
 #!mysql
-select * from TableName ORDER BY ColumnName DESC limit 10;                    #降序排名前10
-select * from TableName ORDER BY ColumnName DESC limit 10,20;                 #降序排名10-20
-select ColumnName, COUNT(*) from TableName GROUP BY ColumnName;    #每种取值的条目数
-select DISTINCT ColumnName from TableName;                                                    #所有取值
+#降序排名前10
+select * from TableName ORDER BY ColumnName DESC limit 10;
+
+#降序排名10-20
+select * from TableName ORDER BY ColumnName DESC limit 10,20;
+
+#每种取值的条目数
+select ColumnName, COUNT(*) from TableName GROUP BY ColumnName;
+
+#列的所有取值
+select DISTINCT ColumnName from TableName;
 ```
 
 ## mysql命令
