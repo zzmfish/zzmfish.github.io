@@ -7,19 +7,43 @@
 </head>
 <body>
 <h1 id="javascript">JavaScript</h1>
-<h2 id="_1">定义类</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">var</span> Cat <span style="color: #666666">=</span> {
+<h2 id="_1">基本类型</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//类型判断</span>
+<span style="color: #008000; font-weight: bold">typeof</span>(n) <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;number&#39;</span>;
+
+<span style="color: #408080; font-style: italic">//连接n个&quot;-&quot;</span>
+<span style="color: #008000">Array</span>(n<span style="color: #666666">+1</span>).join(<span style="color: #BA2121">&#39;-&#39;</span>);
+
+<span style="color: #408080; font-style: italic">//字符串匹配</span>
+s.match(<span style="color: #BB6688">/^https?:/</span>);
+</pre></div>
+
+
+<h2 id="_2">函数</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//匿名函数</span>
+(<span style="color: #008000; font-weight: bold">function</span>(){
+    ...
+})();
+</pre></div>
+
+
+<h2 id="_3">对象</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//定义类</span>
+<span style="color: #008000; font-weight: bold">var</span> Cat <span style="color: #666666">=</span> {
     name<span style="color: #666666">:</span> <span style="color: #BA2121">&quot;大毛&quot;</span>,
     makeSound<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span>(){ alert(<span style="color: #BA2121">&quot;喵喵喵&quot;</span>); }
 };
 <span style="color: #408080; font-style: italic">//创建实例</span>
 <span style="color: #008000; font-weight: bold">var</span> cat1 <span style="color: #666666">=</span> <span style="color: #008000">Object</span>.create(Cat);
+
+<span style="color: #408080; font-style: italic">//所有属性</span>
+<span style="color: #008000">Object</span>.keys(s)
 </pre></div>
 
 
-<h2 id="_2">其他</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">typeof</span>(n) <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;nunber&#39;</span>;       <span style="color: #408080; font-style: italic">//类型判断</span>
-<span style="color: #008000">Array</span>(n<span style="color: #666666">+1</span>).join(<span style="color: #BA2121">&#39;-&#39;</span>) <span style="color: #408080; font-style: italic">//连接n个&quot;-&quot;</span>
+<h2 id="dom">DOM</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//节点类型</span>
+node.
 </pre></div>
 </body>
 </html>

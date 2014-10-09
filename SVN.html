@@ -8,21 +8,42 @@
 <body>
 <h1 id="svn">SVN经验技巧</h1>
 <h2 id="_1">工作区</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">svn revert &lt;文件&gt;                                                    <span style="color: #408080; font-style: italic">#撤销本地修改</span>
-svn revert <span style="color: #19177C">$DirName</span> -R                                              <span style="color: #408080; font-style: italic">#撤销目录修改、撤销添加目录</span>
-svn merge -r<span style="color: #19177C">$Version2</span>:<span style="color: #19177C">$Version1</span>&gt;                           <span style="color: #408080; font-style: italic">#回滚代码</span>
-svn resolve --accept mine-full  <span style="color: #19177C">$FileName</span>              <span style="color: #408080; font-style: italic">#冲突使用本地版本</span>
-svn update -r<span style="color: #19177C">$Version</span> <span style="color: #19177C">$FileName</span>                            <span style="color: #408080; font-style: italic">#更新到执行版本</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#撤销本地修改</span>
+svn revert <span style="color: #19177C">$File</span>
+
+<span style="color: #408080; font-style: italic">#撤销目录修改、撤销添加目录</span>
+svn revert <span style="color: #19177C">$Dir</span> -R
+
+<span style="color: #408080; font-style: italic">#回滚代码</span>
+svn merge -r<span style="color: #19177C">$Version2</span>:<span style="color: #19177C">$Version1</span>&gt;
+
+<span style="color: #408080; font-style: italic">#冲突使用本地版本</span>
+svn resolve --accept mine-full  <span style="color: #19177C">$File</span>
+
+<span style="color: #408080; font-style: italic">#更新到指定版本</span>
+svn update -r<span style="color: #19177C">$Version</span> <span style="color: #19177C">$File</span>
 </pre></div>
 
 
 <h2 id="_2">分支</h2>
-<p>创建分支：<code>svn copy &lt;原分支url&gt; &lt;新分支url&gt; -m "message"</code><br />
-列出所有tag：<code>svn ls "^/tags"</code><br />
-合并分支：<code>svn merge &lt;分支url&gt;</code><br />
-合并版本间的修改：<code>svn merge &lt;分支url&gt; -r&lt;版本1&gt;:&lt;版本2&gt;</code>  </p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#创建分支</span>
+svn copy <span style="color: #19177C">$Path1</span> <span style="color: #19177C">$Path2</span> -m <span style="color: #19177C">$Message</span>
+
+<span style="color: #408080; font-style: italic">#列出所有tag</span>
+svn ls <span style="color: #BA2121">&quot;^/tags&quot;</span>
+
+<span style="color: #408080; font-style: italic">#合并分支</span>
+svn merge <span style="color: #19177C">$Path</span>
+
+<span style="color: #408080; font-style: italic">#合并版本间的修改</span>
+svn merge <span style="color: #19177C">$Path</span> -r<span style="color: #19177C">$Version1</span>:<span style="color: #19177C">$Version2</span>
+</pre></div>
+
+
 <h2 id="_3">其他</h2>
-<p>切换服务器：<code>svn switch --relocate &lt;原url&gt; &lt;新url&gt;</code></p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#切换服务器</span>
+svn switch --relocate <span style="color: #19177C">$Url1</span> <span style="color: #19177C">$Url2</span>
+</pre></div>
 </body>
 </html>
 

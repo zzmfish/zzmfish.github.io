@@ -8,33 +8,51 @@
 <body>
 <h1 id="_1">编译链接经验技巧</h1>
 <h2 id="gcc">gcc选项</h2>
-<p><code>-fsanitize=address</code>：检测内存错误<br />
-<code>-finstrument-functions</code>：函数跟踪<br />
-<code>-ffunction-sections</code>：将不同函数编译到不同的section<br />
-<code>-fdata-sections</code>：将不同数据编译到不同的section<br />
-<code>--gc-sections</code>：去掉不用的函数section<br />
-<code>-pipe</code>：通过管道传递中间结果 <br />
-<code>-E</code>: 预处理后停止<br />
-<code>-MM</code>：生成.d依赖文件<br />
-<code>-std=</code>c++98/c++03/c++11/gnu++98/gnu++03/gnu++11  </p>
+<p><strong><em>-fsanitize=address</em></strong>：检测内存错误<br />
+<strong><em>-finstrument-functions</em></strong>：函数跟踪<br />
+<strong><em>-ffunction-sections</em></strong>：将不同函数编译到不同的section<br />
+<strong><em>-fdata-sections</em></strong>：将不同数据编译到不同的section<br />
+<strong><em>--gc-sections</em></strong>：去掉不用的函数section<br />
+<strong><em>-pipe</em></strong>：通过管道传递中间结果 <br />
+<strong><em>-E</em></strong>: 预处理后停止<br />
+<strong><em>-MM</em></strong>：生成.d依赖文件<br />
+<strong><em>-std</em></strong>：c++98/c++03/c++11/gnu++98/gnu++03/gnu++11  </p>
 <h2 id="_2">静态库</h2>
-<p>创建静态库：<code>ar rcs libfoo.a foo.o</code><br />
-解压静态库：<code>ar x libfoo.a</code>  </p>
-<h2 id="_3">动态库</h2>
-<p>创建动态库：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gcc <span style="color: #666666">-</span>o foo.o <span style="color: #666666">-</span>fPIC foo.c
-gcc <span style="color: #666666">-</span>shared <span style="color: #666666">-</span>o libfoo.so foo.o
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#创建静态库</span>
+ar rcs libfoo.a foo.o
+
+<span style="color: #408080; font-style: italic">#解压静态库</span>
+ar x libfoo.a
 </pre></div>
 
 
-<p>显示依赖的动态库：<code>ldd libfoo.so</code></p>
+<h2 id="_3">动态库</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#创建动态库</span>
+gcc -o foo.o -fPIC foo.c
+gcc -shared -o libfoo.so foo.o
+
+<span style="color: #408080; font-style: italic">#显示依赖的动态库</span>
+ldd libfoo.so
+</pre></div>
+
+
+<ul>
+<li>PIC</li>
+<li>弱符号</li>
+</ul>
 <h2 id="_4">符号信息</h2>
-<p>查看符号表：<code>objdump -t libfoo.so</code><br />
-显示符号：<code>nm libfoo.so</code></p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看符号表</span>
+objdump -t libfoo.so
+
+<span style="color: #408080; font-style: italic">#显示符号</span>
+nm libfoo.so
+</pre></div>
+
+
 <h2 id="makefile">Makefile</h2>
 <p>编译规则</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">%.o : %.c</span>
-    $(CC) <span style="color: #666666">-</span>c $(CFLAGS) $(CPPFLAGS) $<span style="color: #666666">&lt;</span> <span style="color: #666666">-</span>o $@
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #0000FF">%.o </span><span style="color: #666666">:</span> <span style="color: #666666">%.c</span>
+    <span style="color: #008000; font-weight: bold">$(</span>CC<span style="color: #008000; font-weight: bold">)</span> -c <span style="color: #008000; font-weight: bold">$(</span>CFLAGS<span style="color: #008000; font-weight: bold">)</span> <span style="color: #008000; font-weight: bold">$(</span>CPPFLAGS<span style="color: #008000; font-weight: bold">)</span> <span style="color: #19177C">$&lt;</span> -o <span style="color: #19177C">$@</span>
 </pre></div>
 
 
@@ -42,9 +60,9 @@ gcc <span style="color: #666666">-</span>shared <span style="color: #666666">-</
 <p>后缀替换：<code>OBJS=$(SRCS:.cpp=.o)</code></p>
 <h2 id="cmake">CMake</h2>
 <p>项目编译和安装：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cmake <span style="color: #666666">-</span>DCMAKE_INSTALL_PREFIX<span style="color: #666666">:</span>PATH<span style="color: #666666">=</span><span style="border: 1px solid #FF0000">$</span>HOME<span style="color: #666666">/</span>local 
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cmake -DCMAKE_INSTALL_PREFIX:PATH<span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local 
 make
-make install<span style="border: 1px solid #FF0000">`</span>  
+make install  
 </pre></div>
 </body>
 </html>

@@ -1,19 +1,47 @@
 # JavaScript
 
-## 定义类
+## 基本类型
 ```
 #!JavaScript
+//类型判断
+typeof(n) == 'number';
+
+//连接n个"-"
+Array(n+1).join('-');
+
+//字符串匹配
+s.match(/^https?:/);
+```
+
+## 函数
+
+```
+#!javascript
+//匿名函数
+(function(){
+    ...
+})();
+
+```
+
+## 对象
+```
+#!JavaScript
+//定义类
 var Cat = {
     name: "大毛",
     makeSound: function(){ alert("喵喵喵"); }
 };
 //创建实例
 var cat1 = Object.create(Cat);
+
+//所有属性
+Object.keys(s)
 ```
 
-## 其他
+## DOM
 ```
-#!JavaScript
-typeof(n) == 'nunber';       //类型判断
-Array(n+1).join('-') //连接n个"-"
+#!javascript
+//节点类型
+node.
 ```
