@@ -11,6 +11,11 @@ Array(n+1).join('-');
 
 //字符串匹配
 s.match(/^https?:/);
+
+//遍历数组或属性值
+for each (var item in array) {
+  ...
+}
 ```
 
 ## 函数
@@ -37,6 +42,9 @@ var cat1 = Object.create(Cat);
 
 //所有属性
 Object.keys(s)
+
+//删除属性
+delete obj[prop];
 ```
 
 ## DOM
@@ -44,4 +52,11 @@ Object.keys(s)
 #!javascript
 //节点类型
 node.
+```
+
+### 日期和时间
+```
+#!javascript
+//时间戳（ms）
+var timeStamp = Date.now();
 ```

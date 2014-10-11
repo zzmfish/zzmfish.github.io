@@ -85,6 +85,9 @@ tr <span style="color: #BA2121">&#39;[a-z]&#39;</span> <span style="color: #BA21
 <span style="color: #408080; font-style: italic">#显示第100行</span>
 sed <span style="color: #BA2121">&#39;100q;d&#39;</span> <span style="color: #19177C">$File</span>
 
+<span style="color: #408080; font-style: italic">#输出匹配的组</span>
+<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;a=1 b=2 c=3&quot;</span> | sed <span style="color: #BA2121">&quot;s/.*b=\([0-9]\).*/\1/&quot;</span> <span style="color: #408080; font-style: italic">#匹配b=2，输出2</span>
+
 <span style="color: #408080; font-style: italic">#上传文件</span>
 rz
 

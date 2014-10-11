@@ -55,6 +55,8 @@ urllib.quote(str)              #url编码
 urllib.unquote(str)         #url解码
 ```
 
+### numpy
+
 ## 第三方库
 网络爬虫：***Scrapy***  
 网站开发：***tornado***  

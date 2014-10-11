@@ -10,7 +10,7 @@ svn revert $File
 svn revert $Dir -R
 
 #回滚代码
-svn merge -r$Version2:$Version1>
+svn merge -r$Version2:$Version1
 
 #冲突使用本地版本
 svn resolve --accept mine-full  $File
