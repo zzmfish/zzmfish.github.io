@@ -16,6 +16,9 @@ s.match(/^https?:/);
 for each (var item in array) {
   ...
 }
+
+//截取数组前n个元素
+arr = arr.slice(1, n);
 ```
 
 ## 函数

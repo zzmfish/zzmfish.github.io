@@ -72,6 +72,9 @@ tar zxf hello.tgz -C <span style="color: #19177C">$DirName</span> --strip-compon
 </pre></div>
 
 
+<ul>
+<li>SGID位</li>
+</ul>
 <h2 id="_4">其他</h2>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#重新连接screen会话，必要时先detach</span>
 <span style="color: #008000">kill</span> -HUP <span style="color: #19177C">$ScreenPid</span> <span style="color: #666666">&amp;&amp;</span> screen -d -r
@@ -97,6 +100,15 @@ sz <span style="color: #19177C">$File</span>
 
 
 <p>bash下编辑命令：输完命令后按<strong><em>Ctrl-x Ctrl-e</em></strong></p>
+<h2 id="_5">系统编程</h2>
+<h3 id="_6">文件锁</h3>
+<ul>
+<li>劝告锁</li>
+<li>强制锁<br />
+<strong>读锁</strong>或<strong>共享锁</strong>阻止其他写操作；<br />
+<strong>写锁</strong>或<strong>排他锁</strong>阻止其他任何操作。<br />
+使用fcntl。</li>
+</ul>
 </body>
 </html>
 

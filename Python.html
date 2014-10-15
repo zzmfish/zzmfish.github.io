@@ -42,6 +42,7 @@
 <li><a href="#pip">pip安装库</a></li>
 </ul>
 </li>
+<li><a href="#_14">未分类</a></li>
 </ul>
 </li>
 </ul>
@@ -50,6 +51,7 @@
 <h3 id="_2">常量</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">__builtins__    <span style="color: #408080; font-style: italic">#全局的内置符号，可以添加删除项  </span>
 __file__        <span style="color: #408080; font-style: italic">#py文件全路径  </span>
+__name__        <span style="color: #408080; font-style: italic">#&#39;__main__&#39;</span>
 </pre></div>
 
 
@@ -60,22 +62,24 @@ __file__        <span style="color: #408080; font-style: italic">#py文件全路
 
 <h3 id="_4">列表</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">squares <span style="color: #666666">=</span> [x<span style="color: #666666">**2</span> <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>)]    <span style="color: #408080; font-style: italic">#列表推导式</span>
-<span style="color: #008000">list</span><span style="color: #666666">.</span>sort()                                                  <span style="color: #408080; font-style: italic">#排序</span>
-<span style="color: #008000; font-weight: bold">del</span> <span style="color: #008000">list</span>[i]                                                  <span style="color: #408080; font-style: italic">#删除给定索引的元素</span>
-<span style="color: #008000">list</span><span style="color: #666666">.</span>remove(v)                                         <span style="color: #408080; font-style: italic">#删除给定值的元素</span>
+lst<span style="color: #666666">.</span>sort()                             <span style="color: #408080; font-style: italic">#排序</span>
+<span style="color: #008000; font-weight: bold">del</span> lst[i]                             <span style="color: #408080; font-style: italic">#删除给定索引的元素</span>
+lst<span style="color: #666666">.</span>remove(v)                          <span style="color: #408080; font-style: italic">#删除给定值的元素</span>
+lst<span style="color: #666666">.</span>insert(<span style="color: #666666">0</span>, v)                       <span style="color: #408080; font-style: italic">#在前面插入</span>
+lst<span style="color: #666666">.</span>append(v)                          <span style="color: #408080; font-style: italic">#在后面插入</span>
 </pre></div>
 
 
 <h3 id="_5">一般</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">obj2 <span style="color: #666666">=</span> copy<span style="color: #666666">.</span>deepcopy(obj1)     <span style="color: #408080; font-style: italic">#深度拷贝</span>
-<span style="color: #008000">type</span>(<span style="color: #BA2121">u&#39;123&#39;</span>) <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">unicode</span>              <span style="color: #408080; font-style: italic">#类型判断</span>
+<span style="color: #008000">type</span>(<span style="color: #BA2121">u&#39;123&#39;</span>) <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">unicode</span>        <span style="color: #408080; font-style: italic">#类型判断</span>
 </pre></div>
 
 
 <h2 id="_6">内置库</h2>
 <h3 id="_7">正则表达式</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">re<span style="color: #666666">.</span>match(pattern, string)    <span style="color: #408080; font-style: italic">#匹配开头</span>
-re<span style="color: #666666">.</span>search(pattern, string)   <span style="color: #408080; font-style: italic">#匹配任意位置  </span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">re<span style="color: #666666">.</span>match(pattern, string)      <span style="color: #408080; font-style: italic">#匹配开头</span>
+re<span style="color: #666666">.</span>search(pattern, string)     <span style="color: #408080; font-style: italic">#匹配任意位置  </span>
 re<span style="color: #666666">.</span>findall(pattern, string)    <span style="color: #408080; font-style: italic">#匹配全部</span>
 </pre></div>
 
@@ -86,10 +90,10 @@ re<span style="color: #666666">.</span>findall(pattern, string)    <span style="
 
 
 <h3 id="_9">数据编码</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">json<span style="color: #666666">.</span>dumps(s)                 <span style="color: #408080; font-style: italic">#输出json</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">json<span style="color: #666666">.</span>dumps(s)         <span style="color: #408080; font-style: italic">#输出json</span>
 base64<span style="color: #666666">.</span>b64encode(s)   <span style="color: #408080; font-style: italic">#输出成base64</span>
-urllib<span style="color: #666666">.</span>quote(<span style="color: #008000">str</span>)              <span style="color: #408080; font-style: italic">#url编码</span>
-urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">str</span>)         <span style="color: #408080; font-style: italic">#url解码</span>
+urllib<span style="color: #666666">.</span>quote(<span style="color: #008000">str</span>)     <span style="color: #408080; font-style: italic">#url编码</span>
+urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">str</span>)   <span style="color: #408080; font-style: italic">#url解码</span>
 </pre></div>
 
 
@@ -98,7 +102,10 @@ urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">
 <p>网络爬虫：<strong><em>Scrapy</em></strong><br />
 网站开发：<strong><em>tornado</em></strong><br />
 代码高亮：<strong><em>Pygments</em></strong>  <br />
-模板引擎：<strong><em>jinja2</em></strong>  </p>
+模板引擎：<strong><em>jinja2</em></strong><br />
+矩阵运算：<strong><em>numpy</em></strong><br />
+科学计算：<strong><em>SciPy</em></strong><br />
+作图：<strong><em>matplotlib</em></strong>  </p>
 <h2 id="_11">调试分析</h2>
 <h3 id="pdb">pdb</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">pdb<span style="color: #666666">.</span>set_trace()            <span style="color: #408080; font-style: italic">#设置断点</span>
@@ -111,7 +118,7 @@ urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">
 
 
 <h3 id="gc">gc</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gc<span style="color: #666666">.</span>get_referrers(obj)         <span style="color: #408080; font-style: italic">#得到引用列表</span>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gc<span style="color: #666666">.</span>get_referrers(obj)      <span style="color: #408080; font-style: italic">#得到引用列表</span>
 </pre></div>
 
 
@@ -142,6 +149,13 @@ python setup.py install --prefix<span style="color: #666666">=</span><span style
 <h3 id="pip">pip安装库</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install python-pip
 sudo pip install &lt;库名&gt;
+</pre></div>
+
+
+<h2 id="_14">未分类</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#美化显示</span>
+pp <span style="color: #666666">=</span> pprint<span style="color: #666666">.</span>PrettyPrinter(indent<span style="color: #666666">=4</span>)
+pp<span style="color: #666666">.</span>pprint(stuff)
 </pre></div>
 </body>
 </html>

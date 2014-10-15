@@ -65,6 +65,8 @@ mkdir $DirName
 tar zxf hello.tgz -C $DirName --strip-components 1
 ```
 
+*  SGID位
+
 ## 其他
 ```
 #!bash
@@ -90,3 +92,11 @@ rz
 sz $File
 ```
 bash下编辑命令：输完命令后按***Ctrl-x Ctrl-e***
+
+## 系统编程
+### 文件锁
+* 劝告锁
+* 强制锁  
+**读锁**或**共享锁**阻止其他写操作；  
+**写锁**或**排他锁**阻止其他任何操作。  
+使用fcntl。

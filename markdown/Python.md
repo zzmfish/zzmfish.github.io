@@ -8,6 +8,7 @@
 #!python
 __builtins__    #全局的内置符号，可以添加删除项  
 __file__        #py文件全路径  
+__name__        #'__main__'
 ```
 
 ### 整数
@@ -20,23 +21,25 @@ sys.maxint   #最大整数
 ```
 #!python
 squares = [x**2 for x in range(10)]    #列表推导式
-list.sort()                                                  #排序
-del list[i]                                                  #删除给定索引的元素
-list.remove(v)                                         #删除给定值的元素
+lst.sort()                             #排序
+del lst[i]                             #删除给定索引的元素
+lst.remove(v)                          #删除给定值的元素
+lst.insert(0, v)                       #在前面插入
+lst.append(v)                          #在后面插入
 ```  
 
 ### 一般
 ```
 #!python
 obj2 = copy.deepcopy(obj1)     #深度拷贝
-type(u'123') is unicode              #类型判断
+type(u'123') is unicode        #类型判断
 ```  
 ## 内置库
 ### 正则表达式
 ```
 #!python
-re.match(pattern, string)    #匹配开头
-re.search(pattern, string)   #匹配任意位置  
+re.match(pattern, string)      #匹配开头
+re.search(pattern, string)     #匹配任意位置  
 re.findall(pattern, string)    #匹配全部
 ```
 
@@ -49,10 +52,10 @@ f = codecs.open('out.txt', mode="w", encoding="utf-8") #以指定编码打开文
 ### 数据编码
 ```
 #!python
-json.dumps(s)                 #输出json
+json.dumps(s)         #输出json
 base64.b64encode(s)   #输出成base64
-urllib.quote(str)              #url编码
-urllib.unquote(str)         #url解码
+urllib.quote(str)     #url编码
+urllib.unquote(str)   #url解码
 ```
 
 ### numpy
@@ -62,6 +65,9 @@ urllib.unquote(str)         #url解码
 网站开发：***tornado***  
 代码高亮：***Pygments***    
 模板引擎：***jinja2***  
+矩阵运算：***numpy***  
+科学计算：***SciPy***  
+作图：***matplotlib***  
 
 ## 调试分析
 ### pdb
@@ -79,7 +85,7 @@ traceback.print_stack()    #显示堆栈
 ### gc
 ```
 #!python
-gc.get_referrers(obj)         #得到引用列表
+gc.get_referrers(obj)      #得到引用列表
 ```
 
 ### objgraph
@@ -115,4 +121,12 @@ python setup.py install --prefix=$HOME/local
 #!bash
 sudo apt-get install python-pip
 sudo pip install <库名>
+```
+
+## 未分类
+```
+#!python
+#美化显示
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(stuff)
 ```

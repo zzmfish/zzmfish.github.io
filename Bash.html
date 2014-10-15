@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bash</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="bash">Bash</h1>
+<h2 id="_1">参数</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">echo</span> <span style="color: #19177C">$*</span>               <span style="color: #408080; font-style: italic">#&quot;$1 $2 ...&quot;  </span>
+<span style="color: #008000">echo</span> <span style="color: #19177C">$@</span>             <span style="color: #408080; font-style: italic">#&quot;$1&quot; &quot;$2&quot; &quot;$3&quot;  </span>
+<span style="color: #008000">echo</span> <span style="color: #19177C">$# </span>             <span style="color: #408080; font-style: italic">#参数个数  </span>
+<span style="color: #008000">shift</span> <span style="color: #666666">[</span>n<span style="color: #666666">]</span>               <span style="color: #408080; font-style: italic">#弹出前面n个参数，n默认为1</span>
+</pre></div>
+
+
+<h2 id="_2">内置变量</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">echo</span> <span style="color: #19177C">$?</span>               <span style="color: #408080; font-style: italic">#最近执行程序的退出代码  </span>
+</pre></div>
+
+
+<h2 id="_3">语法</h2>
+<p>case语法：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">case </span>expression in
+    pattern1 <span style="color: #666666">)</span>
+        statements ;;
+    pattern2 <span style="color: #666666">)</span>
+        statements ;;
+    * <span style="color: #666666">)</span>
+        statements ;;
+<span style="color: #008000; font-weight: bold">esac</span>
+</pre></div>
+
+
+<h2 id="_4">数据类型</h2>
+<h3 id="_5">数组</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">foo</span><span style="color: #666666">=()</span>                                        <span style="color: #408080; font-style: italic">#定义数组  </span>
+foo+<span style="color: #666666">=(</span>1<span style="color: #666666">)</span>                                   <span style="color: #408080; font-style: italic">#添加元素    </span>
+<span style="color: #008000">echo</span> <span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">foo</span>[*]<span style="color: #008000; font-weight: bold">}</span>                         <span style="color: #408080; font-style: italic">#所有元素    </span>
+<span style="color: #008000">echo</span> <span style="color: #008000; font-weight: bold">${#</span><span style="color: #19177C">foo</span>[*]<span style="color: #008000; font-weight: bold">}</span>                      <span style="color: #408080; font-style: italic">#元素个数  </span>
+<span style="color: #666666">(</span><span style="color: #19177C">IFS</span><span style="color: #666666">=</span>,; <span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;${array[*]}&quot;</span><span style="color: #666666">)</span>     <span style="color: #408080; font-style: italic">#逗号连接数组内容  </span>
+</pre></div>
+
+
+<h2 id="_6">序列</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">echo</span> <span style="color: #666666">{</span>1..5<span style="color: #666666">}</span>  
+<span style="color: #008000">echo</span> <span style="color: #BA2121">`</span>seq 1 5<span style="color: #BA2121">`</span>
+</pre></div>
+
+
+<h2 id="_7">其他</h2>
+<p><strong><em>.</em></strong>是<strong><em>true</em></strong>的别名</p>
+</body>
+</html>
+
