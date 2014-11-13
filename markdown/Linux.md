@@ -60,6 +60,9 @@ find -mtime 0
 #查找断开的符号链接
 find . -type l -! -exec test -e {} \; -print
 
+#查找大小为0的文件
+find -size 0
+
 #解压并更改目录名称
 mkdir $DirName
 tar zxf hello.tgz -C $DirName --strip-components 1
@@ -71,7 +74,8 @@ tar zxf hello.tgz -C $DirName --strip-components 1
 ```
 #!bash
 #重新连接screen会话，必要时先detach
-kill -HUP $ScreenPid && screen -d -r
+kill -HUP $ScreenPid
+screen -d -r
 
 #脚本退出杀掉所有子进程
 trap "kill 0" SIGINT SIGTERM EXIT
@@ -81,6 +85,9 @@ tr '[a-z]' '[A-Z]'
 
 #显示第100行
 sed '100q;d' $File
+
+#删除空白行
+sed "/^\s*$/d"
 
 #输出匹配的组
 echo "a=1 b=2 c=3" | sed "s/.*b=\([0-9]\).*/\1/" #匹配b=2，输出2
@@ -93,10 +100,7 @@ sz $File
 ```
 bash下编辑命令：输完命令后按***Ctrl-x Ctrl-e***
 
-## 系统编程
-### 文件锁
-* 劝告锁
-* 强制锁  
-**读锁**或**共享锁**阻止其他写操作；  
-**写锁**或**排他锁**阻止其他任何操作。  
-使用fcntl。
+## 未分类
+SystemTap  
+kprobe  
+DTrace

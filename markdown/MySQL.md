@@ -1,6 +1,6 @@
 # MySQL
 
-## 命令
+## 终端命令
 ```
 #!bash
 #导出表
@@ -10,32 +10,45 @@ mysqldump -u $User -p $Database $Table > $File
 mysql -u root -p
 ```
 
-## SQL语句
+## mysql命令
+```
+source FileName;
+tee FileName;
+```
+
+## 数据库
 ```
 #!mysql
 #所有数据库
-show databases;
+SHOW databases;
 
 #进入数据库
-use DatabaseName;
+USE DatabaseName;
 
 #数据库信息
 status;
 
 #数据库字符集设置
-show variables like 'character_%';
+SHOW variables LIKE 'character_%';
+```
 
+## 表
+```
+#!mysql
 #所有表
-show tables;
+SHOW tables;
 
-#表信息
-show table status;
+#所有表的信息
+SHOW TABLE status;
 
 #所有列
-show columns from TableName;
+SHOW columns FROM TableName;
+
+#表的结构
+DESC  TableName;
 ```
   
-## 查询语句
+## 查询数据
 ```
 #!mysql
 #降序排名前10
@@ -49,7 +62,7 @@ select ColumnName, COUNT(*) from TableName GROUP BY ColumnName;
 
 #列的所有取值
 select DISTINCT ColumnName from TableName;
-```
 
-## mysql命令
-执行sql文件：`source <sql文件名>`
+#表的行数
+SELECT COUNT(*) FROM TableName;
+```

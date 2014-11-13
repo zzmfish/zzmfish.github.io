@@ -9,14 +9,17 @@ svn revert $File
 #撤销目录修改、撤销添加目录
 svn revert $Dir -R
 
+#合并分支
+svn merge $BranchPath
+
 #回滚代码
 svn merge -r$Version2:$Version1
 
 #冲突使用本地版本
-svn resolve --accept mine-full  $File
+svn resolve --accept mine-full  $FileName
 
 #更新到指定版本
-svn update -r$Version $File
+svn update -r$Version $FileName
 ```
 
 ## 分支
@@ -41,3 +44,5 @@ svn merge $Path -r$Version1:$Version2
 #切换服务器
 svn switch --relocate $Url1 $Url2
 ```
+
+* svn:externals属性

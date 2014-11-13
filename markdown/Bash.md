@@ -3,16 +3,16 @@
 ## 参数
 ```
 #!bash
-echo $*               #"$1 $2 ..."  
-echo $@             #"$1" "$2" "$3"  
-echo $#              #参数个数  
-shift [n]               #弹出前面n个参数，n默认为1
+$*             #"$1 $2 ..."  
+$@             #"$1" "$2" "$3"  
+$#             #参数个数  
+shift [n]      #弹出前面n个参数，n默认为1
 ```
 
 ## 内置变量  
 ```
 #!bash
-echo $?               #最近执行程序的退出代码  
+$?             #上一个程序的退出代码  
 ```
 
 ## 语法
@@ -33,11 +33,14 @@ esac
 ### 数组
 ```
 #!bash
-foo=()                                        #定义数组  
-foo+=(1)                                   #添加元素    
-echo ${foo[*]}                         #所有元素    
-echo ${#foo[*]}                      #元素个数  
+foo=()                          #定义数组  
+foo+=(1)                        #添加元素    
+echo ${foo[*]}                  #所有元素    
+echo ${#foo[*]}                 #元素个数  
 (IFS=,; echo "${array[*]}")     #逗号连接数组内容  
+
+#的到根据value排序的索引数组
+sorted(range(len(s)), cmp=lambda i,j:cmp(s[i], s[j]))  
 ```
 
 ##序列
@@ -49,3 +52,11 @@ echo `seq 1 5`
 
 ##其他
 ***.***是***true***的别名
+
+* 文件按行进行处理
+```
+#!bash
+cat $inputFile | while read line; do
+    echo "$line"
+done > $outputFile
+```

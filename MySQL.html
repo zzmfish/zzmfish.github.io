@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1 id="mysql">MySQL</h1>
-<h2 id="_1">命令</h2>
+<h2 id="_1">终端命令</h2>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#导出表</span>
 mysqldump -u <span style="color: #19177C">$User</span> -p <span style="color: #19177C">$Database</span> <span style="color: #19177C">$Table</span> &gt; <span style="color: #19177C">$File</span>
 
@@ -16,31 +16,43 @@ mysql -u root -p
 </pre></div>
 
 
-<h2 id="sql">SQL语句</h2>
+<h2 id="mysql_1">mysql命令</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">source FileName;
+tee FileName;
+</pre></div>
+
+
+<h2 id="_2">数据库</h2>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#所有数据库</span>
-<span style="color: #008000; font-weight: bold">show</span> <span style="color: #008000; font-weight: bold">databases</span>;
+<span style="color: #008000; font-weight: bold">SHOW</span> <span style="color: #008000; font-weight: bold">databases</span>;
 
 <span style="color: #408080; font-style: italic">#进入数据库</span>
-<span style="color: #008000; font-weight: bold">use</span> DatabaseName;
+<span style="color: #008000; font-weight: bold">USE</span> DatabaseName;
 
 <span style="color: #408080; font-style: italic">#数据库信息</span>
 status;
 
 <span style="color: #408080; font-style: italic">#数据库字符集设置</span>
-<span style="color: #008000; font-weight: bold">show</span> variables <span style="color: #008000; font-weight: bold">like</span> <span style="color: #BA2121">&#39;character_%&#39;</span>;
-
-<span style="color: #408080; font-style: italic">#所有表</span>
-<span style="color: #008000; font-weight: bold">show</span> <span style="color: #008000">tables</span>;
-
-<span style="color: #408080; font-style: italic">#表信息</span>
-<span style="color: #008000; font-weight: bold">show</span> <span style="color: #008000; font-weight: bold">table</span> status;
-
-<span style="color: #408080; font-style: italic">#所有列</span>
-<span style="color: #008000; font-weight: bold">show</span> columns <span style="color: #008000; font-weight: bold">from</span> TableName;
+<span style="color: #008000; font-weight: bold">SHOW</span> variables <span style="color: #008000; font-weight: bold">LIKE</span> <span style="color: #BA2121">&#39;character_%&#39;</span>;
 </pre></div>
 
 
-<h2 id="_2">查询语句</h2>
+<h2 id="_3">表</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#所有表</span>
+<span style="color: #008000; font-weight: bold">SHOW</span> <span style="color: #008000">tables</span>;
+
+<span style="color: #408080; font-style: italic">#所有表的信息</span>
+<span style="color: #008000; font-weight: bold">SHOW</span> <span style="color: #008000; font-weight: bold">TABLE</span> status;
+
+<span style="color: #408080; font-style: italic">#所有列</span>
+<span style="color: #008000; font-weight: bold">SHOW</span> columns <span style="color: #008000; font-weight: bold">FROM</span> TableName;
+
+<span style="color: #408080; font-style: italic">#表的结构</span>
+<span style="color: #008000; font-weight: bold">DESC</span>  TableName;
+</pre></div>
+
+
+<h2 id="_4">查询数据</h2>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#降序排名前10</span>
 <span style="color: #008000; font-weight: bold">select</span> <span style="color: #666666">*</span> <span style="color: #008000; font-weight: bold">from</span> TableName <span style="color: #008000; font-weight: bold">ORDER</span> <span style="color: #008000; font-weight: bold">BY</span> ColumnName <span style="color: #008000; font-weight: bold">DESC</span> <span style="color: #008000; font-weight: bold">limit</span> <span style="color: #666666">10</span>;
 
@@ -52,11 +64,10 @@ status;
 
 <span style="color: #408080; font-style: italic">#列的所有取值</span>
 <span style="color: #008000; font-weight: bold">select</span> <span style="color: #008000; font-weight: bold">DISTINCT</span> ColumnName <span style="color: #008000; font-weight: bold">from</span> TableName;
+
+<span style="color: #408080; font-style: italic">#表的行数</span>
+<span style="color: #008000; font-weight: bold">SELECT</span> <span style="color: #0000FF">COUNT</span>(<span style="color: #666666">*</span>) <span style="color: #008000; font-weight: bold">FROM</span> TableName;
 </pre></div>
-
-
-<h2 id="mysql_1">mysql命令</h2>
-<p>执行sql文件：<code>source &lt;sql文件名&gt;</code></p>
 </body>
 </html>
 

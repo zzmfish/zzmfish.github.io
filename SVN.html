@@ -14,14 +14,17 @@ svn revert <span style="color: #19177C">$File</span>
 <span style="color: #408080; font-style: italic">#撤销目录修改、撤销添加目录</span>
 svn revert <span style="color: #19177C">$Dir</span> -R
 
+<span style="color: #408080; font-style: italic">#合并分支</span>
+svn merge <span style="color: #19177C">$BranchPath</span>
+
 <span style="color: #408080; font-style: italic">#回滚代码</span>
 svn merge -r<span style="color: #19177C">$Version2</span>:<span style="color: #19177C">$Version1</span>
 
 <span style="color: #408080; font-style: italic">#冲突使用本地版本</span>
-svn resolve --accept mine-full  <span style="color: #19177C">$File</span>
+svn resolve --accept mine-full  <span style="color: #19177C">$FileName</span>
 
 <span style="color: #408080; font-style: italic">#更新到指定版本</span>
-svn update -r<span style="color: #19177C">$Version</span> <span style="color: #19177C">$File</span>
+svn update -r<span style="color: #19177C">$Version</span> <span style="color: #19177C">$FileName</span>
 </pre></div>
 
 
@@ -44,6 +47,11 @@ svn merge <span style="color: #19177C">$Path</span> -r<span style="color: #19177
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#切换服务器</span>
 svn switch --relocate <span style="color: #19177C">$Url1</span> <span style="color: #19177C">$Url2</span>
 </pre></div>
+
+
+<ul>
+<li>svn:externals属性</li>
+</ul>
 </body>
 </html>
 

@@ -12,9 +12,9 @@ Array(n+1).join('-');
 //字符串匹配
 s.match(/^https?:/);
 
-//遍历数组或属性值
-for each (var item in array) {
-  ...
+//遍历数组
+for (elem of array) {
+    do_something(elem);
 }
 
 //截取数组前n个元素
@@ -53,8 +53,8 @@ delete obj[prop];
 ## DOM
 ```
 #!javascript
-//节点类型
-node.
+//删除节点
+node.removeChild(child);
 ```
 
 ### 日期和时间
@@ -62,4 +62,16 @@ node.
 #!javascript
 //时间戳（ms）
 var timeStamp = Date.now();
+```
+
+### 未分类
+```
+#!javascript
+
+
+//在新窗口输出html
+var doc = window.open().document;
+doc.open();
+doc.write('hello');
+doc.close();
 ```

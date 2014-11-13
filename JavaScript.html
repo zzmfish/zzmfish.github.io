@@ -17,9 +17,9 @@
 <span style="color: #408080; font-style: italic">//字符串匹配</span>
 s.match(<span style="color: #BB6688">/^https?:/</span>);
 
-<span style="color: #408080; font-style: italic">//遍历数组或属性值</span>
-<span style="color: #008000; font-weight: bold">for</span> each (<span style="color: #008000; font-weight: bold">var</span> item <span style="color: #008000; font-weight: bold">in</span> array) {
-  ...
+<span style="color: #408080; font-style: italic">//遍历数组</span>
+<span style="color: #008000; font-weight: bold">for</span> (elem of array) {
+    do_something(elem);
 }
 
 <span style="color: #408080; font-style: italic">//截取数组前n个元素</span>
@@ -53,14 +53,23 @@ arr <span style="color: #666666">=</span> arr.slice(<span style="color: #666666"
 
 
 <h2 id="dom">DOM</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//节点类型</span>
-node.
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//删除节点</span>
+node.removeChild(child);
 </pre></div>
 
 
 <h3 id="_4">日期和时间</h3>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//时间戳（ms）</span>
 <span style="color: #008000; font-weight: bold">var</span> timeStamp <span style="color: #666666">=</span> <span style="color: #008000">Date</span>.now();
+</pre></div>
+
+
+<h3 id="_5">未分类</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//在新窗口输出html</span>
+<span style="color: #008000; font-weight: bold">var</span> doc <span style="color: #666666">=</span> <span style="color: #008000">window</span>.open().<span style="color: #008000">document</span>;
+doc.open();
+doc.write(<span style="color: #BA2121">&#39;hello&#39;</span>);
+doc.close();
 </pre></div>
 </body>
 </html>

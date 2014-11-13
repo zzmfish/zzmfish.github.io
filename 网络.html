@@ -7,48 +7,111 @@
 </head>
 <body>
 <h1 id="_1">网络</h1>
-<h2 id="isoosi">ISO/OSI网络模型</h2>
-<h3 id="_2">物理层</h3>
-<h3 id="_3">数据链路层</h3>
-<p>把数据分成一组一组，称为<strong><em>帧（Frame）</em></strong>。  </p>
+<div class="toc">
 <ul>
-<li>MAC（媒体接入控制）</li>
-<li>ARP</li>
+<li><a href="#_1">网络</a><ul>
+<li><a href="#_2">物理层</a><ul>
+<li><a href="#_3">以太网</a></li>
+<li><a href="#wi-fi">WI-FI</a></li>
+</ul>
+</li>
+<li><a href="#_4">数据链路层</a><ul>
+<li><a href="#mac">MAC地址</a></li>
+<li><a href="#arp">ARP协议</a></li>
+</ul>
+</li>
+<li><a href="#_5">网络层</a><ul>
+<li><a href="#ip">IP地址</a></li>
+<li><a href="#icmp">ICMP协议</a></li>
+</ul>
+</li>
+<li><a href="#_6">传输层</a><ul>
+<li><a href="#tcp">TCP</a></li>
+<li><a href="#tlsssl">TLS/SSL</a></li>
+</ul>
+</li>
+<li><a href="#_7">会话层</a><ul>
+<li><a href="#socks">SOCKS</a></li>
+</ul>
+</li>
+<li><a href="#_8">表示层</a></li>
+<li><a href="#_9">应用层</a><ul>
+<li><a href="#dns">DNS</a></li>
+<li><a href="#mdns">mDNS</a></li>
+</ul>
+</li>
+<li><a href="#_10">协议详情</a><ul>
+<li><a href="#ssh">SSH</a></li>
+<li><a href="#dns_1">DNS</a></li>
+<li><a href="#tcp_1">TCP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_2">物理层</h2>
+<h3 id="_3">以太网</h3>
+<h3 id="wi-fi">WI-FI</h3>
+<h2 id="_4">数据链路层</h2>
+<ul>
+<li>把数据分成一组一组，称为<strong><em>帧（Frame）</em></strong></li>
 <li>MTU（最大传输单元）</li>
 </ul>
-<h3 id="_4">网络层</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看网卡MTU</span>
+netstat -i
+
+<span style="color: #408080; font-style: italic">#测试路径上的MTU</span>
+ping -s 1472 baidu.com
+</pre></div>
+
+
+<h3 id="mac">MAC地址</h3>
+<h3 id="arp">ARP协议</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#显示ARP缓存表</span>
+arp -a
+</pre></div>
+
+
+<h2 id="_5">网络层</h2>
 <p>在网络中找到一条路径，沿着路径把数据传过去<br />
 Package</p>
-<ul>
-<li>IP地址</li>
-</ul>
-<h3 id="_5">传输层</h3>
+<h3 id="ip">IP地址</h3>
+<h3 id="icmp">ICMP协议</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#显示路由信息</span>
+traceroute uc.cn
+</pre></div>
+
+
+<h2 id="_6">传输层</h2>
 <p>把数据交给某个服务进程<br />
 Segment</p>
+<h3 id="tcp">TCP</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#端口扫描</span>
+nmap 127.0.0.1
+</pre></div>
+
+
+<h3 id="tlsssl">TLS/SSL</h3>
 <ul>
-<li>TCP</li>
-<li>SLS</li>
+<li>SSLStrip</li>
 </ul>
-<h3 id="_6">会话层</h3>
-<ul>
-<li>SOCKS</li>
-</ul>
-<h3 id="_7">表示层</h3>
-<h3 id="_8">应用层</h3>
-<ul>
-<li>DNS</li>
-<li>mDNS</li>
-</ul>
-<h2 id="_9">协议详情</h2>
+<h2 id="_7">会话层</h2>
+<h3 id="socks">SOCKS</h3>
+<h2 id="_8">表示层</h2>
+<h2 id="_9">应用层</h2>
+<h3 id="dns">DNS</h3>
+<h3 id="mdns">mDNS</h3>
+<h2 id="_10">协议详情</h2>
 <h3 id="ssh">SSH</h3>
 <ul>
 <li>Obfuscation key（混淆密钥）</li>
 </ul>
-<h3 id="dns">DNS</h3>
+<h3 id="dns_1">DNS</h3>
 <ul>
 <li>顶级域名</li>
 </ul>
-<h3 id="tcp">TCP</h3>
+<h3 id="tcp_1">TCP</h3>
 <ul>
 <li>端口</li>
 <li>序号：解决网络包乱序问题</li>
@@ -57,25 +120,6 @@ Segment</p>
 <li>建立连接要3次握手，断开连接要4次握手</li>
 <li>SYN Flood攻击</li>
 </ul>
-<h2 id="_10">网络编程</h2>
-<h3 id="io">网络IO模型</h3>
-<h4 id="io_1">阻塞IO</h4>
-<ul>
-<li>listen/send/recv</li>
-</ul>
-<h4 id="io_2">非阻塞IO</h4>
-<ul>
-<li>fcntl(fd, F_SETFL, O_NONBLOCK)</li>
-</ul>
-<h4 id="io_3">多路复用IO</h4>
-<ul>
-<li>select/epoll</li>
-</ul>
-<h4 id="io_4">异步IO</h4>
-<ul>
-<li>aio_read/aio_write</li>
-</ul>
-<h2 id="_11">未分类</h2>
 </body>
 </html>
 

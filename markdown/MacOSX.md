@@ -8,8 +8,11 @@
 #!bash
 #下载文件
 curl -O $Url
-
 ```
+
+### libxml的头文件位置
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/libxml2/libxml/HTMLparser.h
+
 
 ## 系统信息
 ```
