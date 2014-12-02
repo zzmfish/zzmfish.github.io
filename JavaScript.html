@@ -8,68 +8,106 @@
 <body>
 <h1 id="javascript">JavaScript</h1>
 <h2 id="_1">基本类型</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//类型判断</span>
-<span style="color: #008000; font-weight: bold">typeof</span>(n) <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;number&#39;</span>;
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//类型判断</span>
+<span style="color: #6ab825; font-weight: bold">typeof</span><span style="color: #d0d0d0">(n)</span> <span style="color: #d0d0d0">==</span> <span style="color: #ed9d13">&#39;number&#39;</span><span style="color: #d0d0d0">;</span>
 
-<span style="color: #408080; font-style: italic">//连接n个&quot;-&quot;</span>
-<span style="color: #008000">Array</span>(n<span style="color: #666666">+1</span>).join(<span style="color: #BA2121">&#39;-&#39;</span>);
+<span style="color: #999999; font-style: italic">//连接n个&quot;-&quot;</span>
+<span style="color: #24909d">Array</span><span style="color: #d0d0d0">(n+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">).join(</span><span style="color: #ed9d13">&#39;-&#39;</span><span style="color: #d0d0d0">);</span>
 
-<span style="color: #408080; font-style: italic">//字符串匹配</span>
-s.match(<span style="color: #BB6688">/^https?:/</span>);
+<span style="color: #999999; font-style: italic">//字符串匹配</span>
+<span style="color: #d0d0d0">s.match(</span><span style="color: #ed9d13">/^https?:/</span><span style="color: #d0d0d0">);</span>
 
-<span style="color: #408080; font-style: italic">//遍历数组</span>
-<span style="color: #008000; font-weight: bold">for</span> (elem of array) {
-    do_something(elem);
-}
+<span style="color: #999999; font-style: italic">//遍历数组</span>
+<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(elem</span> <span style="color: #d0d0d0">of</span> <span style="color: #d0d0d0">array)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">do_something(elem);</span>
+<span style="color: #d0d0d0">}</span>
 
-<span style="color: #408080; font-style: italic">//截取数组前n个元素</span>
-arr <span style="color: #666666">=</span> arr.slice(<span style="color: #666666">1</span>, n);
+<span style="color: #999999; font-style: italic">//截取数组前n个元素</span>
+<span style="color: #d0d0d0">arr</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">arr.slice(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">n);</span>
 </pre></div>
 
 
 <h2 id="_2">函数</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//匿名函数</span>
-(<span style="color: #008000; font-weight: bold">function</span>(){
-    ...
-})();
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//匿名函数</span>
+<span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
+    <span style="color: #d0d0d0">...</span>
+<span style="color: #d0d0d0">})();</span>
 </pre></div>
 
 
 <h2 id="_3">对象</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//定义类</span>
-<span style="color: #008000; font-weight: bold">var</span> Cat <span style="color: #666666">=</span> {
-    name<span style="color: #666666">:</span> <span style="color: #BA2121">&quot;大毛&quot;</span>,
-    makeSound<span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span>(){ alert(<span style="color: #BA2121">&quot;喵喵喵&quot;</span>); }
-};
-<span style="color: #408080; font-style: italic">//创建实例</span>
-<span style="color: #008000; font-weight: bold">var</span> cat1 <span style="color: #666666">=</span> <span style="color: #008000">Object</span>.create(Cat);
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//定义类</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">Cat</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">name:</span> <span style="color: #ed9d13">&quot;大毛&quot;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #d0d0d0">makeSound:</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span> <span style="color: #d0d0d0">alert(</span><span style="color: #ed9d13">&quot;喵喵喵&quot;</span><span style="color: #d0d0d0">);</span> <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">};</span>
+<span style="color: #999999; font-style: italic">//创建实例</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">cat1</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">Object</span><span style="color: #d0d0d0">.create(Cat);</span>
 
-<span style="color: #408080; font-style: italic">//所有属性</span>
-<span style="color: #008000">Object</span>.keys(s)
+<span style="color: #999999; font-style: italic">//所有属性</span>
+<span style="color: #24909d">Object</span><span style="color: #d0d0d0">.keys(s)</span>
 
-<span style="color: #408080; font-style: italic">//删除属性</span>
-<span style="color: #008000; font-weight: bold">delete</span> obj[prop];
+<span style="color: #999999; font-style: italic">//删除属性</span>
+<span style="color: #6ab825; font-weight: bold">delete</span> <span style="color: #d0d0d0">obj[prop];</span>
 </pre></div>
 
 
 <h2 id="dom">DOM</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//删除节点</span>
-node.removeChild(child);
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//删除节点</span>
+<span style="color: #d0d0d0">node.removeChild(child);</span>
 </pre></div>
 
 
-<h3 id="_4">日期和时间</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//时间戳（ms）</span>
-<span style="color: #008000; font-weight: bold">var</span> timeStamp <span style="color: #666666">=</span> <span style="color: #008000">Date</span>.now();
+<h3 id="_4">发送请求</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//异步POST请求</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">req</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">XMLHttpRequest();</span> 
+<span style="color: #d0d0d0">req.onreadystatechange</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(req.readyState</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">{</span> <span style="color: #999999; font-style: italic">//loaded</span>
+        <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(req.status</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">200</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">{</span> <span style="color: #999999; font-style: italic">//ok</span>
+            <span style="color: #d0d0d0">console.log(req.responseText);</span> <span style="color: #999999; font-style: italic">//应答内容</span>
+        <span style="color: #d0d0d0">}</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>       
+<span style="color: #d0d0d0">req.open(</span><span style="color: #ed9d13">&quot;POST&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">url,</span> <span style="color: #6ab825; font-weight: bold">true</span><span style="color: #d0d0d0">);</span>
+<span style="color: #d0d0d0">req.send(data);</span>
 </pre></div>
 
 
-<h3 id="_5">未分类</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">//在新窗口输出html</span>
-<span style="color: #008000; font-weight: bold">var</span> doc <span style="color: #666666">=</span> <span style="color: #008000">window</span>.open().<span style="color: #008000">document</span>;
-doc.open();
-doc.write(<span style="color: #BA2121">&#39;hello&#39;</span>);
-doc.close();
+<h3 id="_5">日期和时间</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//时间戳（ms）</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">timeStamp</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">Date</span><span style="color: #d0d0d0">.now();</span>
+</pre></div>
+
+
+<h3 id="_6">坐标</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//视窗滚动位置</span>
+<span style="color: #24909d">window</span><span style="color: #d0d0d0">.scrollX;</span>
+<span style="color: #24909d">window</span><span style="color: #d0d0d0">.scrollY;</span>
+
+<span style="color: #999999; font-style: italic">//视窗大小</span>
+<span style="color: #24909d">window</span><span style="color: #d0d0d0">.innerWidth;</span>
+<span style="color: #24909d">window</span><span style="color: #d0d0d0">.innerHeight;</span>
+
+<span style="color: #999999; font-style: italic">//元素相对视窗的位置</span>
+<span style="color: #d0d0d0">elem.getBoundingClientRect()</span>
+</pre></div>
+
+
+<h3 id="_7">数据处理</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//解析JSON</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">obj</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">eval</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;(&#39;</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">json</span> <span style="color: #d0d0d0">+</span> <span style="color: #ed9d13">&#39;)&#39;</span><span style="color: #d0d0d0">);</span>
+
+<span style="color: #999999; font-style: italic">//URL编码</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">encodeURIComponent</span><span style="color: #d0d0d0">(value);</span>
+</pre></div>
+
+
+<h3 id="_8">未分类</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//在新窗口输出html</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">doc</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">window</span><span style="color: #d0d0d0">.open().</span><span style="color: #24909d">document</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">doc.open();</span>
+<span style="color: #d0d0d0">doc.write(</span><span style="color: #ed9d13">&#39;hello&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #d0d0d0">doc.close();</span>
 </pre></div>
 </body>
 </html>

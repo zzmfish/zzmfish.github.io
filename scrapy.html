@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Scrapy</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="scrapy">Scrapy</h1>
+<h2 id="_1">创建项目</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">scrapy startproject <span style="color: #40ffff">$ProjectName</span>
+</pre></div>
+
+
+<h2 id="_2">定义爬虫</h2>
+<p>spiders/hellospider.py:</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">scrapy.contrib.spiders</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">spiders</span>
+
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">TencentSpider</span><span style="color: #d0d0d0">(spiders.CrawlSpider):</span>  
+    <span style="color: #d0d0d0">name</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&quot;hello_spider&quot;</span>  
+    <span style="color: #d0d0d0">start_urls</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span>  
+        <span style="color: #ed9d13">&quot;http://www.pconline.com.cn&quot;</span>  
+    <span style="color: #d0d0d0">]</span>  
+
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">parse_item</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">response):</span>
+        <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">response</span>
+</pre></div>
+
+
+<h2 id="_3">开始爬取</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">scrapy crawl <span style="color: #40ffff">$SpiderName</span>
+</pre></div>
+</body>
+</html>
+

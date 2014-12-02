@@ -52,45 +52,48 @@
 </tbody>
 </table>
 <h2 id="_2">软件包管理</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#显示软件信息</span>
-sudo apt-cache show -a <span style="color: #19177C">$Package</span>  
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示软件信息</span>
+sudo apt-cache show -a <span style="color: #40ffff">$Package</span>  
 
-<span style="color: #408080; font-style: italic">#显示文件所属软件</span>
-apt-file search <span style="color: #19177C">$File</span>
+<span style="color: #999999; font-style: italic">#显示已安装软件</span>
+dpkg --get-selections
 
-<span style="color: #408080; font-style: italic">#添加PPA源</span>
-sudo add-apt-repository <span style="color: #19177C">$Package</span>
+<span style="color: #999999; font-style: italic">#显示文件所属软件</span>
+apt-file search <span style="color: #40ffff">$File</span>
 
-<span style="color: #408080; font-style: italic">#重新安装软件</span>
-sudo apt-get install <span style="color: #19177C">$Package</span> --reinstall  
+<span style="color: #999999; font-style: italic">#添加PPA源</span>
+sudo add-apt-repository <span style="color: #40ffff">$Package</span>
+
+<span style="color: #999999; font-style: italic">#重新安装软件</span>
+sudo apt-get install <span style="color: #40ffff">$Package</span> --reinstall  
 </pre></div>
 
 
 <h2 id="_3">系统安装</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#安装windows后恢复Ubuntu引导，先从Ubuntu光盘引导</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#安装windows后恢复Ubuntu引导，先从Ubuntu光盘引导</span>
 mount /dev/sda10 /mnt  
-grub-install --root-directory<span style="color: #666666">=</span>/mnt /dev/sda  
-update-grub2 <span style="color: #408080; font-style: italic">#不是必须</span>
+grub-install --root-directory<span style="color: #d0d0d0">=</span>/mnt /dev/sda  
+update-grub2 <span style="color: #999999; font-style: italic">#不是必须</span>
 </pre></div>
 
 
 <h2 id="_4">其他</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看时间设置</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看时间设置</span>
 timedatectl status
 
-<span style="color: #408080; font-style: italic">#查看显卡信息</span>
+<span style="color: #999999; font-style: italic">#查看显卡信息</span>
 sudo lshw -class video
 
-<span style="color: #408080; font-style: italic">#VirtualBox使用usb设备要加入vboxusers组</span>
+<span style="color: #999999; font-style: italic">#VirtualBox使用usb设备要加入vboxusers组</span>
 sudo adduser zhouzm vboxusers  
 
-<span style="color: #408080; font-style: italic">#安装新字体（包括微软字体）</span>
-cp <span style="color: #19177C">$FontFile</span> ~/.fonts
+<span style="color: #999999; font-style: italic">#安装新字体（包括微软字体）</span>
+cp <span style="color: #40ffff">$FontFile</span> ~/.fonts
 
-<span style="color: #408080; font-style: italic">#解决无法访问.local域名（方法1）</span>
-<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;hosts: files dns&quot;</span> &gt;&gt; /etc/nsswitch.conf
+<span style="color: #999999; font-style: italic">#解决无法访问.local域名（方法1）</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;hosts: files dns&quot;</span> &gt;&gt; /etc/nsswitch.conf
 
-<span style="color: #408080; font-style: italic">#解决无法访问.local域名（方法2）</span>
+<span style="color: #999999; font-style: italic">#解决无法访问.local域名（方法2）</span>
 sudo service avahi-daemon stop
 sudo update-rc.d avahi-daemon remove
 </pre></div>

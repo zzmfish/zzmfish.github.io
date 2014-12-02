@@ -59,4 +59,10 @@ echo `seq 1 5`
 cat $inputFile | while read line; do
     echo "$line"
 done > $outputFile
+
+#显示高亮
+echo -e "\033[1mhello\033[0m"
+
+#字符串匹配
+[[ abb == a* ]]
 ```

@@ -70,18 +70,14 @@ tar zxf hello.tgz -C $DirName --strip-components 1
 
 *  SGID位
 
-## 其他
+## 文本处理
 ```
 #!bash
-#重新连接screen会话，必要时先detach
-kill -HUP $ScreenPid
-screen -d -r
-
-#脚本退出杀掉所有子进程
-trap "kill 0" SIGINT SIGTERM EXIT
-
 #小写转大写
 tr '[a-z]' '[A-Z]'
+
+#计算字符个数（以“a”为例）
+echo "abcabcaaaaa" | tr -dc "a" | wc -c
 
 #显示第100行
 sed '100q;d' $File
@@ -91,6 +87,17 @@ sed "/^\s*$/d"
 
 #输出匹配的组
 echo "a=1 b=2 c=3" | sed "s/.*b=\([0-9]\).*/\1/" #匹配b=2，输出2
+```
+
+## 其他
+```
+#!bash
+#重新连接screen会话，必要时先detach
+kill -HUP $ScreenPid
+screen -d -r
+
+#脚本退出杀掉所有子进程
+trap "kill 0" SIGINT SIGTERM EXIT
 
 #上传文件
 rz

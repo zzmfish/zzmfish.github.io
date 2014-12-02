@@ -45,57 +45,57 @@
 </div>
 <h2 id="_1">数据类型</h2>
 <h3 id="_2">常量</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">__builtins__    <span style="color: #408080; font-style: italic">#全局的内置符号，可以添加删除项  </span>
-__file__        <span style="color: #408080; font-style: italic">#py文件全路径  </span>
-__name__        <span style="color: #408080; font-style: italic">#&#39;__main__&#39;</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">__builtins__</span>    <span style="color: #999999; font-style: italic">#全局的内置符号，可以添加删除项  </span>
+<span style="color: #d0d0d0">__file__</span>        <span style="color: #999999; font-style: italic">#py文件全路径  </span>
+<span style="color: #d0d0d0">__name__</span>        <span style="color: #999999; font-style: italic">#&#39;__main__&#39;</span>
 </pre></div>
 
 
 <h3 id="_3">整数</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">sys<span style="color: #666666">.</span>maxint   <span style="color: #408080; font-style: italic">#最大整数</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">sys.maxint</span>   <span style="color: #999999; font-style: italic">#最大整数</span>
 </pre></div>
 
 
 <h3 id="_4">列表</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">squares <span style="color: #666666">=</span> [x<span style="color: #666666">**2</span> <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">10</span>)]    <span style="color: #408080; font-style: italic">#列表推导式</span>
-lst<span style="color: #666666">.</span>sort()                             <span style="color: #408080; font-style: italic">#排序</span>
-random<span style="color: #666666">.</span>shuffle(lst)                    <span style="color: #408080; font-style: italic">#打乱顺序</span>
-<span style="color: #008000; font-weight: bold">del</span> lst[i]                             <span style="color: #408080; font-style: italic">#删除给定索引的元素</span>
-lst<span style="color: #666666">.</span>remove(v)                          <span style="color: #408080; font-style: italic">#删除给定值的元素</span>
-lst<span style="color: #666666">.</span>insert(<span style="color: #666666">0</span>, v)                       <span style="color: #408080; font-style: italic">#在前面插入</span>
-lst<span style="color: #666666">.</span>append(v)                          <span style="color: #408080; font-style: italic">#在后面插入</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">squares</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[x**</span><span style="color: #3677a9">2</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">x</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">)]</span>    <span style="color: #999999; font-style: italic">#列表推导式</span>
+<span style="color: #d0d0d0">lst.sort()</span>                             <span style="color: #999999; font-style: italic">#排序</span>
+<span style="color: #d0d0d0">random.shuffle(lst)</span>                    <span style="color: #999999; font-style: italic">#打乱顺序</span>
+<span style="color: #6ab825; font-weight: bold">del</span> <span style="color: #d0d0d0">lst[i]</span>                             <span style="color: #999999; font-style: italic">#删除给定索引的元素</span>
+<span style="color: #d0d0d0">lst.remove(v)</span>                          <span style="color: #999999; font-style: italic">#删除给定值的元素</span>
+<span style="color: #d0d0d0">lst.insert(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">v)</span>                       <span style="color: #999999; font-style: italic">#在前面插入</span>
+<span style="color: #d0d0d0">lst.append(v)</span>                          <span style="color: #999999; font-style: italic">#在后面插入</span>
 </pre></div>
 
 
 <h3 id="_5">集合</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">s<span style="color: #666666">.</span>add(x)        <span style="color: #408080; font-style: italic">#添加一个元素</span>
-s<span style="color: #666666">.</span>remove(x)     <span style="color: #408080; font-style: italic">#删除一个元素，或抛出KeyError</span>
-s<span style="color: #666666">.</span>discard(x)    <span style="color: #408080; font-style: italic">#删除一个元素</span>
-s<span style="color: #666666">.</span>pop()         <span style="color: #408080; font-style: italic">#弹出一个元素，或抛出KeyError</span>
-s<span style="color: #666666">.</span>update(s2)    <span style="color: #408080; font-style: italic">#合并集合</span>
-s <span style="color: #666666">=</span> s<span style="color: #666666">.</span>union(s2) <span style="color: #408080; font-style: italic">#合并集合</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">s.add(x)</span>        <span style="color: #999999; font-style: italic">#添加一个元素</span>
+<span style="color: #d0d0d0">s.remove(x)</span>     <span style="color: #999999; font-style: italic">#删除一个元素，或抛出KeyError</span>
+<span style="color: #d0d0d0">s.discard(x)</span>    <span style="color: #999999; font-style: italic">#删除一个元素</span>
+<span style="color: #d0d0d0">s.pop()</span>         <span style="color: #999999; font-style: italic">#弹出一个元素，或抛出KeyError</span>
+<span style="color: #d0d0d0">s.update(s2)</span>    <span style="color: #999999; font-style: italic">#合并集合</span>
+<span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">s.union(s2)</span> <span style="color: #999999; font-style: italic">#合并集合</span>
 </pre></div>
 
 
 <h2 id="_6">内置库</h2>
 <h3 id="_7">正则表达式</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">re<span style="color: #666666">.</span>match(pattern, string)      <span style="color: #408080; font-style: italic">#匹配开头</span>
-re<span style="color: #666666">.</span>search(pattern, string)     <span style="color: #408080; font-style: italic">#匹配任意位置  </span>
-re<span style="color: #666666">.</span>findall(pattern, string)    <span style="color: #408080; font-style: italic">#匹配全部</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">re.match(pattern,</span> <span style="color: #d0d0d0">string)</span>      <span style="color: #999999; font-style: italic">#匹配开头</span>
+<span style="color: #d0d0d0">re.search(pattern,</span> <span style="color: #d0d0d0">string)</span>     <span style="color: #999999; font-style: italic">#匹配任意位置  </span>
+<span style="color: #d0d0d0">re.findall(pattern,</span> <span style="color: #d0d0d0">string)</span>    <span style="color: #999999; font-style: italic">#匹配全部</span>
 </pre></div>
 
 
 <h3 id="_8">字符集</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">f <span style="color: #666666">=</span> codecs<span style="color: #666666">.</span>open(<span style="color: #BA2121">&#39;out.txt&#39;</span>, mode<span style="color: #666666">=</span><span style="color: #BA2121">&quot;w&quot;</span>, encoding<span style="color: #666666">=</span><span style="color: #BA2121">&quot;utf-8&quot;</span>) <span style="color: #408080; font-style: italic">#以指定编码打开文件</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">f</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">codecs.open(</span><span style="color: #ed9d13">&#39;out.txt&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">mode=</span><span style="color: #ed9d13">&quot;w&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">encoding=</span><span style="color: #ed9d13">&quot;utf-8&quot;</span><span style="color: #d0d0d0">)</span> <span style="color: #999999; font-style: italic">#以指定编码打开文件</span>
 </pre></div>
 
 
 <h3 id="_9">数据编码</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">json<span style="color: #666666">.</span>dumps(s)         <span style="color: #408080; font-style: italic">#输出json</span>
-base64<span style="color: #666666">.</span>b64encode(s)   <span style="color: #408080; font-style: italic">#输出成base64</span>
-urllib<span style="color: #666666">.</span>quote(<span style="color: #008000">str</span>)     <span style="color: #408080; font-style: italic">#url编码</span>
-urllib<span style="color: #666666">.</span>unquote(<span style="color: #008000">str</span>)   <span style="color: #408080; font-style: italic">#url解码</span>
-md5<span style="color: #666666">.</span>md5(<span style="color: #008000">str</span>)          <span style="color: #408080; font-style: italic">#md5</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">json.dumps(s)</span>         <span style="color: #999999; font-style: italic">#输出json</span>
+<span style="color: #d0d0d0">base64.b64encode(s)</span>   <span style="color: #999999; font-style: italic">#输出成base64</span>
+<span style="color: #d0d0d0">urllib.quote(</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">)</span>     <span style="color: #999999; font-style: italic">#url编码</span>
+<span style="color: #d0d0d0">urllib.unquote(</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic">#url解码</span>
+<span style="color: #d0d0d0">md5.md5(</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">)</span>          <span style="color: #999999; font-style: italic">#md5</span>
 </pre></div>
 
 
@@ -111,74 +111,74 @@ md5<span style="color: #666666">.</span>md5(<span style="color: #008000">str</sp
 线程池：<strong><em>threadpool</em></strong></p>
 <h2 id="_11">调试分析</h2>
 <h3 id="pdb">pdb</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">pdb<span style="color: #666666">.</span>set_trace()            <span style="color: #408080; font-style: italic">#设置断点</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">pdb.set_trace()</span>            <span style="color: #999999; font-style: italic">#设置断点</span>
 </pre></div>
 
 
 <h3 id="traceback">traceback</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">traceback<span style="color: #666666">.</span>print_stack()    <span style="color: #408080; font-style: italic">#显示堆栈</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">traceback.print_stack()</span>    <span style="color: #999999; font-style: italic">#显示堆栈</span>
 </pre></div>
 
 
 <h3 id="gc">gc</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">gc<span style="color: #666666">.</span>get_referrers(obj)      <span style="color: #408080; font-style: italic">#得到引用列表</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">gc.get_referrers(obj)</span>      <span style="color: #999999; font-style: italic">#得到引用列表</span>
 </pre></div>
 
 
 <h3 id="objgraph">objgraph</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">objgraph</span>
-browsers <span style="color: #666666">=</span> objgraph<span style="color: #666666">.</span>by_type(<span style="color: #BA2121">&#39;user_browser&#39;</span>)
-<span style="color: #408080; font-style: italic">#显示引用关系</span>
-objgraph<span style="color: #666666">.</span>show_backrefs(browsers[<span style="color: #666666">0</span>], max_depth<span style="color: #666666">=10</span>, filename<span style="color: #666666">=</span><span style="color: #BA2121">&quot;browser.dot&quot;</span>) 
-objgraph<span style="color: #666666">.</span>show_most_common_types(<span style="color: #666666">20</span>)  <span style="color: #408080; font-style: italic">#显示数量最多的类型</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">objgraph</span>
+<span style="color: #d0d0d0">browsers</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">objgraph.by_type(</span><span style="color: #ed9d13">&#39;user_browser&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #999999; font-style: italic">#显示引用关系</span>
+<span style="color: #d0d0d0">objgraph.show_backrefs(browsers[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">max_depth=</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">filename=</span><span style="color: #ed9d13">&quot;browser.dot&quot;</span><span style="color: #d0d0d0">)</span> 
+<span style="color: #d0d0d0">objgraph.show_most_common_types(</span><span style="color: #3677a9">20</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic">#显示数量最多的类型</span>
 </pre></div>
 
 
 <h3 id="line95profiler">line_profiler</h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">kernprof.py -l -v <span style="color: #19177C">$PyFile</span> <span style="color: #19177C">$PyArgs</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">kernprof.py -l -v <span style="color: #40ffff">$PyFile</span> <span style="color: #40ffff">$PyArgs</span>
 </pre></div>
 
 
 <h2 id="_12">模块安装</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#源码安装</span>
-<span style="color: #008000">export </span><span style="color: #19177C">PYTHONPATH</span><span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local/lib/python2.7/site-packages:<span style="color: #19177C">$PYTHONPATH</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#源码安装</span>
+<span style="color: #24909d">export </span><span style="color: #40ffff">PYTHONPATH</span><span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local/lib/python2.7/site-packages:<span style="color: #40ffff">$PYTHONPATH</span>
 python setup.py build
-python setup.py install --prefix<span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local
+python setup.py install --prefix<span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local
 
-<span style="color: #408080; font-style: italic">#pip</span>
-sudo apt-get install python-pip            <span style="color: #408080; font-style: italic">#安装pip</span>
-pip search <span style="color: #19177C">$PackageName</span>                    <span style="color: #408080; font-style: italic">#搜索包</span>
-sudo pip install <span style="color: #19177C">$PackageName</span>              <span style="color: #408080; font-style: italic">#安装包</span>
-sudo pip install --upgrade <span style="color: #19177C">$PackageName</span>    <span style="color: #408080; font-style: italic">#更新包</span>
+<span style="color: #999999; font-style: italic">#pip</span>
+sudo apt-get install python-pip            <span style="color: #999999; font-style: italic">#安装pip</span>
+pip search <span style="color: #40ffff">$PackageName</span>                    <span style="color: #999999; font-style: italic">#搜索包</span>
+sudo pip install <span style="color: #40ffff">$PackageName</span>              <span style="color: #999999; font-style: italic">#安装包</span>
+sudo pip install --upgrade <span style="color: #40ffff">$PackageName</span>    <span style="color: #999999; font-style: italic">#更新包</span>
 </pre></div>
 
 
 <h2 id="_13">工具</h2>
 <h3 id="pypy">PyPy解析器</h3>
 <h2 id="_14">未分类</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#美化显示</span>
-pp <span style="color: #666666">=</span> pprint<span style="color: #666666">.</span>PrettyPrinter(indent<span style="color: #666666">=4</span>)
-pp<span style="color: #666666">.</span>pprint(stuff)
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#美化显示</span>
+<span style="color: #d0d0d0">pp</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">pprint.PrettyPrinter(indent=</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">pp.pprint(stuff)</span>
 
-<span style="color: #408080; font-style: italic">#深度拷贝</span>
-obj2 <span style="color: #666666">=</span> copy<span style="color: #666666">.</span>deepcopy(obj1)
+<span style="color: #999999; font-style: italic">#深度拷贝</span>
+<span style="color: #d0d0d0">obj2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">copy.deepcopy(obj1)</span>
 
-<span style="color: #408080; font-style: italic">#类型判断</span>
-<span style="color: #008000">type</span>(<span style="color: #BA2121">u&#39;123&#39;</span>) <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">unicode</span>
-<span style="color: #008000">isinstance</span>(<span style="color: #BA2121">u&#39;123&#39;</span>, <span style="color: #008000">unicode</span>)
+<span style="color: #999999; font-style: italic">#类型判断</span>
+<span style="color: #24909d">type</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">u&#39;123&#39;</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">is</span> <span style="color: #24909d">unicode</span>
+<span style="color: #24909d">isinstance</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">u&#39;123&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">unicode</span><span style="color: #d0d0d0">)</span>
 
-<span style="color: #408080; font-style: italic">#参数解析</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">argparse</span>
-parser <span style="color: #666666">=</span> argparse<span style="color: #666666">.</span>ArgumentParser(description<span style="color: #666666">=</span><span style="color: #BA2121">&#39;say_hello&#39;</span>)
-parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--say_hello&#39;</span>, dest<span style="color: #666666">=</span><span style="color: #BA2121">&quot;say_hello&quot;</span>, action<span style="color: #666666">=</span><span style="color: #BA2121">&#39;store_true&#39;</span>)
-parser<span style="color: #666666">.</span>add_argument(<span style="color: #BA2121">&#39;--table&#39;</span>, <span style="color: #008000">type</span><span style="color: #666666">=</span><span style="color: #008000">str</span>, default<span style="color: #666666">=</span><span style="color: #BA2121">&#39;&#39;</span>)
-args <span style="color: #666666">=</span> parser<span style="color: #666666">.</span>parse_args()
-<span style="color: #008000; font-weight: bold">return</span> args  
+<span style="color: #999999; font-style: italic">#参数解析</span>
+<span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">argparse</span>
+<span style="color: #d0d0d0">parser</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">argparse.ArgumentParser(description=</span><span style="color: #ed9d13">&#39;say_hello&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">parser.add_argument(</span><span style="color: #ed9d13">&#39;--say_hello&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">dest=</span><span style="color: #ed9d13">&quot;say_hello&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">action=</span><span style="color: #ed9d13">&#39;store_true&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">parser.add_argument(</span><span style="color: #ed9d13">&#39;--table&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">type</span><span style="color: #d0d0d0">=</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">default=</span><span style="color: #ed9d13">&#39;&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">args</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">parser.parse_args()</span>
+<span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">args</span>  
 
-<span style="color: #408080; font-style: italic">#文件系统</span>
-os<span style="color: #666666">.</span>makedirs(path)    <span style="color: #408080; font-style: italic">#递归创建目录</span>
-os<span style="color: #666666">.</span>listdir(path)     <span style="color: #408080; font-style: italic">#列出目录内容</span>
-glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;*/*.gif&#39;</span>)     <span style="color: #408080; font-style: italic">#列出匹配的文件</span>
+<span style="color: #999999; font-style: italic">#文件系统</span>
+<span style="color: #d0d0d0">os.makedirs(path)</span>    <span style="color: #999999; font-style: italic">#递归创建目录</span>
+<span style="color: #d0d0d0">os.listdir(path)</span>     <span style="color: #999999; font-style: italic">#列出目录内容</span>
+<span style="color: #d0d0d0">glob.glob(</span><span style="color: #ed9d13">&#39;*/*.gif&#39;</span><span style="color: #d0d0d0">)</span>     <span style="color: #999999; font-style: italic">#列出匹配的文件</span>
 </pre></div>
 </body>
 </html>

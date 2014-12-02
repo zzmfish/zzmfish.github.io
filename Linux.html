@@ -8,37 +8,37 @@
 <body>
 <h1 id="linux">Linux经验技巧</h1>
 <h2 id="_1">系统监控</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看监听端口</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看监听端口</span>
 netstat -lnp --inet
 
-<span style="color: #408080; font-style: italic">#统计系统调用的耗时</span>
-strace -c -p <span style="color: #19177C">$Pid</span>
+<span style="color: #999999; font-style: italic">#统计系统调用的耗时</span>
+strace -c -p <span style="color: #40ffff">$Pid</span>
 
-<span style="color: #408080; font-style: italic">#分析进程IO</span>
+<span style="color: #999999; font-style: italic">#分析进程IO</span>
 iotop
 
-<span style="color: #408080; font-style: italic">#查看线程的CPU占用</span>
-top -H -p <span style="color: #19177C">$Pid</span>
+<span style="color: #999999; font-style: italic">#查看线程的CPU占用</span>
+top -H -p <span style="color: #40ffff">$Pid</span>
 </pre></div>
 
 
 <h2 id="_2">系统管理</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># 增加最大文件数</span>
-<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;zhouzm hard nofile 10240&quot;</span> &gt;&gt; /etc/security/limits.conf
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic"># 增加最大文件数</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;zhouzm hard nofile 10240&quot;</span> &gt;&gt; /etc/security/limits.conf
 restart
-<span style="color: #008000">ulimit</span> -n 10240
+<span style="color: #24909d">ulimit</span> -n 10240
 
-<span style="color: #408080; font-style: italic"># 添加用户</span>
-useradd <span style="color: #19177C">$UserName</span>
+<span style="color: #999999; font-style: italic"># 添加用户</span>
+useradd <span style="color: #40ffff">$UserName</span>
 
-<span style="color: #408080; font-style: italic"># 设置时间</span>
-date -s <span style="color: #BA2121">&quot;20:16&quot;</span>
+<span style="color: #999999; font-style: italic"># 设置时间</span>
+date -s <span style="color: #ed9d13">&quot;20:16&quot;</span>
 </pre></div>
 
 
 <h2 id="ssh">SSH</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#挂载远程目录</span>
-sshfs -p <span style="color: #19177C">$Port</span> <span style="color: #19177C">$User</span>@<span style="color: #19177C">$Host</span>:<span style="color: #19177C">$Path</span> <span style="color: #19177C">$LocalPath</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#挂载远程目录</span>
+sshfs -p <span style="color: #40ffff">$Port</span> <span style="color: #40ffff">$User</span>@<span style="color: #40ffff">$Host</span>:<span style="color: #40ffff">$Path</span> <span style="color: #40ffff">$LocalPath</span>
 </pre></div>
 
 
@@ -46,7 +46,7 @@ sshfs -p <span style="color: #19177C">$Port</span> <span style="color: #19177C">
 <ol>
 <li>本机生成密钥对</li>
 </ol>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">ssh-keygen -t rsa
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">ssh-keygen -t rsa
 </pre></div>
 
 
@@ -54,60 +54,66 @@ sshfs -p <span style="color: #19177C">$Port</span> <span style="color: #19177C">
 <li>把<code>~/.ssh/id_rsa.pub</code>的内容添加到目标主机<code>~/.ssh/authorized_keys</code>  </li>
 <li>设置目标主文件权限：</li>
 </ol>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">chmod 700 ~/.ssh
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 </pre></div>
 
 
 <h2 id="_3">文件管理</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查找24小时内修改过的文件</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查找24小时内修改过的文件</span>
 find -mtime 0
 
-<span style="color: #408080; font-style: italic">#查找断开的符号链接</span>
-find . -type l -! -exec <span style="color: #008000">test</span> -e <span style="color: #666666">{}</span> <span style="color: #BB6622; font-weight: bold">\;</span> -print
+<span style="color: #999999; font-style: italic">#查找断开的符号链接</span>
+find . -type l -! -exec <span style="color: #24909d">test</span> -e <span style="color: #d0d0d0">{}</span> <span style="color: #ed9d13">\;</span> -print
 
-<span style="color: #408080; font-style: italic">#查找大小为0的文件</span>
+<span style="color: #999999; font-style: italic">#查找大小为0的文件</span>
 find -size 0
 
-<span style="color: #408080; font-style: italic">#解压并更改目录名称</span>
-mkdir <span style="color: #19177C">$DirName</span>
-tar zxf hello.tgz -C <span style="color: #19177C">$DirName</span> --strip-components 1
+<span style="color: #999999; font-style: italic">#解压并更改目录名称</span>
+mkdir <span style="color: #40ffff">$DirName</span>
+tar zxf hello.tgz -C <span style="color: #40ffff">$DirName</span> --strip-components 1
 </pre></div>
 
 
 <ul>
 <li>SGID位</li>
 </ul>
-<h2 id="_4">其他</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#重新连接screen会话，必要时先detach</span>
-<span style="color: #008000">kill</span> -HUP <span style="color: #19177C">$ScreenPid</span>
+<h2 id="_4">文本处理</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#小写转大写</span>
+tr <span style="color: #ed9d13">&#39;[a-z]&#39;</span> <span style="color: #ed9d13">&#39;[A-Z]&#39;</span>
+
+<span style="color: #999999; font-style: italic">#计算字符个数（以“a”为例）</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;abcabcaaaaa&quot;</span> | tr -dc <span style="color: #ed9d13">&quot;a&quot;</span> | wc -c
+
+<span style="color: #999999; font-style: italic">#显示第100行</span>
+sed <span style="color: #ed9d13">&#39;100q;d&#39;</span> <span style="color: #40ffff">$File</span>
+
+<span style="color: #999999; font-style: italic">#删除空白行</span>
+sed <span style="color: #ed9d13">&quot;/^\s*$/d&quot;</span>
+
+<span style="color: #999999; font-style: italic">#输出匹配的组</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;a=1 b=2 c=3&quot;</span> | sed <span style="color: #ed9d13">&quot;s/.*b=\([0-9]\).*/\1/&quot;</span> <span style="color: #999999; font-style: italic">#匹配b=2，输出2</span>
+</pre></div>
+
+
+<h2 id="_5">其他</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#重新连接screen会话，必要时先detach</span>
+<span style="color: #24909d">kill</span> -HUP <span style="color: #40ffff">$ScreenPid</span>
 screen -d -r
 
-<span style="color: #408080; font-style: italic">#脚本退出杀掉所有子进程</span>
-<span style="color: #008000">trap</span> <span style="color: #BA2121">&quot;kill 0&quot;</span> SIGINT SIGTERM EXIT
+<span style="color: #999999; font-style: italic">#脚本退出杀掉所有子进程</span>
+<span style="color: #24909d">trap</span> <span style="color: #ed9d13">&quot;kill 0&quot;</span> SIGINT SIGTERM EXIT
 
-<span style="color: #408080; font-style: italic">#小写转大写</span>
-tr <span style="color: #BA2121">&#39;[a-z]&#39;</span> <span style="color: #BA2121">&#39;[A-Z]&#39;</span>
-
-<span style="color: #408080; font-style: italic">#显示第100行</span>
-sed <span style="color: #BA2121">&#39;100q;d&#39;</span> <span style="color: #19177C">$File</span>
-
-<span style="color: #408080; font-style: italic">#删除空白行</span>
-sed <span style="color: #BA2121">&quot;/^\s*$/d&quot;</span>
-
-<span style="color: #408080; font-style: italic">#输出匹配的组</span>
-<span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;a=1 b=2 c=3&quot;</span> | sed <span style="color: #BA2121">&quot;s/.*b=\([0-9]\).*/\1/&quot;</span> <span style="color: #408080; font-style: italic">#匹配b=2，输出2</span>
-
-<span style="color: #408080; font-style: italic">#上传文件</span>
+<span style="color: #999999; font-style: italic">#上传文件</span>
 rz
 
-<span style="color: #408080; font-style: italic">#下载文件</span>
-sz <span style="color: #19177C">$File</span>
+<span style="color: #999999; font-style: italic">#下载文件</span>
+sz <span style="color: #40ffff">$File</span>
 </pre></div>
 
 
 <p>bash下编辑命令：输完命令后按<strong><em>Ctrl-x Ctrl-e</em></strong></p>
-<h2 id="_5">未分类</h2>
+<h2 id="_6">未分类</h2>
 <p>SystemTap<br />
 kprobe<br />
 DTrace</p>

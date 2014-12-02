@@ -21,6 +21,9 @@
 #显示软件信息
 sudo apt-cache show -a $Package  
 
+#显示已安装软件
+dpkg --get-selections
+
 #显示文件所属软件
 apt-file search $File
 

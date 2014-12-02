@@ -57,11 +57,53 @@ delete obj[prop];
 node.removeChild(child);
 ```
 
+### 发送请求
+```
+#!javascript
+//异步POST请求
+var req = new XMLHttpRequest(); 
+req.onreadystatechange = function() {
+    if (req.readyState == 4) { //loaded
+        if (req.status == 200) { //ok
+            console.log(req.responseText); //应答内容
+        }
+    }
+}       
+req.open("POST", url, true);
+req.send(data);
+
+```
+
 ### 日期和时间
 ```
 #!javascript
 //时间戳（ms）
 var timeStamp = Date.now();
+```
+
+### 坐标
+```
+#!javascript
+//视窗滚动位置
+window.scrollX;
+window.scrollY;
+
+//视窗大小
+window.innerWidth;
+window.innerHeight;
+
+//元素相对视窗的位置
+elem.getBoundingClientRect()
+```
+
+### 数据处理
+```
+#!javascript
+//解析JSON
+var obj = eval('(' + json + ')');
+
+//URL编码
+var data = encodeURIComponent(value);
 ```
 
 ### 未分类

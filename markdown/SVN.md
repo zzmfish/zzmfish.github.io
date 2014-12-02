@@ -43,6 +43,11 @@ svn merge $Path -r$Version1:$Version2
 #!bash
 #切换服务器
 svn switch --relocate $Url1 $Url2
+
+#引用外部文件  
+#格式：svn路径（可使用相对路径） 本地路径
+svn propedit svn:externals  .
+
 ```
 
 * svn:externals属性

@@ -18,20 +18,20 @@
 <strong><em>-MM</em></strong>：生成.d依赖文件<br />
 <strong><em>-std</em></strong>：c++98/c++03/c++11/gnu++98/gnu++03/gnu++11  </p>
 <h2 id="_2">静态库</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#创建静态库</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#创建静态库</span>
 ar rcs libfoo.a foo.o
 
-<span style="color: #408080; font-style: italic">#解压静态库</span>
+<span style="color: #999999; font-style: italic">#解压静态库</span>
 ar x libfoo.a
 </pre></div>
 
 
 <h2 id="_3">动态库</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#创建动态库</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#创建动态库</span>
 gcc -o foo.o -fPIC foo.c
 gcc -shared -o libfoo.so foo.o
 
-<span style="color: #408080; font-style: italic">#显示依赖的动态库</span>
+<span style="color: #999999; font-style: italic">#显示依赖的动态库</span>
 ldd libfoo.so
 </pre></div>
 
@@ -41,18 +41,18 @@ ldd libfoo.so
 <li>弱符号</li>
 </ul>
 <h2 id="_4">符号信息</h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#查看符号表</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看符号表</span>
 objdump -t libfoo.so
 
-<span style="color: #408080; font-style: italic">#显示符号</span>
+<span style="color: #999999; font-style: italic">#显示符号</span>
 nm libfoo.so
 </pre></div>
 
 
 <h2 id="makefile">Makefile</h2>
 <p>编译规则</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #0000FF">%.o </span><span style="color: #666666">:</span> <span style="color: #666666">%.c</span>
-    <span style="color: #008000; font-weight: bold">$(</span>CC<span style="color: #008000; font-weight: bold">)</span> -c <span style="color: #008000; font-weight: bold">$(</span>CFLAGS<span style="color: #008000; font-weight: bold">)</span> <span style="color: #008000; font-weight: bold">$(</span>CPPFLAGS<span style="color: #008000; font-weight: bold">)</span> <span style="color: #19177C">$&lt;</span> -o <span style="color: #19177C">$@</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #447fcf">%.o </span><span style="color: #d0d0d0">:</span> <span style="color: #3677a9">%.c</span>
+    <span style="color: #6ab825; font-weight: bold">$(</span>CC<span style="color: #6ab825; font-weight: bold">)</span> -c <span style="color: #6ab825; font-weight: bold">$(</span>CFLAGS<span style="color: #6ab825; font-weight: bold">)</span> <span style="color: #6ab825; font-weight: bold">$(</span>CPPFLAGS<span style="color: #6ab825; font-weight: bold">)</span> <span style="color: #40ffff">$&lt;</span> -o <span style="color: #40ffff">$@</span>
 </pre></div>
 
 
@@ -60,7 +60,7 @@ nm libfoo.so
 <p>后缀替换：<code>OBJS=$(SRCS:.cpp=.o)</code></p>
 <h2 id="cmake">CMake</h2>
 <p>项目编译和安装：</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%">cmake -DCMAKE_INSTALL_PREFIX:PATH<span style="color: #666666">=</span><span style="color: #19177C">$HOME</span>/local 
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">cmake -DCMAKE_INSTALL_PREFIX:PATH<span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local 
 make
 make install  
 </pre></div>
