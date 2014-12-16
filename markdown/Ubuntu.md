@@ -43,6 +43,18 @@ grub-install --root-directory=/mnt /dev/sda
 update-grub2 #不是必须
 ```
 
+#### 启动器文件（后缀方式.desktop）
+```
+[Desktop Entry]
+Version=x.y
+Name=ProgramName
+Comment=This is my comment
+Exec=/home/alex/Documents/exec.sh
+Icon=/home/alex/Pictures/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;Application;
+```
 ## 其他
 ```
 #!bash

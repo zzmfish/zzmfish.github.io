@@ -21,10 +21,18 @@
 ## 代码折叠
 折叠{,}
 ```
+#!vim
 set foldmarker={,}
 set foldmethod=marker
 ```
 
 ## 其他
-保存语法高亮到html：`runtime! syntax/2html.vim`  
-重新加载文件：`edit`  
+```
+#!vim
+'保存语法高亮到html
+
+runtime! syntax/2html.vim
+
+'重新加载文件
+edit 
+```

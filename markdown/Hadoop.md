@@ -2,3 +2,26 @@
 
 
 ## Hive
+```
+#!sql
+show tables;
+```
+### HiveServer2
+## Yarn
+### ResourceManager
+#### Scheduler
+* ***resource container***是资源的抽象，每个container包括一定的内存、IO、网络等资源
+#### ApplicationsManager
+### ApplicationMaster
+
+## MapReduce
+### JobTracker
+### TaskTracker
+
+
+## HDFS
+
+## HBase
+
+## 发行版
+### CDH

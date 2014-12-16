@@ -66,3 +66,10 @@ select DISTINCT ColumnName from TableName;
 #表的行数
 SELECT COUNT(*) FROM TableName;
 ```
+
+## 索引
+* 最左前缀匹配原则
+
+## 未分类
+* explain
+* SQL_NO_CACHE

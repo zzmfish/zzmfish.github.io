@@ -50,6 +50,13 @@ echo {1..5}
 echo `seq 1 5`
 ```
 
+#### 多行输入
+```
+#!bash
+cat>test1<<EOF
+hello
+EOF
+```
 ##其他
 ***.***是***true***的别名
 

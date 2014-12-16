@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Python数据类型</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="python">Python数据类型</h1>
+<h4 id="_1">常量</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">__builtins__</span>    <span style="color: #999999; font-style: italic">#全局的内置符号，可以添加删除项  </span>
+<span style="color: #d0d0d0">__file__</span>        <span style="color: #999999; font-style: italic">#py文件全路径  </span>
+<span style="color: #d0d0d0">__name__</span>        <span style="color: #999999; font-style: italic">#&#39;__main__&#39;</span>
+</pre></div>
+
+
+<h4 id="_2">整数</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">sys.maxint</span>   <span style="color: #999999; font-style: italic">#最大整数</span>
+</pre></div>
+
+
+<h4 id="_3">列表</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">squares</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[x**</span><span style="color: #3677a9">2</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">x</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">)]</span>    <span style="color: #999999; font-style: italic">#列表推导式</span>
+<span style="color: #d0d0d0">lst.sort()</span>                             <span style="color: #999999; font-style: italic">#排序</span>
+<span style="color: #d0d0d0">random.shuffle(lst)</span>                    <span style="color: #999999; font-style: italic">#打乱顺序</span>
+<span style="color: #6ab825; font-weight: bold">del</span> <span style="color: #d0d0d0">lst[i]</span>                             <span style="color: #999999; font-style: italic">#删除给定索引的元素</span>
+<span style="color: #d0d0d0">lst.remove(v)</span>                          <span style="color: #999999; font-style: italic">#删除给定值的元素</span>
+<span style="color: #d0d0d0">lst.insert(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">v)</span>                       <span style="color: #999999; font-style: italic">#在前面插入</span>
+<span style="color: #d0d0d0">lst.append(v)</span>                          <span style="color: #999999; font-style: italic">#在后面插入</span>
+</pre></div>
+
+
+<h4 id="_4">集合</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">s.add(x)</span>        <span style="color: #999999; font-style: italic">#添加一个元素</span>
+<span style="color: #d0d0d0">s.remove(x)</span>     <span style="color: #999999; font-style: italic">#删除一个元素，或抛出KeyError</span>
+<span style="color: #d0d0d0">s.discard(x)</span>    <span style="color: #999999; font-style: italic">#删除一个元素</span>
+<span style="color: #d0d0d0">s.pop()</span>         <span style="color: #999999; font-style: italic">#弹出一个元素，或抛出KeyError</span>
+<span style="color: #d0d0d0">s.update(s2)</span>    <span style="color: #999999; font-style: italic">#合并集合</span>
+<span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">s.union(s2)</span> <span style="color: #999999; font-style: italic">#合并集合</span>
+</pre></div>
+
+
+<h4 id="_5">对象拷贝</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">obj2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">copy.deepcopy(obj1)</span>
+</pre></div>
+
+
+<h4 id="_6">类型判断</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #24909d">type</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">u&#39;123&#39;</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">is</span> <span style="color: #24909d">unicode</span>
+<span style="color: #24909d">isinstance</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">u&#39;123&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">unicode</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+</body>
+</html>
+

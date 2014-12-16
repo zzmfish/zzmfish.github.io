@@ -40,3 +40,13 @@ self.render('main.html', foo=foo)
 #!plain
 {{ foo }} //变量
 ```
+
+
+
+```uml
+class web.RequestHandler
+class httputil.HTTPServerRequest {
+    + arguments
+}
+web.RequestHandler o-- httputil.HTTPServerRequest: request
+```

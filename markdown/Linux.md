@@ -31,31 +31,31 @@ useradd $UserName
 date -s "20:16"
 ```
 
+### rpm安装
+```
+#!bash
+#安装到指定位置
+rpm -i --prefix=$InstallPath $RpmFile
+
+#列出安装包的文件
+rpm -qpl $RpmFile
+
+#解压安装包
+rpm2cpio $RpmFile | cpio -div
+```
+
 ## SSH
 ```
 #!bash
 #挂载远程目录
 sshfs -p $Port $User@$Host:$Path $LocalPath
 ```
-### ssh无密码登录
-1. 本机生成密钥对
-```
-#!bash
-ssh-keygen -t rsa
-```  
-2. 把`~/.ssh/id_rsa.pub`的内容添加到目标主机`~/.ssh/authorized_keys`  
-3. 设置目标主文件权限：
-```
-#!bash
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/authorized_keys
-```
 
 ## 文件管理
 ```
 #!bash
 #查找24小时内修改过的文件
-find -mtime 0
+find -mtime 0 -type f
 
 #查找断开的符号链接
 find . -type l -! -exec test -e {} \; -print
@@ -110,4 +110,9 @@ bash下编辑命令：输完命令后按***Ctrl-x Ctrl-e***
 ## 未分类
 SystemTap  
 kprobe  
-DTrace
+DTrace  
+rsync  
+iptables
+
+## 环境变量
+PKG_CONFIG_PATH

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>python第三方库</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="python">python第三方库</h1>
+<h2 id="_1">安装</h2>
+<h4 id="_2">源码安装</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #24909d">export </span><span style="color: #40ffff">PYTHONPATH</span><span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local/lib/python2.7/site-packages:<span style="color: #40ffff">$PYTHONPATH</span>
+python setup.py build  <span style="color: #999999; font-style: italic">#或build_ext，不知有什么区别</span>
+python setup.py install --prefix<span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local
+</pre></div>
+
+
+<h4 id="pip">pip</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo apt-get install python-pip            <span style="color: #999999; font-style: italic">#安装pip</span>
+pip search <span style="color: #40ffff">$PackageName</span>                    <span style="color: #999999; font-style: italic">#搜索包</span>
+sudo pip install <span style="color: #40ffff">$PackageName</span>              <span style="color: #999999; font-style: italic">#安装包</span>
+sudo pip install --upgrade <span style="color: #40ffff">$PackageName</span>    <span style="color: #999999; font-style: italic">#更新包</span>
+</pre></div>
+
+
+<h3 id="_3">第三方库</h3>
+<p>网络爬虫：<strong><em>Scrapy</em></strong><br />
+网站开发：<strong><em>tornado</em></strong><br />
+代码高亮：<strong><em>Pygments</em></strong>  <br />
+模板引擎：<strong><em>jinja2</em></strong><br />
+矩阵运算：<strong><em>numpy</em></strong><br />
+科学计算：<strong><em>SciPy</em></strong><br />
+作图：<strong><em>matplotlib</em></strong><br />
+线程池：<strong><em>threadpool</em></strong></p>
+</body>
+</html>
+
