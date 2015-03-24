@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>元数组</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">元数组</h2>
+<ul>
+<li>表的定义</li>
+<li>HDFS物理块的位置</li>
+<li>原数组缓存</li>
+<li>INVALIDATE METADATA命令：新表、删除表、HDFS均衡</li>
+<li>REFRESH命令：新文件</li>
+</ul>
+<h2 id="_2">统计数据</h2>
+<h3 id="_3">表格统计</h3>
+<ul>
+<li>COMPUTE STATS</li>
+<li>DROP STATS</li>
+<li>SHOW TABLE STATS</li>
+<li>SHOW COLUMN STATS</li>
+</ul>
+<h3 id="_4">列统计</h3>
+<h2 id="_5">组件</h2>
+<h3 id="impala-daemon">Impala Daemon</h3>
+<ul>
+<li>impalad </li>
+<li>每个节点，传递查询请求和结果</li>
+<li>--load_catalog_in_background=false：等待元数据加载完成才处理请求</li>
+</ul>
+<h3 id="the-impala-statestore">The Impala Statestore</h3>
+<ul>
+<li>statestored</li>
+<li>每集群一个</li>
+<li>检查deamon的状况</li>
+</ul>
+<h3 id="impala-catalog-service">Impala Catalog Service</h3>
+<ul>
+<li>catalogd</li>
+<li>转播元数据，通过statestore转发</li>
+<li>每集群一个，和statestore在同一个节点</li>
+<li>1.2以上，impala本身的操作不需要refresh</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#刷新元数据</span>
+impala-shell -r -q <span style="color: #ed9d13">&quot;quit;&quot;</span>
+
+
+<span style="color: #999999; font-style: italic">#更新统计数据，帮助性能优化</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;compute STATS $TableName;&quot;</span> impala-shell
+</pre></div>
+
+
+<h2 id="_6">性能优化</h2>
+<ul>
+<li>分区</li>
+<li>使用Parquet格式 <a href="http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_parquet.html">链接</a></li>
+</ul>
+<h2 id="_7">参考资料</h2>
+<ul>
+<li><a href="http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_performance.html">Tuning Impala for Performance</a></li>
+<li><a href="http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_perf_cookbook.html">Impala Performance Guidelines and Best Practices</a></li>
+</ul>
+</body>
+</html>

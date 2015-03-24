@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>机器学习</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="_1">机器学习</h1>
+<h2 id="_2">朴素贝叶斯</h2>
+<ul>
+<li>贝叶斯定理：<img alt="" src="http://latex.codecogs.com/png.latex?P%28B%7CA%29%3D%5Cfrac%7BP%28A%7CB%29%5Ccdot%20P%28B%29%29%7D%7BP%28A%29%7D" /></li>
+<li>对于给出的待分类项，求解在此项出现的条件下各个类别出现的概率，哪个最大，就认为此待分类项属于哪个类别</li>
+<li>max { P(类别|特征) }</li>
+</ul>
+<h2 id="_3">逻辑回归</h2>
+<ul>
+<li>Sigmoid函数：<img alt="" src="http://latex.codecogs.com/svg.latex?%5Cdpi%7B120%7D%20%5Csigma%28z%29%3D%5Cfrac1%7B1%2Be%5E%7B-z%7D%7D" /></li>
+<li>梯度上升法</li>
+</ul>
+<h2 id="k">K均值聚类</h2>
+<h6 id="_4">步骤</h6>
+<ol>
+<li>从元素集合D中随机取k个元素，作为k个簇的各自的中心</li>
+<li>分别计算剩下的元素到k个簇中心的相异度，将这些元素分别划归到相异度最低的簇</li>
+<li>根据聚类结果，重新计算k个簇各自的中心，计算方法是取簇中所有元素各自维度的算术平均数</li>
+<li>将D中全部元素按照新的中心重新聚类</li>
+<li>重复第4步，直到聚类结果不再变化</li>
+<li>将结果输出</li>
+</ol>
+<p><img alt="" src="http://shiyanjun.cn/wp-content/uploads/2013/12/k-means.png" /></p>
+<h2 id="_5">矩阵分解</h2>
+<p>下图是用户对物品的评分。“-”表示没有评分，需要被预测。  </p>
+<p><img alt="" src="http://images.cnitblog.com/i/568636/201404/081318572153797.png" /></p>
+<p>R是评分矩阵，P是用户对主题的关系，Q是主题对物品的关系，则有： <br />
+<img alt="" src="http://latex.codecogs.com/png.latex?R%5Capprox%20P%5Ctimes%20Q" /></p>
+<p>目标是所有非缺失项的损失最小：<br />
+<img alt="" src="http://latex.codecogs.com/png.latex?%5Csum%20%5Csqrt%7B%28r_%7Bij%7D%20-%20%5Chat%7Br%7D_%7Bij%7D%29%5E2%7D" /></p>
+<p>求解方法：梯度下降法。</p>
+<h6 id="_6">参考资料</h6>
+<ul>
+<li><a href="http://www.cnblogs.com/kobedeshow/p/3651833.html">基于矩阵分解的推荐算法，简单入门</a></li>
+</ul>
+</body>
+</html>

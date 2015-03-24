@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>!bash</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#列出文件</span>
+hadoop dfs -ls
+hadoop dfs -ls <span style="color: #40ffff">$DirName</span>
+
+<span style="color: #999999; font-style: italic">#创建目录</span>
+hadoop dfs -mkdir <span style="color: #40ffff">$DirName</span>
+
+<span style="color: #999999; font-style: italic">#上传文件</span>
+hadoop dfs -put <span style="color: #40ffff">$LocalFiles</span> <span style="color: #40ffff">$DirName</span>
+
+<span style="color: #999999; font-style: italic">#下载文件</span>
+hadoop dfs -get <span style="color: #40ffff">$DirName</span> <span style="color: #40ffff">$LocalDir</span>
+
+<span style="color: #999999; font-style: italic">#下载合并的文件</span>
+hadoop dfs -getmerge <span style="color: #40ffff">$DirName</span> <span style="color: #40ffff">$LocalFile</span>
+
+<span style="color: #999999; font-style: italic">#删除目录</span>
+hadoop dfs -rm -r <span style="color: #40ffff">$DirName</span>
+
+<span style="color: #999999; font-style: italic">#显示文件</span>
+hadoop dfs -cat <span style="color: #40ffff">$FileName</span>
+
+<span style="color: #999999; font-style: italic">#显示目录所占空间</span>
+hdfs dfs -du -s -h <span style="color: #40ffff">$DirName</span>
+
+<span style="color: #999999; font-style: italic">#检查文件存在</span>
+hdfs dfs -test -e <span style="color: #40ffff">$FileName</span>
+</pre></div>
+
+
+<h2 id="_1">权限</h2>
+<ul>
+<li>类似POSIX模型</li>
+<li>支持ACL</li>
+</ul>
+<h2 id="_2">参考</h2>
+<ul>
+<li><a href="http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html">HDFS Permissions Guide</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hive简介</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="hive">Hive简介</h1>
+<h2 id="_1">简介</h2>
+<ul>
+<li>基于Hadoop文件系统之上的数据仓库架构</li>
+</ul>
+<h2 id="_2">数据存储</h2>
+<h3 id="_3">表</h3>
+<ul>
+<li>每个表都有一个对应的<strong><em>存储目录</em></strong></li>
+</ul>
+<h3 id="_4">分区</h3>
+<ul>
+<li>对应数据库中相应分区列的一个<strong><em>索引</em></strong></li>
+<li>对应表下的一个目录</li>
+</ul>
+<h3 id="_5">桶</h3>
+<ul>
+<li>在对指定列进行<strong><em>哈希</em></strong>计算时，会根据哈希值切分数据，使每个桶对应一个<strong><em>文件</em></strong></li>
+</ul>
+<h3 id="_6">外部表</h3>
+<ul>
+<li>指向HDFS中已经存在的数据</li>
+<li>创建外部表不会移动数据到数据仓库目录</li>
+<li>删除一个外部表，仅删除元数据，表中的数据不会被删除</li>
+</ul>
+<h2 id="_7">元数据存储</h2>
+<ul>
+<li>存储在RDBMS（如MySQL、Derby）</li>
+</ul>
+<h3 id="_8">模式</h3>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>工作方式</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single User Mode</td>
+<td>连接到内存数据库Derby</td>
+<td>一般用于测试</td>
+</tr>
+<tr>
+<td>Multi User Mode</td>
+<td>通过网络连接到数据库</td>
+<td>最常用</td>
+</tr>
+<tr>
+<td>Remote Server Mode</td>
+<td>在服务器启动一个MetaStoreServer，在客户端利用Thrift协议通过MetaStoreServer访问元数据库</td>
+<td>非Java客户端访问元数据库</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">扩展</h2>
+<h3 id="udf">UDF</h3>
+<h3 id="udaf">UDAF</h3>
+<h3 id="udtf">UDTF</h3>
+<h2 id="_10">组件</h2>
+<h3 id="hcatalog">HCatalog</h3>
+<ul>
+<li>使其他数据处理工具（Pig、MapReduce）可以读写数据</li>
+</ul>
+<h3 id="webhcat">WebHCat</h3>
+<ul>
+<li>通过HTTP接口进行操作</li>
+</ul>
+<h2 id="_11">参考</h2>
+<ul>
+<li><a href="https://cwiki.apache.org/confluence/display/Hive/Home">Hive Wiki</a></li>
+</ul>
+</body>
+</html>

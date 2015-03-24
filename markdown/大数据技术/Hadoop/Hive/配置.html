@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hive配置</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="hive">Hive配置</h1>
+<h2 id="_1">配置文件</h2>
+<ul>
+<li>用户自定义：hive-site.xml</li>
+<li>默认配置：hive-default.xml</li>
+</ul>
+<h2 id="_2">运行时配置</h2>
+<p>CLI命令设定的作用域都是SESSION级的，只对本次操作有效</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #cd2828; font-weight: bold">#设置参数，如：</span>
+<span style="color: #d0d0d0">set</span> <span style="color: #d0d0d0">mapred.reduce.tasks=</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #cd2828; font-weight: bold">#查看所有信息</span>
+<span style="color: #d0d0d0">set</span> <span style="color: #d0d0d0">-v</span>
+</pre></div>
+
+
+<h2 id="_3">设置本地模式</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #cd2828; font-weight: bold">#设置Hive查询在本地运行</span>
+<span style="color: #d0d0d0">set</span> <span style="color: #d0d0d0">mapred.job.tracker=local;</span>
+
+<span style="color: #cd2828; font-weight: bold">#在本地自动运行MapReduce任务</span>
+<span style="color: #d0d0d0">set</span> <span style="color: #d0d0d0">hive.exec.mode.local.</span><span style="color: #6ab825; font-weight: bold">auto</span><span style="color: #d0d0d0">=</span><span style="color: #24909d">true</span><span style="color: #d0d0d0">;</span>
+</pre></div>
+
+
+<h2 id="_4">错误日志</h2>
+<p>默认存储在：/tmp/用户名/hive.log</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#设置在终端看到日志内容</span>
+bin/hive -hiveconf hive.root.logger<span style="color: #d0d0d0">=</span>INFO,console
+
+<span style="color: #999999; font-style: italic">#改变日志等级</span>
+bin/hive -hiveconf hive.root.logger<span style="color: #d0d0d0">=</span>INFO,DRFA
+</pre></div>
+</body>
+</html>

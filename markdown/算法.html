@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>B+树</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="b">B+树</h2>
+<ul>
+<li>每个节点是一个磁盘块</li>
+<li>叶子节点存储真实数据</li>
+<li>非叶子节点存储指引搜索方向的数据项</li>
+</ul>
+<h2 id="bloom-filter">Bloom Filter</h2>
+<ul>
+<li>当一个元素被加入集合时，通过K个Hash函数将这个元素映射成一个位阵列（Bit array）中的K个点，把它们置为1</li>
+<li>检索时，我们只要看看这些点是不是都是1就（大约）知道集合中有没有它了</li>
+<li>如果这些点有任何一个0，则被检索元素一定不在</li>
+<li>如果都是1，则被检索元素很可能在</li>
+</ul>
+</body>
+</html>

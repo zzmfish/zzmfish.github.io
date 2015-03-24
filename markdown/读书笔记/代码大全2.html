@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>《代码大全2》读书笔记</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="2">《代码大全2》读书笔记</h1>
+<h2 id="_1">软件构建中的设计</h2>
+<blockquote>
+<p>要避免做出“聪明”的设计。应该做出简单且易于理解的设计。  </p>
+<p><strong>高扇入</strong>是让大量的类使用某个给定的类。</p>
+<p><strong>低扇出</strong>是让一个类里少量或适中地使用其他的类。</p>
+<p>尽量使用标准的、常用的方法，让整个系统给人一种熟悉的感觉。  </p>
+<p>通过限制子系统之间的通信来让每个子系统更有存在意义。</p>
+</blockquote>
+<h2 id="_2">类</h2>
+<blockquote>
+<p><strong>抽象数据类型</strong>指一些数据以及对这些数据所进行操作的集合。</p>
+<p><strong>继承</strong>给程序增加了复杂度，因此它是一种危险的技术。</p>
+</blockquote>
+<h2 id="_3">高质量的子程序</h2>
+<blockquote>
+<p><strong>内聚性</strong>是指子程序中各种操作之间联系的紧密程序。</p>
+<p><strong>功能上的内聚性</strong> 是说一个子程序仅执行一项操作。</p>
+</blockquote>
+<h2 id="_4">防御式编程</h2>
+<blockquote>
+<p>子程序应该不因传入错误数据而被破坏，哪怕是由其他子程序产生的错误数据。</p>
+</blockquote>
+<h2 id="_5">伪代码编程过程</h2>
+<h2 id="_6">使用变量的一般事项</h2>
+<blockquote>
+<p>把一个变量的引用点尽可能集中在一起。</p>
+<p>尽可能缩短变量的存活时间。</p>
+</blockquote>
+<h2 id="_7">变量名</h2>
+<blockquote>
+<p>一个好记的名字反映的通常都是问题，而不是解决方案。</p>
+<p>命名规则的存在为你的代码增加了结构，减少了你需要考虑的事情。</p>
+</blockquote>
+<h2 id="_8">基本数据类型</h2>
+<blockquote>
+<p>浮点数避免等量判断。</p>
+<p>把布尔表达式的结果付给一个变量，从而使得这一判断的含义变得更加明显。</p>
+</blockquote>
+<h2 id="_9">不常见的数据类型</h2>
+<blockquote>
+<p>把指针操作限制在子程序或者类里面。</p>
+<p>全局变量破坏了模块化和智力上的可管理性。</p>
+</blockquote>
+<h2 id="_10">直线型代码</h2>
+<blockquote>
+<p>让程序易于自上而下阅读，而不是让读者的目光跳来跳去。</p>
+</blockquote>
+<h2 id="_11">条件语句</h2>
+<h2 id="_12">控制循环</h2>
+<blockquote>
+<p>注意三种情况：开始的情况，任意选择的中间情况，以及最终的情况。</p>
+<p>把嵌套限制在3层以内。</p>
+</blockquote>
+<h2 id="_13">不常见的控制结构</h2>
+<blockquote>
+<p>把递归限制在一个子程序内。循环递归（A -&gt; B -&gt; C -&gt; A）非常危险，因为它很难检查。</p>
+<p>goto会破坏代码应该严格自上而下运行的原则。</p>
+</blockquote>
+<h2 id="_14">表驱动法</h2>
+<h2 id="_15">一般控制问题</h2>
+<blockquote>
+<p>复杂的代码表明你还没有充分地理解你的程序，所以无法简化它。</p>
+<p><strong>结构化编程</strong>的核心思想就是一个应用程序应该只采用一些单入单出的控制结构。</p>
+</blockquote>
+<h2 id="_16">软件质量概述</h2>
+<blockquote>
+<p>提高生产效率和改善质量的最佳途径就是减少花在代码返工上的时间。</p>
+</blockquote>
+<h2 id="_17">协同构建</h2>
+<blockquote>
+<p><strong>协同构建</strong>包括结对编程、正式检查、非正式技术复查、文档阅读、以及其他让开发人员共同承担创建代码及其他工作产品责任的技术。</p>
+</blockquote>
+<h2 id="_18">开发者测试</h2>
+<h2 id="_19">调试</h2>
+<h2 id="_20">重构</h2>
+<blockquote>
+<p><strong>重构</strong>是在不改变软件外部行为的前提下，对其内部结构进行改变，使之更容易理解并便于修改。</p>
+</blockquote>
+</body>
+</html>

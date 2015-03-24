@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>存储引擎</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">存储引擎</h2>
+<h3 id="myisam">MyISAM</h3>
+<h6 id="_2">优点</h6>
+<ul>
+<li>筛选大量数据时非常迅速</li>
+<li>允许同时选择和插入数据</li>
+</ul>
+<h6 id="_3">缺点</h6>
+<ul>
+<li>无法处理事务</li>
+<li>表锁</li>
+</ul>
+<h3 id="innodb">InnoDB</h3>
+<h6 id="_4">优点</h6>
+<ul>
+<li>事务</li>
+<li>适合更新密集的表</li>
+<li>自动灾难恢复</li>
+<li>支持外键</li>
+<li>列AUTO_INCREMENT</li>
+<li>行锁</li>
+</ul>
+<h6 id="_5">缺点</h6>
+<h3 id="memory">MEMORY</h3>
+<p>在内存中存储表数据</p>
+<h6 id="_6">优点</h6>
+<ul>
+<li>高性能</li>
+</ul>
+<h6 id="_7">缺点</h6>
+<ul>
+<li>进程崩溃会丢失数据</li>
+<li>不能使用长度可变的数据类型（如BLOB和TEXT）</li>
+<li>支持散列索引和B树索引</li>
+</ul>
+<h3 id="merge">MERGE</h3>
+<p>几个相同MyISAM表的聚合器</p>
+<h3 id="archive">ARCHIVE</h3>
+<h6 id="_8">优点</h6>
+<ul>
+<li>数据压缩</li>
+</ul>
+<h6 id="_9">缺点</h6>
+<ul>
+<li>只支持基本的插入和查询</li>
+</ul>
+<h3 id="_10">参考</h3>
+<ul>
+<li><a href="http://www.jellythink.com/archives/640">MySQL存储引擎介绍</a></li>
+</ul>
+</body>
+</html>

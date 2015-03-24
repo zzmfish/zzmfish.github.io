@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文本处理</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">文本处理</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#小写转大写</span>
+tr <span style="color: #ed9d13">&#39;[a-z]&#39;</span> <span style="color: #ed9d13">&#39;[A-Z]&#39;</span>
+
+<span style="color: #999999; font-style: italic">#计算字符个数（以“a”为例）</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;abcabcaaaaa&quot;</span> | tr -dc <span style="color: #ed9d13">&quot;a&quot;</span> | wc -c
+
+<span style="color: #999999; font-style: italic">#显示第100行</span>
+sed <span style="color: #ed9d13">&#39;100q;d&#39;</span> <span style="color: #40ffff">$File</span>
+
+<span style="color: #999999; font-style: italic">#删除空白行</span>
+sed <span style="color: #ed9d13">&quot;/^\s*$/d&quot;</span>
+
+<span style="color: #999999; font-style: italic">#输出匹配的组</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;a=1 b=2 c=3&quot;</span> | sed <span style="color: #ed9d13">&quot;s/.*b=\([0-9]\).*/\1/&quot;</span> <span style="color: #999999; font-style: italic">#匹配b=2，输出2</span>
+
+<span style="color: #999999; font-style: italic">#交换两列</span>
+awk <span style="color: #ed9d13">&#39;{ print $2&quot; &quot;$1; }&#39;</span>
+</pre></div>
+</body>
+</html>

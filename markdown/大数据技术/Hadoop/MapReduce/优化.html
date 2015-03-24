@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>压缩Map输出结果</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>优化方法</th>
+<th>优化原理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>把小文件合并成大文件</td>
+<td>Hadoop擅长处理少量的大数据</td>
+</tr>
+<tr>
+<td>使用CombineFileInputFormat</td>
+<td>把多个文件打包到输入单元</td>
+</tr>
+<tr>
+<td>合理设置block块大小</td>
+<td>每个block作为一个InputSplit</td>
+</tr>
+<tr>
+<td>合理设置Map/Reduce任务数量</td>
+<td></td>
+</tr>
+<tr>
+<td>combile函数</td>
+<td>通过本地合并减少网络传输</td>
+</tr>
+<tr>
+<td>压缩Map输出结果</td>
+<td>减少网络传输</td>
+</tr>
+<tr>
+<td>压缩最终结果</td>
+<td>减少写HDFS的时间</td>
+</tr>
+<tr>
+<td>过滤数据</td>
+<td>降低数据处理的规模</td>
+</tr>
+</tbody>
+</table>
+<h4 id="map">压缩Map输出结果</h4>
+<h5 id="mapreduce">MapReduce数据交换</h5>
+<p>Map输出 -&gt; 内存缓冲区 -&gt; 磁盘 -&gt; Reduce任务节点</p>
+<h5 id="_1">压缩的好处</h5>
+<ul>
+<li>减少存储文件的空间</li>
+<li>加快数据在网络上德传输速度</li>
+<li>减少数据在内存和磁盘间交换的时间</li>
+</ul>
+<h5 id="_2">设置方法</h5>
+<ul>
+<li>mapred.compress.map.output = true</li>
+<li>mapred.map.output.compression.codec设置压缩格式</li>
+</ul>
+<h4 id="_3">过滤数据</h4>
+<ul>
+<li>使用BloomFilter</li>
+</ul>
+<h4 id="_4">修改作业属性</h4>
+<ul>
+<li>mapred.tasktracker.map.tasks.maximum：最大Map任务数</li>
+<li>mapred.tasktracker.reduce.tasks.maximum：最大Reduce任务数</li>
+</ul>
+</body>
+</html>

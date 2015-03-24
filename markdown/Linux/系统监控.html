@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Linux系统监控</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="linux">Linux系统监控</h1>
+<h4 id="top">top</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看进程</span>
+top
+
+<span style="color: #999999; font-style: italic">#查看线程的CPU占用</span>
+top -H -p <span style="color: #40ffff">$Pid</span>
+
+<span style="color: #999999; font-style: italic">#按内存占用排序</span>
+top -a
+<span style="color: #999999; font-style: italic">#或</span>
+top -o RES
+</pre></div>
+
+
+<h4 id="iotop">iotop</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#分析进程IO</span>
+iotop
+</pre></div>
+
+
+<h4 id="strace">strace</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#统计系统调用的耗时</span>
+strace -c -p <span style="color: #40ffff">$Pid</span>
+
+<span style="color: #999999; font-style: italic">#查看进程的系统调用</span>
+strace <span style="color: #40ffff">$Program</span> <span style="color: #40ffff">$Arguments</span>
+</pre></div>
+
+
+<h4 id="sar">sar</h4>
+<h4 id="vmstat">vmstat</h4>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Python常用例程</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="python">Python常用例程</h1>
+<h4 id="_1">正则表达式</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">re.match(pattern,</span> <span style="color: #d0d0d0">string)</span>      <span style="color: #999999; font-style: italic">#匹配开头</span>
+<span style="color: #d0d0d0">re.search(pattern,</span> <span style="color: #d0d0d0">string)</span>     <span style="color: #999999; font-style: italic">#匹配任意位置  </span>
+<span style="color: #d0d0d0">re.findall(pattern,</span> <span style="color: #d0d0d0">string)</span>    <span style="color: #999999; font-style: italic">#匹配全部</span>
+</pre></div>
+
+
+<h4 id="_2">字符集</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">f</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">codecs.open(</span><span style="color: #ed9d13">&#39;out.txt&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">mode=</span><span style="color: #ed9d13">&quot;w&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">encoding=</span><span style="color: #ed9d13">&quot;utf-8&quot;</span><span style="color: #d0d0d0">)</span> <span style="color: #999999; font-style: italic">#以指定编码打开文件</span>
+</pre></div>
+
+
+<h4 id="_3">文件系统</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">os.makedirs(path)</span>    <span style="color: #999999; font-style: italic">#递归创建目录</span>
+<span style="color: #d0d0d0">os.listdir(path)</span>     <span style="color: #999999; font-style: italic">#列出目录内容</span>
+<span style="color: #d0d0d0">glob.glob(</span><span style="color: #ed9d13">&#39;*/*.gif&#39;</span><span style="color: #d0d0d0">)</span>     <span style="color: #999999; font-style: italic">#列出匹配的文件</span>
+
+<span style="color: #999999; font-style: italic">#遍历目录的文件</span>
+<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">root,</span> <span style="color: #d0d0d0">dirs,</span> <span style="color: #d0d0d0">files</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">os.walk(config.md_dir,</span> <span style="color: #d0d0d0">followlinks=</span><span style="color: #24909d">False</span><span style="color: #d0d0d0">):</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">file_name</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">files:</span>
+        <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">os.path.join(root,</span> <span style="color: #d0d0d0">file_name)</span>
+</pre></div>
+
+
+<h4 id="_4">数据编码</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">json.dumps(s)</span>         <span style="color: #999999; font-style: italic">#输出json</span>
+<span style="color: #d0d0d0">base64.b64encode(s)</span>   <span style="color: #999999; font-style: italic">#输出成base64</span>
+<span style="color: #d0d0d0">urllib.quote(</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">)</span>     <span style="color: #999999; font-style: italic">#url编码</span>
+<span style="color: #d0d0d0">urllib.unquote(</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic">#url解码</span>
+<span style="color: #d0d0d0">md5.md5(</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">)</span>          <span style="color: #999999; font-style: italic">#md5</span>
+</pre></div>
+
+
+<h4 id="_5">参数解析</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">parser</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">argparse.ArgumentParser()</span>
+<span style="color: #d0d0d0">parser.add_argument(</span><span style="color: #ed9d13">&#39;--say_hello&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">dest=</span><span style="color: #ed9d13">&quot;say_hello&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">action=</span><span style="color: #ed9d13">&#39;store_true&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">parser.add_argument(</span><span style="color: #ed9d13">&#39;--table&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">type</span><span style="color: #d0d0d0">=</span><span style="color: #24909d">str</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">default=</span><span style="color: #ed9d13">&#39;&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">args</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">parser.parse_args()</span>
+</pre></div>
+
+
+<h4 id="_6">调用动态库</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">api</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ctypes.CDLL(</span><span style="color: #ed9d13">&#39;libfoo.so&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">DLFCN.RTLD_LAZY)</span>
+<span style="color: #d0d0d0">api.foo.argtypes</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[ctypes.c_char_p,</span> <span style="color: #d0d0d0">ctypes.c_int]</span>
+<span style="color: #d0d0d0">api.foo.restype</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ctypes.c_int</span>
+<span style="color: #d0d0d0">res</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">api.foo(msg,</span> <span style="color: #24909d">len</span><span style="color: #d0d0d0">(msg)</span>
+</pre></div>
+
+
+<h4 id="_7">日期处理</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#当前日期时间</span>
+<span style="color: #d0d0d0">time.localtime()</span> <span style="color: #999999; font-style: italic">#struct_time</span>
+<span style="color: #d0d0d0">time.time()</span>      <span style="color: #999999; font-style: italic">#unix时间戳/秒</span>
+
+<span style="color: #999999; font-style: italic">#类型转换</span>
+<span style="color: #d0d0d0">time.strptime(</span><span style="color: #ed9d13">&#39;2014/12/12&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;%Y/%m/%d&#39;</span><span style="color: #d0d0d0">)</span> <span style="color: #999999; font-style: italic">#字符串 -&gt; struct_time</span>
+<span style="color: #d0d0d0">time.localtime(ts)</span>                      <span style="color: #999999; font-style: italic">#unix时间戳 -&gt; 日期时间元组</span>
+</pre></div>
+
+
+<h4 id="_8">日志</h4>
+<ul>
+<li><a href="https://docs.python.org/2/library/logging.html#logging.Formatter">输出格式</a></li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#输出日志到文件</span>
+<span style="color: #d0d0d0">logging.basicConfig(filename=</span><span style="color: #ed9d13">&#39;example.log&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">format=</span><span style="color: #ed9d13">&#39;%(levelname)s:%(message)s&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">level=logging.DEBUG)</span>
+
+<span style="color: #999999; font-style: italic">#根据日期切换日志文件</span>
+<span style="color: #d0d0d0">logging.basicConfig()</span>
+<span style="color: #d0d0d0">logger</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">logging.getLogger()</span>
+<span style="color: #d0d0d0">file_handler</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">logging.handlers.TimedRotatingFileHandler(</span><span style="color: #ed9d13">&quot;video.log&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;MIDNIGHT&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">file_handler.formatter</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">logging.Formatter(</span><span style="color: #ed9d13">&#39;%(asctime)s %(message)s&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">logger.addHandler(file_handler)</span>
+<span style="color: #d0d0d0">logger.setLevel(level=logging.DEBUG)</span>
+</pre></div>
+
+
+<h4 id="_9">未分类</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#美化显示</span>
+<span style="color: #d0d0d0">pp</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">pprint.PrettyPrinter(indent=</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">pp.pprint(stuff)</span>
+</pre></div>
+</body>
+</html>

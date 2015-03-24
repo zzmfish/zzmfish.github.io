@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Python质量保证</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="python">Python质量保证</h1>
+<h3 id="_1">单元测试</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">TestSomething</span><span style="color: #d0d0d0">(unittest.TestCase):</span>
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">test_something</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">):</span>
+        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.assertTrue(do_something()</span>
+
+    <span style="color: #ffa500">@classmethod</span>
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">setUpClass</span><span style="color: #d0d0d0">(cls):</span>
+        <span style="color: #6ab825; font-weight: bold">pass</span>  <span style="color: #999999; font-style: italic">#测试类的初始化</span>
+</pre></div>
+
+
+<p>执行命令：</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">python -m unittest -v <span style="color: #40ffff">$Module</span>
+</pre></div>
+
+
+<h3 id="selenium">selenium</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Test1</span><span style="color: #d0d0d0">(unittest.TestCase):</span>
+
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">setUp</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">):</span>
+        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.browser</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">webdriver.Firefox()</span>
+        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.addCleanup(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">.browser.quit)</span>
+
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">test_case1</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">):</span>
+        <span style="color: #999999; font-style: italic">#打开网页</span>
+        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.browser.get(</span><span style="color: #ed9d13">&#39;http://www.baidu.com&#39;</span><span style="color: #d0d0d0">)</span>
+
+        <span style="color: #999999; font-style: italic">#点击按钮</span>
+        <span style="color: #d0d0d0">button</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.browser.find_element_by_id(</span><span style="color: #ed9d13">&#39;button1&#39;</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">button.click()</span>
+
+        <span style="color: #999999; font-style: italic">#检查文字</span>
+        <span style="color: #d0d0d0">msg</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.browser.find_element_by_id(</span><span style="color: #ed9d13">&#39;msg1&#39;</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.assertTrue(msg.text.startswith(</span><span style="color: #ed9d13">u&#39;查询完成! &#39;</span><span style="color: #d0d0d0">))</span>
+</pre></div>
+
+
+<ul>
+<li><a href="https://pypi.python.org/pypi/selenium">pypi</a></li>
+</ul>
+<h3 id="_2">调试</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#设置断点</span>
+<span style="color: #d0d0d0">pdb.set_trace()</span>
+
+<span style="color: #999999; font-style: italic">#显示堆栈</span>
+<span style="color: #d0d0d0">traceback.print_stack()</span>
+
+<span style="color: #999999; font-style: italic">#对象引用</span>
+<span style="color: #d0d0d0">gc.get_referrers(obj)</span>      
+
+<span style="color: #999999; font-style: italic">#对象列表</span>
+<span style="color: #d0d0d0">browsers</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">objgraph.by_type(</span><span style="color: #ed9d13">&#39;MyClass&#39;</span><span style="color: #d0d0d0">)</span>
+
+<span style="color: #999999; font-style: italic">#对象引用关系</span>
+<span style="color: #d0d0d0">objgraph.show_backrefs(browsers[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">max_depth=</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">filename=</span><span style="color: #ed9d13">&quot;MyClass.dot&quot;</span><span style="color: #d0d0d0">)</span> 
+
+<span style="color: #999999; font-style: italic">#最多数量的对象</span>
+<span style="color: #d0d0d0">objgraph.show_most_common_types(</span><span style="color: #3677a9">20</span><span style="color: #d0d0d0">)</span>  
+</pre></div>
+
+
+<h3 id="_3">性能分析</h3>
+<h4 id="line-profiler">line-profiler</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#分析每一行代码的性能</span>
+<span style="color: #999999; font-style: italic">#在函数代码前面加上@profile，然后执行：</span>
+kernprof.py -l -v <span style="color: #40ffff">$PyFile</span> <span style="color: #40ffff">$PyArgs</span>
+</pre></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<ul>
+<li>TB级数据库和GB级字符串</li>
+<li>动态类型</li>
+<li>线程安全（可关闭）</li>
+<li>多进程可同时读数据库</li>
+<li>写数据库使用文件锁（其他操作返回SQLITE_BUSY）</li>
+<li>不要带着数据库fork进程</li>
+<li>每秒50k+的INSERT</li>
+<li>事务会等待数据写到磁盘</li>
+<li>使用BEGIN...COMMIT 加快INSERT</li>
+</ul>
+</body>
+</html>

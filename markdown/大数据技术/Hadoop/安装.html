@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>安装jdk1.6</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h3 id="jdk16">安装jdk1.6</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #24909d">export </span><span style="color: #40ffff">JAVA_HOME</span><span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local/jdk1.6.0_45
+<span style="color: #24909d">export </span><span style="color: #40ffff">CLASSPATH</span><span style="color: #d0d0d0">=</span>.:<span style="color: #40ffff">$JAVA_HOME</span>/lib
+<span style="color: #24909d">export </span><span style="color: #40ffff">PATH</span><span style="color: #d0d0d0">=</span><span style="color: #40ffff">$JAVA_HOME</span>/bin:<span style="color: #40ffff">$PATH</span>
+</pre></div>
+
+
+<h3 id="ssh">安装SSH</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo apt-get install ssh
+
+<span style="color: #999999; font-style: italic">#免密码登录</span>
+ssh-keygen -t dsa -P <span style="color: #ed9d13">&#39;&#39;</span> -f ~/.ssh/id_dsa
+cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</pre></div>
+
+
+<h3 id="hadoop">安装Hadoop</h3>
+<ul>
+<li>解压</li>
+<li>etc/hadoop/mapred-site.xml</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">&lt;configuration&gt;</span>
+    <span style="color: #6ab825; font-weight: bold">&lt;property&gt;</span>
+        <span style="color: #6ab825; font-weight: bold">&lt;name&gt;</span>mapred.job.tracker<span style="color: #6ab825; font-weight: bold">&lt;/name&gt;</span>
+        <span style="color: #6ab825; font-weight: bold">&lt;value&gt;</span>localhost:9001<span style="color: #6ab825; font-weight: bold">&lt;/value&gt;</span>
+    <span style="color: #6ab825; font-weight: bold">&lt;/property&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/configuration&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>etc/hadoop/hadoop-env.sh</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">export</span> <span style="color: #d0d0d0">JAVA_HOME=/home/hadoop/local/jdk1</span><span style="color: #3677a9">.6.0</span><span style="color: #d0d0d0">_45</span>
+</pre></div>
+
+
+<ul>
+<li>etc/hadoop/core-site.xml</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">&lt;configuration&gt;</span>
+    <span style="color: #6ab825; font-weight: bold">&lt;property&gt;</span>
+        <span style="color: #6ab825; font-weight: bold">&lt;name&gt;</span>fs.default.name<span style="color: #6ab825; font-weight: bold">&lt;/name&gt;</span>
+        <span style="color: #6ab825; font-weight: bold">&lt;value&gt;</span>hdfs://localhost:9000<span style="color: #6ab825; font-weight: bold">&lt;/value&gt;</span>
+    <span style="color: #6ab825; font-weight: bold">&lt;/property&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/configuration&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>etc/hadoop/hdfs-site.xml</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">&lt;configuration&gt;</span>
+    <span style="color: #6ab825; font-weight: bold">&lt;property&gt;</span>
+        <span style="color: #6ab825; font-weight: bold">&lt;name&gt;</span>dfs.replication<span style="color: #6ab825; font-weight: bold">&lt;/name&gt;</span>
+        <span style="color: #6ab825; font-weight: bold">&lt;value&gt;</span>1<span style="color: #6ab825; font-weight: bold">&lt;/value&gt;</span>
+    <span style="color: #6ab825; font-weight: bold">&lt;/property&gt;</span>
+<span style="color: #6ab825; font-weight: bold">&lt;/configuration&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>格式化HDFS</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">./bin/hadoop namenode -format
+</pre></div>
+
+
+<ul>
+<li>启动所有服务</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">./sbin/start-all.sh
+</pre></div>
+
+
+<ul>
+<li>浏览器访问http://localhost:50070
+*</li>
+</ul>
+</body>
+</html>

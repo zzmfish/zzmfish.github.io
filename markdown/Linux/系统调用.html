@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>进程和线程</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">进程和线程</h2>
+<h5 id="_2">进程组</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">setpgid</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid,</span> <span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pgid);</span>
+<span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #447fcf">getpgid</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid);</span>
+</pre></div>
+
+
+<h2 id="_3">网络</h2>
+<h5 id="io">阻塞IO</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">listen</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">sockfd,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">backlog);</span>
+<span style="color: #6ab825; font-weight: bold">ssize_t</span> <span style="color: #447fcf">send</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">sockfd,</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">*buf,</span> <span style="color: #6ab825; font-weight: bold">size_t</span> <span style="color: #d0d0d0">len,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">flags);</span>
+<span style="color: #6ab825; font-weight: bold">ssize_t</span> <span style="color: #447fcf">recv</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">sockfd,</span> <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">*buf,</span> <span style="color: #6ab825; font-weight: bold">size_t</span> <span style="color: #d0d0d0">len,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">flags);</span>
+</pre></div>
+
+
+<h5 id="io_1">非阻塞IO</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">fcntl</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">fd,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">cmd,</span> <span style="color: #d0d0d0">...</span> <span style="color: #999999; font-style: italic">/* arg */</span> <span style="color: #d0d0d0">);</span>
+</pre></div>
+
+
+<h5 id="io_2">多路复用IO</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">select</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">nfds,</span> <span style="color: #d0d0d0">fd_set</span> <span style="color: #d0d0d0">*readfds,</span> <span style="color: #d0d0d0">fd_set</span> <span style="color: #d0d0d0">*writefds,</span>
+           <span style="color: #d0d0d0">fd_set</span> <span style="color: #d0d0d0">*exceptfds,</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">timeval</span> <span style="color: #d0d0d0">*timeout);</span>
+</pre></div>
+
+
+<h5 id="io_3">异步IO</h5>
+</body>
+</html>

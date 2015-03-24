@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>数据库</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">数据库</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#所有数据库</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #6ab825; font-weight: bold">databases</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">#进入数据库</span>
+<span style="color: #6ab825; font-weight: bold">USE</span> <span style="color: #d0d0d0">DatabaseName;</span>
+
+<span style="color: #999999; font-style: italic">#数据库信息</span>
+<span style="color: #d0d0d0">status;</span>
+
+<span style="color: #999999; font-style: italic">#创建数据库</span>
+<span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">DATABASE</span> <span style="color: #6ab825; font-weight: bold">IF</span> <span style="color: #6ab825; font-weight: bold">NOT</span> <span style="color: #6ab825; font-weight: bold">EXISTS</span> <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">#数据库字符集设置</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #d0d0d0">variables</span> <span style="color: #6ab825; font-weight: bold">LIKE</span> <span style="color: #ed9d13">&#39;character_%&#39;</span><span style="color: #d0d0d0">;</span>
+</pre></div>
+
+
+<h2 id="_2">表</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#所有表</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #6ab825">tables</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">#所有表的信息</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">status;</span>
+
+<span style="color: #999999; font-style: italic">#所有列</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #d0d0d0">columns</span> <span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">#表的结构</span>
+<span style="color: #6ab825; font-weight: bold">DESC</span>  <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">#删除表</span>
+<span style="color: #6ab825; font-weight: bold">DROP</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #6ab825; font-weight: bold">IF</span> <span style="color: #6ab825; font-weight: bold">EXISTS</span> <span style="color: #d0d0d0">TableName;</span>
+</pre></div>
+
+
+<h2 id="_3">查询数据</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#降序排名前10</span>
+<span style="color: #6ab825; font-weight: bold">select</span> <span style="color: #d0d0d0">*</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #6ab825; font-weight: bold">ORDER</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #d0d0d0">ColumnName</span> <span style="color: #6ab825; font-weight: bold">DESC</span> <span style="color: #6ab825; font-weight: bold">limit</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">#降序排名10-20</span>
+<span style="color: #6ab825; font-weight: bold">select</span> <span style="color: #d0d0d0">*</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #6ab825; font-weight: bold">ORDER</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #d0d0d0">ColumnName</span> <span style="color: #6ab825; font-weight: bold">DESC</span> <span style="color: #6ab825; font-weight: bold">limit</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">20</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">#每种取值的条目数</span>
+<span style="color: #6ab825; font-weight: bold">select</span> <span style="color: #d0d0d0">ColumnName,</span> <span style="color: #447fcf">COUNT</span><span style="color: #d0d0d0">(*)</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #6ab825; font-weight: bold">GROUP</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #d0d0d0">ColumnName;</span>
+
+<span style="color: #999999; font-style: italic">#列的所有取值</span>
+<span style="color: #6ab825; font-weight: bold">select</span> <span style="color: #6ab825; font-weight: bold">DISTINCT</span> <span style="color: #d0d0d0">ColumnName</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">#表的行数</span>
+<span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #447fcf">COUNT</span><span style="color: #d0d0d0">(*)</span> <span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #d0d0d0">TableName;</span>
+</pre></div>
+
+
+<h2 id="_4">更新语句</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">update</span> <span style="color: #d0d0d0">video</span> <span style="color: #6ab825; font-weight: bold">set</span> <span style="color: #d0d0d0">insert_time=</span><span style="color: #447fcf">now</span><span style="color: #d0d0d0">();</span>
+</pre></div>
+
+
+<h2 id="_5">改变结构</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#改变列的数据类型</span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">COLUMN</span> <span style="color: #d0d0d0">ColumnName</span> <span style="color: #d0d0d0">DataType;</span>
+
+<span style="color: #999999; font-style: italic">#改变默认值为当前时间</span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #ed9d13">`video`</span> <span style="color: #d0d0d0">MODIFY</span> <span style="color: #6ab825; font-weight: bold">COLUMN</span> <span style="color: #ed9d13">`insert_time`</span> <span style="color: #6ab825; font-weight: bold">timestamp</span> <span style="color: #6ab825; font-weight: bold">NOT</span> <span style="color: #40ffff">NULL</span> <span style="color: #6ab825; font-weight: bold">DEFAULT</span> <span style="color: #6ab825; font-weight: bold">CURRENT_TIMESTAMP</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">#增加列() </span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">video</span> <span style="color: #6ab825; font-weight: bold">ADD</span> <span style="color: #6ab825; font-weight: bold">COLUMN</span> <span style="color: #d0d0d0">insert_time</span> <span style="color: #6ab825; font-weight: bold">DATETIME</span><span style="color: #d0d0d0">;</span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #ed9d13">`video`</span> <span style="color: #6ab825; font-weight: bold">add</span> <span style="color: #6ab825; font-weight: bold">COLUMN</span> <span style="color: #ed9d13">`insert_time`</span> <span style="color: #6ab825; font-weight: bold">timestamp</span> <span style="color: #6ab825; font-weight: bold">NOT</span> <span style="color: #40ffff">NULL</span><span style="color: #d0d0d0">;</span>
+
+
+<span style="color: #999999; font-style: italic">#删除列</span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">video</span> <span style="color: #6ab825; font-weight: bold">DROP</span> <span style="color: #6ab825; font-weight: bold">COLUMN</span> <span style="color: #d0d0d0">insert_time;</span>
+</pre></div>
+
+
+<h2 id="_6">联表查询</h2>
+<ul>
+<li>内联结</li>
+<li>左联结</li>
+<li>右联结</li>
+</ul>
+</body>
+</html>

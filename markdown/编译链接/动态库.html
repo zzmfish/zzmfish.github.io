@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>动态库</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">动态库</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#创建动态库</span>
+gcc -o foo.o -fPIC foo.c
+gcc -shared -o libfoo.so foo.o
+
+<span style="color: #999999; font-style: italic">#显示依赖的动态库</span>
+ldd libfoo.so
+
+<span style="color: #999999; font-style: italic">#使用导出列表</span>
+cat &gt; libfoo.map <span style="color: #ed9d13">&lt;&lt;EOF</span>
+<span style="color: #ed9d13">{</span>
+<span style="color: #ed9d13">    global: func1;</span>
+<span style="color: #ed9d13">    local: *;</span>
+<span style="color: #ed9d13">};</span>
+<span style="color: #ed9d13">EOF</span>
+gcc -shared -o libfoo.so foo.o -Wl,--version-script<span style="color: #d0d0d0">=</span>libfoo.map
+</pre></div>
+
+
+<ul>
+<li>PIC</li>
+<li>弱符号</li>
+</ul>
+</body>
+</html>

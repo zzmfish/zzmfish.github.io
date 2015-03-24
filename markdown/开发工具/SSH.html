@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无密码登录</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h5 id="_1">无密码登录</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#生成密钥对</span>
+ssh-keygen -t rsa
+
+<span style="color: #999999; font-style: italic">#复制公钥到目标主机</span>
+cat ~/.ssh/id_rsa.pub &gt;&gt; <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
+
+<span style="color: #999999; font-style: italic">#设置目标主文件权限</span>
+chmod 700 <span style="color: #40ffff">$RemoteHome</span>
+chmod 700 <span style="color: #40ffff">$RemoteHome</span>/.ssh
+chmod 600 <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
+</pre></div>
+
+
+<h5 id="_2">反向代理</h5>
+<p>参数：</p>
+<ul>
+<li>-R：反向端口映射</li>
+<li>-N：不执行shell</li>
+<li>-C：压缩</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">ssh -C -N -R <span style="color: #40ffff">$Port</span>:<span style="color: #40ffff">$Host</span>:<span style="color: #40ffff">$HostPort</span> <span style="color: #40ffff">$SshUser</span>@<span style="color: #40ffff">$SshHost</span> -p <span style="color: #40ffff">$SshPort</span>
+<span style="color: #999999; font-style: italic">#如把fsvn.ucweb.local:443映射到usa-mob437:9943</span>
+ssh -C -N -R 9443:fsvn.ucweb.local:443 bigdata@usa-mob437 -p 9922
+</pre></div>
+
+
+<h5 id="scp">scp</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">scp -P <span style="color: #40ffff">$Port</span> <span style="color: #40ffff">$LocalFile</span> <span style="color: #40ffff">$User</span>@<span style="color: #40ffff">$Host</span>:<span style="color: #40ffff">$Path</span>
+<span style="color: #999999; font-style: italic">#如:</span>
+scp -P 9922 release.tgz product@localhost:/home/product/workspace/server
+</pre></div>
+
+
+<h3 id="_3">登录日志</h3>
+<p>/var/log/secure</p>
+</body>
+</html>

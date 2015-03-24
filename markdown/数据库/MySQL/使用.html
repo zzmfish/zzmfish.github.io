@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MySQL</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="mysql">MySQL</h1>
+<h2 id="mysqldump">mysqldump</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#导出表</span>
+mysqldump -u <span style="color: #40ffff">$User</span> -p<span style="color: #40ffff">$Password</span> <span style="color: #40ffff">$Database</span> <span style="color: #40ffff">$Table</span> &gt; <span style="color: #40ffff">$File</span>
+
+<span style="color: #999999; font-style: italic">#mysql导入</span>
+mysql -u<span style="color: #40ffff">$User</span> -p<span style="color: #40ffff">$Password</span> <span style="color: #40ffff">$Database</span> &lt; sql文件
+</pre></div>
+
+
+<p>命令行参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--no-create-info</td>
+<td>不导出表结构</td>
+</tr>
+<tr>
+<td>--no-data</td>
+<td>不导出数据</td>
+</tr>
+<tr>
+<td>--complete-insert</td>
+<td>语句包含列名</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>服务器</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mysql_1">mysql</h2>
+<p>命令行参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--default-character-set</td>
+<td>默认编码，UTF-8要写成“utf8”</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_1">终端命令</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source &lt;文件名&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>tee &lt;文件名&gt;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">索引</h2>
+<ul>
+<li>最左前缀匹配原则</li>
+</ul>
+<h2 id="_3">未分类</h2>
+<ul>
+<li>explain</li>
+<li>SQL_NO_CACHE</li>
+</ul>
+<h2 id="_4">数据类型</h2>
+<ul>
+<li>date：日期</li>
+<li>datetime：日期和时间（字符串）</li>
+<li>timestamp：毫秒数</li>
+</ul>
+</body>
+</html>

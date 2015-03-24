@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>解压hadoop-1.2.1</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h4 id="hadoop-121">解压hadoop-1.2.1</h4>
+<h4 id="diff-srccontribbuild-contribxml">diff src/contrib/build-contrib.xml</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">62c62
+&lt;   &lt;property name=&quot;javac.deprecation&quot; value=&quot;off&quot;/&gt;
+<span style="color: #d22323">---</span>
+&gt;   &lt;property name=&quot;javac.deprecation&quot; value=&quot;on&quot;/&gt;
+</pre></div>
+
+
+<h4 id="diff-srccontribeclipse-pluginbuildproperties">diff src/contrib/eclipse-plugin/build.properties</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">20a21,22
+&gt; eclipse.home = /Users/zhouzhiming/local/eclipse
+&gt; version=1.2.1
+</pre></div>
+
+
+<h4 id="diff-srccontribeclipse-pluginbuildxml">diff src/contrib/eclipse-plugin/build.xml</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">44a45,47
+&gt;     &lt;fileset dir=&quot;${hadoop.root}&quot;&gt;
+&gt;       &lt;include name=&quot;**/*.jar&quot; /&gt;
+&gt;     &lt;/fileset&gt;
+60a64
+&gt;      includeantruntime=&quot;on&quot;
+69,70c73,79
+&lt;     &lt;copy file=&quot;${hadoop.root}/build/hadoop-core-${version}.jar&quot; tofile=&quot;${build.dir}/lib/hadoop-core.jar&quot; verbose=&quot;true&quot;/&gt;
+&lt;     &lt;copy file=&quot;${hadoop.root}/build/ivy/lib/Hadoop/common/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+<span style="color: #d22323">---</span>
+&gt;     &lt;copy file=&quot;${hadoop.root}/hadoop-core-${version}.jar&quot; tofile=&quot;${build.dir}/lib/hadoop-core.jar&quot; verbose=&quot;true&quot;/&gt;
+&gt;     &lt;copy file=&quot;${hadoop.root}/lib/commons-cli-${commons-cli.version}.jar&quot;  tofile=&quot;${build.dir}/lib/commons-cli.jar&quot; verbose=&quot;true&quot;/&gt;
+&gt;     &lt;copy file=&quot;${hadoop.root}/lib/commons-configuration-1.6.jar&quot;  tofile=&quot;${build.dir}/lib/commons-configuration.jar&quot; verbose=&quot;true&quot;/&gt;
+&gt;     &lt;copy file=&quot;${hadoop.root}/lib/commons-httpclient-3.0.1.jar&quot;  tofile=&quot;${build.dir}/lib/commons-httpclient.jar&quot; verbose=&quot;true&quot;/&gt;
+&gt;     &lt;copy file=&quot;${hadoop.root}/lib/commons-lang-2.4.jar&quot;  tofile=&quot;${build.dir}/lib/commons-lang.jar&quot; verbose=&quot;true&quot;/&gt;
+&gt;     &lt;copy file=&quot;${hadoop.root}/lib/jackson-core-asl-1.8.8.jar&quot;  tofile=&quot;${build.dir}/lib/jackson-core-asl.jar&quot; verbose=&quot;true&quot;/&gt;
+&gt;     &lt;copy file=&quot;${hadoop.root}/lib/jackson-mapper-asl-1.8.8.jar&quot;  tofile=&quot;${build.dir}/lib/jackson-mapper-asl.jar&quot; verbose=&quot;true&quot;/&gt;
+</pre></div>
+
+
+<h4 id="_1">编译</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #24909d">cd </span>src/contrib/eclipse-plugin
+ant
+</pre></div>
+
+
+<p>将build/contrib/eclipse-plugin/hadoop-eclipse-plugin-1.2.1.jar复制到eclipse/plugins下</p>
+</body>
+</html>

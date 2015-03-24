@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JavaScript基础语法</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="javascript">JavaScript基础语法</h1>
+<h2 id="_1">类型判断</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">typeof</span><span style="color: #d0d0d0">(n)</span> <span style="color: #d0d0d0">==</span> <span style="color: #ed9d13">&#39;number&#39;</span><span style="color: #d0d0d0">;</span>
+</pre></div>
+
+
+<h2 id="_2">字符串</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//正则表达式匹配</span>
+<span style="color: #d0d0d0">s.match(</span><span style="color: #ed9d13">/^https?:/</span><span style="color: #d0d0d0">);</span>
+
+<span style="color: #999999; font-style: italic">//从下标开始的指定数目的字符</span>
+<span style="color: #d0d0d0">s.substr(start,</span> <span style="color: #d0d0d0">length);</span>
+
+<span style="color: #999999; font-style: italic">//介于两个指定下标之间的字符</span>
+<span style="color: #d0d0d0">s.substring(start,</span> <span style="color: #d0d0d0">end);</span>
+</pre></div>
+
+
+<h2 id="_3">数组</h2>
+<h3 id="_4">连接字符串</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #24909d">Array</span><span style="color: #d0d0d0">(n+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">).join(</span><span style="color: #ed9d13">&#39;-&#39;</span><span style="color: #d0d0d0">);</span>
+</pre></div>
+
+
+<h3 id="_5">遍历</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(elem</span> <span style="color: #d0d0d0">of</span> <span style="color: #d0d0d0">array)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">do_something(elem);</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
+<h3 id="_6">截取</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">arr</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">arr.slice(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">n);</span>
+</pre></div>
+
+
+<h3 id="_7">排序</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//排序</span>
+<span style="color: #d0d0d0">arr.sort();</span>
+
+<span style="color: #999999; font-style: italic">//大小写无关的排序</span>
+<span style="color: #d0d0d0">arr.sort(</span><span style="color: #6ab825; font-weight: bold">function</span> <span style="color: #d0d0d0">(a,</span> <span style="color: #d0d0d0">b)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">a.toLowerCase().localeCompare(b.toLowerCase());</span>
+<span style="color: #d0d0d0">});</span>
+</pre></div>
+
+
+<h2 id="_8">函数</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//匿名函数</span>
+<span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span>
+    <span style="color: #d0d0d0">...</span>
+<span style="color: #d0d0d0">})();</span>
+</pre></div>
+
+
+<h2 id="_9">对象</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//定义类</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">Cat</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">name:</span> <span style="color: #ed9d13">&quot;大毛&quot;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #d0d0d0">makeSound:</span> <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">(){</span> <span style="color: #d0d0d0">alert(</span><span style="color: #ed9d13">&quot;喵喵喵&quot;</span><span style="color: #d0d0d0">);</span> <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">};</span>
+<span style="color: #999999; font-style: italic">//创建实例</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">cat1</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">Object</span><span style="color: #d0d0d0">.create(Cat);</span>
+
+<span style="color: #999999; font-style: italic">//所有属性</span>
+<span style="color: #24909d">Object</span><span style="color: #d0d0d0">.keys(s)</span>
+
+<span style="color: #999999; font-style: italic">//删除属性</span>
+<span style="color: #6ab825; font-weight: bold">delete</span> <span style="color: #d0d0d0">obj[prop];</span>
+</pre></div>
+</body>
+</html>

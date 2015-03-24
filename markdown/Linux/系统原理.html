@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>进程和线程</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">进程和线程</h2>
+<h6 id="_2">概念</h6>
+<ul>
+<li><strong><em>进程组</em></strong>：一个或多个进程的集合，通常它们与一组作业相关联，可以接受来自同一终端的各种信号</li>
+<li><strong><em>组长进程</em></strong>：进程组ID等于其进程ID</li>
+<li><strong><em>会话</em></strong>：一个或多个进程组的集合</li>
+<li><strong><em>控制进程</em></strong>：建立与控制终端连接的会话期首进程</li>
+</ul>
+<h6 id="_3">特点</h6>
+<ul>
+<li>一个进程只能为它自己或它的子进程设置进程组ID</li>
+<li>一个会话期中的几个进程组可被分成一个<strong><em>前台进程组</em></strong>以及一个或几个<strong><em>后台进程组</em></strong></li>
+</ul>
+<h2 id="_4">文件系统</h2>
+<h3 id="_5">文件锁</h3>
+<h5 id="_6">劝告锁</h5>
+<h5 id="_7">强制锁</h5>
+<ul>
+<li><strong><em>读锁</em></strong>／<strong><em>共享锁</em></strong>：阻止其他写操作；  </li>
+<li><strong><em>写锁</em></strong>／<strong><em>排他锁</em></strong>：阻止其他任何操作。  </li>
+</ul>
+<h5 id="_8">共享模式强制锁</h5>
+<h5 id="_9">租借锁</h5>
+<h2 id="_10">网络</h2>
+<h3 id="io">网络IO模型</h3>
+<h5 id="io_1">阻塞IO</h5>
+<ul>
+<li>listen/send/recv</li>
+</ul>
+<h5 id="io_2">非阻塞IO</h5>
+<ul>
+<li>fcntl(fd, F_SETFL, O_NONBLOCK)</li>
+</ul>
+<h5 id="io_3">多路复用IO</h5>
+<ul>
+<li>select/epoll</li>
+</ul>
+<h5 id="io_4">异步IO</h5>
+<ul>
+<li>aio_read/aio_write</li>
+</ul>
+</body>
+</html>

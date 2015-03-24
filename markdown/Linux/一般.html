@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Linux经验技巧</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 id="linux">Linux经验技巧</h1>
+<h2 id="ssh">SSH</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#挂载远程目录</span>
+sshfs -p <span style="color: #40ffff">$Port</span> <span style="color: #40ffff">$User</span>@<span style="color: #40ffff">$Host</span>:<span style="color: #40ffff">$Path</span> <span style="color: #40ffff">$LocalPath</span>
+</pre></div>
+
+
+<ul>
+<li>SGID位</li>
+</ul>
+<h2 id="_1">日期和时间</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#设置时间</span>
+date -s <span style="color: #ed9d13">&quot;20:16&quot;</span>
+
+<span style="color: #999999; font-style: italic">#文件修改时间（时间戳/s）</span>
+stat -c %Y <span style="color: #40ffff">$FileName</span>
+
+<span style="color: #999999; font-style: italic">#时间戳转换为日期格式</span>
+date -d <span style="color: #ed9d13">&quot;@1423987259&quot;</span> <span style="color: #ed9d13">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>
+</pre></div>
+
+
+<h2 id="_2">其他</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#上传文件</span>
+rz
+
+<span style="color: #999999; font-style: italic">#下载文件</span>
+sz <span style="color: #40ffff">$File</span>
+</pre></div>
+
+
+<p>bash下编辑命令：输完命令后按<strong><em>Ctrl-x Ctrl-e</em></strong></p>
+<h2 id="_3">未分类</h2>
+<p>SystemTap<br />
+kprobe<br />
+DTrace<br />
+rsync<br />
+iptables<br />
+<strong> 进程组 </strong> </p>
+<h2 id="_4">环境变量</h2>
+<p>PKG_CONFIG_PATH</p>
+</body>
+</html>
