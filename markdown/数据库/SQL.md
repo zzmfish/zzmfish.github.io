@@ -53,6 +53,16 @@ select DISTINCT ColumnName from TableName;
 
 #表的行数
 SELECT COUNT(*) FROM TableName;
+
+#子查询、联表
+select a.id1, a.id2, b.sim_content, b.sim_beh
+from (
+    select regexp_extract(url, '\/(\\d+)\/\\d+$', 1) as id1, id as id2
+    from video_appve
+) a
+left join sug_wide b
+on a.id1=b.id1 and a.id2=b.id2
+limit 10;
 ```
 
 ## 更新语句

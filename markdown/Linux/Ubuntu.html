@@ -22,7 +22,13 @@ apt-file search <span style="color: #40ffff">$File</span>
 sudo add-apt-repository <span style="color: #40ffff">$Package</span>
 
 <span style="color: #999999; font-style: italic">#重新安装软件</span>
-sudo apt-get install <span style="color: #40ffff">$Package</span> --reinstall  
+sudo apt-get install <span style="color: #40ffff">$Package</span> --reinstall 
+
+<span style="color: #999999; font-style: italic">#解决/var/lib/dpkg/available损坏</span>
+sudo dpkg --clear-avail
+
+<span style="color: #999999; font-style: italic">#解决/var/lib/dpkg/status损坏</span>
+cp /var/lib/dpkg/status-old /var/lib/dpkg/status
 </pre></div>
 
 

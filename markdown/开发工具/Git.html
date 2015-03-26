@@ -24,16 +24,19 @@ git checkout master
 git tag
 
 <span style="color: #999999; font-style: italic">#检出tag</span>
-git checkout <span style="color: #40ffff">$Tag</span>
+git checkout <span style="color: #40ffff">$TagName</span>
 
 <span style="color: #999999; font-style: italic">#显示origin远程分支</span>
 git remote show origin
 
 <span style="color: #999999; font-style: italic">#跟踪分支</span>
-git branch --set-upstream-to<span style="color: #d0d0d0">=</span>origin/<span style="color: #40ffff">$Branch</span> <span style="color: #40ffff">$Branch</span>
+git branch --set-upstream-to<span style="color: #d0d0d0">=</span>origin/<span style="color: #40ffff">$BranchName</span> <span style="color: #40ffff">$BranchName</span>
 
 <span style="color: #999999; font-style: italic">#推送到远程分支</span>
-git push origin <span style="color: #40ffff">$Branch</span>
+git push origin <span style="color: #40ffff">$BranchName</span>
+
+<span style="color: #999999; font-style: italic">#删除远程分支</span>
+git push origin --delete <span style="color: #40ffff">$BranchName</span>
 </pre></div>
 
 
@@ -94,6 +97,10 @@ make install
 </pre></div>
 
 
+<h2 id="github">GitHub</h2>
+<ul>
+<li><a href="https://help.github.com/articles/creating-project-pages-manually/">Creating Project Pages manually</a></li>
+</ul>
 <h2 id="_7">其他</h2>
 <p><strong><em>master</em></strong>：分支master中的最新提交<br />
 <strong><em>HEAD</em></strong>：版本库的最近一次提交<br />

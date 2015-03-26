@@ -17,7 +17,13 @@ apt-file search $File
 sudo add-apt-repository $Package
 
 #重新安装软件
-sudo apt-get install $Package --reinstall  
+sudo apt-get install $Package --reinstall 
+
+#解决/var/lib/dpkg/available损坏
+sudo dpkg --clear-avail
+
+#解决/var/lib/dpkg/status损坏
+cp /var/lib/dpkg/status-old /var/lib/dpkg/status
 ```
 
 ###### 常用软件包

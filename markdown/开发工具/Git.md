@@ -20,17 +20,19 @@ git checkout master
 git tag
 
 #检出tag
-git checkout $Tag
+git checkout $TagName
 
 #显示origin远程分支
 git remote show origin
 
 #跟踪分支
-git branch --set-upstream-to=origin/$Branch $Branch
+git branch --set-upstream-to=origin/$BranchName $BranchName
 
 #推送到远程分支
-git push origin $Branch
+git push origin $BranchName
 
+#删除远程分支
+git push origin --delete $BranchName
 ```
 
 ## 工作区
@@ -94,6 +96,11 @@ make configure
 make -j3
 make install
 ```
+
+## GitHub
+* [Creating Project Pages manually](https://help.github.com/articles/creating-project-pages-manually/)
+
+
 ## 其他
 ***master***：分支master中的最新提交  
 ***HEAD***：版本库的最近一次提交  
