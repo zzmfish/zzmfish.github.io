@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>!bash</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">nginx
+nginx -s quit
+</pre></div>
+
+
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">listen</span>   <span style="color: #3677a9">80</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #d0d0d0">root</span>   <span style="color: #d0d0d0">/path/to/root;</span>
+        <span style="color: #d0d0d0">location</span> <span style="color: #d0d0d0">/</span> <span style="color: #d0d0d0">{</span>
+                <span style="color: #d0d0d0">index</span>  <span style="color: #d0d0d0">index.php</span> <span style="color: #d0d0d0">index.html</span> <span style="color: #d0d0d0">index.htm;</span>
+        <span style="color: #d0d0d0">}</span>
+        <span style="color: #d0d0d0">location</span> <span style="color: #d0d0d0">/somedir</span> <span style="color: #d0d0d0">{</span>
+               <span style="color: #d0d0d0">autoindex</span> <span style="color: #d0d0d0">on;</span>       <span style="color: #999999; font-style: italic">//显示文件列表</span>
+        <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+</body>
+</html>
