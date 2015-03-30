@@ -2,13 +2,112 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>简介</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<h2 id="_1">简介</h2>
+<ul>
+<li>实时分布式搜索和分析引擎</li>
+<li>面向文档(document oriented)</li>
+<li>使用JSON做为文档序列化格式</li>
+<li>反向索引</li>
+</ul>
+<h3 id="_2">概念比较</h3>
+<table>
+<thead>
+<tr>
+<th>关系数据库</th>
+<th>ElasticSearch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>库</td>
+<td>索引</td>
+</tr>
+<tr>
+<td>表</td>
+<td>类型</td>
+</tr>
+<tr>
+<td>行</td>
+<td>文档</td>
+</tr>
+<tr>
+<td>列</td>
+<td>字段</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">操作</h2>
+<h3 id="_4">索引</h3>
+<ul>
+<li>PUT /&lt;索引&gt;/&lt;类型&gt;/id</li>
+</ul>
+<h3 id="_5">检索</h3>
+<ul>
+<li>GET /&lt;索引&gt;/&lt;类型&gt;/id</li>
+<li>GET /&lt;索引&gt;/&lt;类型&gt;/_search</li>
+<li>过滤器(filter)</li>
+</ul>
+<h3 id="_6">全文搜索</h3>
+<ul>
+<li>相关性(relevance)</li>
+</ul>
+<h3 id="_7">短语搜索</h3>
+<h3 id="_8">高亮搜索</h3>
+<h3 id="_9">聚合</h3>
+<p>在数据基础上生成复杂的统计，类似SQL的GROUP BY</p>
+<h2 id="_10">集群</h2>
+<h3 id="_11">集群</h3>
+<ul>
+<li>一个集群中有多个节点，其中有一个为<strong><em>主节点</em></strong></li>
+<li>主节点可以通过<strong><em>选举</em></strong>产生</li>
+</ul>
+<h3 id="_12">节点</h3>
+<ul>
+<li>你运行的Elasticsearch实例</li>
+</ul>
+<h3 id="shards">分片(shards)</h3>
+<ul>
+<li>把一个完整的索引分成多个分片，分布到不同的节点上</li>
+</ul>
+<h3 id="_13">副本</h3>
+<ul>
+<li>设置多个索引的副本</li>
+<li>提高系统的<strong><em>容错性</em></strong></li>
+<li>对搜索请求进行<strong><em>负载均衡</em></strong>，提高的查询效率</li>
+</ul>
+<h3 id="recovery">恢复（Recovery）</h3>
+<ul>
+<li>在有节点加入或退出时会根据机器的负载对索引分片进行重新分配</li>
+<li>挂掉的节点重新启动时也会进行数据恢复</li>
+</ul>
+<h3 id="river">数据源（River）</h3>
+<h3 id="gateway">Gateway</h3>
+<ul>
+<li>索引的持久化存储方式</li>
+<li>先把索引存放到内存中，当内存满了时再持久化到硬盘</li>
+</ul>
+<h3 id="discoveryzen">discovery.zen</h3>
+<ul>
+<li>自动发现节点机制</li>
+<li>通过广播寻找存在的节点，再通过多播协议来进行节点之间的通信，同时也支持点对点的交互</li>
+</ul>
+<h3 id="transport">Transport</h3>
+<p>内部节点或集群与客户端的交互方式</p>
+<h2 id="_14">其他</h2>
+<h3 id="optimistic-concurrency-control">Optimistic Concurrency Control</h3>
+<h2 id="_15">参考</h2>
 <ul>
 <li><a href="http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata">与Costin Leau谈论Elasticsearch，大数据及Hadoop</a></li>
 <li><a href="http://es.xiaoleilu.com">Elasticsearch 权威指南</a></li>
+<li><a href="http://www.bubuko.com/infodetail-182303.html">乐观的并发控制（optimistic concurrency control）</a></li>
+<li><a href="http://www.elastic.co/guide/en/elasticsearch/reference/1.x/glossary.html">Glossary of terms</a></li>
+<li><a href="http://devres.zoomquiet.io/data/20130616115216/index.html">GitHub使用elasticsearch遇到的一些问题及解决方法</a></li>
+<li><a href="http://chuansong.me/n/1133212">Elasticsearch数据架构及基本特点 </a></li>
+<li><a href="http://shgy.gitbooks.io/mastering-elasticsearch/content/">Mastering Elasticsearch(中文版) </a></li>
 </ul>
 </body>
 </html>
