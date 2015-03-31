@@ -35,5 +35,5 @@ brings full-text, interactive search and scalable, flexible indexing to CDH and 
 * [Phoenix Performance](http://phoenix.apache.org/performance.html)
 * [Using HBase Coprocessors to Index Columns in an Elasticsearch Cluster](http://www.slideshare.net/cloudera/hbasecon-2013-session-3b)
 * [使用HBase和Solr配置存储与索引](http://database.51cto.com/art/201408/449223.htm)
-## 疑问
-* secondary index
+* [HBase数据同步到ElasticSearch的方案](http://blog.csdn.net/hengyunabc/article/details/41146115)
+* [Coprocessor Introduction](https://blogs.apache.org/hbase/entry/coprocessor_introduction)

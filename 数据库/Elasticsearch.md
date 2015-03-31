@@ -39,7 +39,7 @@
 * 主节点可以通过***选举***产生
 
 ### 节点
-* 你运行的Elasticsearch实例
+* 运行的Elasticsearch实例
 
 ### 分片(shards)
 * 把一个完整的索引分成多个分片，分布到不同的节点上
@@ -77,3 +77,4 @@
 * [GitHub使用elasticsearch遇到的一些问题及解决方法](http://devres.zoomquiet.io/data/20130616115216/index.html)
 * [Elasticsearch数据架构及基本特点 ](http://chuansong.me/n/1133212)
 * [Mastering Elasticsearch(中文版) ](http://shgy.gitbooks.io/mastering-elasticsearch/content/)
+* [Elasticsearch的备份和恢复](http://keenwon.com/1393.html)
