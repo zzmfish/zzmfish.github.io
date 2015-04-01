@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>系统管理</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h2 id="_1">系统管理</h2>
@@ -11,6 +11,9 @@
 <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;zhouzm hard nofile 10240&quot;</span> &gt;&gt; /etc/security/limits.conf
 restart
 <span style="color: #24909d">ulimit</span> -n 10240
+
+<span style="color: #999999; font-style: italic">#释放cache</span>
+sudo sh -c <span style="color: #ed9d13">&#39;sync &amp;&amp; echo 1 &gt;/proc/sys/vm/drop_caches&#39;</span>
 </pre></div>
 
 

@@ -1,10 +1,9 @@
 ## 简介
-* 实时分布式搜索和分析引擎
 * 面向文档(document oriented)
-* 使用JSON做为文档序列化格式
-* 反向索引
+* 文档格式：JSON
+* 全文索引
 
-### 概念比较
+### 与关系数据库的概念对比
 |关系数据库  |ElasticSearch|
 |------------|-------------|
 |库          |索引
@@ -28,10 +27,10 @@
 
 ### 高亮搜索
 
+### 视图
+
 ### 聚合
 在数据基础上生成复杂的统计，类似SQL的GROUP BY
-
-
 
 ## 集群
 ### 集群
@@ -66,9 +65,6 @@
 ### Transport
 内部节点或集群与客户端的交互方式
 
-## 其他
-### Optimistic Concurrency Control
-
 ## 参考
 * [与Costin Leau谈论Elasticsearch，大数据及Hadoop](http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata)
 * [Elasticsearch 权威指南](http://es.xiaoleilu.com)
@@ -78,3 +74,4 @@
 * [Elasticsearch数据架构及基本特点 ](http://chuansong.me/n/1133212)
 * [Mastering Elasticsearch(中文版) ](http://shgy.gitbooks.io/mastering-elasticsearch/content/)
 * [Elasticsearch的备份和恢复](http://keenwon.com/1393.html)
+* [elasticsearch suggest 的几种使用](http://www.cnblogs.com/jiuyuehe/p/3840821.html)

@@ -12,11 +12,70 @@
 * Scan
 * Delete
 
+## 体系结构
+```uml @startuml
+node HMaster服务器 as hm {
+
+}
+
+node HRegion服务器 as hs1 {
+  database HRegion as hr1
+  database HRegion as hr2
+}
+
+node HRegion服务器 as hs2 {
+  database HRegion as hr3
+  database HRegion as hr4
+}
+
+[ ZooKeeper ] as zk
+
+hm <--> hs1
+hm <--> hs2
+zk <..> hm
+zk <..> hs1
+zk <..> hs2
+@enduml
+```
+
+### HRegion服务器
+* ***HLog***: 存储日志，先写日志（WAL）
+* ***HRegion***: 保存一个表里面某段连续的数据
+* ***Store***: 储存一个列族的数据
+* ***MemStore***: 驻留在内存，数据先更新到MemStore，达到阈值之后再更新到对应的StoreFile
+* ***StoreFile（HFile）***: 实际的数据存储
+
+![](/images/HBase_HRegionServer.png)
+
+#### StoreFile
+* 通过***追加***的方式进行更新数据
+* 数据的删除和更新在合并时进行
+* 当Store中StoreFile的数量超过阈值会进行***合并***，将多个StoreFile合并成一个StoreFile
+
+#### HLog
+* 用于故障恢复
+
+#### HRegion
+* 当大小超过阈值就会进行拆分
+
+### HMaster服务器
+* 管理Table操作
+* 管理HRegion服务器的负载均衡
+* 调整HRegion分布
+* HRegion服务器停机后负责失效HRegion服务器上的HRegion迁移
+
+### ROOT表和META表
+* ***ROOT表***: 保存所有META表的位置
+* ***META表***: 保存HRegion标示符和实际HRegion服务器的映射关系
+* ***HRegion标识符***: 表名+开始主键+唯一ID
+
+## API
 ### [Filters](http://hbase.apache.org/book.html#client.filter)
 
 ### Coprocessors
 #### Observer
 #### EndPoint
+
 ## 第三方工具
 ### Phoenix
 a relational database layer over HBase delivered as a client-embedded JDBC driver targeting low latency queries over HBase data.
