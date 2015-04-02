@@ -47,10 +47,11 @@ zk <..> hs2
 
 ![](/images/HBase_HRegionServer.png)
 
-#### StoreFile
+#### StoreFile（HFile）
 * 通过***追加***的方式进行更新数据
 * 数据的删除和更新在合并时进行
 * 当Store中StoreFile的数量超过阈值会进行***合并***，将多个StoreFile合并成一个StoreFile
+* 按照KeyValue存储
 
 #### HLog
 * 用于故障恢复
@@ -76,6 +77,11 @@ zk <..> hs2
 #### Observer
 #### EndPoint
 
+## 性能优化
+### Rowkey设计
+* ***越短越好***：节省存储和内存
+* ***高位作为散列字段***：数据均衡分布在每个Regionserver
+
 ## 第三方工具
 ### Phoenix
 a relational database layer over HBase delivered as a client-embedded JDBC driver targeting low latency queries over HBase data.
@@ -96,3 +102,4 @@ brings full-text, interactive search and scalable, flexible indexing to CDH and 
 * [使用HBase和Solr配置存储与索引](http://database.51cto.com/art/201408/449223.htm)
 * [HBase数据同步到ElasticSearch的方案](http://blog.csdn.net/hengyunabc/article/details/41146115)
 * [Coprocessor Introduction](https://blogs.apache.org/hbase/entry/coprocessor_introduction)
+* [大数据性能调优之HBase的RowKey设计](http://blog.chedushi.com/archives/9720)

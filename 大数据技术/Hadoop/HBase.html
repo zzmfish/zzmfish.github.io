@@ -33,11 +33,12 @@
 <li><strong><em>StoreFile（HFile）</em></strong>: 实际的数据存储</li>
 </ul>
 <p><img alt="" src="/images/HBase_HRegionServer.png" /></p>
-<h4 id="storefile">StoreFile</h4>
+<h4 id="storefilehfile">StoreFile（HFile）</h4>
 <ul>
 <li>通过<strong><em>追加</em></strong>的方式进行更新数据</li>
 <li>数据的删除和更新在合并时进行</li>
 <li>当Store中StoreFile的数量超过阈值会进行<strong><em>合并</em></strong>，将多个StoreFile合并成一个StoreFile</li>
+<li>按照KeyValue存储</li>
 </ul>
 <h4 id="hlog">HLog</h4>
 <ul>
@@ -65,7 +66,13 @@
 <h3 id="coprocessors">Coprocessors</h3>
 <h4 id="observer">Observer</h4>
 <h4 id="endpoint">EndPoint</h4>
-<h2 id="_3">第三方工具</h2>
+<h2 id="_3">性能优化</h2>
+<h3 id="rowkey">Rowkey设计</h3>
+<ul>
+<li><strong><em>越短越好</em></strong>：节省存储和内存</li>
+<li><strong><em>高位作为散列字段</em></strong>：数据均衡分布在每个Regionserver</li>
+</ul>
+<h2 id="_4">第三方工具</h2>
 <h3 id="phoenix">Phoenix</h3>
 <p>a relational database layer over HBase delivered as a client-embedded JDBC driver targeting low latency queries over HBase data.</p>
 <h3 id="lily-hbase-indexer"><a href="http://ngdata.github.io/hbase-indexer/">Lily HBase Indexer</a></h3>
@@ -74,7 +81,7 @@
 <p>open source enterprise search platform built on Apache Lucene</p>
 <h3 id="cloudera-search"><a href="http://www.cloudera.com/content/cloudera/en/products-and-services/cdh/search.html">Cloudera Search</a></h3>
 <p>brings full-text, interactive search and scalable, flexible indexing to CDH and your enterprise data hub.</p>
-<h2 id="_4">参考</h2>
+<h2 id="_5">参考</h2>
 <ul>
 <li><a href="http://hbase.apache.org/book.html">Apache HBase Reference Guide</a></li>
 <li><a href="http://wenku.baidu.com/view/9cfe96eb240c844769eaeed1.html">HBase_简介_(来自京东很不错)</a></li>
@@ -83,6 +90,7 @@
 <li><a href="http://database.51cto.com/art/201408/449223.htm">使用HBase和Solr配置存储与索引</a></li>
 <li><a href="http://blog.csdn.net/hengyunabc/article/details/41146115">HBase数据同步到ElasticSearch的方案</a></li>
 <li><a href="https://blogs.apache.org/hbase/entry/coprocessor_introduction">Coprocessor Introduction</a></li>
+<li><a href="http://blog.chedushi.com/archives/9720">大数据性能调优之HBase的RowKey设计</a></li>
 </ul>
 </body>
 </html>
