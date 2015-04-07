@@ -73,21 +73,27 @@
 <h3 id="_15">集群</h3>
 <ul>
 <li>一个集群中有多个节点，其中有一个为<strong><em>主节点</em></strong></li>
-<li>主节点可以通过<strong><em>选举</em></strong>产生</li>
 </ul>
 <h3 id="_16">节点</h3>
 <ul>
 <li>运行的Elasticsearch实例</li>
+<li>一个节点会被<strong><em>选举</em></strong>为主节点</li>
+<li>主节点管理集群的变更（索引、节点等）</li>
 </ul>
 <h3 id="shards">分片(shards)</h3>
 <ul>
+<li>一个分片就是一个Lucene实例</li>
 <li>把一个完整的索引分成多个分片，分布到不同的节点上</li>
+<li>主分片的数量需在创建索引时定义</li>
+<li>路由：目标分片 = hash(_id) % 主分片的数量</li>
+<li>开销：分发搜索命令到每个分片以及分片结果的合并</li>
 </ul>
 <h3 id="_17">副本</h3>
 <ul>
 <li>设置多个索引的副本</li>
 <li>提高系统的<strong><em>容错性</em></strong></li>
 <li>对搜索请求进行<strong><em>负载均衡</em></strong>，提高的查询效率</li>
+<li>副本的数量可以随时更新设置</li>
 </ul>
 <h3 id="recovery">恢复（Recovery）</h3>
 <ul>

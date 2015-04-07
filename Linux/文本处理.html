@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>文本处理</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h2 id="_1">文本处理</h2>
@@ -24,6 +24,15 @@ sed <span style="color: #ed9d13">&quot;/^\s*$/d&quot;</span>
 
 <span style="color: #999999; font-style: italic">#交换两列</span>
 awk <span style="color: #ed9d13">&#39;{ print $2&quot; &quot;$1; }&#39;</span>
+
+<span style="color: #999999; font-style: italic">#在行尾添加</span>
+sed <span style="color: #ed9d13">&#39;/^CFLAGS\s*=/ s/$/ -fPIC/&#39;</span> -i Makefile
 </pre></div>
+
+
+<h2 id="_2">参考</h2>
+<ul>
+<li><a href="http://blog.sina.com.cn/s/blog_58c3f7960100uttl.html">linux tr命令详解</a></li>
+</ul>
 </body>
 </html>
