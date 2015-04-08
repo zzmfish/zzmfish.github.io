@@ -70,6 +70,11 @@ zk <..> hs2
 * ***META表***: 保存HRegion标示符和实际HRegion服务器的映射关系
 * ***HRegion标识符***: 表名+开始主键+唯一ID
 
+## 客户端
+### Java
+### REST
+### Thrift
+
 ## API
 ### [Filters](http://hbase.apache.org/book.html#client.filter)
 
@@ -85,6 +90,12 @@ zk <..> hs2
 ## 第三方工具
 ### Phoenix
 a relational database layer over HBase delivered as a client-embedded JDBC driver targeting low latency queries over HBase data.
+
+* Functional Indexes
+* Global Indexing
+* Local Indexing
+* Append-only Data
+
 ### [Lily HBase Indexer](http://ngdata.github.io/hbase-indexer/)
 quickly and easily search for any content stored in HBase.
 
@@ -103,3 +114,4 @@ brings full-text, interactive search and scalable, flexible indexing to CDH and 
 * [HBase数据同步到ElasticSearch的方案](http://blog.csdn.net/hengyunabc/article/details/41146115)
 * [Coprocessor Introduction](https://blogs.apache.org/hbase/entry/coprocessor_introduction)
 * [大数据性能调优之HBase的RowKey设计](http://blog.chedushi.com/archives/9720)
+* [Thrift API](http://wiki.apache.org/hadoop/Hbase/ThriftApi)
