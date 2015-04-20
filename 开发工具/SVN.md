@@ -1,11 +1,20 @@
 # SVN经验技巧
 
+##### 检出
+```bash
+#检出单个文件
+svn export --depth files $FilePath
+```
 
 ##### 添加
 ```bash
 #添加目录，但不添文件
 svn add --depth=empty $DirName
 svn add -N $Dir
+
+#远程添加目录
+mkdir $DirName
+svn import $DirName $RemotePath/$DirName
 ```
 ##### 更新
 ```bash

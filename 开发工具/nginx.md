@@ -5,7 +5,7 @@ nginx -s quit
 ```
 
 
-
+## 静态目录
 ```
 server {
         listen   80;
@@ -18,3 +18,6 @@ server {
         }
 }
 ```
+
+## 参考
+* [Nginx: How do I forward a http request to another port?](http://serverfault.com/questions/536576/nginx-how-do-i-forward-a-http-request-to-another-port)

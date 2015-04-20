@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>文本处理</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <h2 id="_1">文本处理</h2>
@@ -27,6 +27,9 @@ awk <span style="color: #ed9d13">&#39;{ print $2&quot; &quot;$1; }&#39;</span>
 
 <span style="color: #999999; font-style: italic">#在行尾添加</span>
 sed <span style="color: #ed9d13">&#39;/^CFLAGS\s*=/ s/$/ -fPIC/&#39;</span> -i Makefile
+
+<span style="color: #999999; font-style: italic">#在vim中打开程序输出</span>
+ps -efH | vim -
 </pre></div>
 
 

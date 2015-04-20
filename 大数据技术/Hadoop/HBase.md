@@ -6,11 +6,13 @@
 * 多个版本
 * 都是字符串类型
 
-## 操作
-* Get
-* Put
-* Scan
-* Delete
+## Shell
+|命令                           | 作用                       |
+|-------------------------------|----------------------------|
+list                            |显示全部tabe
+count 'video', INTERVAL=> 1     |显示全部key
+scan 'video'                    |显示video表全部行
+truncate 'video'                |清空表
 
 ## 体系结构
 ```uml @startuml
@@ -79,8 +81,11 @@ zk <..> hs2
 ### [Filters](http://hbase.apache.org/book.html#client.filter)
 
 ### Coprocessors
-#### Observer
-#### EndPoint
+* Observer
+    * RegionObserver
+    * WALObserver
+    * MasterObserver
+* EndPoint
 
 ## 性能优化
 ### Rowkey设计
@@ -115,3 +120,6 @@ brings full-text, interactive search and scalable, flexible indexing to CDH and 
 * [Coprocessor Introduction](https://blogs.apache.org/hbase/entry/coprocessor_introduction)
 * [大数据性能调优之HBase的RowKey设计](http://blog.chedushi.com/archives/9720)
 * [Thrift API](http://wiki.apache.org/hadoop/Hbase/ThriftApi)
+* [Connection pool Concurrency in HBase](http://comments.gmane.org/gmane.comp.java.hadoop.hbase.user/43426)
+* [Coprocessor Introduction](https://blogs.apache.org/hbase/entry/coprocessor_introduction)
+* [使用HBase EndPoint（coprocessor）进行计算](http://www.searchtb.com/2014/03/using-hbase-endpoint.html)

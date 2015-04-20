@@ -38,6 +38,7 @@ foo=()                          #定义数组
 foo+=(1)                        #添加元素    
 echo ${foo[*]}                  #所有元素    
 echo ${#foo[*]}                 #元素个数  
+jars=(lib/*.jar)                #文件列表作为数组
 (IFS=,; echo "${array[*]}")     #逗号连接数组内容  
 ```
 

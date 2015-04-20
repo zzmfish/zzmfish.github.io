@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PlayFramework “unable to create new native thread”问题</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<h1 id="playframework-unable-to-create-new-native-thread">PlayFramework “unable to create new native thread”问题</h1>
+<h2 id="playframework">PlayFramework线程池设置</h2>
+<p>PlayFramework是通过配置文件<code>conf/application.conf</code>来设置线程池大小：</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#Application mode</span>
+<span style="color: #bbbbbb">application.mode</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">dev</span>
+
+<span style="color: #999999; font-style: italic"># Execution pool</span>
+<span style="color: #999999; font-style: italic"># ~~~~~</span>
+<span style="color: #999999; font-style: italic"># Default to 1 thread in DEV mode or (nb processors + 1) threads in PROD mode.</span>
+<span style="color: #999999; font-style: italic">#play.pool=10</span>
+</pre></div>
+
+
+<p>默认是dev模式且只有一个线程。改成prod模式之后默认线程数是CPU核心数+1。也可以手工指定线程池大小。</p>
+<h2 id="unable-to-create-new-native-thread">“unable to create new native thread”问题</h2>
+<p>修改成application.mode=prod之后，处理并发请求会出现错误：</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">play.exceptions.JavaExecutionException:</span> <span style="color: #d0d0d0">unable</span> <span style="color: #d0d0d0">to</span> <span style="color: #d0d0d0">create</span> <span style="color: #d0d0d0">new</span> <span style="color: #d0d0d0">native</span> <span style="color: #6ab825; font-weight: bold">thread</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">play.mvc.ActionInvoker.invoke(ActionInvoker.java:</span><span style="color: #3677a9">228</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">Invocation.HTTP</span> <span style="color: #d0d0d0">Request(Play!)</span>
+<span style="color: #d0d0d0">Caused</span> <span style="color: #d0d0d0">by:</span> <span style="color: #d0d0d0">java.lang.OutOfMemoryError:</span> <span style="color: #d0d0d0">unable</span> <span style="color: #d0d0d0">to</span> <span style="color: #d0d0d0">create</span> <span style="color: #d0d0d0">new</span> <span style="color: #d0d0d0">native</span> <span style="color: #6ab825; font-weight: bold">thread</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">java.lang.Thread.start0(Native</span> <span style="color: #d0d0d0">Method)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">java.lang.Thread.start(Thread.java:</span><span style="color: #3677a9">714</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">java.util.concurrent.ThreadPoolExecutor.addWorker(ThreadPoolExecutor.java:</span><span style="color: #3677a9">949</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:</span><span style="color: #3677a9">1360</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:</span><span style="color: #3677a9">110</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">org.apache.hadoop.hbase.client.AsyncProcess.sendMultiAction(AsyncProcess.java:</span><span style="color: #3677a9">565</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">org.apache.hadoop.hbase.client.AsyncProcess.submit(AsyncProcess.java:</span><span style="color: #3677a9">349</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">org.apache.hadoop.hbase.client.AsyncProcess.submit(AsyncProcess.java:</span><span style="color: #3677a9">286</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">org.apache.hadoop.hbase.client.HTable.backgroundFlushCommits(HTable.java:</span><span style="color: #3677a9">1001</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">org.apache.hadoop.hbase.client.HTable.flushCommits(HTable.java:</span><span style="color: #3677a9">1334</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">org.apache.hadoop.hbase.client.HTable.put(HTable.java:</span><span style="color: #3677a9">947</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">controllers.VideoControllerCommon.addOrUpdate(VideoControllerCommon.java:</span><span style="color: #3677a9">169</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">controllers.VideoController.add(VideoController.java:</span><span style="color: #3677a9">31</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:</span><span style="color: #3677a9">524</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">play.mvc.ActionInvoker.invoke(ActionInvoker.java:</span><span style="color: #3677a9">475</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:</span><span style="color: #3677a9">451</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:</span><span style="color: #3677a9">446</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">at</span> <span style="color: #d0d0d0">play.mvc.ActionInvoker.invoke(ActionInvoker.java:</span><span style="color: #3677a9">160</span><span style="color: #d0d0d0">)</span>
+        <span style="color: #d0d0d0">...</span> <span style="color: #3677a9">1</span> <span style="color: #d0d0d0">more</span>
+</pre></div>
+
+
+<h2 id="_1">原因分析</h2>
+<p>OutOfMemoryError貌似是内存不足，但通过<code>play run -Xms256m -Xmx1024m</code>增大java可用内存并没有解决问题。而且单线程情况下处理几千万请求也没有问题，排除内存泄漏。怀疑是创建linux线程失败。</p>
+<p>通过<code>ps -o thcount &lt;程序Pid&gt;</code>可以看到一个进程的linux原生线程数。
+设置<code>play.pool=3</code>，Play程序启动后使用了127个线程。处理大量并发请求很快增加到546个线程，而且出现了“unable to create new native thread”。</p>
+<p><code>ulimit -u</code>输出1024，表明用户可以创建1024个进程。linux线程也称为“轻量级进程”，那么ulimit的进程数限制是否会限制线程数量呢？测试表明是会的。</p>
+<h2 id="_2">解决办法</h2>
+<p>设置ulimit -u 10240，然后再启动Play网站程序，就不会出现前面的错误。</p>
+<h2 id="_3">其他疑问</h2>
+<h3 id="playframework_1">PlayFramework创建了大量线程</h3>
+<p>设置<code>play.pool=10</code>，Play进程使用1073个线程，后来下降到416个。</p>
+<p>使用prod模式和默认play.pool（默认是CPU核心数+1），刚开始处理请求会创建2308个线程，后来下降到451个。</p>
+<p>说明PlayFramework会创建大量线程，但原因还不清楚。</p>
+</body>
+</html>

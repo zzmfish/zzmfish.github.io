@@ -7,13 +7,22 @@
 </head>
 <body>
 <h2 id="_1">进程和线程</h2>
-<h5 id="_2">进程组</h5>
+<h5 id="_2">资源</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">getrlimit</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">resource,</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*rlim);</span>
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">setrlimit</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">resource,</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*rlim);</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">prlimit</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">resource,</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*new_limit,</span>
+                   <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*old_limit);</span>
+</pre></div>
+
+
+<h5 id="_3">进程组</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">setpgid</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid,</span> <span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pgid);</span>
 <span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #447fcf">getpgid</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid);</span>
 </pre></div>
 
 
-<h2 id="_3">网络</h2>
+<h2 id="_4">网络</h2>
 <h5 id="io">阻塞IO</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">listen</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">sockfd,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">backlog);</span>
 <span style="color: #6ab825; font-weight: bold">ssize_t</span> <span style="color: #447fcf">send</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">sockfd,</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #d0d0d0">*buf,</span> <span style="color: #6ab825; font-weight: bold">size_t</span> <span style="color: #d0d0d0">len,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">flags);</span>

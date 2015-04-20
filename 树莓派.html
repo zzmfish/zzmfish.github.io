@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>!bash</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<ul>
+<li>默认帐号：用户名pi，密码raspberry</li>
+<li>sshd默认开启</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#制作启动盘</span>
+dd <span style="color: #6ab825; font-weight: bold">if</span><span style="color: #d0d0d0">=</span>raspbian.img <span style="color: #40ffff">of</span><span style="color: #d0d0d0">=</span>/dev/sdc
+
+<span style="color: #999999; font-style: italic">#截屏</span>
+fbcat /dev/fb0 &gt; fb.ppm
+
+<span style="color: #999999; font-style: italic">#解决自动黑屏</span>
+sudo cat &gt;&gt; /etc/kbd/config <span style="color: #ed9d13">&lt;&lt;EOF</span>
+<span style="color: #ed9d13">BLANK_TIME=0</span>
+<span style="color: #ed9d13">POWERDOWN_TIME=0</span>
+<span style="color: #ed9d13">EOF</span>
+sudo /etc/init.d/kbd restart
+
+<span style="color: #999999; font-style: italic">#启动VNC远程界面</span>
+tightvncserver -geometry 1024x768 :1
+<span style="color: #999999; font-style: italic">#停止</span>
+tightvncserver -kill :1
+</pre></div>
+
+
+<h5 id="_1">自动启动</h5>
+<p>在.config/autostart添加.desktop文件</p>
+<h2 id="_2">参考</h2>
+<ul>
+<li><a href="http://www.raspberrypi-spy.co.uk/2013/03/top-10-things-to-connect-to-your-raspberry-pi/">Top 10 Things to Connect to Your Raspberry Pi</a></li>
+<li><a href="http://linuxtoy.org/archives/cool-ideas-for-raspberry-pi.html">34 个使用 Raspberry Pi 的酷创意</a></li>
+<li><a href="http://hugozhu.myalert.info/2013/03/16/03-16-use-raspberry-pi-control-step-motor-rotate-webcam.html">如何使用Raspberry Pi控制步进电机旋转高清摄像头并拍照</a></li>
+<li><a href="http://www.leiphone.com/gamingonrespberrypie.html">在树莓派上安装游戏模拟器</a></li>
+<li><a href="http://shumeipai.nxez.com/2013/09/04/login-rpi-with-vnc.html?variant=zh-cn">VNC远程登录树莓派的图形界面</a></li>
+<li><a href="http://bbs.shumeipai.org/thread-113-1-1.html">Auto-connect to wireless nets?</a></li>
+<li><a href="http://www.blackv.tk/projects/retropi/raspberry-pi-a2dp-audio-sink/">Raspberry Pi A2DP audio sink</a></li>
+<li><a href="http://www.shumeipai.net/forum.php?mod=viewthread&amp;tid=678">教你如何在树莓派上使用usb DAC声卡，玩转HIFI！！！</a></li>
+<li><a href="http://michael.gorven.za.net/raspberrypi/xbmc">XBMC for Raspberry Pi</a></li>
+<li><a href="http://www.raspicn.com/thread-41-1-1.html">树莓派上手实战之配置Samba服务器</a></li>
+<li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=66&amp;t=18200">How to disable screen blanking</a></li>
+</ul>
+</body>
+</html>
