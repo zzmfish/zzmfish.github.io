@@ -1,10 +1,3 @@
-# 未分类
-
-浏览器的html5特性：`http://caniuse.com`  
-
-## 特殊符号
-✓
-
 # CSS
 ```
 #!css
@@ -16,11 +9,5 @@ pre { white-space: pre-wrap } /* pre允许文字折行 */
 div > p { }      /* 孩子 */  
 div p { }        /* 子孙 */
 ```
+
 ## 选择符
-
-
-
-
-
-# Firefox
-chrome://browser/content/browser.xul

@@ -121,5 +121,4 @@ brings full-text, interactive search and scalable, flexible indexing to CDH and 
 * [大数据性能调优之HBase的RowKey设计](http://blog.chedushi.com/archives/9720)
 * [Thrift API](http://wiki.apache.org/hadoop/Hbase/ThriftApi)
 * [Connection pool Concurrency in HBase](http://comments.gmane.org/gmane.comp.java.hadoop.hbase.user/43426)
-* [Coprocessor Introduction](https://blogs.apache.org/hbase/entry/coprocessor_introduction)
 * [使用HBase EndPoint（coprocessor）进行计算](http://www.searchtb.com/2014/03/using-hbase-endpoint.html)
