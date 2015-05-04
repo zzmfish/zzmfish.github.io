@@ -48,6 +48,30 @@ grub-install --root-directory=/mnt /dev/sda
 update-grub2 #不是必须
 ```
 
+### 显卡问题
+```
+#!bash
+#检查桌面是否使用3d加速
+/usr/lib/nux/unity_support_test -p
+
+#查看显卡信息
+sudo lshw -class video
+```
+
+##### 显示分辨率太小
+增大`/etc/X11/xorg.conf`的`HorizSync`范围
+
+##### nvidia驱动导致无法启动
+
+进入恢复模式卸载：
+
+```
+#!bash
+mount /dev/sda10 / -o remount,rw
+apt-dpkg --get-selections | grep nvidia
+apt-get remove --purge nvidia-XXX
+```
+
 ##### 疑难问题
 ```
 #!bash
@@ -61,14 +85,12 @@ sudo update-rc.d avahi-daemon remove
 #解决顶栏没有显示时间
 killall unity-panel-service
 ```
+
 ##### 其他
 ```
 #!bash
 #查看时间设置
 timedatectl status
-
-#查看显卡信息
-sudo lshw -class video
 
 #VirtualBox使用usb设备要加入vboxusers组
 sudo adduser zhouzm vboxusers  
@@ -76,4 +98,3 @@ sudo adduser zhouzm vboxusers
 #安装新字体（包括微软字体）
 cp $FontFile ~/.fonts
 ```
-显示分辨率太小，增大`/etc/X11/xorg.conf`的`HorizSync`范围

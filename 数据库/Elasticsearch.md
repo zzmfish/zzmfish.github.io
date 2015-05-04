@@ -23,13 +23,30 @@
 
 
 ## 操作
+### 状态
+```
+#!bash
+#显示全部索引
+curl 'http://localhost:9200/_stats/indices?pretty'
+
+#显示索引的状态
+curl 'http://localhost:9200/$IndexName/_stats?pretty'
+```
 ### 索引
 * PUT /<索引>/<类型>/id
 
 ### 检索
-* GET /<索引>/<类型>/id
-* GET /<索引>/<类型>/_search
-* 过滤器(filter)
+```
+#!bash
+#检索全部文档（默认10个）
+curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty'
+#检索100个
+curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100'
+
+#根据id检索文档
+curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
+```
+
 
 ### 全文搜索
 * 相关性(relevance)
@@ -85,6 +102,13 @@
 ### Transport
 内部节点或集群与客户端的交互方式
 
+## Bulk API
+
+## 工具
+### elasticsearch-head
+* 安装：./bin/plugin -install mobz/elasticsearch-head
+* 运行：http://localhost:9200/_plugin/head/
+
 ## 参考
 * [与Costin Leau谈论Elasticsearch，大数据及Hadoop](http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata)
 * [Elasticsearch 权威指南](http://es.xiaoleilu.com)
@@ -95,3 +119,5 @@
 * [Mastering Elasticsearch(中文版) ](http://shgy.gitbooks.io/mastering-elasticsearch/content/)
 * [Elasticsearch的备份和恢复](http://keenwon.com/1393.html)
 * [elasticsearch suggest 的几种使用](http://www.cnblogs.com/jiuyuehe/p/3840821.html)
+* [elasticsearch索引模块缓存](http://www.dongming8.cn/?p=74)
+* [Elasticsearch全文搜索 (一) - 基础概念和match查询](http://blog.csdn.net/dm_vincent/article/details/41693125)

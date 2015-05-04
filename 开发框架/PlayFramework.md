@@ -43,6 +43,11 @@ GET          /clients/:id          controllers.Clients.show(id: Long)
 play run -Xms256M -Xmx1024M
 ```
 
+## 未分类
+* 程序路径：Play.applicationPath
+* 通过命令行指定端口：play run --http.port=8080
+
+
 ## 参考
 * [Actions, Controllers and Results](https://www.playframework.com/documentation/2.3.x/JavaActions)
 * [HTTP routing](https://www.playframework.com/documentation/2.3.x/JavaRouting)

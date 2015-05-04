@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>安装</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h2 id="_1">安装</h2>
@@ -24,8 +24,8 @@ play run
 <li>把请求转到对应的action调用</li>
 <li><code>conf/routes</code>文件定义</li>
 </ul>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #cd2828; font-weight: bold">#HTTP方法    url模式               action调用</span>
-<span style="color: #d0d0d0">GET</span>          <span style="color: #d0d0d0">/clients/:id</span>          <span style="color: #d0d0d0">controllers.Clients.show(id:</span> <span style="color: #d0d0d0">Long)</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">#HTTP方法    url模式               action调用
+GET          /clients/:id          controllers.Clients.show(id: Long)
 </pre></div>
 
 
@@ -53,11 +53,16 @@ play run
 <li>Akka线程池</li>
 </ul>
 <h2 id="_6">运行</h2>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">play</span> <span style="color: #d0d0d0">run</span> <span style="color: #d0d0d0">-Xms256M</span> <span style="color: #d0d0d0">-Xmx1024M</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">play run -Xms256M -Xmx1024M
 </pre></div>
 
 
-<h2 id="_7">参考</h2>
+<h2 id="_7">未分类</h2>
+<ul>
+<li>程序路径：Play.applicationPath</li>
+<li>通过命令行指定端口：play run --http.port=8080</li>
+</ul>
+<h2 id="_8">参考</h2>
 <ul>
 <li><a href="https://www.playframework.com/documentation/2.3.x/JavaActions">Actions, Controllers and Results</a></li>
 <li><a href="https://www.playframework.com/documentation/2.3.x/JavaRouting">HTTP routing</a></li>

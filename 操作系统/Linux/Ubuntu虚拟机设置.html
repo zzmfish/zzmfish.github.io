@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>!bash</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#必备软件</span>
+sudo apt-get install screen vim-gtk ctags sshfs subversion git
+
+<span style="color: #999999; font-style: italic">#fcitx</span>
+install fcitx fcitx-googlepinyin im-switch
+im-config -n fcitx
+
+<span style="color: #999999; font-style: italic">#git</span>
+git config --global user.email <span style="color: #ed9d13">&quot;zzmfish@163.com&quot;</span>
+git config --global user.name <span style="color: #ed9d13">&quot;zzmfish&quot;</span>
+
+<span style="color: #999999; font-style: italic">#解决无法访问.local的问题</span>
+<span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">[</span> ! -e /etc/nsswitch.conf.bak <span style="color: #d0d0d0">];</span> <span style="color: #6ab825; font-weight: bold">then</span>
+    sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+    sudo sed -i <span style="color: #ed9d13">&quot;s/^hosts:.*/hosts: files dns/&quot;</span> /etc/nsswitch.conf
+<span style="color: #6ab825; font-weight: bold">fi</span>
+
+<span style="color: #999999; font-style: italic">#vim插件</span>
+mkdir -p ~/.vim
+svn checkout --force https://github.com/vim-scripts/vcscommand.vim/tags/1.99.47 ~/.vim
+</pre></div>
+</body>
+</html>

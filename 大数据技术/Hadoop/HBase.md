@@ -59,7 +59,20 @@ zk <..> hs2
 * 用于故障恢复
 
 #### HRegion
-* 当大小超过阈值就会进行拆分
+* 一个Region位于一台RegionServer
+* 表创建时默认只有一个Region
+* 3层B-树
+* 预分裂
+    * 已知key均匀分布
+    * RegionSplitter工具
+        * HexStringSplit：十六进制前缀分裂
+        * UniformSplit：随机字节数组分裂
+* 自动分裂
+    * 当大小超过阈值就会进行拆分
+    * ConstantSizeRegionSplitPolicy：固定大小分裂，默认10GB
+    * IncreasingToUpperBoundRegionSplitPolicy：最小值（RegionServer上一个表的Region数^2 * MemStore分裂大小，Region分裂大小），HBase >=0.94
+    * KeyPrefixRegionSplitPolicy
+* 强制分裂
 
 ### HMaster服务器
 * 管理Table操作
@@ -122,3 +135,4 @@ brings full-text, interactive search and scalable, flexible indexing to CDH and 
 * [Thrift API](http://wiki.apache.org/hadoop/Hbase/ThriftApi)
 * [Connection pool Concurrency in HBase](http://comments.gmane.org/gmane.comp.java.hadoop.hbase.user/43426)
 * [使用HBase EndPoint（coprocessor）进行计算](http://www.searchtb.com/2014/03/using-hbase-endpoint.html)
+* [Apache HBase Region Splitting and Merging](http://zh.hortonworks.com/blog/apache-hbase-region-splitting-and-merging/)

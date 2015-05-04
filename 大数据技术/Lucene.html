@@ -23,6 +23,19 @@
 <li>定期<strong><em>合并</em></strong>索引文件</li>
 <li>先在内存中进行索引操作，并根据一定的批量进行文件的写入</li>
 <li>IndexWriter的MERGE_FACTOR参数</li>
+<li>由多个<strong><em>分段</em></strong>组成</li>
+<li>更新操作<ul>
+<li>把旧文档标记为删除</li>
+<li>把新文档缓存</li>
+<li>从新文档创建新分段</li>
+<li>重新运行分析器</li>
+<li>可能会导致分段的合并<ul>
+<li>分段数超过阈值</li>
+<li>删除文档比例超过阈值</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="_2">反向索引</h3>
 <p><img alt="" src="/images/FullTextIndex.png" /></p>

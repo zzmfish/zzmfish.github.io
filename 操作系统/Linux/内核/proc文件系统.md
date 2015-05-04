@@ -1,0 +1,1 @@
+/proc/sys/fs/file-max：最大打开的文件数

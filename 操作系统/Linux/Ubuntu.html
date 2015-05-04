@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Ubuntu</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="ubuntu">Ubuntu</h1>
@@ -84,7 +84,26 @@ update-grub2 <span style="color: #999999; font-style: italic">#不是必须</spa
 </pre></div>
 
 
-<h5 id="_5">疑难问题</h5>
+<h3 id="_5">显卡问题</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#检查桌面是否使用3d加速</span>
+/usr/lib/nux/unity_support_test -p
+
+<span style="color: #999999; font-style: italic">#查看显卡信息</span>
+sudo lshw -class video
+</pre></div>
+
+
+<h5 id="_6">显示分辨率太小</h5>
+<p>增大<code>/etc/X11/xorg.conf</code>的<code>HorizSync</code>范围</p>
+<h5 id="nvidia">nvidia驱动导致无法启动</h5>
+<p>进入恢复模式卸载：</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">mount /dev/sda10 / -o remount,rw
+apt-dpkg --get-selections <span style="color: #d0d0d0">|</span> grep nvidia
+apt-get remove --purge nvidia-XXX
+</pre></div>
+
+
+<h5 id="_7">疑难问题</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#解决无法访问.local域名（方法1）</span>
 <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;hosts: files dns&quot;</span> &gt;&gt; /etc/nsswitch.conf
 
@@ -97,12 +116,9 @@ killall unity-panel-service
 </pre></div>
 
 
-<h5 id="_6">其他</h5>
+<h5 id="_8">其他</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看时间设置</span>
 timedatectl status
-
-<span style="color: #999999; font-style: italic">#查看显卡信息</span>
-sudo lshw -class video
 
 <span style="color: #999999; font-style: italic">#VirtualBox使用usb设备要加入vboxusers组</span>
 sudo adduser zhouzm vboxusers  
@@ -110,8 +126,5 @@ sudo adduser zhouzm vboxusers
 <span style="color: #999999; font-style: italic">#安装新字体（包括微软字体）</span>
 cp <span style="color: #40ffff">$FontFile</span> ~/.fonts
 </pre></div>
-
-
-<p>显示分辨率太小，增大<code>/etc/X11/xorg.conf</code>的<code>HorizSync</code>范围</p>
 </body>
 </html>
