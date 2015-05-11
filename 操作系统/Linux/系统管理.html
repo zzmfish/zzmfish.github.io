@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>系统管理</title>
+    <title>系统管理</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -42,12 +42,19 @@ vi /etc/sudoers
 </pre></div>
 
 
+<h3 id="root">让脚本有root权限</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo chown root <span style="color: #40ffff">$File</span>
+sudo chmod <span style="color: #3677a9">770</span> <span style="color: #40ffff">$File</span>
+sudo chmod g+s <span style="color: #40ffff">$File</span>
+</pre></div>
+
+
 <h3 id="crontab">crontab</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#列出条目</span>
 crontab -l
 
 <span style="color: #999999; font-style: italic">#添加条目</span>
-crontab -l | <span style="color: #d0d0d0">{</span> cat; <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;*/10 * * * * echo hello &gt; /tmp/hello.txt&quot;</span> <span style="color: #d0d0d0">}</span> | crontab -
+crontab -l <span style="color: #d0d0d0">|</span> <span style="color: #d0d0d0">{</span> cat<span style="color: #d0d0d0">;</span> <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;*/10 * * * * echo hello &gt; /tmp/hello.txt&quot;</span> <span style="color: #d0d0d0">}</span> <span style="color: #d0d0d0">|</span> crontab -
 </pre></div>
 
 
@@ -59,7 +66,7 @@ rpm -i --prefix<span style="color: #d0d0d0">=</span><span style="color: #40ffff"
 rpm -qpl <span style="color: #40ffff">$RpmFile</span>
 
 <span style="color: #999999; font-style: italic">#解压安装包</span>
-rpm2cpio <span style="color: #40ffff">$RpmFile</span> | cpio -div
+rpm2cpio <span style="color: #40ffff">$RpmFile</span> <span style="color: #d0d0d0">|</span> cpio -div
 </pre></div>
 </body>
 </html>

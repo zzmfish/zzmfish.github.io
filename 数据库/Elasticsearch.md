@@ -19,6 +19,12 @@
 * 用Lucene实现索引中数据的读写
 * 一个ES索引对应多个Lucene索引：分片和备份
 
+```
+#!bash
+#删除索引
+curl -XDELETE 'http://localhost:9200/$IndexName/'
+```
+
 ### 文档
 
 

@@ -3,8 +3,9 @@
 #必备软件
 sudo apt-get install screen vim-gtk ctags sshfs subversion git
 
-#fcitx
-install fcitx fcitx-googlepinyin im-switch
+#输入法
+sudo apt-get install ibus-sunpinyin
+sudo apt-get install  fcitx fcitx-googlepinyin im-switch
 im-config -n fcitx
 
 #git

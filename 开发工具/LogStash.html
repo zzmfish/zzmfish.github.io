@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>配置</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>配置</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h2 id="_1">配置</h2>
@@ -26,6 +26,9 @@ cat &gt; test.conf <span style="color: #ed9d13">&lt;&lt;EOF</span>
 <span style="color: #ed9d13">        data_type =&gt; &quot;list&quot;</span>
 <span style="color: #ed9d13">        key =&gt; &quot;logstash&quot;</span>
 <span style="color: #ed9d13">    }</span>
+<span style="color: #ed9d13">    tcp {</span>
+<span style="color: #ed9d13">        port =&gt; 5959</span>
+<span style="color: #ed9d13">    }</span>
 <span style="color: #ed9d13">    elasticsearch { host =&gt; localhost }</span>
 <span style="color: #ed9d13">}</span>
 <span style="color: #ed9d13">EOF</span>
@@ -35,22 +38,26 @@ cat &gt; test.conf <span style="color: #ed9d13">&lt;&lt;EOF</span>
 
 <h5 id="elasticsearch">更改elasticsearch端口</h5>
 <p>vi elasticsearch-1.4.2/config/elasticsearch.yml  </p>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">http.port:</span> <span style="color: #3677a9">8200</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">http.port: 8200
 </pre></div>
 
 
 <p>vi kibana-3.1.2/config.js</p>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">elasticsearch:</span> <span style="color: #ed9d13">&quot;http://&quot;</span><span style="color: #d0d0d0">+window.location.hostname+</span><span style="color: #ed9d13">&quot;:8200&quot;</span><span style="color: #d0d0d0">,</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">elasticsearch: &quot;http://&quot;+window.location.hostname+&quot;:8200&quot;,
 </pre></div>
 
 
+<h3 id="grok">grok</h3>
+<ul>
+<li>工具：<a href="http://grokdebug.herokuapp.com">Grok Debugger</a></li>
+</ul>
 <h2 id="_2">参考资料</h2>
 <ul>
 <li><a href="http://michael.bouvy.net/blog/en/2013/11/19/collect-visualize-your-logs-logstash-elasticsearch-redis-kibana/">Collect &amp; visualize your logs with Logstash, Elasticsearch &amp; Redis</a></li>
 <li><a href="http://logstash.net/docs/1.4.2/tutorials/getting-started-with-logstash">Getting started with Logstash</a></li>
 <li><a href="http://storysky.blog.51cto.com/628458/1158707">用Kibana和logstash快速搭建实时日志查询、收集与分析系统</a></li>
-<li><a href="https://home.regit.org/2014/01/a-bit-of-logstash-cooking/">A bit of logstash cooking</a>
-*</li>
+<li><a href="https://home.regit.org/2014/01/a-bit-of-logstash-cooking/">A bit of logstash cooking</a></li>
+<li><a href="http://kibana.logstash.es">Kibana 中文指南</a></li>
 </ul>
 </body>
 </html>

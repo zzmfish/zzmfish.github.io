@@ -33,5 +33,11 @@ scp -P $Port $LocalFile $User@$Host:$Path
 #如:
 scp -P 9922 release.tgz product@localhost:/home/product/workspace/server
 ```
+
+##### sshfs
+```
+#!bash
+sshfs -o nonempty -p 9922 nemo@slave1: /home/zhouzm/mount/slave1
+```
 ### 登录日志
 /var/log/secure

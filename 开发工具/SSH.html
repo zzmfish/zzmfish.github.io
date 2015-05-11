@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>无密码登录</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>无密码登录</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h5 id="_1">无密码登录</h5>
@@ -14,9 +14,9 @@ ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub &gt;&gt; <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
 
 <span style="color: #999999; font-style: italic">#设置目标主文件权限</span>
-chmod 700 <span style="color: #40ffff">$RemoteHome</span>
-chmod 700 <span style="color: #40ffff">$RemoteHome</span>/.ssh
-chmod 600 <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
+chmod <span style="color: #3677a9">700</span> <span style="color: #40ffff">$RemoteHome</span>
+chmod <span style="color: #3677a9">700</span> <span style="color: #40ffff">$RemoteHome</span>/.ssh
+chmod <span style="color: #3677a9">600</span> <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
 </pre></div>
 
 
@@ -36,7 +36,12 @@ ssh -C -N -R 9443:fsvn.ucweb.local:443 bigdata@usa-mob437 -p 9922
 <h5 id="scp">scp</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">scp -P <span style="color: #40ffff">$Port</span> <span style="color: #40ffff">$LocalFile</span> <span style="color: #40ffff">$User</span>@<span style="color: #40ffff">$Host</span>:<span style="color: #40ffff">$Path</span>
 <span style="color: #999999; font-style: italic">#如:</span>
-scp -P 9922 release.tgz product@localhost:/home/product/workspace/server
+scp -P <span style="color: #3677a9">9922</span> release.tgz product@localhost:/home/product/workspace/server
+</pre></div>
+
+
+<h5 id="sshfs">sshfs</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sshfs -o nonempty -p <span style="color: #3677a9">9922</span> nemo@slave1: /home/zhouzm/mount/slave1
 </pre></div>
 
 

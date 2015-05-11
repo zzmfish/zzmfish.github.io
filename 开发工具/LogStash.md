@@ -20,6 +20,9 @@ output {
         data_type => "list"
         key => "logstash"
     }
+    tcp {
+        port => 5959
+    }
     elasticsearch { host => localhost }
 }
 EOF
@@ -37,6 +40,8 @@ vi kibana-3.1.2/config.js
 elasticsearch: "http://"+window.location.hostname+":8200",
 ```
 
+### grok
+* 工具：[Grok Debugger](http://grokdebug.herokuapp.com)
 
 
 ## 参考资料
@@ -44,4 +49,4 @@ elasticsearch: "http://"+window.location.hostname+":8200",
 * [Getting started with Logstash](http://logstash.net/docs/1.4.2/tutorials/getting-started-with-logstash)
 * [用Kibana和logstash快速搭建实时日志查询、收集与分析系统](http://storysky.blog.51cto.com/628458/1158707)
 * [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)
-*
+* [Kibana 中文指南](http://kibana.logstash.es)

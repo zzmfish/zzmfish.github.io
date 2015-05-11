@@ -5,6 +5,19 @@
     * Blocking VM
     * Threaded VM
 
+### 数据类型
+#### 列表
+* 插入元素：LPUSH、RPUSH
+* 获取元素：BLPOP
+* 获取范围：LRANGE
+* 限制长度：LTRIM
+* 最多2^32 - 1个元素
+* 访问两端元素很快
+* 访问中间元素很慢
+
+#### 集合
+#### 哈希
+#### 有序集合
 ### 虚拟内存
 * 不赞成使用
 
@@ -68,3 +81,4 @@ make
 ## 资料
 * [Redis Quick Start](http://redis.io/topics/quickstart)
 * [How fast is Redis?](http://redis.io/topics/benchmarks)
+* [Data types](http://redis.io/topics/data-types)
