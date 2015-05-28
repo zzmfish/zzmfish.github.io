@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bulk Load</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="bulk-load">Bulk Load</h2>
+<ul>
+<li>直接准备和加载HFile到RegionServers</li>
+<li></li>
+</ul>
+<h3 id="_1">过程</h3>
+<ul>
+<li>提取数据到HDFS</li>
+<li>把数据转换成HFile：MapReduce<ul>
+<li>Mapper<ul>
+<li>Key：row key</li>
+<li>Value：KeyValue、Put或者Delete</li>
+</ul>
+</li>
+<li>Reducer：由HBase处理</li>
+</ul>
+</li>
+<li>把HFile加载到HBase</li>
+</ul>
+</body>
+</html>

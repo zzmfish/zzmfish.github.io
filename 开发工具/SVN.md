@@ -47,7 +47,7 @@ svn merge $BranchPath
 svn merge $BranchPath -r$Version1:$Version2
 
 #回滚
-svn merge -r$Version2:$Version1
+svn merge . -r$Version2:$Version1
 
 #冲突使用本地版本
 svn resolve --accept mine-full  $FileName

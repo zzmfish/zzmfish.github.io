@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SVN经验技巧</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>SVN经验技巧</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="svn">SVN经验技巧</h1>
@@ -53,7 +53,7 @@ svn merge <span style="color: #40ffff">$BranchPath</span>
 svn merge <span style="color: #40ffff">$BranchPath</span> -r<span style="color: #40ffff">$Version1</span>:<span style="color: #40ffff">$Version2</span>
 
 <span style="color: #999999; font-style: italic">#回滚</span>
-svn merge -r<span style="color: #40ffff">$Version2</span>:<span style="color: #40ffff">$Version1</span>
+svn merge . -r<span style="color: #40ffff">$Version2</span>:<span style="color: #40ffff">$Version1</span>
 
 <span style="color: #999999; font-style: italic">#冲突使用本地版本</span>
 svn resolve --accept mine-full  <span style="color: #40ffff">$FileName</span>

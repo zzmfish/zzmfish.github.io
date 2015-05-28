@@ -1,0 +1,2 @@
+### IdeaVim
+~/.ideavimrc

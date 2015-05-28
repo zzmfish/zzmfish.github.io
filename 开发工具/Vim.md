@@ -35,4 +35,7 @@ runtime! syntax/2html.vim
 
 '重新加载文件
 edit 
+
+'设置语法高亮语言
+set syntax=perl
 ```

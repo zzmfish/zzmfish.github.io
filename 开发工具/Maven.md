@@ -71,3 +71,4 @@ package                 |jar:jar
 * ***本地库***是指 maven 下载了插件或者 jar 文件后存放在本地机器上的拷贝
 * 通过`mvn install`命令把项目安装到本地库
 * 其他项目可以通过maven坐标和本地库的项目建立依赖关系
+* [MVN Repository](http://mvnrepository.com)

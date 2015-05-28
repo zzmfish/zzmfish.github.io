@@ -43,6 +43,9 @@ elasticsearch: "http://"+window.location.hostname+":8200",
 ### grok
 * 工具：[Grok Debugger](http://grokdebug.herokuapp.com)
 
+```
+(?<queue_id>[0-9A-F]{10,11})
+```
 
 ## 参考资料
 * [Collect & visualize your logs with Logstash, Elasticsearch & Redis](http://michael.bouvy.net/blog/en/2013/11/19/collect-visualize-your-logs-logstash-elasticsearch-redis-kibana/)

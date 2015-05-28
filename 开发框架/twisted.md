@@ -16,3 +16,8 @@ class EPollReactor
 
 @enduml
 ```
+
+## 参考
+* [Using the Twisted Web Client](https://twistedmatrix.com/documents/14.0.1/web/howto/client.html)
+* [Using Threads in Twisted](https://twistedmatrix.com/documents/14.0.1/web/howto/client.html)
+* [Deferred Reference](https://twistedmatrix.com/documents/14.0.1/core/howto/defer.html)

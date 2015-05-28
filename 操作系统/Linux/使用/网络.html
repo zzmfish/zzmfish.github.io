@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>常用命令</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>常用命令</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h3 id="_1">常用命令</h3>
@@ -48,6 +48,18 @@ curl --data <span style="color: #ed9d13">&#39;DATA&#39;</span> http://localhost:
 
 <span style="color: #999999; font-style: italic">#断点续传</span>
 wget -c http://www.baidu.com/file.tgz
+</pre></div>
+
+
+<h6 id="iptables">iptables</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示所有端口限制</span>
+sudo iptables -L -n
+</pre></div>
+
+
+<h4 id="icmp">ICMP</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#看ping的来源ip</span>
+tcpdump -i eth1 icmp and icmp<span style="color: #d0d0d0">[</span>icmptype<span style="color: #d0d0d0">]=</span>icmp-echo
 </pre></div>
 
 

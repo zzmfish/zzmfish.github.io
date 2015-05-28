@@ -21,6 +21,9 @@ sudo sh -c <span style="color: #ed9d13">&#39;sync &amp;&amp; echo 1 &gt;/proc/sy
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#添加用户</span>
 useradd <span style="color: #40ffff">$UserName</span>
 
+<span style="color: #999999; font-style: italic">#删除用户</span>
+userdel <span style="color: #40ffff">$UserName</span>
+
 <span style="color: #999999; font-style: italic">#初始化/修改密码</span>
 passwd <span style="color: #40ffff">$UserName</span>
 
@@ -39,12 +42,15 @@ chown <span style="color: #40ffff">$User</span> <span style="color: #40ffff">$Fi
 
 <span style="color: #999999; font-style: italic">#sudo用户配置</span>
 vi /etc/sudoers
+
+<span style="color: #999999; font-style: italic">#设置用户不能通过shell登陆</span>
+usermod -s /sbin/nologin file
 </pre></div>
 
 
 <h3 id="root">让脚本有root权限</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo chown root <span style="color: #40ffff">$File</span>
-sudo chmod <span style="color: #3677a9">770</span> <span style="color: #40ffff">$File</span>
+sudo chmod 770 <span style="color: #40ffff">$File</span>
 sudo chmod g+s <span style="color: #40ffff">$File</span>
 </pre></div>
 
@@ -54,7 +60,7 @@ sudo chmod g+s <span style="color: #40ffff">$File</span>
 crontab -l
 
 <span style="color: #999999; font-style: italic">#添加条目</span>
-crontab -l <span style="color: #d0d0d0">|</span> <span style="color: #d0d0d0">{</span> cat<span style="color: #d0d0d0">;</span> <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;*/10 * * * * echo hello &gt; /tmp/hello.txt&quot;</span> <span style="color: #d0d0d0">}</span> <span style="color: #d0d0d0">|</span> crontab -
+crontab -l | <span style="color: #d0d0d0">{</span> cat; <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;*/10 * * * * echo hello &gt; /tmp/hello.txt&quot;</span> <span style="color: #d0d0d0">}</span> | crontab -
 </pre></div>
 
 
@@ -66,7 +72,13 @@ rpm -i --prefix<span style="color: #d0d0d0">=</span><span style="color: #40ffff"
 rpm -qpl <span style="color: #40ffff">$RpmFile</span>
 
 <span style="color: #999999; font-style: italic">#解压安装包</span>
-rpm2cpio <span style="color: #40ffff">$RpmFile</span> <span style="color: #d0d0d0">|</span> cpio -div
+rpm2cpio <span style="color: #40ffff">$RpmFile</span> | cpio -div
 </pre></div>
+
+
+<h3 id="_3">参考</h3>
+<ul>
+<li><a href="http://www.jbxue.com/LINUXjishu/27489.html">linux中/etc/rc.local与/etc/init.d详解</a></li>
+</ul>
 </body>
 </html>
