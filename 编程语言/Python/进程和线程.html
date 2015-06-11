@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>通过管道调用进程</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>通过管道调用进程</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h4 id="_1">通过管道调用进程</h4>
@@ -25,6 +25,14 @@
 
 <span style="color: #d0d0d0">my_thread</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">MyThread()</span>
 <span style="color: #d0d0d0">my_thread.start()</span>
+</pre></div>
+
+
+<h4 id="_3">信号处理</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">interrupt_handler</span><span style="color: #d0d0d0">(signum,</span> <span style="color: #d0d0d0">frame):</span>
+    <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;interrupt&#39;</span>
+
+<span style="color: #d0d0d0">signal.signal(signal.SIGINT,</span> <span style="color: #d0d0d0">interrupt_handler)</span>
 </pre></div>
 </body>
 </html>

@@ -38,4 +38,7 @@ edit
 
 '设置语法高亮语言
 set syntax=perl
+
+'使用sudo保存文件
+w !sudo tee %
 ```

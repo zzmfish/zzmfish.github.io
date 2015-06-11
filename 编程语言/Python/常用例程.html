@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Python常用例程</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>Python常用例程</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="python">Python常用例程</h1>
@@ -60,6 +60,7 @@
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#当前日期时间</span>
 <span style="color: #d0d0d0">time.localtime()</span> <span style="color: #999999; font-style: italic">#struct_time</span>
 <span style="color: #d0d0d0">time.time()</span>      <span style="color: #999999; font-style: italic">#unix时间戳/秒</span>
+<span style="color: #d0d0d0">time.localtime(time.time()</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">24</span> <span style="color: #d0d0d0">*</span> <span style="color: #3677a9">3600</span><span style="color: #d0d0d0">)</span> <span style="color: #999999; font-style: italic">#昨天的日期时间</span>
 
 <span style="color: #999999; font-style: italic">#类型转换</span>
 <span style="color: #d0d0d0">time.strptime(</span><span style="color: #ed9d13">&#39;2014/12/12&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;%Y/%m/%d&#39;</span><span style="color: #d0d0d0">)</span> <span style="color: #999999; font-style: italic">#字符串 -&gt; struct_time</span>

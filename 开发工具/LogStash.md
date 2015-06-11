@@ -53,3 +53,4 @@ elasticsearch: "http://"+window.location.hostname+":8200",
 * [用Kibana和logstash快速搭建实时日志查询、收集与分析系统](http://storysky.blog.51cto.com/628458/1158707)
 * [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)
 * [Kibana 中文指南](http://kibana.logstash.es)
+* [访谈与书评：《LogStash，使日志管理更简单》](http://www.infoq.com/cn/articles/review-the-logstash-book)
