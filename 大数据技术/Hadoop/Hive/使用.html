@@ -2,38 +2,22 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>!sql</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>用户定义函数</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<p>创建数据库</p>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">/*创建表*/</span>
-<span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">test_usermodel_inter_total_label</span>
-        <span style="color: #d0d0d0">(sn</span> <span style="color: #d0d0d0">string,</span> <span style="color: #d0d0d0">label</span> <span style="color: #d0d0d0">string,</span> <span style="color: #d0d0d0">heat</span> <span style="color: #d0d0d0">double,</span> <span style="color: #d0d0d0">active_record</span> <span style="color: #d0d0d0">string)</span>
-        <span style="color: #6ab825; font-weight: bold">ROW</span> <span style="color: #d0d0d0">FORMAT</span> <span style="color: #d0d0d0">DELIMITED</span> <span style="color: #d0d0d0">FIELDS</span> <span style="color: #d0d0d0">TERMINATED</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #ed9d13">&#39;|&#39;</span><span style="color: #d0d0d0">;</span>
-
-<span style="color: #999999; font-style: italic">/*从txt文件加载数据到一个表*/</span>
-<span style="color: #6ab825; font-weight: bold">LOAD</span> <span style="color: #6ab825; font-weight: bold">DATA</span> <span style="color: #6ab825; font-weight: bold">LOCAL</span> <span style="color: #d0d0d0">INPATH</span> <span style="color: #ed9d13">&quot;info_table.txt&quot;</span>
-        <span style="color: #d0d0d0">OVERWRITE</span> <span style="color: #6ab825; font-weight: bold">INTO</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">test_usermodel_inter_total_info;</span>
-
-<span style="color: #999999; font-style: italic">/*查看分区*/</span>
-<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #d0d0d0">PARTITIONS</span> <span style="color: #d0d0d0">usermodel_inter_total_info;</span>
-</pre></div>
-
-
+<h2 id="_1">用户定义函数</h2>
 <ul>
-<li>Java UDF (User Defined Function)</li>
-<li>transform</li>
+<li>UDF：一对一</li>
+<li>UDAF：多对一（聚合）</li>
+<li>UDTF：一对多</li>
 </ul>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #6ab825; font-weight: bold">TRANSFORM</span> <span style="color: #d0d0d0">(hosting_ids,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span> 
-<span style="color: #6ab825; font-weight: bold">USING</span> <span style="color: #ed9d13">&#39;python combine_arrays.py&#39;</span> <span style="color: #6ab825; font-weight: bold">AS</span> <span style="color: #d0d0d0">(hosting_ranks_array,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span>
-<span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #d0d0d0">my_table;</span>
-</pre></div>
-
-
-<h2 id="_1">参考</h2>
+<h2 id="_2">参考</h2>
 <ul>
 <li><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-StringFunctions">String Functions</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF">Hive Operators and User-Defined Functions (UDFs)</a></li>
+<li><a href="http://blog.csdn.net/ActionReaction/article/details/20453759">hive中UDF、UDAF和UDTF使用</a></li>
+<li><a href="http://www.cnblogs.com/aquastone/p/hive-transform.html">Hive的Transform功能</a></li>
 </ul>
 </body>
 </html>

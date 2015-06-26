@@ -1,3 +1,5 @@
+[TOC]
+
 ## 简介
 * 面向文档(document oriented)
 * 文档格式：JSON
@@ -44,24 +46,25 @@ curl 'http://localhost:9200/$IndexName/_stats?pretty'
 ### 检索
 ```
 #!bash
-#检索全部文档（默认10个）
-curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty'
-#检索100个
-curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100'
-
 #根据id检索文档
 curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
 ```
+### 搜索
+```
+#!bash
+#检索全部文档（默认10个）
+curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty'
 
+#检索100个
+curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100'
+```
 
-### 全文搜索
+#### 全文搜索
 * 相关性(relevance)
 
-### 短语搜索
+#### 短语搜索
 
-### 高亮搜索
-
-### 视图
+#### 高亮搜索
 
 ### 聚合
 在数据基础上生成复杂的统计，类似SQL的GROUP BY
@@ -78,7 +81,7 @@ curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
 * 一个节点会被***选举***为主节点
 * 主节点管理集群的变更（索引、节点等）
 
-### 分片(shards)
+### 分片
 * 一个分片就是一个Lucene实例
 * 把一个完整的索引分成多个分片，分布到不同的节点上
 * 主分片的数量需在创建索引时定义
@@ -91,6 +94,7 @@ curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
 * 对搜索请求进行***负载均衡***，提高的查询效率
 * 副本的数量可以随时更新设置
 
+## 组件
 ### 恢复（Recovery）
 * 在有节点加入或退出时会根据机器的负载对索引分片进行重新分配
 * 挂掉的节点重新启动时也会进行数据恢复
@@ -108,7 +112,27 @@ curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
 ### Transport
 内部节点或集群与客户端的交互方式
 
-## Bulk API
+## 用户查询语言DSL
+### 打分因素
+* 文档权重
+* 域权重
+* 调整因子
+* 逆文档频率
+* 长度归一化
+* 词频
+* 查询归一化因子
+
+### 默认打分算法
+
+![](/images/lucene_score_formula.png)
+
+* coord(q,d)：基于文档中包含查询关键词个数的调整因子
+* queryNorm(q)：查询语句中每一个查询词权重的平方和
+* norm(t,d)：域越的文本越长，因子的权重越低
+
+
+## API
+### Bulk
 
 ## 工具
 ### elasticsearch-head
@@ -116,13 +140,13 @@ curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
 * 运行：http://localhost:9200/_plugin/head/
 
 ## 参考
-* [与Costin Leau谈论Elasticsearch，大数据及Hadoop](http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata)
 * [Elasticsearch 权威指南](http://es.xiaoleilu.com)
+* [Mastering Elasticsearch(中文版) ](http://shgy.gitbooks.io/mastering-elasticsearch/content/)
+* [与Costin Leau谈论Elasticsearch，大数据及Hadoop](http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata)
 * [乐观的并发控制（optimistic concurrency control）](http://www.bubuko.com/infodetail-182303.html)
 * [Glossary of terms](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/glossary.html)
 * [GitHub使用elasticsearch遇到的一些问题及解决方法](http://devres.zoomquiet.io/data/20130616115216/index.html)
 * [Elasticsearch数据架构及基本特点 ](http://chuansong.me/n/1133212)
-* [Mastering Elasticsearch(中文版) ](http://shgy.gitbooks.io/mastering-elasticsearch/content/)
 * [Elasticsearch的备份和恢复](http://keenwon.com/1393.html)
 * [elasticsearch suggest 的几种使用](http://www.cnblogs.com/jiuyuehe/p/3840821.html)
 * [elasticsearch索引模块缓存](http://www.dongming8.cn/?p=74)

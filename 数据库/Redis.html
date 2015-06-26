@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>特性</title>
+    <title>特性</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -71,6 +71,11 @@ slaveof 192.168.1.1 6379
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">./src/redis-server
 ./src/redis-server --port 6379
 ./src/redis-server redis.conf --port 6379
+</pre></div>
+
+
+<h4 id="key">删除一定模式的key</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">redis-cli keys beh_sim_* <span style="color: #d0d0d0">|</span> xargs redis-cli del
 </pre></div>
 
 

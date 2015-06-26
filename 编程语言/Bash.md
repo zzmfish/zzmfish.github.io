@@ -71,6 +71,9 @@ echo -e "\033[1mhello\033[0m"
 
 #字符串替换
 ${string//substring/replacement}
+
+#字符替换
+java_file=app/$(echo $class_name | tr "." "/").java
 ```
 
 ## 进程

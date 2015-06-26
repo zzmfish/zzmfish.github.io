@@ -2,32 +2,59 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>资源管理器（Resource Manager）</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>概述</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h3 id="resource-manager">资源管理器（Resource Manager）</h3>
-<h4 id="scheduler">调度器（Scheduler）</h4>
-<p>根据集群中容量、队列和资源等限制，将资源分配给各个正在运行的应用</p>
-<h4 id="application-manager">应用管理器（Application Manager）</h4>
-<p>负责接收作业，协商获取地一个资源容器用于执行应用的任务主题并为重启失败的应用主题分配容器</p>
-<h3 id="node-manager">节点管理器（Node Manager）</h3>
+<div class="toc">
+<ul>
+<li><a href="#_1">概述</a></li>
+<li><a href="#_2">组件</a><ul>
+<li><a href="#resource-manager">Resource Manager</a></li>
+<li><a href="#node-manager">Node Manager</a></li>
+<li><a href="#application-master">Application Master</a></li>
+<li><a href="#container">Container</a></li>
+</ul>
+</li>
+<li><a href="#_3">命令</a></li>
+<li><a href="#_4">参考</a></li>
+</ul>
+</div>
+<h2 id="_1">概述</h2>
+<ul>
+<li>The fundamental idea of MRv2 is to split up the two major functionalities of the JobTracker, resource management and job scheduling/monitoring, into separate daemons. </li>
+<li>The idea is to have a global <strong><em>ResourceManager (RM)</em></strong> and per-application <strong><em>ApplicationMaster (AM)</em></strong>. </li>
+<li>An <strong><em>application</em></strong> is either a single job in the classical sense of Map-Reduce jobs or a DAG of jobs.</li>
+</ul>
+<h2 id="_2">组件</h2>
+<h3 id="resource-manager">Resource Manager</h3>
+<ul>
+<li>根据集群中容量、队列和资源等限制，将资源分配给各个正在运行的应用</li>
+</ul>
+<h3 id="node-manager">Node Manager</h3>
 <ul>
 <li>负责启动应用的容器，监控容器的资源使用，并把这些应用信息汇报给调度器</li>
 <li>对应一个节点</li>
 </ul>
-<h3 id="application-master">应用主体（Application Master）</h3>
+<h3 id="application-master">Application Master</h3>
 <ul>
-<li>对应一个应用</li>
+<li>负责接收作业，协商获取地一个资源容器用于执行应用的任务主题并为重启失败的应用主题分配容器</li>
 </ul>
-<h3 id="_1">资源容器</h3>
+<h3 id="container">Container</h3>
 <ul>
 <li>将节点的可用资源分割，每一份通过封装组织成系统的一个资源单元</li>
 <li>每个节点的内存分割成大小固定、地位相同的容器</li>
 <li>内存容器可以在任务执行过程中互换，从而提高利用率</li>
 </ul>
-<p><img src="data:image/png;base64,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" /></p>
+<h2 id="_3">命令</h2>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">yarn application -list
 </pre></div>
+
+
+<h2 id="_4">参考</h2>
+<ul>
+<li><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-hadoop-yarn/">Hadoop 新 MapReduce 框架 Yarn 详解</a></li>
+<li><a href="http://www.csdn.net/article/2013-12-18/2817842-bd-hadoopyarn">Hadoop YARN的发展史与详细解析</a></li>
+</ul>
 </body>
 </html>

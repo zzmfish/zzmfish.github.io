@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mac OS X</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="mac-os-x">Mac OS X</h1>
@@ -38,7 +38,7 @@ sysctl -n machdep.cpu.brand_string
 
 
 <h5 id="ssh">ssh挂载</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sshfs -p 9922 zhouzm@devy.ucweb.local:/home1/zhouzm mount/devy/
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sshfs -p <span style="color: #3677a9">9922</span> zhouzm@devy.ucweb.local:/home1/zhouzm mount/devy/
 </pre></div>
 
 
@@ -54,6 +54,10 @@ sysctl -n machdep.cpu.brand_string
 <ul>
 <li>没有adduser/useradd/free命令</li>
 <li>没有/proc文件系统</li>
+</ul>
+<h2 id="_5">参考</h2>
+<ul>
+<li><a href="http://www.jacquesf.com/2011/04/mac-os-x-dhcp-server/">Running Mac OS X's built-in DHCP server</a></li>
 </ul>
 </body>
 </html>

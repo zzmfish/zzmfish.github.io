@@ -59,6 +59,12 @@ make
 ./src/redis-server --port 6379
 ./src/redis-server redis.conf --port 6379
 ```
+
+#### 删除一定模式的key
+```
+#!bash
+redis-cli keys beh_sim_* | xargs redis-cli del
+```
 默认端口6379
 
 #### 性能测试：

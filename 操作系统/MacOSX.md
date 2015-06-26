@@ -45,3 +45,6 @@ sshfs -p 9922 zhouzm@devy.ucweb.local:/home1/zhouzm mount/devy/
 ## 与Linux的区别
 * 没有adduser/useradd/free命令
 * 没有/proc文件系统
+
+## 参考
+* [Running Mac OS X's built-in DHCP server](http://www.jacquesf.com/2011/04/mac-os-x-dhcp-server/)

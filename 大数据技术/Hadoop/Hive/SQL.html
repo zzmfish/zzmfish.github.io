@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>建表</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h5 id="_1">建表</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">-- 创建表</span>
+<span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName</span>
+    <span style="color: #d0d0d0">(field1</span> <span style="color: #d0d0d0">string,</span> <span style="color: #d0d0d0">field2</span> <span style="color: #d0d0d0">double)</span>
+<span style="color: #6ab825; font-weight: bold">ROW</span> <span style="color: #d0d0d0">FORMAT</span> <span style="color: #d0d0d0">DELIMITED</span> <span style="color: #d0d0d0">FIELDS</span> <span style="color: #d0d0d0">TERMINATED</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #ed9d13">&#39;|&#39;</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">-- 把查询结果生成新表</span>
+<span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #6ab825; font-weight: bold">AS</span>
+<span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #d0d0d0">field1,</span> <span style="color: #d0d0d0">field2</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">AnotherTable;</span>
+
+<span style="color: #999999; font-style: italic">-- 把HBase表映射成新表</span>
+<span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">EXTERNAL</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName</span>
+<span style="color: #d0d0d0">(field1</span> <span style="color: #d0d0d0">string,</span> <span style="color: #d0d0d0">field2</span> <span style="color: #d0d0d0">string,</span> <span style="color: #d0d0d0">field3</span> <span style="color: #d0d0d0">string)</span>
+<span style="color: #d0d0d0">STORED</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #ed9d13">&#39;org.apache.hadoop.hive.hbase.HBaseStorageHandler&#39;</span>
+<span style="color: #6ab825; font-weight: bold">WITH</span> <span style="color: #d0d0d0">SERDEPROPERTIES</span>
+    <span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&quot;hbase.columns.mapping&quot;</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&quot;:key,famaly:column1,family:column2&quot;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">TBLPROPERTIES</span> <span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;hbase.table.name&#39;</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&#39;HBaseTableName&#39;</span><span style="color: #d0d0d0">);</span>
+</pre></div>
+
+
+<h5 id="_2">更新数据</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">-- 从txt文件加载数据</span>
+<span style="color: #6ab825; font-weight: bold">LOAD</span> <span style="color: #6ab825; font-weight: bold">DATA</span> <span style="color: #6ab825; font-weight: bold">LOCAL</span> <span style="color: #d0d0d0">INPATH</span> <span style="color: #ed9d13">&quot;data.txt&quot;</span>
+<span style="color: #d0d0d0">OVERWRITE</span> <span style="color: #6ab825; font-weight: bold">INTO</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName;</span>
+</pre></div>
+
+
+<h5 id="_3">查询数据</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #6ab825; font-weight: bold">TRANSFORM</span> <span style="color: #d0d0d0">(hosting_ids,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span> 
+<span style="color: #6ab825; font-weight: bold">USING</span> <span style="color: #ed9d13">&#39;python combine_arrays.py&#39;</span> <span style="color: #6ab825; font-weight: bold">AS</span> <span style="color: #d0d0d0">(hosting_ranks_array,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span>
+<span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #d0d0d0">my_table;</span>
+</pre></div>
+
+
+<h5 id="_4">查询信息</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">-- 查看表的创建信息</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">-- 查看分区</span>
+<span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #d0d0d0">PARTITIONS</span> <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">-- 查看分区信息</span>
+<span style="color: #6ab825; font-weight: bold">DESCRIBE</span> <span style="color: #d0d0d0">FORMATTED</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #d0d0d0">PARTITION</span> <span style="color: #d0d0d0">(field1=</span><span style="color: #ed9d13">&#39;value1&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">field2=</span><span style="color: #ed9d13">&#39;value2&#39;</span><span style="color: #d0d0d0">);</span>
+</pre></div>
+</body>
+</html>

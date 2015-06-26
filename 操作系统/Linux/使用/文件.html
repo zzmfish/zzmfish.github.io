@@ -2,15 +2,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>文件管理</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>文件管理</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h2 id="_1">文件管理</h2>
 <h3 id="_2">查找文件</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#参考资料：http://www.oracleblog.org/study-note/how-to-calculate-find-mtime/</span>
 <span style="color: #999999; font-style: italic">#查找24小时内修改过的文件</span>
-find -mtime 0 -type f
+find -mtime <span style="color: #3677a9">0</span> -type f
 
 <span style="color: #999999; font-style: italic">#查找24小时前修改过的文件</span>
 find -mtime +0 -type f
@@ -25,7 +25,7 @@ find . -type l -! -exec <span style="color: #24909d">test</span> -e <span style=
 
 <h3 id="_3">其他</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看占用文件的进程</span>
-ls of <span style="color: #40ffff">$FilePath</span>
+lsof <span style="color: #40ffff">$FilePath</span>
 </pre></div>
 
 

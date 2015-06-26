@@ -6,6 +6,59 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div class="toc">
+<ul>
+<li><a href="#_1">简介</a></li>
+<li><a href="#_2">概念</a><ul>
+<li><a href="#_3">与关系数据库的概念对比</a></li>
+<li><a href="#_4">索引</a></li>
+<li><a href="#_5">文档</a></li>
+</ul>
+</li>
+<li><a href="#_6">操作</a><ul>
+<li><a href="#_7">状态</a></li>
+<li><a href="#_8">索引</a></li>
+<li><a href="#_9">检索</a></li>
+<li><a href="#_10">搜索</a><ul>
+<li><a href="#_11">全文搜索</a></li>
+<li><a href="#_12">短语搜索</a></li>
+<li><a href="#_13">高亮搜索</a></li>
+</ul>
+</li>
+<li><a href="#_14">聚合</a></li>
+</ul>
+</li>
+<li><a href="#_15">集群</a><ul>
+<li><a href="#_16">集群</a></li>
+<li><a href="#_17">节点</a></li>
+<li><a href="#_18">分片</a></li>
+<li><a href="#_19">副本</a></li>
+</ul>
+</li>
+<li><a href="#_20">组件</a><ul>
+<li><a href="#recovery">恢复（Recovery）</a></li>
+<li><a href="#river">数据源（River）</a></li>
+<li><a href="#gateway">Gateway</a></li>
+<li><a href="#discoveryzen">discovery.zen</a></li>
+<li><a href="#transport">Transport</a></li>
+</ul>
+</li>
+<li><a href="#dsl">用户查询语言DSL</a><ul>
+<li><a href="#_21">打分因素</a></li>
+<li><a href="#_22">默认打分算法</a></li>
+</ul>
+</li>
+<li><a href="#api">API</a><ul>
+<li><a href="#bulk">Bulk</a></li>
+</ul>
+</li>
+<li><a href="#_23">工具</a><ul>
+<li><a href="#elasticsearch-head">elasticsearch-head</a></li>
+</ul>
+</li>
+<li><a href="#_24">参考</a></li>
+</ul>
+</div>
 <h2 id="_1">简介</h2>
 <ul>
 <li>面向文档(document oriented)</li>
@@ -68,23 +121,26 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/_stats?p
 <li>PUT /&lt;索引&gt;/&lt;类型&gt;/id</li>
 </ul>
 <h3 id="_9">检索</h3>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#检索全部文档（默认10个）</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/_search?pretty&#39;</span>
-<span style="color: #999999; font-style: italic">#检索100个</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/_search?pretty&amp;size=100&#39;</span>
-
-<span style="color: #999999; font-style: italic">#根据id检索文档</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#根据id检索文档</span>
 curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/$DocId?pretty&#39;</span>
 </pre></div>
 
 
-<h3 id="_10">全文搜索</h3>
+<h3 id="_10">搜索</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#检索全部文档（默认10个）</span>
+curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/_search?pretty&#39;</span>
+
+<span style="color: #999999; font-style: italic">#检索100个</span>
+curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/_search?pretty&amp;size=100&#39;</span>
+</pre></div>
+
+
+<h4 id="_11">全文搜索</h4>
 <ul>
 <li>相关性(relevance)</li>
 </ul>
-<h3 id="_11">短语搜索</h3>
-<h3 id="_12">高亮搜索</h3>
-<h3 id="_13">视图</h3>
+<h4 id="_12">短语搜索</h4>
+<h4 id="_13">高亮搜索</h4>
 <h3 id="_14">聚合</h3>
 <p>在数据基础上生成复杂的统计，类似SQL的GROUP BY</p>
 <h2 id="_15">集群</h2>
@@ -99,7 +155,7 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <li>一个节点会被<strong><em>选举</em></strong>为主节点</li>
 <li>主节点管理集群的变更（索引、节点等）</li>
 </ul>
-<h3 id="shards">分片(shards)</h3>
+<h3 id="_18">分片</h3>
 <ul>
 <li>一个分片就是一个Lucene实例</li>
 <li>把一个完整的索引分成多个分片，分布到不同的节点上</li>
@@ -107,13 +163,14 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <li>路由：目标分片 = hash(_id) % 主分片的数量</li>
 <li>开销：分发搜索命令到每个分片以及分片结果的合并</li>
 </ul>
-<h3 id="_18">副本</h3>
+<h3 id="_19">副本</h3>
 <ul>
 <li>设置多个索引的副本</li>
 <li>提高系统的<strong><em>容错性</em></strong></li>
 <li>对搜索请求进行<strong><em>负载均衡</em></strong>，提高的查询效率</li>
 <li>副本的数量可以随时更新设置</li>
 </ul>
+<h2 id="_20">组件</h2>
 <h3 id="recovery">恢复（Recovery）</h3>
 <ul>
 <li>在有节点加入或退出时会根据机器的负载对索引分片进行重新分配</li>
@@ -132,22 +189,41 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 </ul>
 <h3 id="transport">Transport</h3>
 <p>内部节点或集群与客户端的交互方式</p>
-<h2 id="bulk-api">Bulk API</h2>
-<h2 id="_19">工具</h2>
+<h2 id="dsl">用户查询语言DSL</h2>
+<h3 id="_21">打分因素</h3>
+<ul>
+<li>文档权重</li>
+<li>域权重</li>
+<li>调整因子</li>
+<li>逆文档频率</li>
+<li>长度归一化</li>
+<li>词频</li>
+<li>查询归一化因子</li>
+</ul>
+<h3 id="_22">默认打分算法</h3>
+<p><img alt="" src="/images/lucene_score_formula.png" /></p>
+<ul>
+<li>coord(q,d)：基于文档中包含查询关键词个数的调整因子</li>
+<li>queryNorm(q)：查询语句中每一个查询词权重的平方和</li>
+<li>norm(t,d)：域越的文本越长，因子的权重越低</li>
+</ul>
+<h2 id="api">API</h2>
+<h3 id="bulk">Bulk</h3>
+<h2 id="_23">工具</h2>
 <h3 id="elasticsearch-head">elasticsearch-head</h3>
 <ul>
 <li>安装：./bin/plugin -install mobz/elasticsearch-head</li>
 <li>运行：http://localhost:9200/_plugin/head/</li>
 </ul>
-<h2 id="_20">参考</h2>
+<h2 id="_24">参考</h2>
 <ul>
-<li><a href="http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata">与Costin Leau谈论Elasticsearch，大数据及Hadoop</a></li>
 <li><a href="http://es.xiaoleilu.com">Elasticsearch 权威指南</a></li>
+<li><a href="http://shgy.gitbooks.io/mastering-elasticsearch/content/">Mastering Elasticsearch(中文版) </a></li>
+<li><a href="http://www.infoq.com/cn/articles/costin-elasticsearch-bigdata">与Costin Leau谈论Elasticsearch，大数据及Hadoop</a></li>
 <li><a href="http://www.bubuko.com/infodetail-182303.html">乐观的并发控制（optimistic concurrency control）</a></li>
 <li><a href="http://www.elastic.co/guide/en/elasticsearch/reference/1.x/glossary.html">Glossary of terms</a></li>
 <li><a href="http://devres.zoomquiet.io/data/20130616115216/index.html">GitHub使用elasticsearch遇到的一些问题及解决方法</a></li>
 <li><a href="http://chuansong.me/n/1133212">Elasticsearch数据架构及基本特点 </a></li>
-<li><a href="http://shgy.gitbooks.io/mastering-elasticsearch/content/">Mastering Elasticsearch(中文版) </a></li>
 <li><a href="http://keenwon.com/1393.html">Elasticsearch的备份和恢复</a></li>
 <li><a href="http://www.cnblogs.com/jiuyuehe/p/3840821.html">elasticsearch suggest 的几种使用</a></li>
 <li><a href="http://www.dongming8.cn/?p=74">elasticsearch索引模块缓存</a></li>

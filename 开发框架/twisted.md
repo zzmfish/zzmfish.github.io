@@ -21,6 +21,29 @@ class EPollReactor
 @enduml
 ```
 
+## 示例代码
+###### 请求网页
+```
+#!python
+from twisted.internet import reactor
+from twisted.web.client import Agent
+
+def handle_response(response):
+    print response
+agent = Agent(reactor)
+agent.request('GET', 'http://www.baidu.com') \
+    .addBoth(handle_response)
+reactor.run()
+```
+
+###### Ctrl+C退出
+```python
+def interrupt_handler(signum, frame):
+    reactor.callFromThread(reactor.stop)
+
+signal.signal(signal.SIGINT, interrupt_handler)
+```
+
 ## 参考
 * [Using the Twisted Web Client](https://twistedmatrix.com/documents/14.0.1/web/howto/client.html)
 * [Using Threads in Twisted](https://twistedmatrix.com/documents/14.0.1/web/howto/client.html)
