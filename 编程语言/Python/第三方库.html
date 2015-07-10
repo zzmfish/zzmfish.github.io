@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>python第三方库</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
 <h1 id="python">python第三方库</h1>
@@ -26,7 +26,7 @@ pip search <span style="color: #40ffff">$PackageName</span>
 sudo pip install <span style="color: #40ffff">$PackageName</span>
 
 <span style="color: #999999; font-style: italic"># 安装到指定位置（无需root）</span>
-pip install --install-option<span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&quot;--prefix=$HOME/local&quot;</span> <span style="color: #40ffff">$PackageName</span>
+pip install --install-option<span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&quot;--prefix=</span><span style="color: #40ffff">$HOME</span><span style="color: #ed9d13">/local&quot;</span> <span style="color: #40ffff">$PackageName</span>
 
 <span style="color: #999999; font-style: italic"># 安装指定版本</span>
 pip install scikit-learn<span style="color: #d0d0d0">==</span>0.15.2
