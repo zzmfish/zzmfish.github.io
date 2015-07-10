@@ -24,7 +24,7 @@
 ```
 #!bash
 #删除索引
-curl -XDELETE 'http://localhost:9200/$IndexName/'
+curl -XDELETE "http://localhost:9200/$IndexName/"
 ```
 
 ### 文档
@@ -35,10 +35,10 @@ curl -XDELETE 'http://localhost:9200/$IndexName/'
 ```
 #!bash
 #显示全部索引
-curl 'http://localhost:9200/_stats/indices?pretty'
+curl "http://localhost:9200/_stats/indices?pretty"
 
 #显示索引的状态
-curl 'http://localhost:9200/$IndexName/_stats?pretty'
+curl"'http://localhost:9200/$IndexName/_stats?pretty"
 ```
 ### 索引
 * PUT /<索引>/<类型>/id
@@ -47,16 +47,16 @@ curl 'http://localhost:9200/$IndexName/_stats?pretty'
 ```
 #!bash
 #根据id检索文档
-curl 'http://localhost:9200/$IndexName/$TypeName/$DocId?pretty'
+curl "http://localhost:9200/$IndexName/$TypeName/$DocId?pretty"
 ```
 ### 搜索
 ```
 #!bash
 #检索全部文档（默认10个）
-curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty'
+curl "http://localhost:9200/$IndexName/$TypeName/_search?pretty"
 
 #检索100个
-curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100'
+curl "http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100"
 ```
 
 #### 全文搜索
@@ -69,6 +69,16 @@ curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100'
 ### 聚合
 在数据基础上生成复杂的统计，类似SQL的GROUP BY
 
+### 映射
+
+### 删除
+```bash
+#删除指定id
+curl -XDELETE "http://localhost:9200/$IndexName/$TypeName/$DocId"
+
+#删除指定条件
+curl -XDELETE "http://localhost:9200/$IndexName/$TypeName/_query?q=$Query"
+```
 ## 集群
 
 ![](/images/Elasticsearch_Cluster.png)
@@ -151,3 +161,4 @@ curl 'http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100'
 * [elasticsearch suggest 的几种使用](http://www.cnblogs.com/jiuyuehe/p/3840821.html)
 * [elasticsearch索引模块缓存](http://www.dongming8.cn/?p=74)
 * [Elasticsearch全文搜索 (一) - 基础概念和match查询](http://blog.csdn.net/dm_vincent/article/details/41693125)
+* [Elasticsearch 2.0.0.beta1 coming soon!](https://www.elastic.co/blog/elasticsearch-2.0.0.beta1-coming-soon)

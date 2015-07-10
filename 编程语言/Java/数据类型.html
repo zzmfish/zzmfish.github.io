@@ -8,6 +8,7 @@
 <body>
 <h2 id="_1">数据类型</h2>
 <h3 id="_2">字符串</h3>
+<h5 id="string">String</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//分割</span>
 <span style="color: #d0d0d0">String[]</span> <span style="color: #d0d0d0">parts</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">string.</span><span style="color: #bbbbbb">split</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&quot;,&quot;</span><span style="color: #d0d0d0">);</span>
 
@@ -16,6 +17,8 @@
 </pre></div>
 
 
+<h5 id="stringbuilder">StringBuilder</h5>
+<h5 id="stringbuffer">StringBuffer</h5>
 <h3 id="_3">容器</h3>
 <h5 id="linkedlist">LinkedList</h5>
 <h5 id="arraylist">ArrayList</h5>
@@ -25,13 +28,37 @@
 </pre></div>
 
 
-<h5 id="linkedblockingqueue">LinkedBlockingQueue</h5>
 <h5 id="map">Map</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">HashMap&lt;String,</span> <span style="color: #d0d0d0">Integer&gt;();</span>
+</pre></div>
+
+
+<h5 id="linkedhashmap">LinkedHashMap</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//实现LRU cache</span>
+<span style="color: #6ab825; font-weight: bold">public</span> <span style="color: #d0d0d0">LRUCache&lt;K,</span> <span style="color: #d0d0d0">V&gt;</span> <span style="color: #6ab825; font-weight: bold">extends</span> <span style="color: #d0d0d0">LinkedHashMap&lt;K,</span> <span style="color: #d0d0d0">V&gt;</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">private</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">cacheSize;</span>
+
+  <span style="color: #6ab825; font-weight: bold">public</span> <span style="color: #447fcf">LRUCache</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">cacheSize)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">super</span><span style="color: #d0d0d0">(</span><span style="color: #3677a9">16</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.75</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">true</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #6ab825; font-weight: bold">this</span><span style="color: #d0d0d0">.</span><span style="color: #bbbbbb">cacheSize</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">cacheSize;</span>
+  <span style="color: #d0d0d0">}</span>
+
+  <span style="color: #6ab825; font-weight: bold">protected</span> <span style="color: #6ab825; font-weight: bold">boolean</span> <span style="color: #447fcf">removeEldestEntry</span><span style="color: #d0d0d0">(Map.</span><span style="color: #bbbbbb">Entry</span><span style="color: #d0d0d0">&lt;K,</span> <span style="color: #d0d0d0">V&gt;</span> <span style="color: #d0d0d0">eldest)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">size()</span> <span style="color: #d0d0d0">&gt;=</span> <span style="color: #d0d0d0">cacheSize;</span>
+  <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
 <h3 id="_4">类</h3>
 <h4 id="_5">内部类</h4>
 <ul>
 <li>静态内部类：不保留父类和子类的引用关系</li>
 <li>非静态内部类：保留父类和子类的引用关系</li>
 </ul>
+<h3 id="_6">类型判断</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(row.</span><span style="color: #bbbbbb">getClass</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">==</span> <span style="color: #d0d0d0">SearchHit.</span><span style="color: #bbbbbb">class</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">{</span> <span style="color: #d0d0d0">do_something();</span> <span style="color: #d0d0d0">}</span>
+<span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(row</span> <span style="color: #6ab825; font-weight: bold">instanceof</span> <span style="color: #d0d0d0">SearchHit)</span> <span style="color: #d0d0d0">{</span> <span style="color: #d0d0d0">do_something();</span> <span style="color: #d0d0d0">}</span>
+</pre></div>
 </body>
 </html>

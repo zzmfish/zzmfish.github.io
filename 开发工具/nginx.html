@@ -12,36 +12,35 @@ nginx -s quit
 
 
 <h2 id="_1">静态目录</h2>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">{</span>
-        <span style="color: #d0d0d0">listen</span>   <span style="color: #3677a9">80</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">root</span>   <span style="color: #d0d0d0">/path/to/root;</span>
-        <span style="color: #d0d0d0">location</span> <span style="color: #d0d0d0">/</span> <span style="color: #d0d0d0">{</span>
-                <span style="color: #d0d0d0">index</span>  <span style="color: #d0d0d0">index.php</span> <span style="color: #d0d0d0">index.html</span> <span style="color: #d0d0d0">index.htm;</span>
-        <span style="color: #d0d0d0">}</span>
-        <span style="color: #d0d0d0">location</span> <span style="color: #d0d0d0">/somedir</span> <span style="color: #d0d0d0">{</span>
-               <span style="color: #d0d0d0">autoindex</span> <span style="color: #d0d0d0">on;</span>       <span style="color: #999999; font-style: italic">//显示文件列表</span>
-        <span style="color: #d0d0d0">}</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">http</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #6ab825; font-weight: bold">listen</span>   <span style="color: #3677a9">80</span><span style="color: #d0d0d0">;</span>
+            <span style="color: #6ab825; font-weight: bold">root</span>   <span style="color: #ed9d13">/path/to/root</span><span style="color: #d0d0d0">;</span>
+            <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/</span> <span style="color: #d0d0d0">{</span>
+                    <span style="color: #6ab825; font-weight: bold">index</span>  <span style="color: #ed9d13">index.php</span> <span style="color: #ed9d13">index.html</span> <span style="color: #ed9d13">index.htm</span><span style="color: #d0d0d0">;</span>
+            <span style="color: #d0d0d0">}</span>
+            <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/somedir</span> <span style="color: #d0d0d0">{</span>
+                   <span style="color: #6ab825; font-weight: bold">autoindex</span> <span style="color: #40ffff">on</span><span style="color: #d0d0d0">;</span>
+            <span style="color: #d0d0d0">}</span>
+    <span style="color: #d0d0d0">}</span>
 <span style="color: #d0d0d0">}</span>
 </pre></div>
 
 
 <h2 id="_2">负载均衡</h2>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">http</span> <span style="color: #d0d0d0">{</span>
-    <span style="color: #d0d0d0">upstream</span> <span style="color: #d0d0d0">search_server</span> <span style="color: #d0d0d0">{</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data04:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data07:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data08:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data09:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data16:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data17:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
-        <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">aliyun-hk-data29:</span><span style="color: #3677a9">8367</span><span style="color: #d0d0d0">;</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">http</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">upstream</span> <span style="color: #ed9d13">test_server</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">test1:</span><span style="color: #3677a9">8882</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">test2:</span><span style="color: #3677a9">8882</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">test3:</span><span style="color: #3677a9">8882</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">test4:</span><span style="color: #3677a9">8882</span><span style="color: #d0d0d0">;</span>
     <span style="color: #d0d0d0">}</span>
 
-    <span style="color: #d0d0d0">server</span> <span style="color: #d0d0d0">{</span>
-        <span style="color: #d0d0d0">listen</span> <span style="color: #3677a9">8081</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #6ab825; font-weight: bold">listen</span> <span style="color: #3677a9">8881</span><span style="color: #d0d0d0">;</span>
 
-        <span style="color: #d0d0d0">location</span> <span style="color: #d0d0d0">/</span> <span style="color: #d0d0d0">{</span>
-            <span style="color: #d0d0d0">proxy_pass</span> <span style="color: #d0d0d0">http:</span><span style="color: #999999; font-style: italic">//search_server;</span>
+        <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #6ab825; font-weight: bold">proxy_pass</span> <span style="color: #ed9d13">http://test_server</span><span style="color: #d0d0d0">;</span>
         <span style="color: #d0d0d0">}</span>
     <span style="color: #d0d0d0">}</span>
 <span style="color: #d0d0d0">}</span>
@@ -52,6 +51,7 @@ nginx -s quit
 <ul>
 <li><a href="http://serverfault.com/questions/536576/nginx-how-do-i-forward-a-http-request-to-another-port">Nginx: How do I forward a http request to another port?</a></li>
 <li><a href="http://nginx.org/en/docs/http/load_balancing.html">Using nginx as HTTP load balancer</a></li>
+<li><a href="http://www.cnbeta.com/articles/402709.htm">深入NGINX：我们如何设计它的性能和扩展性</a></li>
 </ul>
 </body>
 </html>

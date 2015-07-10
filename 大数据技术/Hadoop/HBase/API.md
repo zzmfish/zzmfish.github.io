@@ -1,5 +1,11 @@
 ## 客户端
 ### Java
+```java
+//遍历属性
+for (Cell cell : result.rawCells()) {
+    videoObj.put(new String(CellUtil.cloneQualifier(cell)), new String(CellUtil.cloneValue(cell)));
+}
+```
 ### REST
 ### Thrift
 

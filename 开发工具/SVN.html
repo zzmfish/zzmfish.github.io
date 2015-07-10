@@ -34,6 +34,9 @@ svn update -r<span style="color: #40ffff">$Version</span> <span style="color: #4
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#撤销本地修改</span>
 svn revert <span style="color: #40ffff">$File</span>
 
+<span style="color: #999999; font-style: italic">#撤销目录下所有文件修改</span>
+svn revert . --depth infinity
+
 <span style="color: #999999; font-style: italic">#撤销目录修改、撤销添加目录</span>
 svn revert <span style="color: #40ffff">$Dir</span> -R
 </pre></div>

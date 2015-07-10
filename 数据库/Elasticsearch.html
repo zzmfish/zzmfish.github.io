@@ -26,16 +26,18 @@
 </ul>
 </li>
 <li><a href="#_14">聚合</a></li>
+<li><a href="#_15">映射</a></li>
+<li><a href="#_16">删除</a></li>
 </ul>
 </li>
-<li><a href="#_15">集群</a><ul>
-<li><a href="#_16">集群</a></li>
-<li><a href="#_17">节点</a></li>
-<li><a href="#_18">分片</a></li>
-<li><a href="#_19">副本</a></li>
+<li><a href="#_17">集群</a><ul>
+<li><a href="#_18">集群</a></li>
+<li><a href="#_19">节点</a></li>
+<li><a href="#_20">分片</a></li>
+<li><a href="#_21">副本</a></li>
 </ul>
 </li>
-<li><a href="#_20">组件</a><ul>
+<li><a href="#_22">组件</a><ul>
 <li><a href="#recovery">恢复（Recovery）</a></li>
 <li><a href="#river">数据源（River）</a></li>
 <li><a href="#gateway">Gateway</a></li>
@@ -44,19 +46,19 @@
 </ul>
 </li>
 <li><a href="#dsl">用户查询语言DSL</a><ul>
-<li><a href="#_21">打分因素</a></li>
-<li><a href="#_22">默认打分算法</a></li>
+<li><a href="#_23">打分因素</a></li>
+<li><a href="#_24">默认打分算法</a></li>
 </ul>
 </li>
 <li><a href="#api">API</a><ul>
 <li><a href="#bulk">Bulk</a></li>
 </ul>
 </li>
-<li><a href="#_23">工具</a><ul>
+<li><a href="#_25">工具</a><ul>
 <li><a href="#elasticsearch-head">elasticsearch-head</a></li>
 </ul>
 </li>
-<li><a href="#_24">参考</a></li>
+<li><a href="#_26">参考</a></li>
 </ul>
 </div>
 <h2 id="_1">简介</h2>
@@ -101,7 +103,7 @@
 <li>一个ES索引对应多个Lucene索引：分片和备份</li>
 </ul>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#删除索引</span>
-curl -XDELETE <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/&#39;</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/&quot;</span>
 </pre></div>
 
 
@@ -109,10 +111,10 @@ curl -XDELETE <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName
 <h2 id="_6">操作</h2>
 <h3 id="_7">状态</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示全部索引</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/_stats/indices?pretty&#39;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/_stats/indices?pretty&quot;</span>
 
 <span style="color: #999999; font-style: italic">#显示索引的状态</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/_stats?pretty&#39;</span>
+curl<span style="color: #ed9d13">&quot;&#39;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/_stats?pretty&quot;</span>
 </pre></div>
 
 
@@ -122,16 +124,16 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/_stats?p
 </ul>
 <h3 id="_9">检索</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#根据id检索文档</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/$DocId?pretty&#39;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$DocId</span><span style="color: #ed9d13">?pretty&quot;</span>
 </pre></div>
 
 
 <h3 id="_10">搜索</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#检索全部文档（默认10个）</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/_search?pretty&#39;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/_search?pretty&quot;</span>
 
 <span style="color: #999999; font-style: italic">#检索100个</span>
-curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeName/_search?pretty&amp;size=100&#39;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/_search?pretty&amp;size=100&quot;</span>
 </pre></div>
 
 
@@ -143,19 +145,29 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <h4 id="_13">高亮搜索</h4>
 <h3 id="_14">聚合</h3>
 <p>在数据基础上生成复杂的统计，类似SQL的GROUP BY</p>
-<h2 id="_15">集群</h2>
+<h3 id="_15">映射</h3>
+<h3 id="_16">删除</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#删除指定id</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$DocId</span><span style="color: #ed9d13">&quot;</span>
+
+<span style="color: #999999; font-style: italic">#删除指定条件</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/_query?q=</span><span style="color: #40ffff">$Query</span><span style="color: #ed9d13">&quot;</span>
+</pre></div>
+
+
+<h2 id="_17">集群</h2>
 <p><img alt="" src="/images/Elasticsearch_Cluster.png" /></p>
-<h3 id="_16">集群</h3>
+<h3 id="_18">集群</h3>
 <ul>
 <li>一个集群中有多个节点，其中有一个为<strong><em>主节点</em></strong></li>
 </ul>
-<h3 id="_17">节点</h3>
+<h3 id="_19">节点</h3>
 <ul>
 <li>运行的Elasticsearch实例</li>
 <li>一个节点会被<strong><em>选举</em></strong>为主节点</li>
 <li>主节点管理集群的变更（索引、节点等）</li>
 </ul>
-<h3 id="_18">分片</h3>
+<h3 id="_20">分片</h3>
 <ul>
 <li>一个分片就是一个Lucene实例</li>
 <li>把一个完整的索引分成多个分片，分布到不同的节点上</li>
@@ -163,14 +175,14 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <li>路由：目标分片 = hash(_id) % 主分片的数量</li>
 <li>开销：分发搜索命令到每个分片以及分片结果的合并</li>
 </ul>
-<h3 id="_19">副本</h3>
+<h3 id="_21">副本</h3>
 <ul>
 <li>设置多个索引的副本</li>
 <li>提高系统的<strong><em>容错性</em></strong></li>
 <li>对搜索请求进行<strong><em>负载均衡</em></strong>，提高的查询效率</li>
 <li>副本的数量可以随时更新设置</li>
 </ul>
-<h2 id="_20">组件</h2>
+<h2 id="_22">组件</h2>
 <h3 id="recovery">恢复（Recovery）</h3>
 <ul>
 <li>在有节点加入或退出时会根据机器的负载对索引分片进行重新分配</li>
@@ -190,7 +202,7 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <h3 id="transport">Transport</h3>
 <p>内部节点或集群与客户端的交互方式</p>
 <h2 id="dsl">用户查询语言DSL</h2>
-<h3 id="_21">打分因素</h3>
+<h3 id="_23">打分因素</h3>
 <ul>
 <li>文档权重</li>
 <li>域权重</li>
@@ -200,7 +212,7 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <li>词频</li>
 <li>查询归一化因子</li>
 </ul>
-<h3 id="_22">默认打分算法</h3>
+<h3 id="_24">默认打分算法</h3>
 <p><img alt="" src="/images/lucene_score_formula.png" /></p>
 <ul>
 <li>coord(q,d)：基于文档中包含查询关键词个数的调整因子</li>
@@ -209,13 +221,13 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 </ul>
 <h2 id="api">API</h2>
 <h3 id="bulk">Bulk</h3>
-<h2 id="_23">工具</h2>
+<h2 id="_25">工具</h2>
 <h3 id="elasticsearch-head">elasticsearch-head</h3>
 <ul>
 <li>安装：./bin/plugin -install mobz/elasticsearch-head</li>
 <li>运行：http://localhost:9200/_plugin/head/</li>
 </ul>
-<h2 id="_24">参考</h2>
+<h2 id="_26">参考</h2>
 <ul>
 <li><a href="http://es.xiaoleilu.com">Elasticsearch 权威指南</a></li>
 <li><a href="http://shgy.gitbooks.io/mastering-elasticsearch/content/">Mastering Elasticsearch(中文版) </a></li>
@@ -228,6 +240,7 @@ curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/$TypeNam
 <li><a href="http://www.cnblogs.com/jiuyuehe/p/3840821.html">elasticsearch suggest 的几种使用</a></li>
 <li><a href="http://www.dongming8.cn/?p=74">elasticsearch索引模块缓存</a></li>
 <li><a href="http://blog.csdn.net/dm_vincent/article/details/41693125">Elasticsearch全文搜索 (一) - 基础概念和match查询</a></li>
+<li><a href="https://www.elastic.co/blog/elasticsearch-2.0.0.beta1-coming-soon">Elasticsearch 2.0.0.beta1 coming soon!</a></li>
 </ul>
 </body>
 </html>

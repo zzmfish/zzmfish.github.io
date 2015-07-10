@@ -5,19 +5,27 @@
 ```
 #!bash
 #显示软件信息
-sudo apt-cache show -a $Package  
+sudo apt-cache show -a $PackageName  
 
 #显示已安装软件
 dpkg --get-selections
 
 #显示文件所属软件
-apt-file search $File
+apt-file search $FileName
+
+#显示已安装软件包包含的文件
+sudo dpkg-query -L $PackageName
+
+#显示未安装软件包包含的文件
+sudo apt-get install apt-file
+sudo apt-file update
+sudo apt-file list $PackageName
 
 #添加PPA源
-sudo add-apt-repository $Package
+sudo add-apt-repository $PackageName
 
 #重新安装软件
-sudo apt-get install $Package --reinstall 
+sudo apt-get install $PackageName --reinstall 
 
 #解决/var/lib/dpkg/available损坏
 sudo dpkg --clear-avail

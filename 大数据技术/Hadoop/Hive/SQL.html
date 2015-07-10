@@ -30,13 +30,27 @@
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">-- 从txt文件加载数据</span>
 <span style="color: #6ab825; font-weight: bold">LOAD</span> <span style="color: #6ab825; font-weight: bold">DATA</span> <span style="color: #6ab825; font-weight: bold">LOCAL</span> <span style="color: #d0d0d0">INPATH</span> <span style="color: #ed9d13">&quot;data.txt&quot;</span>
 <span style="color: #d0d0d0">OVERWRITE</span> <span style="color: #6ab825; font-weight: bold">INTO</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName;</span>
+
+<span style="color: #999999; font-style: italic">-- 加载分区数据</span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName</span>
+<span style="color: #6ab825; font-weight: bold">ADD</span> <span style="color: #d0d0d0">PARTITION</span> <span style="color: #d0d0d0">(log_date</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;2015-06-28&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">hour</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">09</span><span style="color: #d0d0d0">)</span>
+<span style="color: #6ab825; font-weight: bold">LOCATION</span> <span style="color: #ed9d13">&#39;/project/test/data_file&#39;</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">-- 删除分区</span>
+<span style="color: #6ab825; font-weight: bold">ALTER</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">TableName</span>
+<span style="color: #6ab825; font-weight: bold">DROP</span> <span style="color: #d0d0d0">PARTITION(log_date=</span><span style="color: #ed9d13">&#39;2015-06-24&#39;</span><span style="color: #d0d0d0">);</span>
 </pre></div>
 
 
 <h5 id="_3">查询数据</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #6ab825; font-weight: bold">TRANSFORM</span> <span style="color: #d0d0d0">(hosting_ids,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span> 
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">-- transform</span>
+<span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #6ab825; font-weight: bold">TRANSFORM</span> <span style="color: #d0d0d0">(hosting_ids,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span> 
 <span style="color: #6ab825; font-weight: bold">USING</span> <span style="color: #ed9d13">&#39;python combine_arrays.py&#39;</span> <span style="color: #6ab825; font-weight: bold">AS</span> <span style="color: #d0d0d0">(hosting_ranks_array,</span> <span style="color: #d0d0d0">user_id,</span> <span style="color: #d0d0d0">d)</span>
 <span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #d0d0d0">my_table;</span>
+
+<span style="color: #999999; font-style: italic">-- 查询昨日数据</span>
+<span style="color: #6ab825; font-weight: bold">SELECT</span> <span style="color: #d0d0d0">*</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">video</span>
+<span style="color: #6ab825; font-weight: bold">WHERE</span> <span style="color: #d0d0d0">log_date=to_date(from_unixtime(unix_timestamp()</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">3600</span> <span style="color: #d0d0d0">*</span> <span style="color: #3677a9">24</span><span style="color: #d0d0d0">));</span>
 </pre></div>
 
 
@@ -50,5 +64,17 @@
 <span style="color: #999999; font-style: italic">-- 查看分区信息</span>
 <span style="color: #6ab825; font-weight: bold">DESCRIBE</span> <span style="color: #d0d0d0">FORMATTED</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #d0d0d0">PARTITION</span> <span style="color: #d0d0d0">(field1=</span><span style="color: #ed9d13">&#39;value1&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">field2=</span><span style="color: #ed9d13">&#39;value2&#39;</span><span style="color: #d0d0d0">);</span>
 </pre></div>
+
+
+<h5 id="_5">导出和导入</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">EXPORT</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">department</span> <span style="color: #6ab825; font-weight: bold">TO</span> <span style="color: #ed9d13">&#39;hdfs_exports_location/department&#39;</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">IMPORT</span> <span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #ed9d13">&#39;hdfs_exports_location/department&#39;</span><span style="color: #d0d0d0">;</span>
+</pre></div>
+
+
+<h2 id="_6">参考</h2>
+<ul>
+<li><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport">LanguageManual ImportExport</a></li>
+</ul>
 </body>
 </html>

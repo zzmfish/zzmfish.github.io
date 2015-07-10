@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ext2</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="ext2">ext2</h2>
+<h4 id="_1">超级块</h4>
+<h4 id="_2">数据块</h4>
+<ul>
+<li>直接块</li>
+<li>间接块</li>
+</ul>
+<h5 id="inode">索引节点（inode）</h5>
+<p><img alt="" src="/images/linux_ext2_inode.png" /></p>
+<h4 id="inode_1">inode表</h4>
+<h4 id="block-bitmap">block bitmap</h4>
+<h4 id="inode-bitmap">inode bitmap</h4>
+<h2 id="ext3">ext3</h2>
+<h4 id="_3">日志模式</h4>
+<h2 id="ext4">ext4</h2>
+<h4 id="extents">extents</h4>
+<ul>
+<li>一组连续的数据块</li>
+</ul>
+<h4 id="_4">块分配</h4>
+<ul>
+<li>多块分配</li>
+<li>延迟分配</li>
+<li>持久预分配</li>
+</ul>
+<h4 id="_5">日志校验</h4>
+<h4 id="_6">在线碎片整理</h4>
+<h4 id="_7">其他</h4>
+<ul>
+<li>更大的分区和文件</li>
+<li>无限数量的子目录</li>
+<li>默认启用 barrier</li>
+<li>无日志模式</li>
+</ul>
+<h2 id="btrfs">btrfs</h2>
+<h3 id="_8">扩展性</h3>
+<h4 id="b-tree">B-Tree</h4>
+<h4 id="extent">Extent</h4>
+<h4 id="inode_2">动态inode分配</h4>
+<h4 id="ssd">SSD优化支持</h4>
+<h3 id="_9">数据一致性</h3>
+<h4 id="cow">COW事务</h4>
+<h4 id="checksum">Checksum</h4>
+<h3 id="_10">多设备管理</h3>
+<h4 id="subvolume">Subvolume</h4>
+<h4 id="_11">快照和克隆</h4>
+<h4 id="raid">软件RAID</h4>
+<h3 id="_12">其他</h3>
+<h4 id="_13">延迟分配</h4>
+<h4 id="_14">预分配</h4>
+<h4 id="_15">目录索引</h4>
+<h4 id="inline-file">Inline file</h4>
+<h4 id="_16">压缩</h4>
+<h2 id="_17">参考</h2>
+<ul>
+<li><a href="http://blog.csdn.net/ljianhui/article/details/8604140">初窥Linux 之 ext2/ext3文件系统</a></li>
+<li><a href="http://www.blueidea.com/computer/system/2008/5536.asp">Linux ext2/ext3文件系统详解</a></li>
+<li><a href="http://os.51cto.com/art/201205/334497.htm">Linux文件系统ext3与ext4主要区别</a></li>
+<li><a href="http://www.educity.cn/linux/514239.html">从ext4和BTRFS看Linux文件系统的兴盛</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/linux/l-cn-btrfs/">新一代 Linux 文件系统 btrfs 简介</a></li>
+</ul>
+</body>
+</html>

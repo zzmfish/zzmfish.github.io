@@ -57,3 +57,19 @@ account    required     pam_access.so
 
 ### 登录日志
 /var/log/secure
+
+### 使用密钥对传输加密数据
+```bash
+#创建秘钥
+openssl genrsa -out user_mode_query.key 1024
+
+#创建公钥
+openssl rsa -in user_mode_query.key -pubout -out user_mode_query.key.pub
+
+#加密和解密
+date +%s  | openssl rsautl -encrypt -inkey user_mode_query.key.pub -pubin | openssl rsautl -decrypt -inkey user_mode_query.key
+```
+
+## 参考
+* [利用openssl进行RSA加密解密](http://www.cnblogs.com/alittlebitcool/archive/2011/09/22/2185418.html)
+* [Putty建立隧道的方法](http://www.putty.ws/putty-tunnel-methods)

@@ -26,4 +26,7 @@ svn checkout --force https://github.com/vim-scripts/vcscommand.vim/tags/1.99.47 
 #自动挂载D盘
 sudo mkdir /media/d_drive
 sudo sed  -i /etc/rc.local '/^exit 0/imount -t vboxsf d_drive \/media\/d_drive\/'
+
+#nginx
+echo "include $HOME/local/etc/nginx.conf;" >> /etc/nginx/nginx.conf
 ```

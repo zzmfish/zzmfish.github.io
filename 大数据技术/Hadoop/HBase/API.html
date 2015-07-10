@@ -8,6 +8,13 @@
 <body>
 <h2 id="_1">客户端</h2>
 <h3 id="java">Java</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//遍历属性</span>
+<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(Cell</span> <span style="color: #d0d0d0">cell</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">result.</span><span style="color: #bbbbbb">rawCells</span><span style="color: #d0d0d0">())</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">videoObj.</span><span style="color: #bbbbbb">put</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">String(CellUtil.</span><span style="color: #bbbbbb">cloneQualifier</span><span style="color: #d0d0d0">(cell)),</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #d0d0d0">String(CellUtil.</span><span style="color: #bbbbbb">cloneValue</span><span style="color: #d0d0d0">(cell)));</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
 <h3 id="rest">REST</h3>
 <h3 id="thrift">Thrift</h3>
 <h2 id="api">API</h2>

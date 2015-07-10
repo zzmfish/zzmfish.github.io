@@ -16,6 +16,7 @@ svn add -N $Dir
 mkdir $DirName
 svn import $DirName $RemotePath/$DirName
 ```
+
 ##### 更新
 ```bash
 #更新到指定版本
@@ -27,6 +28,9 @@ svn update -r$Version $FileName
 #!bash
 #撤销本地修改
 svn revert $File
+
+#撤销目录下所有文件修改
+svn revert . --depth infinity
 
 #撤销目录修改、撤销添加目录
 svn revert $Dir -R

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jps</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h5 id="jps">jps</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#列举java进程</span>
+jps
+</pre></div>
+
+
+<h5 id="jmap">jmap</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示进程的内存状况</span>
+jmap -heap <span style="color: #40ffff">$Pid</span>
+
+<span style="color: #999999; font-style: italic">#显示内存对象直方图</span>
+jmap –histo:live <span style="color: #40ffff">$Pid</span>
+</pre></div>
+
+
+<h5 id="jstack">jstack</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">##显示线程堆栈</span>
+jstack <span style="color: #40ffff">$Pid</span>
+</pre></div>
+
+
+<h5 id="visualvm">VisualVM</h5>
+<ul>
+<li>内存分析</li>
+<li>CPU分析</li>
+</ul>
+<h5 id="btrace">BTrace</h5>
+<ul>
+<li>BTrace Scripts</li>
+</ul>
+<h5 id="eurekaj">EurekaJ</h5>
+<h5 id="hprof">HPROF</h5>
+<h2 id="_1">参考</h2>
+<ul>
+<li><a href="http://www.infoq.com/articles/java-profiling-with-open-source">Effective Java Profiling With Open Source Tools</a></li>
+<li><a href="http://blog.csdn.net/chaofanwei/article/details/20224339">利用btrace在线监控java程序状态</a></li>
+<li><a href="http://docs.oracle.com/javase/7/docs/technotes/samples/hprof.html">HPROF: A Heap/CPU Profiling Tool</a></li>
+</ul>
+</body>
+</html>

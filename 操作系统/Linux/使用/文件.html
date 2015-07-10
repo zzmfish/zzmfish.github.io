@@ -29,23 +29,28 @@ lsof <span style="color: #40ffff">$FilePath</span>
 </pre></div>
 
 
-<h2 id="_4">同步和备份</h2>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#备份到远程服务器</span>
-<span style="color: #999999; font-style: italic">#-r：递归</span>
-<span style="color: #999999; font-style: italic">#-v：显示详细信息</span>
-<span style="color: #999999; font-style: italic">#-z：压缩</span>
+<h2 id="rsync">rsync</h2>
+<ul>
+<li>-r：递归</li>
+<li>-v：显示详细信息</li>
+<li>-z：压缩</li>
+</ul>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#通过ssh同步数据</span>
 rsync -zvr  -e <span style="color: #ed9d13">&quot;ssh -p 9922&quot;</span> . zhouzm@devy.ucweb.local:/home1/zhouzm/备份/公司文档
+
+<span style="color: #999999; font-style: italic">#通过rsync端口同步数据</span>
+rsync -zvr myname@111.222.333.444::test/file.txt .
 </pre></div>
 
 
-<h2 id="_5">压缩格式</h2>
-<h3 id="_6">压缩</h3>
+<h2 id="_4">压缩格式</h2>
+<h3 id="_5">压缩</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#压缩时加上目录</span>
 tar cvzf example.tgz --transform <span style="color: #ed9d13">&#39;s,^,mydir/,&#39;</span> --show-transformed-names <span style="color: #40ffff">$Files</span>
 </pre></div>
 
 
-<h3 id="_7">解压</h3>
+<h3 id="_6">解压</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#解压xz文件</span>
 tar xJf Python-2.7.9.tar.xz
 
@@ -57,7 +62,7 @@ tar zxf hello.tgz --strip-components 1
 </pre></div>
 
 
-<h3 id="_8">显示文件详情</h3>
+<h3 id="_7">显示文件详情</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示文件列表</span>
 unzip -l <span style="color: #40ffff">$ZipFile</span>
 
