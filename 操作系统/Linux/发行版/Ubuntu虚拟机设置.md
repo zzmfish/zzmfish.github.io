@@ -2,11 +2,12 @@
 #!bash
 #必备软件
 sudo apt-get install screen vim-gtk ctags sshfs subversion git
+sudo apt-get install language-selector-gnome #缺少语言支持
 
 #输入法
-sudo apt-get install ibus-sunpinyin
-sudo apt-get install  fcitx fcitx-googlepinyin im-switch
-im-config -n fcitx
+#sudo apt-get install ibus-sunpinyin
+sudo apt-get install  fcitx fcitx-googlepinyin fcitx-sunpinyin im-switch
+im-switch -s fcitx #or im-config -n fcitx
 
 #git
 git config --global user.email "zzmfish@163.com"
@@ -25,8 +26,15 @@ svn checkout --force https://github.com/vim-scripts/vcscommand.vim/tags/1.99.47 
 
 #自动挂载D盘
 sudo mkdir /media/d_drive
-sudo sed  -i /etc/rc.local '/^exit 0/imount -t vboxsf d_drive \/media\/d_drive\/'
+sudo cp /etc/rc.local /etc/rc.local.bak
+echo "mount -t vboxsf d_drive /media/d_drive/" | sudo tee -a /etc/rc.local
 
 #nginx
 echo "include $HOME/local/etc/nginx.conf;" >> /etc/nginx/nginx.conf
+
+#github
+mkdir ~/github
+cd ~/github
+git clone https://github.com/zzmfish/etc.git
+git clone https://github.com/zzmfish/scripts.git
 ```

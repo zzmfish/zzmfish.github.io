@@ -10,11 +10,15 @@
 <ul>
 <li>k/v类型</li>
 <li>list，set，hash等数据类型</li>
+<li>单线程的IO复用模型</li>
 <li>SWAP：只交换value<ul>
 <li>Blocking VM</li>
 <li>Threaded VM</li>
 </ul>
 </li>
+<li>使用现场申请内存的方式来存储数据，并且很少使用free-list等方式来优化内存分配，会在一定程度上存在内存碎片</li>
+<li>临时数据：带过期时间的数据</li>
+<li>菲林是数据：永远不会被剔除</li>
 </ul>
 <h3 id="_2">数据类型</h3>
 <h4 id="_3">列表</h4>
@@ -51,37 +55,37 @@
 <li>容易解析的格式</li>
 </ul>
 <h3 id="_9">主从复制</h3>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">#配置从服务器
-slaveof 192.168.1.1 6379
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #cd2828; font-weight: bold">#配置从服务器</span>
+<span style="color: #d0d0d0">slaveof</span> <span style="color: #3677a9">192.168.1.1</span> <span style="color: #3677a9">6379</span>
 </pre></div>
 
 
 <h2 id="_10">使用方法</h2>
 <h4 id="_11">下载</h4>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">wget http://download.redis.io/releases/redis-2.8.19.tar.gz
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">wget</span> <span style="color: #d0d0d0">http:</span><span style="color: #999999; font-style: italic">//download.redis.io/releases/redis-2.8.19.tar.gz</span>
 </pre></div>
 
 
 <h4 id="_12">编译</h4>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">make
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">make</span>
 </pre></div>
 
 
 <h4 id="_13">运行</h4>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">./src/redis-server
-./src/redis-server --port 6379
-./src/redis-server redis.conf --port 6379
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">./src/redis-server</span>
+<span style="color: #d0d0d0">./src/redis-server</span> <span style="color: #d0d0d0">--port</span> <span style="color: #3677a9">6379</span>
+<span style="color: #d0d0d0">./src/redis-server</span> <span style="color: #d0d0d0">redis.conf</span> <span style="color: #d0d0d0">--port</span> <span style="color: #3677a9">6379</span>
 </pre></div>
 
 
 <h4 id="key">删除一定模式的key</h4>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">redis-cli keys beh_sim_* <span style="color: #d0d0d0">|</span> xargs redis-cli del
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">redis-cli keys beh_sim_* | xargs redis-cli del
 </pre></div>
 
 
 <p>默认端口6379</p>
 <h4 id="_14">性能测试：</h4>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">./redis-benchmark -q -n 100000
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">./redis-benchmark</span> <span style="color: #d0d0d0">-q</span> <span style="color: #d0d0d0">-n</span> <span style="color: #3677a9">100000</span>
 </pre></div>
 
 
@@ -121,6 +125,9 @@ slaveof 192.168.1.1 6379
 <li><a href="http://redis.io/topics/quickstart">Redis Quick Start</a></li>
 <li><a href="http://redis.io/topics/benchmarks">How fast is Redis?</a></li>
 <li><a href="http://redis.io/topics/data-types">Data types</a></li>
+<li><a href="http://www.infoq.com/cn/articles/tq-why-choose-redis">为什么使用 Redis及其产品定位</a></li>
+<li><a href="http://www.infoq.com/cn/articles/tq-redis-memory-usage-optimization-storage">Redis内存使用优化与存储</a></li>
+<li><a href="http://redis.readthedocs.org/en/latest/topic/persistence.html">持久化（persistence）</a></li>
 </ul>
 </body>
 </html>

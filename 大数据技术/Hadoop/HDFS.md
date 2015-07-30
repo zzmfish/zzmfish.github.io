@@ -38,3 +38,4 @@ hdfs dfs -test -e $FileName
 * [HDFS High Availability Using the Quorum Journal Manager](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html)
 * [浅析Hadoop Secondary NameNode，CheckPoint Node，Backup Node](http://itindex.net/detail/43805-hadoop-secondary-namenode)
 * [漫谈HADOOP HDFS BALANCER](http://www.cnblogs.com/gpcuster/archive/2011/02/16/1956555.html)
+* [HDFS原理及操作](http://www.thebigdata.cn/QiTa/14598.html)

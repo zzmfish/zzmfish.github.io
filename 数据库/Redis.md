@@ -1,9 +1,13 @@
 ## 特性
 * k/v类型
 * list，set，hash等数据类型
+* 单线程的IO复用模型
 * SWAP：只交换value
     * Blocking VM
     * Threaded VM
+* 使用现场申请内存的方式来存储数据，并且很少使用free-list等方式来优化内存分配，会在一定程度上存在内存碎片
+* 临时数据：带过期时间的数据
+* 菲林是数据：永远不会被剔除
 
 ### 数据类型
 #### 列表
@@ -88,3 +92,6 @@ redis-cli keys beh_sim_* | xargs redis-cli del
 * [Redis Quick Start](http://redis.io/topics/quickstart)
 * [How fast is Redis?](http://redis.io/topics/benchmarks)
 * [Data types](http://redis.io/topics/data-types)
+* [为什么使用 Redis及其产品定位](http://www.infoq.com/cn/articles/tq-why-choose-redis)
+* [Redis内存使用优化与存储](http://www.infoq.com/cn/articles/tq-redis-memory-usage-optimization-storage)
+* [持久化（persistence）](http://redis.readthedocs.org/en/latest/topic/persistence.html)

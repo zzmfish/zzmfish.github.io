@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>缺点</title>
+    <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<ul>
+<li>多线程，非阻塞IO复用的网络模型</li>
+<li>监听主线程: 监听网络连接，接受请求后，将连接描述字pipe 传递给worker线程</li>
+<li>worker子线程</li>
+<li>使用libevent封装的事件库</li>
+<li>预分配的内存池: slab和chunk</li>
+</ul>
+<h3 id="_1">缺点</h3>
+<ul>
+<li>不支持枚举，不支持持久化和复制等功能</li>
+</ul>
+</body>
+</html>

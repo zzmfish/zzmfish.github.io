@@ -46,3 +46,4 @@ http {
 * [Nginx: How do I forward a http request to another port?](http://serverfault.com/questions/536576/nginx-how-do-i-forward-a-http-request-to-another-port)
 * [Using nginx as HTTP load balancer](http://nginx.org/en/docs/http/load_balancing.html)
 * [深入NGINX：我们如何设计它的性能和扩展性](http://www.cnbeta.com/articles/402709.htm)
+* [Nginx 与 Lua](http://www.ttlsa.com/nginx/nginx-and-lua/)

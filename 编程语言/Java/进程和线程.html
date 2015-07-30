@@ -2,14 +2,24 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>语言特性</title>
+    <title>创建线程</title>
     <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
-<h3 id="_1">语言特性</h3>
+<h3 id="_1">创建线程</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">public</span> <span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">HelloRunnable</span> <span style="color: #6ab825; font-weight: bold">implements</span> <span style="color: #d0d0d0">Runnable</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">public</span> <span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">run</span><span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">System.</span><span style="color: #bbbbbb">out</span><span style="color: #d0d0d0">.</span><span style="color: #bbbbbb">println</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&quot;Hello from a thread!&quot;</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+<span style="color: #999999; font-style: italic">//(new Thread(new HelloRunnable())).start();</span>
+</pre></div>
+
+
+<h3 id="_2">语言特性</h3>
 <h4 id="synchronized">synchronized函数</h4>
 <h4 id="volatile">volatile变量</h4>
-<h3 id="_2">数据类型</h3>
+<h3 id="_3">数据类型</h3>
 <h5 id="blockingqueue">BlockingQueue</h5>
 <ul>
 <li><strong><em>ArrayBlockingQueue</em></strong>：基于数组</li>
@@ -22,10 +32,20 @@
 <ul>
 <li><strong><em>ReentrantLock</em></strong></li>
 </ul>
-<h2 id="_3">参考</h2>
+<h3 id="_4">原理</h3>
+<h4 id="intrinsic-lock">Intrinsic Lock</h4>
+<ul>
+<li>synchronized方法会获得对象的Intrinsic Lock</li>
+<li>静态synchronized方法会获得类的Intrinsic Lock</li>
+</ul>
+<h2 id="_5">参考</h2>
 <ul>
 <li><a href="http://www.cnblogs.com/jackyuj/archive/2010/11/24/1886553.html">Java多线程-工具篇-BlockingQueue</a></li>
 <li><a href="http://www.ibm.com/developerworks/cn/java/j-jtp10264/index.html">Java 理论与实践: JDK 5.0 中更灵活、更具可伸缩性的锁定机制</a></li>
+<li><a href="https://www.artima.com/insidejvm/ed2/threadsynch2.html">Chapter 20 of Inside the Java Virtual Machine - Thread Synchronization</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html">Intrinsic Locks and Synchronization</a></li>
+<li><a href="http://www.cnblogs.com/tomsheep/archive/2010/06/09/1754419.html">Java并行(2): Monitor</a></li>
+<li><a href="http://tutorials.jenkov.com/java-concurrency/threadlocal.html">Java ThreadLocal</a></li>
 </ul>
 </body>
 </html>

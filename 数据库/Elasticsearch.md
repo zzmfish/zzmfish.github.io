@@ -68,7 +68,9 @@ curl "http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100"
 
 ### 聚合
 在数据基础上生成复杂的统计，类似SQL的GROUP BY
-
+```bash
+curl 'http://localhost:9200/$IndexName/_search?pretty&size=0' -d '{"aggs":{"all_values":{"terms":{"field":"myfield"}}}}'
+```
 ### 映射
 
 ### 删除
@@ -78,6 +80,12 @@ curl -XDELETE "http://localhost:9200/$IndexName/$TypeName/$DocId"
 
 #删除指定条件
 curl -XDELETE "http://localhost:9200/$IndexName/$TypeName/_query?q=$Query"
+
+#删除type全部数据
+curl -XDELETE "http://localhost:9200/$IndexName/$TypeName/_query" -d '{"query":{"match_all":{}}}'
+
+#删除索引
+curl -XDELETE "http://localhost:9200/$IndexName/"
 ```
 ## 集群
 
@@ -162,3 +170,4 @@ curl -XDELETE "http://localhost:9200/$IndexName/$TypeName/_query?q=$Query"
 * [elasticsearch索引模块缓存](http://www.dongming8.cn/?p=74)
 * [Elasticsearch全文搜索 (一) - 基础概念和match查询](http://blog.csdn.net/dm_vincent/article/details/41693125)
 * [Elasticsearch 2.0.0.beta1 coming soon!](https://www.elastic.co/blog/elasticsearch-2.0.0.beta1-coming-soon)
+* [Elasticsearch 1.7.0 and 1.6.1 released](http://tutorials.jenkov.com/java-concurrency/threadlocal.html)

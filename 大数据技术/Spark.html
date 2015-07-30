@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>基础概念</title>
+    <title>基础概念</title>
     <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
@@ -47,10 +47,30 @@
 <li>记住构建它的操作图</li>
 <li>checkpoint机制</li>
 </ul>
-<h2 id="_4">参考</h2>
+<h2 id="spark-sql">Spark SQL</h2>
+<h3 id="dataframe">DataFrame</h3>
 <ul>
+<li>a distributed collection of data organized into named columns</li>
+<li>equivalent to a table in a relational database</li>
+<li>can be constructed from: structured data files, tables in Hive, external databases, or existing RDDs</li>
+</ul>
+<h3 id="_4">性能优化</h3>
+<ul>
+<li>内存列存储</li>
+<li>字节码生成</li>
+</ul>
+<h2 id="_5">参考</h2>
+<ul>
+<li><a href="https://www.gitbook.com/book/endymecy/spark-programming-guide-zh-cn/details">spark-programming-guide-zh-cn</a></li>
 <li><a href="http://www.thebigdata.cn/Hadoop/14289.html">从Hadoop到Spark的架构实践</a></li>
+<li><a href="http://blog.csdn.net/book_mmicky/article/details/39288715">sparkSQL1.1入门之一：为什么sparkSQL</a></li>
+<li><a href="http://blog.csdn.net/book_mmicky/article/details/39288715">Spark SQL深度理解篇：模块实现、代码结构及执行流程总览</a></li>
 <li><a href="http://www.infoq.com/cn/articles/spark-core-rdd/">理解Spark的核心RDD</a></li>
+<li><a href="http://www.csdn.net/article/2015-04-03/2824407">平易近人、兼容并蓄——Spark SQL 1.3.0概览</a></li>
+<li><a href="http://colobu.com/2014/12/08/spark-quick-start/">Spark 快速入门</a></li>
+<li><a href="http://colobu.com/2014/12/11/spark-sql-quick-start/">Spark SQL 初探： 使用大数据分析2000万数据</a></li>
+<li><a href="http://www.csdn.net/article/1970-01-01/2825293">【微信分享】梁堰波：主流SQL on Hadoop框架选择</a></li>
+<li><a href="https://amplab.cs.berkeley.edu/benchmark/">Big Data Benchmark</a></li>
 </ul>
 </body>
 </html>

@@ -103,7 +103,7 @@
 <li>一个ES索引对应多个Lucene索引：分片和备份</li>
 </ul>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#删除索引</span>
-curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/&quot;</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/&quot;</span>
 </pre></div>
 
 
@@ -114,7 +114,7 @@ curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><s
 curl <span style="color: #ed9d13">&quot;http://localhost:9200/_stats/indices?pretty&quot;</span>
 
 <span style="color: #999999; font-style: italic">#显示索引的状态</span>
-curl<span style="color: #ed9d13">&quot;&#39;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/_stats?pretty&quot;</span>
+curl<span style="color: #ed9d13">&quot;&#39;http://localhost:9200/$IndexName/_stats?pretty&quot;</span>
 </pre></div>
 
 
@@ -124,16 +124,16 @@ curl<span style="color: #ed9d13">&quot;&#39;http://localhost:9200/</span><span s
 </ul>
 <h3 id="_9">检索</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#根据id检索文档</span>
-curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$DocId</span><span style="color: #ed9d13">?pretty&quot;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeName/$DocId?pretty&quot;</span>
 </pre></div>
 
 
 <h3 id="_10">搜索</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#检索全部文档（默认10个）</span>
-curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/_search?pretty&quot;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeName/_search?pretty&quot;</span>
 
 <span style="color: #999999; font-style: italic">#检索100个</span>
-curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/_search?pretty&amp;size=100&quot;</span>
+curl <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeName/_search?pretty&amp;size=100&quot;</span>
 </pre></div>
 
 
@@ -145,13 +145,23 @@ curl <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style
 <h4 id="_13">高亮搜索</h4>
 <h3 id="_14">聚合</h3>
 <p>在数据基础上生成复杂的统计，类似SQL的GROUP BY</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/_search?pretty&amp;size=0&#39;</span> -d <span style="color: #ed9d13">&#39;{&quot;aggs&quot;:{&quot;all_values&quot;:{&quot;terms&quot;:{&quot;field&quot;:&quot;myfield&quot;}}}}&#39;</span>
+</pre></div>
+
+
 <h3 id="_15">映射</h3>
 <h3 id="_16">删除</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#删除指定id</span>
-curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$DocId</span><span style="color: #ed9d13">&quot;</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeName/$DocId&quot;</span>
 
 <span style="color: #999999; font-style: italic">#删除指定条件</span>
-curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><span style="color: #40ffff">$IndexName</span><span style="color: #ed9d13">/</span><span style="color: #40ffff">$TypeName</span><span style="color: #ed9d13">/_query?q=</span><span style="color: #40ffff">$Query</span><span style="color: #ed9d13">&quot;</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeName/_query?q=$Query&quot;</span>
+
+<span style="color: #999999; font-style: italic">#删除type全部数据</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeName/_query&quot;</span> -d <span style="color: #ed9d13">&#39;{&quot;query&quot;:{&quot;match_all&quot;:{}}}&#39;</span>
+
+<span style="color: #999999; font-style: italic">#删除索引</span>
+curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/&quot;</span>
 </pre></div>
 
 
@@ -241,6 +251,7 @@ curl -XDELETE <span style="color: #ed9d13">&quot;http://localhost:9200/</span><s
 <li><a href="http://www.dongming8.cn/?p=74">elasticsearch索引模块缓存</a></li>
 <li><a href="http://blog.csdn.net/dm_vincent/article/details/41693125">Elasticsearch全文搜索 (一) - 基础概念和match查询</a></li>
 <li><a href="https://www.elastic.co/blog/elasticsearch-2.0.0.beta1-coming-soon">Elasticsearch 2.0.0.beta1 coming soon!</a></li>
+<li><a href="http://tutorials.jenkov.com/java-concurrency/threadlocal.html">Elasticsearch 1.7.0 and 1.6.1 released</a></li>
 </ul>
 </body>
 </html>
