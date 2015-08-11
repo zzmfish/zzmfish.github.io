@@ -1,3 +1,6 @@
+## 查询流程
+![](/images/impala.jpg)
+
 ## 元数据
 * 表的定义
 * HDFS物理块的位置
@@ -51,3 +54,5 @@ echo "compute STATS $TableName;" impala-shell
 * [Impala Performance Guidelines and Best Practices](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_perf_cookbook.html)
 * [What’s Next for Impala: More Reliability, Usability, and Performance at Even Greater Scale](http://blog.cloudera.com/blog/2015/07/whats-next-for-impala-more-reliability-usability-and-performance-at-even-greater-scale/)
 * [New SQL Choices in the Apache Hadoop Ecosystem: Why Impala Continues to Lead](http://blog.cloudera.com/blog/2014/05/new-sql-choices-in-the-apache-hadoop-ecosystem-why-impala-continues-to-lead/)
+* [User-Defined Functions (UDFs)](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_udf.html)
+* [Impala与Hive的比较](http://tech.uc.cn/?p=1803)

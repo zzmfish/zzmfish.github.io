@@ -15,8 +15,20 @@
 sudo useradd hadoop
 sudo passwd hadoop
 
+<span style="color: #999999; font-style: italic">#设置ssh</span>
+sudo apt-get install openssh-server
+
 <span style="color: #999999; font-style: italic">#设置hadoop执行sudo无需密码</span>
 <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;hadoop ALL = NOPASSWD: ALL&quot;</span> | sudo tee -a /etc/sudoers
+
+<span style="color: #999999; font-style: italic">#安装MySQL</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;create user &#39;hive&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;</span>
+<span style="color: #ed9d13">    create user &#39;amon&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;</span>
+<span style="color: #ed9d13">    create database hive;</span>
+<span style="color: #ed9d13">    create database amon;</span>
+<span style="color: #ed9d13">    GRANT ALL PRIVILEGES ON hive.* TO &#39;hive&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;</span>
+<span style="color: #ed9d13">    GRANT ALL PRIVILEGES ON amon.* TO &#39;amon&#39;@&#39;%&#39; IDENTIFIED BY &#39;123456&#39;;</span>
+<span style="color: #ed9d13">    &quot;</span> | mysql -uroot -p123456
 
 su - hadoop
 wget http://archive.cloudera.com/cm5/installer/latest/cloudera-manager-installer.bin
@@ -25,14 +37,22 @@ sudo ./cloudera-manager-installer.bin
 </pre></div>
 
 
-<h3 id="_2">删除</h3>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo rm -Rf /usr/share/cmf /var/lib/cloudera* /var/cache/yum/cloudera* /etc/cloudera*
+<ul>
+<li>浏览器打开：http://localhost:7180/</li>
+<li>选择“Cloudera Express”</li>
+</ul>
+<h3 id="_2">卸载</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo /usr/share/cmf/uninstall-cloudera-manager.sh
+sudo rm /etc/cloudera-scm-server/db.properties
+sudo rm -Rf /usr/share/cmf /var/lib/cloudera* /var/cache/yum/cloudera* /etc/cloudera*
 </pre></div>
 
 
 <h2 id="_3">参考</h2>
 <ul>
 <li><a href="http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/installation.html">Cloudera Installation and Upgrade</a></li>
+<li><a href="https://groups.google.com/a/cloudera.org/forum/#!topic/cdh-user/OpXSfmzsnuo">JDBC driver cannot be found</a></li>
+<li><a href="http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cm_ig_uninstall_cm.html">Uninstalling Cloudera Manager and Managed Software</a></li>
 </ul>
 </body>
 </html>

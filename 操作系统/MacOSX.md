@@ -15,7 +15,10 @@ curl -O $Url
 ##### libxml的头文件位置
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/libxml2/libxml/HTMLparser.h
 
-
+* JAVA HOME
+```bash
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/"
+```
 ##### 系统信息
 ```
 #!bash

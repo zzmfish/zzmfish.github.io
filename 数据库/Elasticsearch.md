@@ -70,6 +70,9 @@ curl "http://localhost:9200/$IndexName/$TypeName/_search?pretty&size=100"
 在数据基础上生成复杂的统计，类似SQL的GROUP BY
 ```bash
 curl 'http://localhost:9200/$IndexName/_search?pretty&size=0' -d '{"aggs":{"all_values":{"terms":{"field":"myfield"}}}}'
+
+#最大值
+curl 'http://localhost:9200/video-search-sv/video/_search?pretty' -d '{"aggs" : {"max_update_time" :{ "max" : { "script" : "Integer.parseInt(doc[\"update_time\"].value)" } }}}'
 ```
 ### 映射
 

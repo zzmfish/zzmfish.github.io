@@ -31,8 +31,11 @@ target/test-classes/
 
 
 ## 构建项目
-```
-#!bash
+```bash
+#编译
+mvn compile
+
+#打包
 mvn package
 ```
 
@@ -72,3 +75,8 @@ package                 |jar:jar
 * 通过`mvn install`命令把项目安装到本地库
 * 其他项目可以通过maven坐标和本地库的项目建立依赖关系
 * [MVN Repository](http://mvnrepository.com)
+
+## 参考
+* [Maven Getting Started Guide](https://maven.apache.org/guides/getting-started/)
+* [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+* [Using the CDH 5 Maven Repository](http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cdh_vd_cdh5_maven_repo.html)

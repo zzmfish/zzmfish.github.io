@@ -6,20 +6,6 @@
     <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
-<div class="toc">
-<ul>
-<li><a href="#_1">概述</a></li>
-<li><a href="#_2">组件</a><ul>
-<li><a href="#resource-manager">Resource Manager</a></li>
-<li><a href="#node-manager">Node Manager</a></li>
-<li><a href="#application-master">Application Master</a></li>
-<li><a href="#container">Container</a></li>
-</ul>
-</li>
-<li><a href="#_3">命令</a></li>
-<li><a href="#_4">参考</a></li>
-</ul>
-</div>
 <h2 id="_1">概述</h2>
 <ul>
 <li>The fundamental idea of MRv2 is to split up the two major functionalities of the JobTracker, resource management and job scheduling/monitoring, into separate daemons. </li>
@@ -46,6 +32,7 @@
 <li>每个节点的内存分割成大小固定、地位相同的容器</li>
 <li>内存容器可以在任务执行过程中互换，从而提高利用率</li>
 </ul>
+<p><img alt="" src="/images/yarn.gif" /></p>
 <h2 id="_3">命令</h2>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">yarn application -list
 </pre></div>

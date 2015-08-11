@@ -14,38 +14,46 @@
 <li>访问时指针指向与操作相关的部分</li>
 <li>可以存储到磁盘和内存中</li>
 <li>提供丰富的操作：map、flatMap、filter、join、groupBy、reduceByKey</li>
-</ul>
-<h3 id="_2">分区</h3>
+<li>
+<p>分区</p>
 <ul>
 <li>一个RDD可以包含多个分区，每个分区是一个<strong><em>dataset片段</em></strong></li>
 <li>可以根据数据记录的key对结构进行分区</li>
-</ul>
-<h5 id="narrow-dependency">Narrow Dependency</h5>
-<ul>
+<li>Narrow Dependency<ul>
 <li>每个分区最多只能被一个Child RDD的一个分区使用（如map操作）</li>
 <li>支持在同一个cluster node上以管道形式执行多条命令</li>
 </ul>
-<h5 id="wide-dependency">Wide Dependency</h5>
-<ul>
+</li>
+<li>Wide Dependency<ul>
 <li>多个Child RDD分区都可以依赖（如join操作）</li>
 <li>需要所有的父分区都是可用的</li>
 <li>可能需要调用类似MapReduce之类的操作进行跨节点传递</li>
 </ul>
-<h3 id="transformation">transformation</h3>
+</li>
+</ul>
+</li>
+<li>
+<p>transformation</p>
 <ul>
 <li>不会真正执行运算</li>
 <li>继承自RDD的类型（如MappedRDD、FlatMappedRDD）</li>
 <li>定义了compute函数，在action操作被调用时触发</li>
 </ul>
-<h3 id="action">action</h3>
+</li>
+<li>
+<p>action</p>
 <ul>
 <li>执行运算</li>
 </ul>
-<h3 id="_3">容错</h3>
+</li>
+<li>
+<p>容错</p>
 <ul>
 <li>自身是一个不变的数据集</li>
 <li>记住构建它的操作图</li>
 <li>checkpoint机制</li>
+</ul>
+</li>
 </ul>
 <h2 id="spark-sql">Spark SQL</h2>
 <h3 id="dataframe">DataFrame</h3>
@@ -53,15 +61,23 @@
 <li>a distributed collection of data organized into named columns</li>
 <li>equivalent to a table in a relational database</li>
 <li>can be constructed from: structured data files, tables in Hive, external databases, or existing RDDs</li>
+<li><code>SQLContext</code></li>
+<li><code>HiveContext</code><ul>
+<li>使用HiveQL解析器</li>
+<li>使用Hive UDF</li>
+<li>访问Hive表的数据</li>
 </ul>
-<h3 id="_4">性能优化</h3>
+</li>
+</ul>
+<h3 id="_2">性能优化</h3>
 <ul>
 <li>内存列存储</li>
 <li>字节码生成</li>
 </ul>
-<h2 id="_5">参考</h2>
+<h2 id="_3">参考</h2>
 <ul>
 <li><a href="https://www.gitbook.com/book/endymecy/spark-programming-guide-zh-cn/details">spark-programming-guide-zh-cn</a></li>
+<li><a href="http://www.cstor.cn/textdetail_9188.html">新手福利：Apache Spark入门攻略</a></li>
 <li><a href="http://www.thebigdata.cn/Hadoop/14289.html">从Hadoop到Spark的架构实践</a></li>
 <li><a href="http://blog.csdn.net/book_mmicky/article/details/39288715">sparkSQL1.1入门之一：为什么sparkSQL</a></li>
 <li><a href="http://blog.csdn.net/book_mmicky/article/details/39288715">Spark SQL深度理解篇：模块实现、代码结构及执行流程总览</a></li>

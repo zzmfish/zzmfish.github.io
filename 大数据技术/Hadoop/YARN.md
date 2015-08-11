@@ -1,5 +1,3 @@
-[TOC]
-
 ## 概述
 * The fundamental idea of MRv2 is to split up the two major functionalities of the JobTracker, resource management and job scheduling/monitoring, into separate daemons. 
 * The idea is to have a global ***ResourceManager (RM)*** and per-application ***ApplicationMaster (AM)***. 
@@ -21,6 +19,7 @@
 * 每个节点的内存分割成大小固定、地位相同的容器
 * 内存容器可以在任务执行过程中互换，从而提高利用率
 
+![](/images/yarn.gif)
 
 ## 命令
 ```

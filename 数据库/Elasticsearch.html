@@ -146,6 +146,9 @@ curl <span style="color: #ed9d13">&quot;http://localhost:9200/$IndexName/$TypeNa
 <h3 id="_14">聚合</h3>
 <p>在数据基础上生成复杂的统计，类似SQL的GROUP BY</p>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">curl <span style="color: #ed9d13">&#39;http://localhost:9200/$IndexName/_search?pretty&amp;size=0&#39;</span> -d <span style="color: #ed9d13">&#39;{&quot;aggs&quot;:{&quot;all_values&quot;:{&quot;terms&quot;:{&quot;field&quot;:&quot;myfield&quot;}}}}&#39;</span>
+
+<span style="color: #999999; font-style: italic">#最大值</span>
+curl <span style="color: #ed9d13">&#39;http://localhost:9200/video-search-sv/video/_search?pretty&#39;</span> -d <span style="color: #ed9d13">&#39;{&quot;aggs&quot; : {&quot;max_update_time&quot; :{ &quot;max&quot; : { &quot;script&quot; : &quot;Integer.parseInt(doc[\&quot;update_time\&quot;].value)&quot; } }}}&#39;</span>
 </pre></div>
 
 
