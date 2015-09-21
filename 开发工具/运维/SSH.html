@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>无密码登录</title>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <h5 id="_1">无密码登录</h5>
@@ -14,9 +14,9 @@ ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub &gt;&gt; <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
 
 <span style="color: #999999; font-style: italic">#设置目标主文件权限</span>
-chmod <span style="color: #3677a9">700</span> <span style="color: #40ffff">$RemoteHome</span>
-chmod <span style="color: #3677a9">700</span> <span style="color: #40ffff">$RemoteHome</span>/.ssh
-chmod <span style="color: #3677a9">600</span> <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
+chmod 700 <span style="color: #40ffff">$RemoteHome</span>
+chmod 700 <span style="color: #40ffff">$RemoteHome</span>/.ssh
+chmod 600 <span style="color: #40ffff">$RemoteHome</span>/.ssh/authorized_keys
 </pre></div>
 
 
@@ -38,12 +38,12 @@ ssh -C -N -L 8081:203.88.167.174:8081 bigdata@usa-mob437 -p 9922
 <h5 id="scp">scp</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">scp -P <span style="color: #40ffff">$Port</span> <span style="color: #40ffff">$LocalFile</span> <span style="color: #40ffff">$User</span>@<span style="color: #40ffff">$Host</span>:<span style="color: #40ffff">$Path</span>
 <span style="color: #999999; font-style: italic">#如:</span>
-scp -P <span style="color: #3677a9">9922</span> release.tgz product@localhost:/home/product/workspace/server
+scp -P 9922 release.tgz product@localhost:/home/product/workspace/server
 </pre></div>
 
 
 <h5 id="sshfs">sshfs</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sshfs -o nonempty -p <span style="color: #3677a9">9922</span> nemo@slave1: /home/zhouzm/mount/slave1
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sshfs -o nonempty -p 9922 nemo@slave1: /home/zhouzm/mount/slave1
 </pre></div>
 
 
@@ -51,15 +51,15 @@ scp -P <span style="color: #3677a9">9922</span> release.tgz product@localhost:/h
 <ul>
 <li>/etc/pam.d/sshd的account行前面加：</li>
 </ul>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">account    required     pam_access.so
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">account</span>    <span style="color: #d0d0d0">required</span>     <span style="color: #d0d0d0">pam_access.so</span>
 </pre></div>
 
 
 <ul>
 <li>/etc/security/access.conf增加</li>
 </ul>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">+ : ALL : 10.0.0.1/8 127.0.0.1/8 LOCAL
-- : ALL EXCEPT navi : ALL
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">ALL</span> <span style="color: #d0d0d0">:</span> <span style="color: #3677a9">10.0.0.1</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">8</span> <span style="color: #3677a9">127.0.0.1</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">8</span> <span style="color: #d0d0d0">LOCAL</span>
+<span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">ALL</span> <span style="color: #d0d0d0">EXCEPT</span> <span style="color: #d0d0d0">navi</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">ALL</span>
 </pre></div>
 
 
@@ -73,7 +73,7 @@ openssl genrsa -out user_mode_query.key 1024
 openssl rsa -in user_mode_query.key -pubout -out user_mode_query.key.pub
 
 <span style="color: #999999; font-style: italic">#加密和解密</span>
-date +%s  <span style="color: #d0d0d0">|</span> openssl rsautl -encrypt -inkey user_mode_query.key.pub -pubin <span style="color: #d0d0d0">|</span> openssl rsautl -decrypt -inkey user_mode_query.key
+date +%s  | openssl rsautl -encrypt -inkey user_mode_query.key.pub -pubin | openssl rsautl -decrypt -inkey user_mode_query.key
 </pre></div>
 
 

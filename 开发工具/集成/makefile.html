@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Makefile</title>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <h1 id="makefile">Makefile</h1>
@@ -12,7 +12,7 @@
 
 <span style="color: #999999; font-style: italic">#依赖规则</span>
 <span style="color: #999999; font-style: italic">#“%”表示文件名，“$&lt;”表示依赖目标，“$@”表示目标</span>
-<span style="color: #447fcf">%.o </span><span style="color: #d0d0d0">:</span> %.<span style="color: #d0d0d0">c</span>
+<span style="color: #447fcf">%.o </span><span style="color: #d0d0d0">:</span> <span style="color: #3677a9">%.c</span>
     <span style="color: #6ab825; font-weight: bold">$(</span>CC<span style="color: #6ab825; font-weight: bold">)</span> -c <span style="color: #6ab825; font-weight: bold">$(</span>CFLAGS<span style="color: #6ab825; font-weight: bold">)</span> <span style="color: #6ab825; font-weight: bold">$(</span>CPPFLAGS<span style="color: #6ab825; font-weight: bold">)</span> <span style="color: #40ffff">$&lt;</span> -o <span style="color: #40ffff">$@</span>
 </pre></div>
 </body>

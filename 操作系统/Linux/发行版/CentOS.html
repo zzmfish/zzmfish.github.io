@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>!bash</title>
-    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">yum update
@@ -11,7 +11,7 @@
 
 
 <h6 id="_1">关闭防火墙</h6>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport </span><span style="color: #40ffff">$Port</span><span style="color: #ed9d13"> -j ACCEPT&quot;</span> &gt;&gt; /etc/sysconfig/iptables
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport $Port -j ACCEPT&quot;</span> &gt;&gt; /etc/sysconfig/iptables
 sudo service iptables restart
 </pre></div>
 

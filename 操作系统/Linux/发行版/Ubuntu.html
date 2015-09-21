@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Ubuntu</title>
-    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <h1 id="ubuntu">Ubuntu</h1>
@@ -106,7 +106,7 @@ sudo lshw -class video
 <h5 id="nvidia">nvidia驱动导致无法启动</h5>
 <p>进入恢复模式卸载：</p>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">mount /dev/sda10 / -o remount,rw
-apt-dpkg --get-selections <span style="color: #d0d0d0">|</span> grep nvidia
+apt-dpkg --get-selections | grep nvidia
 apt-get remove --purge nvidia-XXX
 </pre></div>
 

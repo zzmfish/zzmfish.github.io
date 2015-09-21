@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>!bash</title>
-    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#必备软件</span>
@@ -20,8 +20,8 @@ git config --global user.name <span style="color: #ed9d13">&quot;zzmfish&quot;</
 git config core.quotepath <span style="color: #24909d">false</span>
 
 <span style="color: #999999; font-style: italic">#解决无法访问.local的问题</span>
-<span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">[</span> ! -e /etc/nsswitch.conf.bak <span style="color: #d0d0d0">];</span> <span style="color: #6ab825; font-weight: bold">then</span>
-    sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
+<span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">[</span> ! -e /etc/nsswitch.conf.bak <span style="color: #d0d0d0">]</span>; <span style="color: #6ab825; font-weight: bold">then</span>
+<span style="color: #6ab825; font-weight: bold">    </span>sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
     sudo sed -i <span style="color: #ed9d13">&quot;s/^hosts:.*/hosts: files dns/&quot;</span> /etc/nsswitch.conf
 <span style="color: #6ab825; font-weight: bold">fi</span>
 
@@ -34,7 +34,7 @@ sudo mkdir /media/d_drive
 sudo sed  -i /etc/rc.local <span style="color: #ed9d13">&#39;/^exit 0/imount -t vboxsf d_drive \/media\/d_drive\/&#39;</span>
 
 <span style="color: #999999; font-style: italic">#nginx</span>
-<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;include </span><span style="color: #40ffff">$HOME</span><span style="color: #ed9d13">/local/etc/nginx.conf;&quot;</span> &gt;&gt; /etc/nginx/nginx.conf
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;include $HOME/local/etc/nginx.conf;&quot;</span> &gt;&gt; /etc/nginx/nginx.conf
 </pre></div>
 </body>
 </html>
