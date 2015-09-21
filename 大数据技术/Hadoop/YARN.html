@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>概述</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h2 id="_1">概述</h2>
@@ -33,15 +33,39 @@
 <li>内存容器可以在任务执行过程中互换，从而提高利用率</li>
 </ul>
 <p><img alt="" src="/images/yarn.gif" /></p>
-<h2 id="_3">命令</h2>
+<h2 id="_3">配置</h2>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yarn.nodemanager.resource.memory-mb</td>
+<td>YARN总可用内存</td>
+</tr>
+<tr>
+<td>yarn.scheduler.minimum-allocation-mb</td>
+<td>Container最小内存分配单元</td>
+</tr>
+<tr>
+<td>yarn.nodemanager.vmem-pmem-ratio</td>
+<td>Container最大虚拟内存/物理内存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">命令</h2>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">yarn application -list
 </pre></div>
 
 
-<h2 id="_4">参考</h2>
+<h2 id="_5">参考</h2>
 <ul>
 <li><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-hadoop-yarn/">Hadoop 新 MapReduce 框架 Yarn 详解</a></li>
 <li><a href="http://www.csdn.net/article/2013-12-18/2817842-bd-hadoopyarn">Hadoop YARN的发展史与详细解析</a></li>
+<li><a href="http://zh.hortonworks.com/blog/how-to-plan-and-configure-yarn-in-hdp-2-0/">How to Plan and Configure YARN and MapReduce 2 in HDP 2.0</a></li>
 </ul>
 </body>
 </html>

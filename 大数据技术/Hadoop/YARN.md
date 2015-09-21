@@ -21,6 +21,13 @@
 
 ![](/images/yarn.gif)
 
+## 配置
+| 配置项 | 作用 |
+|--------|-----
+yarn.nodemanager.resource.memory-mb | YARN总可用内存
+yarn.scheduler.minimum-allocation-mb | Container最小内存分配单元
+yarn.nodemanager.vmem-pmem-ratio | Container最大虚拟内存/物理内存
+
 ## 命令
 ```
 #!bash
@@ -30,3 +37,4 @@ yarn application -list
 ## 参考
 * [Hadoop 新 MapReduce 框架 Yarn 详解](http://www.ibm.com/developerworks/cn/opensource/os-cn-hadoop-yarn/)
 * [Hadoop YARN的发展史与详细解析](http://www.csdn.net/article/2013-12-18/2817842-bd-hadoopyarn)
+* [How to Plan and Configure YARN and MapReduce 2 in HDP 2.0](http://zh.hortonworks.com/blog/how-to-plan-and-configure-yarn-in-hdp-2-0/)

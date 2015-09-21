@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>安装</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#安装</span>
+pip install ansible
+
+<span style="color: #999999; font-style: italic">#配置</span>
+cat &gt;/etc/ansible/hosts <span style="color: #ed9d13">&lt;&lt;EOF</span>
+<span style="color: #ed9d13">[cluster]</span>
+<span style="color: #ed9d13">myhost[01:99] ansible_ssh_port=1234</span>
+<span style="color: #ed9d13">EOF</span>
+
+<span style="color: #999999; font-style: italic">#ping</span>
+ansible all -m ping
+
+<span style="color: #999999; font-style: italic">#查看时间</span>
+ansible all -a <span style="color: #ed9d13">&#39;date&#39;</span>
+</pre></div>
+
+
+<h2 id="_1">参考</h2>
+<ul>
+<li><a href="http://www.ansible.com/home">ansible</a></li>
+<li><a href="http://docs.ansible.com/ansible/intro_getting_started.html">Getting Started</a></li>
+<li><a href="https://linuxtoy.org/archives/hands-on-with-ansible.html">Ansible 快速上手</a></li>
+</ul>
+</body>
+</html>

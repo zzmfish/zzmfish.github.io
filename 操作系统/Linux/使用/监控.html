@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Linux系统监控</title>
-    <link rel="stylesheet" href="../../../style.css" />
+    <title>Linux系统监控</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="linux">Linux系统监控</h1>
@@ -30,6 +30,11 @@ ps -o thcount -p <span style="color: #40ffff">$Pid</span>
 <h4 id="io">IO</h4>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#分析进程IO</span>
 iotop
+
+<span style="color: #999999; font-style: italic">#iostat</span>
+iostat
+iostat sda
+iostat sda -x await
 </pre></div>
 
 

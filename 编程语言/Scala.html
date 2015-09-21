@@ -2,15 +2,67 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>参考</title>
-    <link rel="stylesheet" href="../style.css" />
+    <title>语法</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h2 id="_1">参考</h2>
+<h2 id="_1">语法</h2>
+<h3 id="_2">类型</h3>
+<h5 id="_3">字符串</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//连接列表成一个字符串</span>
+<span style="color: #d0d0d0">lines.mkString(</span><span style="color: #ed9d13">&quot;\n&quot;</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+
+
+<h3 id="_4">函数</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//一般函数</span>
+<span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #d0d0d0">info(message</span><span style="color: #6ab825; font-weight: bold">:String</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">Unit</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">println(message)</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
+<h3 id="_5">类</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//定义类</span>
+<span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ReaderThread</span><span style="color: #d0d0d0">(inputStream</span><span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">InputStream</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">extends</span> <span style="color: #447fcf; text-decoration: underline">Runnable</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">result</span> <span style="color: #6ab825; font-weight: bold">=</span> <span style="color: #ed9d13">&quot;&quot;</span>
+
+    <span style="color: #6ab825; font-weight: bold">override</span> <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #d0d0d0">run()</span><span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">Unit</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">result</span> <span style="color: #6ab825; font-weight: bold">=</span> <span style="color: #d0d0d0">readStream(inputStream)</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
+<h3 id="_6">异常</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//抛出异常</span>
+<span style="color: #6ab825; font-weight: bold">throw</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #447fcf; text-decoration: underline">IllegalArgumentException</span>
+
+<span style="color: #999999; font-style: italic">//处理异常</span>
+<span style="color: #6ab825; font-weight: bold">try</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">val</span> <span style="color: #d0d0d0">f</span> <span style="color: #6ab825; font-weight: bold">=</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #447fcf; text-decoration: underline">FileReader</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&quot;input.txt&quot;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">}</span> <span style="color: #6ab825; font-weight: bold">catch</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">case</span> <span style="color: #d0d0d0">ex</span><span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">FileNotFoundException</span> <span style="color: #d0d0d0">=&gt;{</span>
+        <span style="color: #d0d0d0">println(</span><span style="color: #ed9d13">&quot;Missing file exception&quot;</span><span style="color: #d0d0d0">)</span>
+    <span style="color: #d0d0d0">}</span>
+    <span style="color: #6ab825; font-weight: bold">case</span> <span style="color: #d0d0d0">ex</span><span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">IOException</span> <span style="color: #d0d0d0">=&gt;</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">println(</span><span style="color: #ed9d13">&quot;IO Exception&quot;</span><span style="color: #d0d0d0">)</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
+<h2 id="_7">参考</h2>
 <ul>
 <li><a href="http://hb.qq.com/a/20120418/001400.htm">Scala能否成为Java杀手？</a></li>
 <li><a href="http://developer.51cto.com/art/200905/124636.htm">Scala创始人：创造比Java更好的语言</a></li>
-<li><a href="http://zh.scala-tour.com/#/welcome">Scala 指南</a></li>
+<li><a href="http://scala-ide.org/download/current.html">Scala IDE for Eclipse</a></li>
+<li><a href="http://docs.scala-lang.org/tutorials/scala-with-maven.html">Scala with Maven</a></li>
+<li><a href="http://www.cnblogs.com/fxjwind/p/3338829.html">Scala 常用语法</a></li>
+<li><a href="http://docs.scala-lang.org/overviews/collections/concrete-mutable-collection-classes.html">Concrete Mutable Collection Classes</a></li>
+<li><a href="http://www.scala-lang.org/old/node/166">Getting Started with Scala</a></li>
+<li><a href="http://www.scala-lang.org/api/current/#package">Scala API</a></li>
+<li><a href="http://alvinalexander.com/scala/scala-how-open-read-files-scala-examples">Scala - How to open and read files in Scala</a></li>
 </ul>
 </body>
 </html>

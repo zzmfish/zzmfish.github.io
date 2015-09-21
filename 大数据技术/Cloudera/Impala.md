@@ -45,11 +45,21 @@ impala-shell -r -q "quit;"
 echo "compute STATS $TableName;" impala-shell
 ```
 
+## Ubuntu安装impala-udf-dev
+```bash
+sudo wget 'http://archive.cloudera.com/cdh5/ubuntu/trusty/amd64/cdh/cloudera.list' \
+    -O /etc/apt/sources.list.d/cloudera.list
+sudo apt-get update
+sudo apt-get install impala-udf-dev
+sudo rm /etc/apt/sources.list.d/cloudera.list
+sudo apt-get update
+```
 ## 性能优化
 * 分区
 * 使用Parquet格式 [链接](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_parquet.html)
 
 ## 参考资料
+* [Cloudera Impala Guide](http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/impala.html)
 * [Tuning Impala for Performance](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_performance.html)
 * [Impala Performance Guidelines and Best Practices](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_perf_cookbook.html)
 * [What’s Next for Impala: More Reliability, Usability, and Performance at Even Greater Scale](http://blog.cloudera.com/blog/2015/07/whats-next-for-impala-more-reliability-usability-and-performance-at-even-greater-scale/)

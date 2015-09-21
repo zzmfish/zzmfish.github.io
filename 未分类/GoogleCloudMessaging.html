@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>架构</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">架构</h2>
+<p><img alt="" src="/images/GCM.png" /></p>
+<ul>
+<li>Google connection server<ul>
+<li>HTTP Connection Server</li>
+<li>XMPP Connection Server<ul>
+<li>持久</li>
+<li>异步</li>
+<li>双向</li>
+<li>gcm-xmpp.googleapis.com:5235</li>
+<li>测试：gcm-preprod.googleapis.com:5236</li>
+<li>TLS连接</li>
+<li>SASL PLAIN authentication mechanism using <your_GCM_Sender_Id>@gcm.googleapis.com (GCM sender ID) and the API key as the password</li>
+<li>每个sender ID支持1000个连接</li>
+<li>控制消息：'ack' or 'nack', or 'control'</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>app server<ul>
+<li>HTTP</li>
+<li>XMPP</li>
+</ul>
+</li>
+<li>client app<ul>
+<li>注册：得到注册token</li>
+<li>发送upstream消息</li>
+<li>接收downstream消息</li>
+</ul>
+</li>
+</ul>
+<h2 id="_2">证书</h2>
+<ul>
+<li>Sender ID</li>
+<li>API Key</li>
+<li>Application ID: Android use the package name from the app manifest</li>
+<li>Registration Token</li>
+</ul>
+<h2 id="_3">设置</h2>
+<ul>
+<li>打开Google Developers Console</li>
+<li>新建项目</li>
+</ul>
+<h2 id="_4">其他</h2>
+<ul>
+<li>Topic Messaging</li>
+<li>Group Messaging</li>
+</ul>
+<h2 id="_5">链接</h2>
+<ul>
+<li><a href="https://developers.google.com/cloud-messaging/gcm">Google Cloud Messaging: Overview</a></li>
+<li><a href="http://www.captechconsulting.com/blogs/google-cloud-messaging-cloud-connection-server-tutorial">Google Cloud Messaging: Cloud Connection Server Tutorial</a></li>
+<li><a href="https://developers.google.com/cloud-messaging/android/start">Try Cloud Messaging for Android</a></li>
+<li><a href="https://developers.google.com/cloud-messaging/ccs">Implementing an XMPP Connection Server</a></li>
+<li><a href="https://developers.google.com/cloud-messaging/xmpp-server-ref">XMPP Connection Server Reference</a></li>
+<li><a href="https://github.com/writtmeyer/gcm_server">gcm_server</a></li>
+<li><a href="https://github.com/antoinecampbell/GCMCCSDemo">GCMCCSDemo</a></li>
+<li><a href="https://console.developers.google.com/project">Google Developers Console</a></li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/2663268?hl=en">View &amp; diagnose Google Cloud Messaging (GCM) statistics</a></li>
+<li><a href="https://developers.google.com/cloud-messaging/xmpp-server-ref">XMPP Connection Server Reference</a></li>
+</ul>
+</body>
+</html>

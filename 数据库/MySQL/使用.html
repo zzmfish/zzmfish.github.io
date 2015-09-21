@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>MySQL</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1 id="mysql">MySQL</h1>
@@ -96,6 +96,15 @@ mysql -u<span style="color: #40ffff">$User</span> -p<span style="color: #40ffff"
 <h2 id="_5">用户</h2>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">-- 显示全部用户</span>
 <span style="color: #6ab825; font-weight: bold">select</span> <span style="color: #6ab825; font-weight: bold">User</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #d0d0d0">mysql.</span><span style="color: #6ab825; font-weight: bold">user</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">-- 添加用户</span>
+<span style="color: #6ab825; font-weight: bold">CREATE</span> <span style="color: #6ab825; font-weight: bold">USER</span> <span style="color: #ed9d13">&#39;username&#39;</span><span style="color: #d0d0d0">@</span><span style="color: #ed9d13">&#39;host&#39;</span> <span style="color: #d0d0d0">IDENTIFIED</span> <span style="color: #6ab825; font-weight: bold">BY</span> <span style="color: #ed9d13">&#39;password&#39;</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">-- 设置用户权限</span>
+<span style="color: #6ab825; font-weight: bold">GRANT</span> <span style="color: #6ab825; font-weight: bold">ALL</span> <span style="color: #6ab825; font-weight: bold">ON</span> <span style="color: #d0d0d0">dbname.*</span> <span style="color: #6ab825; font-weight: bold">TO</span> <span style="color: #ed9d13">&#39;username&#39;</span><span style="color: #d0d0d0">@</span><span style="color: #ed9d13">&#39;%&#39;</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #999999; font-style: italic">-- 显示用户权限</span>
+<span style="color: #6ab825; font-weight: bold">show</span> <span style="color: #d0d0d0">grants</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">username;</span>
 </pre></div>
 
 

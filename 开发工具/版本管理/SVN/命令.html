@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>检出</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">检出</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#检出单个文件</span>
+svn <span style="color: #24909d">export</span> --depth files <span style="color: #40ffff">$FilePath</span>
+</pre></div>
+
+
+<h2 id="_2">添加</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#添加目录，但不添文件</span>
+svn add --depth<span style="color: #d0d0d0">=</span>empty <span style="color: #40ffff">$DirName</span>
+svn add -N <span style="color: #40ffff">$Dir</span>
+
+<span style="color: #999999; font-style: italic">#远程添加目录</span>
+mkdir <span style="color: #40ffff">$DirName</span>
+svn import <span style="color: #40ffff">$DirName</span> <span style="color: #40ffff">$RemotePath</span>/<span style="color: #40ffff">$DirName</span>
+</pre></div>
+
+
+<h2 id="_3">更新</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#更新到指定版本</span>
+svn update -r<span style="color: #40ffff">$Version</span> <span style="color: #40ffff">$FileName</span>
+</pre></div>
+
+
+<h2 id="_4">撤销</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#撤销本地修改</span>
+svn revert <span style="color: #40ffff">$File</span>
+
+<span style="color: #999999; font-style: italic">#撤销目录下所有文件修改</span>
+svn revert . --depth infinity
+
+<span style="color: #999999; font-style: italic">#撤销目录修改、撤销添加目录</span>
+svn revert <span style="color: #40ffff">$Dir</span> -R
+</pre></div>
+
+
+<h2 id="_5">属性</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#添加可执行属性</span>
+svn propset svn:executable ON <span style="color: #40ffff">$FileName</span>
+</pre></div>
+
+
+<h2 id="_6">合并</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#合并分支</span>
+svn merge <span style="color: #40ffff">$BranchPath</span>
+
+<span style="color: #999999; font-style: italic">#合并版本间的修改</span>
+svn merge <span style="color: #40ffff">$BranchPath</span> -r<span style="color: #40ffff">$Version1</span>:<span style="color: #40ffff">$Version2</span>
+
+<span style="color: #999999; font-style: italic">#回滚</span>
+svn merge . -r<span style="color: #40ffff">$Version2</span>:<span style="color: #40ffff">$Version1</span>
+
+<span style="color: #999999; font-style: italic">#冲突使用本地版本</span>
+svn resolve --accept mine-full  <span style="color: #40ffff">$FileName</span>
+
+<span style="color: #999999; font-style: italic">#显示合并信息</span>
+svn mergeinfo .
+svn propget svn:mergeinfo .
+svn propget -r<span style="color: #40ffff">$Version</span> svn:mergeinfo .
+</pre></div>
+
+
+<h2 id="_7">分支</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#创建分支</span>
+svn copy <span style="color: #40ffff">$Path1</span> <span style="color: #40ffff">$Path2</span> -m <span style="color: #40ffff">$Message</span>
+
+<span style="color: #999999; font-style: italic">#列出所有tag</span>
+svn ls <span style="color: #ed9d13">&quot;^/tags&quot;</span>
+</pre></div>
+
+
+<h2 id="_8">外部引用</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#引用外部文件  </span>
+<span style="color: #999999; font-style: italic">#格式：svn路径（可使用相对路径） 本地路径</span>
+svn propedit svn:externals  .
+</pre></div>
+
+
+<h2 id="_9">服务器</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#切换服务器</span>
+svn switch --relocate <span style="color: #40ffff">$Url1</span> <span style="color: #40ffff">$Url2</span>
+</pre></div>
+
+
+<h2 id="_10">参考</h2>
+<ul>
+<li><a href="http://blog.csdn.net/zht666/article/details/36178117">SVN三种合并类型</a></li>
+<li><a href="http://www.cnblogs.com/cnblogsfans/archive/2011/02/16/1955808.html">SVN分支与合并</a></li>
+</ul>
+</body>
+</html>

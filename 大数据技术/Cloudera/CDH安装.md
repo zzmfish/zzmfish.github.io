@@ -36,8 +36,35 @@ sudo ./cloudera-manager-installer.bin
 ```
 #!bash
 sudo /usr/share/cmf/uninstall-cloudera-manager.sh
-sudo rm /etc/cloudera-scm-server/db.properties
-sudo rm -Rf /usr/share/cmf /var/lib/cloudera* /var/cache/yum/cloudera* /etc/cloudera*
+
+sudo apt-get purge 'cloudera-manager-*'
+sudo apt-get autoremove
+
+sudo rm -Rf \
+    /etc/cloudera* \
+    /etc/hadoop* \
+    /etc/hive \
+    /etc/hive-* \
+    /etc/hbase* \
+    /etc/spark \
+    /etc/solr \
+    /etc/oozie \
+    /etc/pig \
+    /etc/impala \
+    /etc/zookeeper \
+    /usr/share/cmf/ \
+    /var/cache/yum/cloudera* \
+    /var/lib/cloudera* \
+    /var/lib/cloudera* \
+    /var/lib/sqoop* \
+    /var/log/cloudera-* \
+    /var/run/cloudera* \
+    $(NULL)
+
+#清除HDFS目录
+sudo rm -rf /dfs/
+
+#关闭7432端口的postres进程
 ```
 
 ## 参考

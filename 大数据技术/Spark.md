@@ -28,7 +28,6 @@
     * 记住构建它的操作图
     * checkpoint机制
 
-## Spark SQL
 
 ### DataFrame
 * a distributed collection of data organized into named columns
@@ -45,6 +44,7 @@
 * 字节码生成
 
 ## 参考
+* [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)
 * [spark-programming-guide-zh-cn](https://www.gitbook.com/book/endymecy/spark-programming-guide-zh-cn/details)
 * [新手福利：Apache Spark入门攻略](http://www.cstor.cn/textdetail_9188.html)
 * [从Hadoop到Spark的架构实践](http://www.thebigdata.cn/Hadoop/14289.html)

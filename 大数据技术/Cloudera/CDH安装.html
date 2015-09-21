@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>准备</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h3 id="_1">准备</h3>
@@ -43,8 +43,35 @@ sudo ./cloudera-manager-installer.bin
 </ul>
 <h3 id="_2">卸载</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo /usr/share/cmf/uninstall-cloudera-manager.sh
-sudo rm /etc/cloudera-scm-server/db.properties
-sudo rm -Rf /usr/share/cmf /var/lib/cloudera* /var/cache/yum/cloudera* /etc/cloudera*
+
+sudo apt-get purge <span style="color: #ed9d13">&#39;cloudera-manager-*&#39;</span>
+sudo apt-get autoremove
+
+sudo rm -Rf <span style="color: #ed9d13">\</span>
+    /etc/cloudera* <span style="color: #ed9d13">\</span>
+    /etc/hadoop* <span style="color: #ed9d13">\</span>
+    /etc/hive <span style="color: #ed9d13">\</span>
+    /etc/hive-* <span style="color: #ed9d13">\</span>
+    /etc/hbase* <span style="color: #ed9d13">\</span>
+    /etc/spark <span style="color: #ed9d13">\</span>
+    /etc/solr <span style="color: #ed9d13">\</span>
+    /etc/oozie <span style="color: #ed9d13">\</span>
+    /etc/pig <span style="color: #ed9d13">\</span>
+    /etc/impala <span style="color: #ed9d13">\</span>
+    /etc/zookeeper <span style="color: #ed9d13">\</span>
+    /usr/share/cmf/ <span style="color: #ed9d13">\</span>
+    /var/cache/yum/cloudera* <span style="color: #ed9d13">\</span>
+    /var/lib/cloudera* <span style="color: #ed9d13">\</span>
+    /var/lib/cloudera* <span style="color: #ed9d13">\</span>
+    /var/lib/sqoop* <span style="color: #ed9d13">\</span>
+    /var/log/cloudera-* <span style="color: #ed9d13">\</span>
+    /var/run/cloudera* <span style="color: #ed9d13">\</span>
+    <span style="color: #6ab825; font-weight: bold">$(</span>NULL<span style="color: #6ab825; font-weight: bold">)</span>
+
+<span style="color: #999999; font-style: italic">#清除HDFS目录</span>
+sudo rm -rf /dfs/
+
+<span style="color: #999999; font-style: italic">#关闭7432端口的postres进程</span>
 </pre></div>
 
 

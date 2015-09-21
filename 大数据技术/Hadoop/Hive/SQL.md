@@ -65,5 +65,9 @@ EXPORT TABLE department TO 'hdfs_exports_location/department';
 IMPORT FROM 'hdfs_exports_location/department';
 ```
 
+## 未整理
+* 重命名表：ALTER TABLE table_name RENAME TO new_table_name;
+* 出现次数：select *, row_number() over (partition by tk order by dn)  as rank from mytable;
+
 ## 参考
 * [LanguageManual ImportExport](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport)

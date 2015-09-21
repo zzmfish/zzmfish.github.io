@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Schema</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<ul>
+<li>目的是建立一个新的，标准性的云计算的数据交换和存储的Protocol</li>
+<li>显式,declarative的Schema</li>
+<li>高效二进制的数据表达</li>
+</ul>
+<h3 id="schema">Schema</h3>
+<ul>
+<li>Avro-specific方式</li>
+<li>Avro-generic方式</li>
+</ul>
+<h3 id="_1">序列化</h3>
+<ul>
+<li>schema在前面，数据在后面</li>
+<li>通过扫描schema只对感兴趣的部分作反序列化</li>
+<li>允许定义数据的排序Order并在序列化的时候遵循这个顺序</li>
+<li>序列化实现<ul>
+<li>TCompactProtocol: 最高效的二进制序列化协议</li>
+<li>TBinaryProtocol: 缺省简单二进制序列化协议</li>
+</ul>
+</li>
+</ul>
+<h3 id="rpc">RPC服务</h3>
+<ul>
+<li>HttpServer : 缺省,基于Jetty内核的服务</li>
+<li>NettyServer: 新的基于Netty的服务</li>
+</ul>
+<h2 id="_2">参考</h2>
+<ul>
+<li><a href="http://jishu.zol.com.cn/3593.html">Apache Avro 与 Thrift 比较</a></li>
+</ul>
+</body>
+</html>

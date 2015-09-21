@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>命令</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">命令</h2>
+<h5 id="_2">编译</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #40ffff">JARS</span><span style="color: #d0d0d0">=</span><span style="color: #6ab825; font-weight: bold">$(</span>addprefix /home/hadoop/hadoop-1.2.1/,hadoop-core-1.2.1.jar lib/commons-cli-1.2.jar<span style="color: #6ab825; font-weight: bold">)</span>
+<span style="color: #447fcf">all</span><span style="color: #d0d0d0">:</span>
+    mkdir -p build
+    javac -classpath <span style="color: #6ab825; font-weight: bold">$(</span>shell <span style="color: #24909d">echo</span> <span style="color: #6ab825; font-weight: bold">$(</span>JARS<span style="color: #6ab825; font-weight: bold">)</span> | sed <span style="color: #ed9d13">&quot;s/ /:/&quot;</span><span style="color: #6ab825; font-weight: bold">)</span> <span style="color: #ed9d13">\</span>
+        -d build WordCount.java
+    jar -cvf wordcount.jar -C build/ .
+</pre></div>
+
+
+<p>或</p>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">mkdir build
+javac -cp <span style="color: #6ab825; font-weight: bold">$(</span>hadoop classpath<span style="color: #6ab825; font-weight: bold">)</span> -d build <span style="color: #6ab825; font-weight: bold">$(</span>find -name *.java<span style="color: #6ab825; font-weight: bold">)</span>
+jar -cvf job.jar -C build/ .
+</pre></div>
+
+
+<h5 id="_3">运行</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#hadoop jar wordcount.jar org.apache.hadoop.examples.WordCount input output</span>
+hadoop jar <span style="color: #40ffff">$JarFile</span> <span style="color: #40ffff">$FullClassName</span> <span style="color: #40ffff">$InputDir</span> <span style="color: #40ffff">$OutputDir</span>
+
+<span style="color: #999999; font-style: italic">#运行Hadoop流</span>
+<span style="color: #999999; font-style: italic">#hadoop jar contrib/streaming/hadoop-streaming-1.2.1.jar -input input -output output -mapper /bin/cat -reducer /usr/bin/wc</span>
+hadoop jar <span style="color: #40ffff">$HadoopStreamJar</span> -input <span style="color: #40ffff">$InputDir</span> -output <span style="color: #40ffff">$OutputDir</span> -mapper <span style="color: #40ffff">$MapperBin</span> -reducer <span style="color: #40ffff">$ReducerBin</span>
+</pre></div>
+
+
+<h5 id="_4">状态</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示作业列表</span>
+hadoop job -list
+</pre></div>
+
+
+<h5 id="_5">管理</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#终止作业</span>
+hadoop job -kill <span style="color: #40ffff">$JobId</span>
+</pre></div>
+</body>
+</html>

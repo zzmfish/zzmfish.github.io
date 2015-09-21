@@ -6,3 +6,6 @@ get 'video', '1234556'          |显示一行
 count 'video', INTERVAL=> 1     |显示全部key
 scan 'video'                    |显示video表全部行
 truncate 'video'                |清空表
+
+## 参考
+* [Hadoop Wiki - HBase Shell](https://wiki.apache.org/hadoop/Hbase/Shell)

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>流程</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h2 id="_1">流程</h2>
+<h3 id="_2">初始化</h3>
+<ul>
+<li>每个任务被初始化成一个<strong><em>Job</em></strong>，每个Job分为两个阶段：Map阶段和Reduce阶段</li>
+</ul>
+<h3 id="_3">输入</h3>
+<ul>
+<li><code>InputSplit</code><ul>
+<li>represents the data to be processed by an individual Mapper</li>
+<li>byte-oriented view</li>
+</ul>
+</li>
+<li><code>RecordReader</code><ul>
+<li>reads &lt;key, value&gt; pairs from an InputSplit</li>
+</ul>
+</li>
+</ul>
+<h3 id="map">Map</h3>
+<ul>
+<li><strong><em>Map阶段</em></strong>接收&lt;key,value>形式的输入，产生&lt;key,value>形式的输出</li>
+</ul>
+<h3 id="reduce">Reduce</h3>
+<ul>
+<li><strong><em>Reduce阶段</em></strong>接收&lt;key, (list of values)>形式的输入，产生&lt;key,value>形式的输出</li>
+<li><strong><em>shuffle过程</em></strong>：把相同的key值放在一起</li>
+</ul>
+<h3 id="_4">输出</h3>
+<p><img alt="" src="/images/MapReduce.png" /></p>
+<h2 id="_5">参考</h2>
+<ul>
+<li><a href="http://hadoop.apache.org/docs/r2.7.1/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html">MapReduce Tutorial</a></li>
+<li><a href="http://www.lichun.cc/blog/2012/05/hadoop-multipleinputs-usage/">Hadoop MultipleInputs sample usage</a></li>
+<li><a href="http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cdh_ig_table_access_mapreduce.html">Accessing Table Data with MapReduce</a></li>
+<li><a href="http://langyu.iteye.com/blog/992916">MapReduce:详解Shuffle过程</a></li>
+</ul>
+</body>
+</html>

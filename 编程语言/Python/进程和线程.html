@@ -3,12 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>通过管道调用进程</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h4 id="_1">通过管道调用进程</h4>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">args</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #ed9d13">&#39;java&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;-jar&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;plantuml.jar&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;-pipe&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;-tpng&#39;</span><span style="color: #d0d0d0">]</span>
-<span style="color: #d0d0d0">pipe</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">subprocess.Popen(args,</span> <span style="color: #d0d0d0">stdin</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">subprocess.PIPE,</span> <span style="color: #d0d0d0">stdout</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">subprocess.PIPE)</span>
+<span style="color: #d0d0d0">pipe</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">subprocess.Popen(args,</span> <span style="color: #d0d0d0">stdin</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">subprocess.PIPE,</span>
+        <span style="color: #d0d0d0">stdout</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">subprocess.PIPE,</span> <span style="color: #d0d0d0">stderr=subprocess.STDOUT)</span>
 <span style="color: #d0d0d0">pipe.stdin.write(input_data)</span>
 <span style="color: #d0d0d0">pipe.stdin.close()</span>
 <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">pipe.stdout.read()</span>
