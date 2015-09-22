@@ -2,39 +2,75 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>!bash</title>
+    <title>文本处理</title>
     <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#必备软件</span>
-sudo apt-get install screen vim-gtk ctags sshfs subversion git
+<h2 id="_1">文本处理</h2>
+<h3 id="_2">选择</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#只转换匹配的行</span>
+sed <span style="color: #ed9d13">&#39;/^CFLAGS=/ s/$/ -fPIC/&#39;</span> -i Makefile
 
-<span style="color: #999999; font-style: italic">#输入法</span>
-sudo apt-get install ibus-sunpinyin
-sudo apt-get install  fcitx fcitx-googlepinyin im-switch
-im-config -n fcitx
+<span style="color: #999999; font-style: italic">#第100行</span>
+sed <span style="color: #ed9d13">&#39;100q;d&#39;</span> <span style="color: #40ffff">$File</span>
+head -n 100 | tail -n 1
 
-<span style="color: #999999; font-style: italic">#git</span>
-git config --global user.email <span style="color: #ed9d13">&quot;zzmfish@163.com&quot;</span>
-git config --global user.name <span style="color: #ed9d13">&quot;zzmfish&quot;</span>
-git config core.quotepath <span style="color: #24909d">false</span>
+<span style="color: #999999; font-style: italic">#最后一个字段</span>
+awk <span style="color: #ed9d13">&#39;{print $NF}&#39;</span>
 
-<span style="color: #999999; font-style: italic">#解决无法访问.local的问题</span>
-<span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">[</span> ! -e /etc/nsswitch.conf.bak <span style="color: #d0d0d0">]</span>; <span style="color: #6ab825; font-weight: bold">then</span>
-<span style="color: #6ab825; font-weight: bold">    </span>sudo cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
-    sudo sed -i <span style="color: #ed9d13">&quot;s/^hosts:.*/hosts: files dns/&quot;</span> /etc/nsswitch.conf
-<span style="color: #6ab825; font-weight: bold">fi</span>
+<span style="color: #999999; font-style: italic">#输出匹配的组</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;a=1 b=2 c=3&quot;</span> | sed <span style="color: #ed9d13">&quot;s/.*b=\([0-9]\).*/\1/&quot;</span> <span style="color: #999999; font-style: italic">#匹配b=2，输出2</span>
 
-<span style="color: #999999; font-style: italic">#vim插件</span>
-mkdir -p ~/.vim
-svn checkout --force https://github.com/vim-scripts/vcscommand.vim/tags/1.99.47 ~/.vim
-
-<span style="color: #999999; font-style: italic">#自动挂载D盘</span>
-sudo mkdir /media/d_drive
-sudo sed  -i /etc/rc.local <span style="color: #ed9d13">&#39;/^exit 0/imount -t vboxsf d_drive \/media\/d_drive\/&#39;</span>
-
-<span style="color: #999999; font-style: italic">#nginx</span>
-<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;include $HOME/local/etc/nginx.conf;&quot;</span> &gt;&gt; /etc/nginx/nginx.conf
+<span style="color: #999999; font-style: italic">#输出最短一行</span>
+awk <span style="color: #ed9d13">&#39;{print length($1), $1}&#39;</span> | sort -nk 1 | head -1 | awk <span style="color: #ed9d13">&#39;{print $2}&#39;</span><span style="color: #d0d0d0">)</span>
 </pre></div>
+
+
+<h3 id="_3">变换</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#交换两列</span>
+awk <span style="color: #ed9d13">&#39;{ print $2&quot; &quot;$1; }&#39;</span>
+
+<span style="color: #999999; font-style: italic">#小写转大写</span>
+tr <span style="color: #ed9d13">&#39;[a-z]&#39;</span> <span style="color: #ed9d13">&#39;[A-Z]&#39;</span>
+</pre></div>
+
+
+<h3 id="_4">插入</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#文件末尾插入</span>
+sed <span style="color: #ed9d13">&#39;$a\New Line&#39;</span> file
+
+<span style="color: #999999; font-style: italic">#前插入</span>
+sed <span style="color: #ed9d13">&#39;/here/iNew Line&#39;</span>
+
+<span style="color: #999999; font-style: italic">#后插入</span>
+sed <span style="color: #ed9d13">&#39;/here/aNew Line&#39;</span>
+</pre></div>
+
+
+<h3 id="_5">删除</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#删除空白行</span>
+sed <span style="color: #ed9d13">&quot;/^\s*$/d&quot;</span>
+</pre></div>
+
+
+<h3 id="_6">统计</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#计算字符个数（以“a”为例）</span>
+<span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;abcabcaaaaa&quot;</span> | tr -dc <span style="color: #ed9d13">&quot;a&quot;</span> | wc -c
+
+<span style="color: #999999; font-style: italic">#字段总数</span>
+awk <span style="color: #ed9d13">&#39;{print NF}&#39;</span>
+</pre></div>
+
+
+<h3 id="_7">其他</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#在vim中打开程序输出</span>
+ps -efH | vim -
+</pre></div>
+
+
+<h2 id="_8">参考</h2>
+<ul>
+<li><a href="http://blog.sina.com.cn/s/blog_58c3f7960100uttl.html">linux tr命令详解</a></li>
+</ul>
 </body>
 </html>
