@@ -5,18 +5,24 @@ nginx -s quit
 ```
 
 
-## 静态目录
+## 配置
 ```nginx
 http {
     server {
-            listen   80;
-            root   /path/to/root;
-            location / {
-                    index  index.php index.html index.htm;
-            }
-            location /somedir {
-                   autoindex on;
-            }
+        listen   80;
+        root   /path/to/root;
+        location / {
+            index  index.php index.html index.htm;
+        }
+        location /somedir {
+           autoindex on;
+        }
+            
+        #代理
+        location /external/query {
+            proxy_pass http://mob3032:8022;
+            proxy_read_timeout 1800s;
+        }
     }
 }
 ```
@@ -39,7 +45,6 @@ http {
         }
     }
 }
-
 ```
 
 ## 参考

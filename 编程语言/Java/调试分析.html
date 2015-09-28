@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>jps</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>工具</title>
+    <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
+<h2 id="_1">工具</h2>
 <h5 id="jps">jps</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#列举java进程</span>
 jps
@@ -38,7 +39,15 @@ jstack <span style="color: #40ffff">$Pid</span>
 </ul>
 <h5 id="eurekaj">EurekaJ</h5>
 <h5 id="hprof">HPROF</h5>
-<h2 id="_1">参考</h2>
+<h2 id="_2">代码</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//backtrace</span>
+<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(StackTraceElement</span> <span style="color: #d0d0d0">ste</span> <span style="color: #d0d0d0">:</span> <span style="color: #d0d0d0">Thread.</span><span style="color: #bbbbbb">currentThread</span><span style="color: #d0d0d0">().</span><span style="color: #bbbbbb">getStackTrace</span><span style="color: #d0d0d0">())</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">System.</span><span style="color: #bbbbbb">out</span><span style="color: #d0d0d0">.</span><span style="color: #bbbbbb">println</span><span style="color: #d0d0d0">(ste);</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
+<h2 id="_3">参考</h2>
 <ul>
 <li><a href="http://www.infoq.com/articles/java-profiling-with-open-source">Effective Java Profiling With Open Source Tools</a></li>
 <li><a href="http://blog.csdn.net/chaofanwei/article/details/20224339">利用btrace在线监控java程序状态</a></li>

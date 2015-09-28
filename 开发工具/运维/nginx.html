@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>!bash</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">nginx
@@ -11,17 +11,23 @@ nginx -s quit
 </pre></div>
 
 
-<h2 id="_1">静态目录</h2>
+<h2 id="_1">配置</h2>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">http</span> <span style="color: #d0d0d0">{</span>
     <span style="color: #6ab825; font-weight: bold">server</span> <span style="color: #d0d0d0">{</span>
-            <span style="color: #6ab825; font-weight: bold">listen</span>   <span style="color: #3677a9">80</span><span style="color: #d0d0d0">;</span>
-            <span style="color: #6ab825; font-weight: bold">root</span>   <span style="color: #ed9d13">/path/to/root</span><span style="color: #d0d0d0">;</span>
-            <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/</span> <span style="color: #d0d0d0">{</span>
-                    <span style="color: #6ab825; font-weight: bold">index</span>  <span style="color: #ed9d13">index.php</span> <span style="color: #ed9d13">index.html</span> <span style="color: #ed9d13">index.htm</span><span style="color: #d0d0d0">;</span>
-            <span style="color: #d0d0d0">}</span>
-            <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/somedir</span> <span style="color: #d0d0d0">{</span>
-                   <span style="color: #6ab825; font-weight: bold">autoindex</span> <span style="color: #40ffff">on</span><span style="color: #d0d0d0">;</span>
-            <span style="color: #d0d0d0">}</span>
+        <span style="color: #6ab825; font-weight: bold">listen</span>   <span style="color: #3677a9">80</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #6ab825; font-weight: bold">root</span>   <span style="color: #ed9d13">/path/to/root</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #6ab825; font-weight: bold">index</span>  <span style="color: #ed9d13">index.php</span> <span style="color: #ed9d13">index.html</span> <span style="color: #ed9d13">index.htm</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #d0d0d0">}</span>
+        <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/somedir</span> <span style="color: #d0d0d0">{</span>
+           <span style="color: #6ab825; font-weight: bold">autoindex</span> <span style="color: #40ffff">on</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #d0d0d0">}</span>
+
+        <span style="color: #999999; font-style: italic">#代理</span>
+        <span style="color: #6ab825; font-weight: bold">location</span> <span style="color: #ed9d13">/external/query</span> <span style="color: #d0d0d0">{</span>
+            <span style="color: #6ab825; font-weight: bold">proxy_pass</span> <span style="color: #ed9d13">http://mob3032:8022</span><span style="color: #d0d0d0">;</span>
+            <span style="color: #6ab825; font-weight: bold">proxy_read_timeout</span> <span style="color: #ed9d13">1800s</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #d0d0d0">}</span>
     <span style="color: #d0d0d0">}</span>
 <span style="color: #d0d0d0">}</span>
 </pre></div>

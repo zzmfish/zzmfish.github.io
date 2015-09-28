@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>文件管理</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../../../style.css" />
 </head>
 <body>
 <h2 id="_1">文件管理</h2>
@@ -29,6 +29,9 @@ find . -type l -! -exec <span style="color: #24909d">test</span> -e <span style=
 <h3 id="_3">其他</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看占用文件的进程</span>
 lsof <span style="color: #40ffff">$FilePath</span>
+
+<span style="color: #999999; font-style: italic">#按1000000行拆分文件</span>
+split --verbose -d -a 3 -l 1000000 ../msg_send_server.log msg_send_server.log.
 </pre></div>
 
 

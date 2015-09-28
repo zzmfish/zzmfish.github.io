@@ -93,3 +93,6 @@ ALTER TABLE video DROP COLUMN insert_time;
 * 内联结
 * 左联结
 * 右联结
+
+## 参考
+* [ROW_NUMBER() OVER函数的基本用法用法](http://www.cnblogs.com/icebutterfly/archive/2009/08/05/1539657.html)

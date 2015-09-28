@@ -2,22 +2,41 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>!bash</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>!bash</title>
+    <link rel="stylesheet" href="../../../style.css" />
 </head>
 <body>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">yum update
 </pre></div>
 
 
-<h6 id="_1">关闭防火墙</h6>
+<h6 id="_1">安装</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#安装和启动图形界面</span>
+sudo yum -y groups install <span style="color: #ed9d13">&quot;GNOME Desktop&quot;</span>
+startx
+
+<span style="color: #999999; font-style: italic">#安装开发工具</span>
+sudo yum groupinstall <span style="color: #ed9d13">&quot;Development Tools&quot;</span>
+
+<span style="color: #999999; font-style: italic">#安装内核头文件（VirtualBox模块需要）</span>
+sudo yum install kernel-devel
+</pre></div>
+
+
+<h6 id="_2">关闭防火墙</h6>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo <span style="color: #24909d">echo</span> <span style="color: #ed9d13">&quot;-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport $Port -j ACCEPT&quot;</span> &gt;&gt; /etc/sysconfig/iptables
 sudo service iptables restart
 </pre></div>
 
 
-<h6 id="_2">安装中文字体</h6>
+<h6 id="_3">安装中文字体</h6>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo yum install cjkuni-fonts-common cjkuni-uming-fonts cjkuni-ukai-fonts cjkuni-fonts-ghostscript bitmap-fangsongti-fonts
 </pre></div>
+
+
+<h2 id="_4">参考</h2>
+<ul>
+<li><a href="http://www.experts-exchange.com/OS/Linux/Q_28517724.html">Centos 7/Windows 7 Dual Boot Problem</a></li>
+</ul>
 </body>
 </html>

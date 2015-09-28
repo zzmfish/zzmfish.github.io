@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Shell</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../../../style.css" />
 </head>
 <body>
 <h2 id="shell">Shell</h2>
@@ -24,12 +24,20 @@
 <td>显示一行</td>
 </tr>
 <tr>
+<td>put 't1', 'r1', 'c1', 'value'</td>
+<td></td>
+</tr>
+<tr>
 <td>count 'video', INTERVAL=&gt; 1</td>
 <td>显示全部key</td>
 </tr>
 <tr>
 <td>scan 'video'</td>
 <td>显示video表全部行</td>
+</tr>
+<tr>
+<td>scan 'dn_token', {COLUMNS =&gt; ['info:dn', 'info:tk'], LIMIT =&gt; 100 }</td>
+<td></td>
 </tr>
 <tr>
 <td>truncate 'video'</td>

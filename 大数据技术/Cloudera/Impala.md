@@ -66,3 +66,4 @@ sudo apt-get update
 * [New SQL Choices in the Apache Hadoop Ecosystem: Why Impala Continues to Lead](http://blog.cloudera.com/blog/2014/05/new-sql-choices-in-the-apache-hadoop-ecosystem-why-impala-continues-to-lead/)
 * [User-Defined Functions (UDFs)](http://www.cloudera.com/content/cloudera/en/documentation/cloudera-impala/latest/topics/impala_udf.html)
 * [Impala与Hive的比较](http://tech.uc.cn/?p=1803)
+* [Configuring Impala to Work with JDBC (CDH5.1)](http://www.cloudera.com/content/cloudera/en/documentation/cdh5/v5-1-x/Impala/Installing-and-Using-Impala/ciiu_impala_jdbc.html)

@@ -52,6 +52,9 @@ end note
 * 加密公钥
 * 证书的颁发机构
 
+## 其他
+* SSLStrip
+
 ## 参考
 * [SSL/TLS协议运行机制的概述](http://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
 * [浏览器如何验证SSL证书？](http://zhidao.baidu.com/link?url=zBDZomtpzkVsW78Yyf-OhpDAjnhCnEJzT6ZEiQheN1l95pggNf3fq9SL2MAgEbfsj9VJvTvmW3yZFlpf3eCF6_)
