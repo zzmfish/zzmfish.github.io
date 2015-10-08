@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>!bash</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#退出时杀死进程组</span>
+<span style="color: #24909d">trap</span> <span style="color: #ed9d13">&quot;kill 0&quot;</span> SIGINT SIGTERM EXIT
+
+<span style="color: #999999; font-style: italic">#执行另一个程序替换bash</span>
+<span style="color: #24909d">exec</span> <span style="color: #40ffff">$Program</span> <span style="color: #40ffff">$Arguments</span>
+
+<span style="color: #999999; font-style: italic">#函数被子进程继承</span>
+<span style="color: #24909d">declare</span> -x -f <span style="color: #40ffff">$FunctionName</span>
+</pre></div>
+</body>
+</html>

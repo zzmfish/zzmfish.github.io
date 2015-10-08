@@ -1,0 +1,1 @@
+* [用Apache Ivy实现项目里的依赖管理](http://blog.csdn.net/stefaniezhao/article/details/6412748)

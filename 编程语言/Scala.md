@@ -52,3 +52,4 @@ try {
 * [Getting Started with Scala](http://www.scala-lang.org/old/node/166)
 * [Scala API](http://www.scala-lang.org/api/current/#package)
 * [Scala - How to open and read files in Scala](http://alvinalexander.com/scala/scala-how-open-read-files-scala-examples)
+* [使用SBT构建Scala应用](https://github.com/CSUG/real_world_scala/blob/master/02_sbt.markdown)

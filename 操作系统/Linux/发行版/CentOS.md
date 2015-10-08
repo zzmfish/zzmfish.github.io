@@ -30,3 +30,4 @@ sudo yum install cjkuni-fonts-common cjkuni-uming-fonts cjkuni-ukai-fonts cjkuni
 
 ## 参考
 * [Centos 7/Windows 7 Dual Boot Problem](http://www.experts-exchange.com/OS/Linux/Q_28517724.html)
+* [CentOS 6 / RHCE 6 禁用IPv6协议模块](http://www.ttlsa.com/linux/centos6-rhce6-disables-the-ipv6-protocol-module/)

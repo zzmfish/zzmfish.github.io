@@ -81,3 +81,4 @@ package                 |jar:jar
 * [Maven in 5 Minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
 * [Using the CDH 5 Maven Repository](http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/cdh_vd_cdh5_maven_repo.html)
 * [Maven实战（一）——坐标规划](http://www.infoq.com/cn/news/2010/12/xxb-maven-1)
+* [Maven实战（六）——Gradle，构建工具的未来？](http://www.infoq.com/cn/news/2011/04/xxb-maven-6-gradle/)

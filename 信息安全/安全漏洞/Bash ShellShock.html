@@ -2,15 +2,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>安全漏洞</title>
+    <title>[Bash] ShellShock</title>
     <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<h1 id="_1">安全漏洞</h1>
-<h3 id="openssh-heartbleed">[OpenSSH] HeartBleed</h3>
-<ul>
-<li><a href="http://drops.wooyun.org/papers/1381">关于OpenSSL“心脏出血”漏洞的分析</a></li>
-</ul>
 <h3 id="bash-shellshock">[Bash] ShellShock</h3>
 <p>检测方法：</p>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%">env <span style="color: #40ffff">x</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&#39;() { :;}; echo vulnerable&#39;</span> bash -c <span style="color: #ed9d13">&quot;echo this is a test&quot;</span>
@@ -31,11 +26,5 @@ bash does not stop after processing the function definition; it
 continues to parse and execute shell commands following the function
 definition.</p>
 </blockquote>
-<h2 id="badusb">BadUSB</h2>
-<h2 id="ssl">SSL中间人攻击</h2>
-<h2 id="dns">DNS挟持</h2>
-<p>利用路由器弱口令</p>
-<h2 id="wget">wget漏洞</h2>
-<p>当Wget向FTP服务器请求递归目录时，存在一个关于软链接的漏洞，它将允许黑客任意创建文件、目录或软链接（符号链接）</p>
 </body>
 </html>

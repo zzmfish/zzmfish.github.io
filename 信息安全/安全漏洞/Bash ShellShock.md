@@ -1,8 +1,3 @@
-# 安全漏洞
-### [OpenSSH] HeartBleed
-
-* [关于OpenSSL“心脏出血”漏洞的分析](http://drops.wooyun.org/papers/1381)
-
 ### [Bash] ShellShock
 检测方法：
 ```
@@ -22,13 +17,3 @@ functions to other bash instances, via the process environment to
 bash does not stop after processing the function definition; it
 continues to parse and execute shell commands following the function
 definition.
-
-## BadUSB
-
-## SSL中间人攻击
-
-## DNS挟持
-利用路由器弱口令
-
-## wget漏洞
-当Wget向FTP服务器请求递归目录时，存在一个关于软链接的漏洞，它将允许黑客任意创建文件、目录或软链接（符号链接）

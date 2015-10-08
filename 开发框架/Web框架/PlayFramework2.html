@@ -3,11 +3,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>指定运行端口</title>
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#指定运行端口</span>
 ./activator <span style="color: #ed9d13">&quot;~run 8080&quot;</span>
+
+<span style="color: #999999; font-style: italic">#指定运行端口和配置文件</span>
+./activator -Dconfig.file<span style="color: #d0d0d0">=</span>conf/application_dev.conf -Dhttp.port<span style="color: #d0d0d0">=</span>8031 run
 
 <span style="color: #999999; font-style: italic">#运行测试案例</span>
 ./activator <span style="color: #ed9d13">&quot;test-only TestUserModelSQLMaker&quot;</span>

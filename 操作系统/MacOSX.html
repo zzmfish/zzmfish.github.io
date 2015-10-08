@@ -2,69 +2,65 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Mac OS X</title>
+    <title>命令</title>
     <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<h1 id="mac-os-x">Mac OS X</h1>
-<h5 id="_1">安装软件</h5>
-<ul>
-<li><a href="http://stackoverflow.com/questions/9386127/how-to-install-cscope-for-mac-os-x-10-6">How to install cscope for Mac OS X 10.6</a></li>
-</ul>
-<h5 id="_2">未分类</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#下载文件</span>
-curl -O <span style="color: #40ffff">$Url</span>
-</pre></div>
-
-
-<ul>
-<li>Homebrew</li>
-<li>VNC Viewer: http://www.realvnc.com/</li>
-</ul>
-<h5 id="libxml">libxml的头文件位置</h5>
-<p>/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/libxml2/libxml/HTMLparser.h</p>
-<ul>
-<li>JAVA HOME</li>
-</ul>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #24909d">export </span><span style="color: #40ffff">JAVA_HOME</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&quot;/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/&quot;</span>
-</pre></div>
-
-
-<h5 id="_3">系统信息</h5>
+<h2 id="_1">命令</h2>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#系统概况</span>
 system_profiler -detailLevel mini 
 
 <span style="color: #999999; font-style: italic">#CPU信息</span>
 sysctl -n machdep.cpu.brand_string
+
+<span style="color: #999999; font-style: italic">#启动iNodeService</span>
+sudo /Library/StartupItems/iNodeAuthService/iNodeAuthService start
 </pre></div>
 
 
-<h5 id="inodeservice">启动iNodeService</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sudo /Library/StartupItems/iNodeAuthService/iNodeAuthService start
-</pre></div>
-
-
-<h5 id="ssh">ssh挂载</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">sshfs -p 9922 zhouzm@devy.ucweb.local:/home1/zhouzm mount/devy/
-</pre></div>
-
-
+<h2 id="_2">软件</h2>
 <ul>
+<li><a href="http://www.realvnc.com/">VNC Viewer</a></li>
 <li><a href="http://osxfuse.github.io">FUSE for OS X</a></li>
 </ul>
-<h5 id="_4">截屏</h5>
+<h2 id="_3">开发</h2>
 <ul>
-<li>全屏截图：苹果键（花键）+ Shift键 + 3</li>
-<li>部分截图：苹果键（花键）+ Shift键 + 4</li>
+<li><strong><em>libxml头文件：</em></strong> /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/include/libxml2/libxml/HTMLparser.h</li>
+<li><strong><em>JAVA HOME目录：</em></strong>/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/</li>
 </ul>
-<h2 id="linux">与Linux的区别</h2>
+<h2 id="_4">快捷键</h2>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全屏截图</td>
+<td><code>command</code> + <code>shift</code> + <code>3</code></td>
+<td>保存到桌面上</td>
+</tr>
+<tr>
+<td>部分截图</td>
+<td><code>command</code> + <code>shift</code> + <code>4</code></td>
+<td>保存到桌面上</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux">对比Linux</h2>
 <ul>
-<li>没有adduser/useradd/free命令</li>
-<li>没有/proc文件系统</li>
+<li>缺少命令：adduser、useradd、free</li>
+<li>缺少目录：/proc</li>
 </ul>
 <h2 id="_5">参考</h2>
 <ul>
 <li><a href="http://www.jacquesf.com/2011/04/mac-os-x-dhcp-server/">Running Mac OS X's built-in DHCP server</a></li>
+<li><a href="http://ksmx.me/broken-user-experience-of-installation-applications-on-mac-os-x/">Mac OS X，糟透了的软件安装体验</a></li>
+<li><a href="http://ksmx.me/homebrew-cask-cli-workflow-to-install-mac-applications/">简洁优雅的Mac OS X软件安装体验 - homebrew-cask</a></li>
+<li><a href="http://stackoverflow.com/questions/9386127/how-to-install-cscope-for-mac-os-x-10-6">How to install cscope for Mac OS X 10.6</a></li>
 </ul>
 </body>
 </html>

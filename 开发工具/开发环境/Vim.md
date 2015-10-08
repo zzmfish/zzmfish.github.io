@@ -42,3 +42,6 @@ set syntax=perl
 '使用sudo保存文件
 w !sudo tee %
 ```
+
+## 参考
+* [Vundle：Vim Plugin 自動下載、安裝、更新與管理工具（Vim Bundle）](http://blogger.gtwang.org/2014/04/vundle-vim-bundle-plugin-manager.html)

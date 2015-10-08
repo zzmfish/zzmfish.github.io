@@ -2,6 +2,9 @@
 #指定运行端口
 ./activator "~run 8080"
 
+#指定运行端口和配置文件
+./activator -Dconfig.file=conf/application_dev.conf -Dhttp.port=8031 run
+
 #运行测试案例
 ./activator "test-only TestUserModelSQLMaker"
 ```
