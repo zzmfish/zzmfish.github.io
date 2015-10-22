@@ -47,8 +47,15 @@ http {
 }
 ```
 
+## 状态码
+| 代码 | 描述                      |
+|----- |----------                 |
+|
+
 ## 参考
 * [Nginx: How do I forward a http request to another port?](http://serverfault.com/questions/536576/nginx-how-do-i-forward-a-http-request-to-another-port)
 * [Using nginx as HTTP load balancer](http://nginx.org/en/docs/http/load_balancing.html)
 * [深入NGINX：我们如何设计它的性能和扩展性](http://www.cnbeta.com/articles/402709.htm)
 * [Nginx 与 Lua](http://www.ttlsa.com/nginx/nginx-and-lua/)
+* [Nginx为什么要造重复的轮子nginScript](http://www.infoq.com/cn/news/2015/10/Nginx-JavaScript-vm)
+* [How To Configure Logging and Log Rotation in Nginx on an Ubuntu VPS](https://www.digitalocean.com/community/tutorials/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-vps)

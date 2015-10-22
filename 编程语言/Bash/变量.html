@@ -18,5 +18,13 @@
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #40ffff">$?</span>                  <span style="color: #999999; font-style: italic">#上一个程序的退出代码  </span>
 <span style="color: #6ab825; font-weight: bold">${</span><span style="color: #40ffff">BASH_SOURCE</span><span style="color: #d0d0d0">[0]</span><span style="color: #6ab825; font-weight: bold">}</span>   <span style="color: #999999; font-style: italic">#source文件路径</span>
 </pre></div>
+
+
+<h2 id="_3">变量替换</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">${</span><span style="color: #40ffff">var</span><span style="color: #6ab825; font-weight: bold">:-</span><span style="color: #40ffff">word</span><span style="color: #6ab825; font-weight: bold">}</span>    <span style="color: #999999; font-style: italic">#var为空则返回word</span>
+<span style="color: #6ab825; font-weight: bold">${</span><span style="color: #40ffff">var</span><span style="color: #d0d0d0">:=word</span><span style="color: #6ab825; font-weight: bold">}</span>    <span style="color: #999999; font-style: italic">#var为空则返回word，并将var的值设置为word</span>
+<span style="color: #6ab825; font-weight: bold">${</span><span style="color: #40ffff">var</span><span style="color: #d0d0d0">:?message</span><span style="color: #6ab825; font-weight: bold">}</span> <span style="color: #999999; font-style: italic">#var为空则将消息message送到标准错误输出，脚本停止运行</span>
+<span style="color: #6ab825; font-weight: bold">${</span><span style="color: #40ffff">var</span><span style="color: #d0d0d0">:+word</span><span style="color: #6ab825; font-weight: bold">}</span>    <span style="color: #999999; font-style: italic">#var被定义则返回word</span>
+</pre></div>
 </body>
 </html>

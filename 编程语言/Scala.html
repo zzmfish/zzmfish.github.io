@@ -7,14 +7,21 @@
 </head>
 <body>
 <h2 id="_1">语法</h2>
-<h3 id="_2">类型</h3>
-<h5 id="_3">字符串</h5>
+<h3 id="_2">循环</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">for</span><span style="color: #d0d0d0">(i</span> <span style="color: #6ab825; font-weight: bold">&lt;-</span> <span style="color: #3677a9">1</span> <span style="color: #d0d0d0">to</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">println(</span><span style="color: #ed9d13">&quot;i is &quot;</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">i);</span>
+<span style="color: #d0d0d0">}</span>
+</pre></div>
+
+
+<h3 id="_3">类型</h3>
+<h5 id="_4">字符串</h5>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//连接列表成一个字符串</span>
 <span style="color: #d0d0d0">lines.mkString(</span><span style="color: #ed9d13">&quot;\n&quot;</span><span style="color: #d0d0d0">)</span>
 </pre></div>
 
 
-<h3 id="_4">函数</h3>
+<h3 id="_5">函数</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//一般函数</span>
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #d0d0d0">info(message</span><span style="color: #6ab825; font-weight: bold">:String</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">Unit</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">{</span>
     <span style="color: #d0d0d0">println(message)</span>
@@ -22,7 +29,7 @@
 </pre></div>
 
 
-<h3 id="_5">类</h3>
+<h3 id="_6">类</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//定义类</span>
 <span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ReaderThread</span><span style="color: #d0d0d0">(inputStream</span><span style="color: #6ab825; font-weight: bold">:</span> <span style="color: #6ab825; font-weight: bold">InputStream</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">extends</span> <span style="color: #447fcf; text-decoration: underline">Runnable</span> <span style="color: #d0d0d0">{</span>
     <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">result</span> <span style="color: #6ab825; font-weight: bold">=</span> <span style="color: #ed9d13">&quot;&quot;</span>
@@ -34,7 +41,7 @@
 </pre></div>
 
 
-<h3 id="_6">异常</h3>
+<h3 id="_7">异常</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//抛出异常</span>
 <span style="color: #6ab825; font-weight: bold">throw</span> <span style="color: #6ab825; font-weight: bold">new</span> <span style="color: #447fcf; text-decoration: underline">IllegalArgumentException</span>
 
@@ -52,7 +59,7 @@
 </pre></div>
 
 
-<h2 id="_7">参考</h2>
+<h2 id="_8">参考</h2>
 <ul>
 <li><a href="http://hb.qq.com/a/20120418/001400.htm">Scala能否成为Java杀手？</a></li>
 <li><a href="http://developer.51cto.com/art/200905/124636.htm">Scala创始人：创造比Java更好的语言</a></li>
@@ -64,6 +71,7 @@
 <li><a href="http://www.scala-lang.org/api/current/#package">Scala API</a></li>
 <li><a href="http://alvinalexander.com/scala/scala-how-open-read-files-scala-examples">Scala - How to open and read files in Scala</a></li>
 <li><a href="https://github.com/CSUG/real_world_scala/blob/master/02_sbt.markdown">使用SBT构建Scala应用</a></li>
+<li><a href="http://outofmemory.cn/scala/scala-for-statement">scala for语句</a></li>
 </ul>
 </body>
 </html>

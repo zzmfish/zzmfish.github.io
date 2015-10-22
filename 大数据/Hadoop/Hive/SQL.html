@@ -61,14 +61,15 @@
 <span style="color: #999999; font-style: italic">-- 查看分区</span>
 <span style="color: #6ab825; font-weight: bold">SHOW</span> <span style="color: #d0d0d0">PARTITIONS</span> <span style="color: #d0d0d0">TableName;</span>
 
-<span style="color: #999999; font-style: italic">-- 查看分区信息</span>
+<span style="color: #999999; font-style: italic">-- 查看分区信息（包括位置）</span>
 <span style="color: #6ab825; font-weight: bold">DESCRIBE</span> <span style="color: #d0d0d0">FORMATTED</span> <span style="color: #d0d0d0">TableName</span> <span style="color: #d0d0d0">PARTITION</span> <span style="color: #d0d0d0">(field1=</span><span style="color: #ed9d13">&#39;value1&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">field2=</span><span style="color: #ed9d13">&#39;value2&#39;</span><span style="color: #d0d0d0">);</span>
 </pre></div>
 
 
 <h5 id="_5">导出和导入</h5>
-<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">EXPORT</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">department</span> <span style="color: #6ab825; font-weight: bold">TO</span> <span style="color: #ed9d13">&#39;hdfs_exports_location/department&#39;</span><span style="color: #d0d0d0">;</span>
-<span style="color: #d0d0d0">IMPORT</span> <span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #ed9d13">&#39;hdfs_exports_location/department&#39;</span><span style="color: #d0d0d0">;</span>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #d0d0d0">EXPORT</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">table1</span> <span style="color: #6ab825; font-weight: bold">TO</span> <span style="color: #ed9d13">&#39;/test/zhouzm/table1&#39;</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">EXPORT</span> <span style="color: #6ab825; font-weight: bold">TABLE</span> <span style="color: #d0d0d0">table1</span> <span style="color: #d0d0d0">PARTITION(log_date=</span><span style="color: #ed9d13">&#39;2015-10-18&#39;</span><span style="color: #d0d0d0">)</span> <span style="color: #6ab825; font-weight: bold">to</span> <span style="color: #ed9d13">&#39;/test/zhouzm/table1&#39;</span><span style="color: #d0d0d0">;</span>
+<span style="color: #d0d0d0">IMPORT</span> <span style="color: #6ab825; font-weight: bold">FROM</span> <span style="color: #ed9d13">&#39;/test/zhouzm/table1&#39;</span><span style="color: #d0d0d0">;</span>
 </pre></div>
 
 

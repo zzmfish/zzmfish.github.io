@@ -47,3 +47,4 @@
 * [Google Developers Console](https://console.developers.google.com/project)
 * [View & diagnose Google Cloud Messaging (GCM) statistics](https://support.google.com/googleplay/android-developer/answer/2663268?hl=en)
 * [XMPP Connection Server Reference](https://developers.google.com/cloud-messaging/xmpp-server-ref)
+* [查看和诊断 Google 云消息传递 (GCM) 统计信息](https://support.google.com/googleplay/android-developer/answer/2663268?hl=zh-Hans)

@@ -55,14 +55,15 @@ SHOW CREATE TABLE TableName;
 -- 查看分区
 SHOW PARTITIONS TableName;
 
--- 查看分区信息
+-- 查看分区信息（包括位置）
 DESCRIBE FORMATTED TableName PARTITION (field1='value1', field2='value2');
 ```
 
 ##### 导出和导入
 ```sql
-EXPORT TABLE department TO 'hdfs_exports_location/department';
-IMPORT FROM 'hdfs_exports_location/department';
+EXPORT TABLE table1 TO '/test/zhouzm/table1';
+EXPORT TABLE table1 PARTITION(log_date='2015-10-18') to '/test/zhouzm/table1';
+IMPORT FROM '/test/zhouzm/table1';
 ```
 
 ## 未整理

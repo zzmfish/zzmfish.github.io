@@ -54,3 +54,4 @@ elasticsearch: "http://"+window.location.hostname+":8200",
 * [A bit of logstash cooking](https://home.regit.org/2014/01/a-bit-of-logstash-cooking/)
 * [Kibana 中文指南](http://kibana.logstash.es)
 * [访谈与书评：《LogStash，使日志管理更简单》](http://www.infoq.com/cn/articles/review-the-logstash-book)
+* [Lucene - Query Parser Syntax](http://lucene.apache.org/core/5_3_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description)

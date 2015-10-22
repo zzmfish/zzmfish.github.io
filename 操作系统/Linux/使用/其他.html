@@ -25,6 +25,9 @@ stat -c %Y <span style="color: #40ffff">$FileName</span>
 
 <span style="color: #999999; font-style: italic">#时间戳转换为日期格式</span>
 date -d <span style="color: #ed9d13">&quot;@1423987259&quot;</span> <span style="color: #ed9d13">&quot;+%Y-%m-%d %H:%M:%S&quot;</span>
+
+<span style="color: #999999; font-style: italic">#昨日日期</span>
+date -d <span style="color: #ed9d13">&quot;-1 days&quot;</span> <span style="color: #ed9d13">&quot;+%Y-%m-%d&quot;</span>
 </pre></div>
 
 

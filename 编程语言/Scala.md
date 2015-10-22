@@ -1,4 +1,11 @@
 ## 语法
+### 循环
+```scala
+for(i <- 1 to 10) {
+    println("i is " + i);
+}
+```
+
 ### 类型
 ##### 字符串
 ```scala
@@ -53,3 +60,4 @@ try {
 * [Scala API](http://www.scala-lang.org/api/current/#package)
 * [Scala - How to open and read files in Scala](http://alvinalexander.com/scala/scala-how-open-read-files-scala-examples)
 * [使用SBT构建Scala应用](https://github.com/CSUG/real_world_scala/blob/master/02_sbt.markdown)
+* [scala for语句](http://outofmemory.cn/scala/scala-for-statement)
