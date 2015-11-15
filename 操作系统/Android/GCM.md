@@ -36,11 +36,41 @@
 * Topic Messaging
 * Group Messaging
 
+## Smack库
+```uml
+
+interface XMPPConnection {
+
+}
+
+abstract class AbstractXMPPConnection {
+
+}
+
+class XMPPTCPConnection {
+    + sendStanza (Stanza)
+}
+
+class PacketWriter {
+    + sendStreamElement (Element)
+}
+
+class Stanza {
+
+}
+
+XMPPConnection <|-- AbstractXMPPConnection
+AbstractXMPPConnection <|-- XMPPTCPConnection
+XMPPTCPConnection o- PacketWriter: packetWriter
+
+```
+
 ## 链接
 * [Google Cloud Messaging: Overview](https://developers.google.com/cloud-messaging/gcm)
 * [Google Cloud Messaging: Cloud Connection Server Tutorial](http://www.captechconsulting.com/blogs/google-cloud-messaging-cloud-connection-server-tutorial)
 * [Try Cloud Messaging for Android](https://developers.google.com/cloud-messaging/android/start)
 * [Implementing an XMPP Connection Server](https://developers.google.com/cloud-messaging/ccs)
+* [HTTP Connection Server Reference](https://developers.google.com/cloud-messaging/http-server-ref)
 * [XMPP Connection Server Reference](https://developers.google.com/cloud-messaging/xmpp-server-ref)
 * [gcm_server](https://github.com/writtmeyer/gcm_server)
 * [GCMCCSDemo](https://github.com/antoinecampbell/GCMCCSDemo)
@@ -48,3 +78,5 @@
 * [View & diagnose Google Cloud Messaging (GCM) statistics](https://support.google.com/googleplay/android-developer/answer/2663268?hl=en)
 * [XMPP Connection Server Reference](https://developers.google.com/cloud-messaging/xmpp-server-ref)
 * [查看和诊断 Google 云消息传递 (GCM) 统计信息](https://support.google.com/googleplay/android-developer/answer/2663268?hl=zh-Hans)
+* [Google Cloud Messaging is Extremely Unreliable for Push Notifications](http://eladnava.com/google-cloud-messaging-extremely-unreliable/)
+* [Push notification not received on device, GCM responded with message_id for that device.](https://groups.google.com/forum/#!topic/android-gcm/Zp2mnvPzhJw)

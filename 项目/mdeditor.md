@@ -25,4 +25,20 @@ list(pygments.styles.get_all_styles())
 #### 作图
 Gliffy
 
-#### 提示安装Pygments
+
+#### windows错误
+```
+    Traceback (most recent call last):
+      File "D:\Python27\lib\site-packages\tornado\web.py", line 1346, in _execute
+        result = method(*self.path_args, **self.path_kwargs)
+      File "D:\github\mdeditor-work\file_handler.py", line 21, in get
+        text = file_manager.load_file(name) or ''
+      File "D:\github\mdeditor-work\file_manager.py", line 49, in load_file
+        file_path = self.get_file_path(name)
+      File "D:\github\mdeditor-work\file_manager.py", line 31, in get_file_path
+        return os.path.join(config.md_dir, '%s.md' % name)
+      File "D:\Python27\lib\ntpath.py", line 84, in join
+        result_path = result_path + p_path
+    UnicodeDecodeError: 'ascii' codec can't decode byte 0xcf in position 3: ordinal not in range(128)
+
+```

@@ -65,6 +65,9 @@ awk <span style="color: #ed9d13">&#39;{print NF}&#39;</span>
 <h3 id="_7">其他</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#在vim中打开程序输出</span>
 ps -efH | vim -
+
+<span style="color: #999999; font-style: italic">#根据第一列连接两个文件</span>
+join -1 1 -2 1 <span style="color: #40ffff">$File1</span> <span style="color: #40ffff">$File2</span>
 </pre></div>
 
 

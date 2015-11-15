@@ -59,6 +59,8 @@
 <h3 id="_4">数据处理</h3>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//解析JSON</span>
 <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">obj</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">eval</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;(&#39;</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">json</span> <span style="color: #d0d0d0">+</span> <span style="color: #ed9d13">&#39;)&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #999999; font-style: italic">//生成JSON</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">json</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">JSON.stringify(obj);</span>
 
 <span style="color: #999999; font-style: italic">//URL编码</span>
 <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">data</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">encodeURIComponent</span><span style="color: #d0d0d0">(value);</span>

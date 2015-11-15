@@ -9,15 +9,15 @@
 <h1 id="c">C++经验技巧</h1>
 <p>unordered_map</p>
 <div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//读取文件</span>
-<span style="color: #d0d0d0">char</span> <span style="color: #d0d0d0">*read_file(char</span> <span style="color: #d0d0d0">*path,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">*psize)</span>
+<span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*</span><span style="color: #447fcf">read_file</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*path,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">*psize)</span>
 <span style="color: #d0d0d0">{</span>   
-    <span style="color: #d0d0d0">char</span> <span style="color: #d0d0d0">*buffer</span> <span style="color: #d0d0d0">=</span> <span style="color: #40ffff">NULL</span><span style="color: #d0d0d0">;</span>
-    <span style="color: #40ffff">FILE</span> <span style="color: #d0d0d0">*file</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">fopen(path,</span> <span style="color: #ed9d13">&quot;r&quot;</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*buffer</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">NULL</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">FILE</span> <span style="color: #d0d0d0">*file</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">fopen(path,</span> <span style="color: #ed9d13">&quot;r&quot;</span><span style="color: #d0d0d0">);</span>
     <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(file)</span> <span style="color: #d0d0d0">{</span>
-        <span style="color: #d0d0d0">fseek(file,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #40ffff">SEEK_END</span><span style="color: #d0d0d0">);</span>
+        <span style="color: #d0d0d0">fseek(file,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">SEEK_END);</span>
         <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">size</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ftell(file);</span>
         <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(size</span> <span style="color: #d0d0d0">&gt;</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">{</span>
-            <span style="color: #d0d0d0">fseek(file,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #40ffff">SEEK_SET</span><span style="color: #d0d0d0">);</span>
+            <span style="color: #d0d0d0">fseek(file,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">SEEK_SET);</span>
             <span style="color: #d0d0d0">buffer</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">malloc(size);</span>
             <span style="color: #d0d0d0">*psize</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">fread(buffer,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">size,</span> <span style="color: #d0d0d0">file);</span>
         <span style="color: #d0d0d0">}</span>
@@ -28,15 +28,25 @@
 
 
 <span style="color: #999999; font-style: italic">//写入文件</span>
-<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">write_to(char</span> <span style="color: #d0d0d0">*path,</span> <span style="color: #d0d0d0">char</span> <span style="color: #d0d0d0">*buffer,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">size)</span>
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">write_to</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*path,</span> <span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*buffer,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">size)</span>
 <span style="color: #d0d0d0">{</span>
     <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">result</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span>
-    <span style="color: #40ffff">FILE</span> <span style="color: #d0d0d0">*file</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">fopen(path,</span> <span style="color: #ed9d13">&quot;w&quot;</span><span style="color: #d0d0d0">);</span>
+    <span style="color: #6ab825; font-weight: bold">FILE</span> <span style="color: #d0d0d0">*file</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">fopen(path,</span> <span style="color: #ed9d13">&quot;w&quot;</span><span style="color: #d0d0d0">);</span>
     <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">(file)</span> <span style="color: #d0d0d0">{</span>
         <span style="color: #d0d0d0">result</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">fwrite(buffer,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">size,</span> <span style="color: #d0d0d0">file);</span>
         <span style="color: #d0d0d0">fclose(file);</span>
     <span style="color: #d0d0d0">}</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">result;</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #999999; font-style: italic">//可变参数</span>
+<span style="color: #cd2828; font-weight: bold">#include &lt;stdarg.h&gt;</span>
+<span style="color: #6ab825; font-weight: bold">void</span> <span style="color: #447fcf">WriteFormatted</span> <span style="color: #d0d0d0">(</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">char</span> <span style="color: #d0d0d0">*</span> <span style="color: #d0d0d0">format,</span> <span style="color: #d0d0d0">...</span> <span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">va_list</span> <span style="color: #d0d0d0">args;</span>
+  <span style="color: #d0d0d0">va_start</span> <span style="color: #d0d0d0">(args,</span> <span style="color: #d0d0d0">format);</span>
+  <span style="color: #d0d0d0">vprintf</span> <span style="color: #d0d0d0">(format,</span> <span style="color: #d0d0d0">args);</span>
+  <span style="color: #d0d0d0">va_end</span> <span style="color: #d0d0d0">(args);</span>
 <span style="color: #d0d0d0">}</span>
 </pre></div>
 </body>

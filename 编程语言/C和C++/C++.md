@@ -4,7 +4,7 @@ unordered_map
 
 
 
-```
+```c++
 //读取文件
 char *read_file(char *path, int *psize)
 {   
@@ -35,4 +35,15 @@ int write_to(char *path, char *buffer, int size)
     }
     return result;
 }
+
+//可变参数
+#include <stdarg.h>
+void WriteFormatted ( const char * format, ... )
+{
+  va_list args;
+  va_start (args, format);
+  vprintf (format, args);
+  va_end (args);
+}
+
 ```
