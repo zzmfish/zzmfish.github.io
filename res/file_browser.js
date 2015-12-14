@@ -1,5 +1,7 @@
 
 var FileBrowser = {
+    searchWord : "",
+    lastClick : null,
 
     customMenu : function(node) {
         // The default set of all items
@@ -53,27 +55,30 @@ var FileBrowser = {
         return items;
     },
 
-    update : function(files) {
+    update : function(files, selectFile) {
         FileBrowser._log("update")
-        FileBrowser._getTreeData(function(treeData) {
+        function showTreeData(treeData) {
+            console.log('showTreeData');
+            console.log(treeData);
+            //return;
             var showData = FileBrowser._buildShowData(treeData);
             var data = {
                 core: {
                     data: showData,
                     check_callback: true,
                 },
-                plugins : [ "search" , "contextmenu"],
+                plugins : [ "search" , "contextmenu", "dnd"],
                 contextmenu: {
                     items: FileBrowser.customMenu
                 },
             };
             FileBrowser._getTree(data)
-                .on("mousedown", function (e) {
+                .on("click", function (e) {
                     var node = e.target;
                     if (! node.classList.contains('jstree-anchor'))
                         return;
                     var tree = FileBrowser._getTree();
-                    if (tree.is_selected(node)) {
+                    if (node == FileBrowser.lastClick) {
                         setTimeout(function () { tree.edit(node); },0);
                     }
                     else {
@@ -84,6 +89,7 @@ var FileBrowser = {
                             FileBrowser.onOpen(path);
                         }
                     }
+                    FileBrowser.lastClick = node;
                 })
                 .on("create_node.jstree", function(e, data) {
                     var tree = FileBrowser._getTree();
@@ -108,7 +114,25 @@ var FileBrowser = {
                     var path = tree.get_path(data.node, '/');
                     FileBrowser.onDelete(path);
                 })
-        });
+                .on("move_node.jstree", function(e, data) {
+                    console.log('move_node');
+                    console.log(data);
+                    var tree = FileBrowser._getTree();
+                    var oldParent = data.old_parent == '#' ? "" : tree.get_path(data.old_parent, "/") + "/";
+                    var oldPath = oldParent + data.node.text;
+                    var newPath = tree.get_path(data.node, "/");
+                    console.log("move: " + oldPath + " -> " + newPath);
+                    FileBrowser.onMove(oldPath, newPath);
+                })
+                .on("loaded.jstree", function() {
+                    FileBrowser.select(selectFile);
+                });
+        }
+        if (!files)
+            FileBrowser._getTreeData(showTreeData);
+        else
+            showTreeData(files);
+
     },
 
     _getTreeData : function(callback) {
@@ -133,8 +157,13 @@ var FileBrowser = {
             var dirData = data[dirName];
             var nodeData = undefined;
             if (dirData == undefined) {
+                var fileName = dirName;
+                if (fileName.endsWith('.md'))
+                    fileName = fileName.substring(0, fileName.length - 3);
+                else if (fileName.endsWith('.html'))
+                    fileName = fileName.substring(0, fileName.length - 5);
                 nodeData =  {
-                    "text" : dirName,
+                    "text" : fileName,
                     "icon" : "jstree-file"
                 };
             }
@@ -165,7 +194,49 @@ var FileBrowser = {
     onDelete : function(path) {},
 
     search : function(text) {
-        $('#FileBrowser').jstree(true).search(text);
+        console.log('search:' + text);
+        if (!text) {
+            var tree = FileBrowser._getTree();
+            tree.close_all();
+            FileBrowser.open(tree.get_selected()[0]);
+        }
+        FileBrowser.searchWord = text;
+        setTimeout(function() {
+            if (FileBrowser.searchWord) {
+                $('#FileBrowser').jstree(true).search(FileBrowser.searchWord);
+                FileBrowser.searchWord = null;
+            }
+        }, 1000)
+    },
+
+    select : function(path) {
+        if (!path)
+            return;
+        var name = path;
+        if (name.indexOf('/') >= 0)
+            name = name.substring(name.lastIndexOf('/') + 1);
+        var tree = FileBrowser._getTree();
+        var data = tree._model.data;
+        for (var nodeId in data) {
+            if (name == data[nodeId].text) {
+                var nodePath = FileBrowser._getPath(nodeId);
+                if (nodePath == path) {
+                    console.log("select and open: " + nodeId);
+                    tree.select_node(nodeId);
+                    tree.open_node(nodeId);
+                }
+            }
+        }
+
+    },
+
+    open : function(node) {
+        var tree = FileBrowser._getTree();
+        var parent = tree.get_parent(node);
+        while (parent) {
+            tree.open_node(parent);
+            parent = tree.get_parent(parent);
+        }
     },
 
     _getTree: function(data) {

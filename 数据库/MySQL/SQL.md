@@ -1,4 +1,6 @@
-## 数据库
+# SQL
+## 语法
+### 库
 ```
 #!mysql
 #所有数据库
@@ -17,7 +19,7 @@ CREATE DATABASE IF NOT EXISTS TableName;
 SHOW variables LIKE 'character_%';
 ```
 
-## 表
+### 表
 ```
 #!mysql
 #所有表
@@ -29,14 +31,32 @@ SHOW TABLE status;
 #所有列
 SHOW columns FROM TableName;
 
-#表的结构
-DESC  TableName;
+#显示表的结构
+DESC TableName;
+
+#改变列的数据类型
+ALTER TABLE TableName ALTER COLUMN ColumnName DataType;
+
+#改变默认值为当前时间
+ALTER TABLE `video` MODIFY COLUMN `insert_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+#增加列() 
+ALTER TABLE video ADD COLUMN insert_time DATETIME;
+ALTER TABLE `video` add COLUMN `insert_time` timestamp NOT NULL;
+
+#删除列
+ALTER TABLE video DROP COLUMN insert_time;
 
 #删除表
 DROP TABLE IF EXISTS TableName;
 ```
+
+### 插入
+```mysql
+INSERT INTO users(name) VALUES('周志明');
+```
   
-## 查询数据
+### 查询
 ```
 #!mysql
 #降序排名前10
@@ -65,34 +85,15 @@ on a.id1=b.id1 and a.id2=b.id2
 limit 10;
 ```
 
-## 更新语句
+### 更新
 ```
 #!mysql
 update video set insert_time=now();
 ```
 
-## 改变结构
-```
-#!mysql
-#改变列的数据类型
-ALTER TABLE TableName ALTER COLUMN ColumnName DataType;
-
-#改变默认值为当前时间
-ALTER TABLE `video` MODIFY COLUMN `insert_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
-#增加列() 
-ALTER TABLE video ADD COLUMN insert_time DATETIME;
-ALTER TABLE `video` add COLUMN `insert_time` timestamp NOT NULL;
-
-
-#删除列
-ALTER TABLE video DROP COLUMN insert_time;
-```
-
-## 联表查询
-* 内联结
-* 左联结
-* 右联结
+## 概念
+### 联表
+![](/images/sql_join.png)
 
 ## 参考
 * [ROW_NUMBER() OVER函数的基本用法用法](http://www.cnblogs.com/icebutterfly/archive/2009/08/05/1539657.html)

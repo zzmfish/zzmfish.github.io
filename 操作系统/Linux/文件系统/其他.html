@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>线程</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<p>vm.overcommit_memory = 1</p>
+<h2 id="_1">线程</h2>
+<ul>
+<li>系统调用：clone</li>
+</ul>
+<h2 id="buffercached">buffer和cached</h2>
+<p>buffers 即 Buffer cache，cached 即Page cache。</p>
+<p>Page Cache缓存文件内容以优化文件I/O，Buffer Cache缓存磁盘blocks以优化block I/O。</p>
+<p>（注：Block 块是用来管理磁盘空间的，而Page 页是针对内存管理，从磁盘读出的数据就缓存在内存页中。当一个块被调入到内存中，它要被存储在一个缓冲区中。）</p>
+<p>Linux kernel 2.4以前，这两个cache的使用是有明显区别的：文件的内容在Page Cache中缓冲，disk blocks在Buffer Cache中缓冲。鉴于大多数的文件都是由基于磁盘的文件系统来存储和表示（represented ）的，这样数据就被CACHE了两次，每个缓存（Page Cache &amp; Buffer Cache）中各表示一次。许多Unix系统都遵循此类的模式。</p>
+<p>这样易于实现，但存在明显的槽点（CACHE重复）和低效。从Linux kernel 2.4（2.4.10）开始，两个cache中的内容统一了（buffer cache不再真正的存在，实际上buffer cache不再独立分配，而是在page cache中用专门的buffer page来替代，buffer page在形式上就是缓冲区描述符，称为buffer_head）。如果缓冲的数据既有文件表示（file representation）又有块表示（block representation）——大多数数据都是如此——那么buffer cache就将数据内容简单的指向page cache；这样就仅有一份数据被缓冲在内存中了。</p>
+<p>Buffer cache还被保留，因为内核还要以block为单位来进行block I/O操作。由于大多数情况下block就已经代表了文件数据，所以大多数的buffer cache由page cache来代替了。但还有少量block数据不是文件内容本身——例如文件系统的元数据（metadata）和裸设备（raw） block I/O——这些还是在buffer cache中缓冲的。</p>
+<p>（注：每个缓冲区与一个块对应，它相当于磁盘块在内存中的表示。在内存页中，有一种叫专门用途的页面叫“缓冲区页”，用来存放块缓冲区。而每个块缓存区由两部分组成：缓冲区首部（用数据结构buffer_head表示）及真正的缓冲区内容（即所存储的数据，这些数据就放在刚刚说到的缓冲区页中）。而文件在内存中由file结构体表示，而磁盘块在内存中是由缓冲区来进行表示的。</p>
+<p>由于内核处理块时需要一些信息（比如将CACHE中的脏数据写入到磁盘中，而数据是被文件系统组织存储在block中的），如块属于哪个设备与块对应于哪个缓冲区。所以每个缓冲区都有一个缓冲区描述符，称为buffer_head。它包含了内核操作缓冲区所需要的全部信息。通过buffer_head 可以快速的定位page中独立的block在磁盘上的逻辑地址。</p>
+<h2 id="_2">参考</h2>
+<ul>
+<li><a href="http://www.firefoxbug.com/index.php/archives/2800/">Linux的overcommit配置</a></li>
+</ul>
+</body>
+</html>

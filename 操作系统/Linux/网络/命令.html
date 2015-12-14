@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>常用命令</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<h3 id="_1">常用命令</h3>
+<h6 id="netstat">netstat</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#查看监听的端口</span>
+<span style="color: #999999; font-style: italic">#-l: 只显示监听端口</span>
+<span style="color: #999999; font-style: italic">#-n: 显示数字地址</span>
+<span style="color: #999999; font-style: italic">#-p: 显示程序pid和文件名</span>
+<span style="color: #999999; font-style: italic">#--inet: 只显示TCP/IP连接</span>
+netstat -lnp --inet
+
+
+<span style="color: #999999; font-style: italic">#显示协议统计信息</span>
+netstat -s
+</pre></div>
+
+
+<h6 id="traceroute">traceroute</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#*表示收不到ICMP回声</span>
+traceroute www.baidu.com
+</pre></div>
+
+
+<h6 id="dns">DNS相关</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">host www.baidu.com
+nslookup www.baidu.com
+dig www.baidu.com
+</pre></div>
+
+
+<h6 id="ip">IP地址</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">ip addr show
+</pre></div>
+
+
+<h6 id="http">HTTP</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#只显示header</span>
+curl --head http://www.baidu.com
+
+<span style="color: #999999; font-style: italic">#post数据</span>
+curl --data <span style="color: #ed9d13">&#39;DATA&#39;</span> http://localhost:8366/video/add
+
+<span style="color: #999999; font-style: italic">#显示跳转地址</span>
+curl -Ls -o /dev/null -w %<span style="color: #d0d0d0">{</span>url_effective<span style="color: #d0d0d0">}</span> http://google.com
+
+<span style="color: #999999; font-style: italic">#断点续传</span>
+wget -c http://www.baidu.com/file.tgz
+</pre></div>
+
+
+<h6 id="iptables">iptables</h6>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#显示所有端口限制</span>
+sudo iptables -L -n
+</pre></div>
+
+
+<h4 id="icmp">ICMP</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">#看ping的来源ip</span>
+tcpdump -i eth1 icmp and icmp<span style="color: #d0d0d0">[</span>icmptype<span style="color: #d0d0d0">]=</span>icmp-echo
+</pre></div>
+
+
+<h3 id="_2">流量监控</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">dstat -nf 
+</pre></div>
+
+
+<h2 id="_3">参考资料</h2>
+<ul>
+<li><a href="http://vbird.dic.ksu.edu.tw/linux_server/0140networkcommand/0140networkcommand-centos4.php">鸟哥的Linux私房菜 - Linux常用网络命令介绍</a></li>
+</ul>
+</body>
+</html>

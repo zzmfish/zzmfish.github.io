@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Docker</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<h1 id="docker">Docker</h1>
+<h2 id="vm">和VM的区别</h2>
+<p><img alt="" src="/images/vm-vs-docker.png" /></p>
+<h2 id="_1">使用</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic"># 安装</span>
+curl -sSL https://get.docker.com/ | sh
+<span style="color: #999999; font-style: italic"># 添加用户到组（需重启）</span>
+sudo usermod -aG docker <span style="color: #40ffff">$USER</span>
+<span style="color: #999999; font-style: italic"># 运行</span>
+docker run -t -i ubuntu /bin/bash
+<span style="color: #999999; font-style: italic"># 列出容器</span>
+docker ps -a
+</pre></div>
+
+
+<h2 id="_2">参考</h2>
+<ul>
+<li><a href="http://www.infoq.com/cn/articles/docker-containers">Docker：利用Linux容器实现可移植的应用部署</a></li>
+<li><a href="https://www.gitbook.com/book/yeasy/docker_practice/details">Docker —— 从入门到实践</a></li>
+<li><a href="https://blog.coding.net/blog/Docker-use-in-Coding-WebIDE">Docker 在 Coding WebIDE 项目中的运用</a></li>
+<li><a href="http://www.csdn.net/article/2014-05-14/2819773/1">谁是容器中的“战斗机”？Docker与Chef、LXC等容器对比</a></li>
+</ul>
+</body>
+</html>

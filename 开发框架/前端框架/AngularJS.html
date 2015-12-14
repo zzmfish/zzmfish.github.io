@@ -7,7 +7,13 @@
 </head>
 <body>
 <h2 id="_1">概念</h2>
-<h3 id="services">Services</h3>
+<h3 id="module">Module</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//注册模块</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">myModule</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">angular.module(</span><span style="color: #ed9d13">&quot;module1&quot;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">[</span><span style="color: #ed9d13">&#39;module2&#39;</span><span style="color: #d0d0d0">]);</span>
+</pre></div>
+
+
+<h3 id="service">Service</h3>
 <ul>
 <li>substitutable objects that are wired together using dependency injection (DI)</li>
 <li>organize and share code</li>
@@ -15,6 +21,23 @@
 <li>Singletons</li>
 </ul>
 <h3 id="controllers">Controllers</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic">//简单controler</span>
+<span style="color: #d0d0d0">myModule.controller(</span><span style="color: #ed9d13">&#39;test1&#39;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">($scope)</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">$scope.msg</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;hello&#39;</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">);</span>
+
+<span style="color: #999999; font-style: italic">//使用其他services</span>
+<span style="color: #d0d0d0">myModule.controller(</span><span style="color: #ed9d13">&#39;test2&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">[</span><span style="color: #ed9d13">&#39;$scope&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;$http&#39;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #6ab825; font-weight: bold">function</span><span style="color: #d0d0d0">($scope,</span> <span style="color: #d0d0d0">$http)</span> <span style="color: #d0d0d0">{</span>
+        <span style="color: #d0d0d0">$scope.msg</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;hello&#39;</span><span style="color: #d0d0d0">;</span>
+        <span style="color: #d0d0d0">$http.get(</span><span style="color: #ed9d13">&#39;/someUrl&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">config).then(successCallback,</span> <span style="color: #d0d0d0">errorCallback);</span>
+    <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">);</span>
+</pre></div>
+
+
 <h3 id="scopes">Scopes</h3>
 <ul>
 <li>root scope</li>
@@ -25,6 +48,7 @@
 <h3 id="filters">Filters</h3>
 <h2 id="_2">参考</h2>
 <ul>
+<li><a href="http://www.apjs.net/">AngularJS中文网</a></li>
 <li><a href="http://www.cnblogs.com/powertoolsteam/p/angularjs-introdection.html">带你走近AngularJS - 基本功能介绍</a></li>
 <li><a href="http://www.cnblogs.com/whitewolf/archive/2013/05/22/3092184.html">细说Angular ng-class</a></li>
 <li><a href="https://docs.angularjs.org/api">AngularJS API Docs</a></li>

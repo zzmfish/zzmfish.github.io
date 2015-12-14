@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>进程和线程</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<h2 id="_1">进程和线程</h2>
+<h5 id="_2">资源</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">getrlimit</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">resource,</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*rlim);</span>
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">setrlimit</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">resource,</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*rlim);</span>
+
+<span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">prlimit</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid,</span> <span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #d0d0d0">resource,</span> <span style="color: #6ab825; font-weight: bold">const</span> <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*new_limit,</span>
+                   <span style="color: #6ab825; font-weight: bold">struct</span> <span style="color: #d0d0d0">rlimit</span> <span style="color: #d0d0d0">*old_limit);</span>
+</pre></div>
+
+
+<h5 id="_3">进程组</h5>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #6ab825; font-weight: bold">int</span> <span style="color: #447fcf">setpgid</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid,</span> <span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pgid);</span>
+<span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #447fcf">getpgid</span><span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">pid_t</span> <span style="color: #d0d0d0">pid);</span>
+</pre></div>
+</body>
+</html>

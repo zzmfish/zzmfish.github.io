@@ -2,23 +2,100 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>第三方框架</title>
+    <title>PHP</title>
     <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<h2 id="_1">第三方框架</h2>
-<h3 id="thinkphp">ThinkPHP</h3>
-<ul>
-<li>文档比较简单</li>
-<li>没有封装数据库</li>
-</ul>
-<h3 id="codeigniter">CodeIgniter</h3>
-<ul>
-<li>数据库使用比较方便</li>
-<li>详细的中文文档</li>
-</ul>
-<h3 id="laravel">Laravel</h3>
-<h2 id="_2">参考</h2>
+<h1 id="php">PHP</h1>
+<h2 id="_1">安装</h2>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%">./configure --prefix<span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local <span style="color: #ed9d13">\</span>
+    --with-apxs2<span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local/bin/apxs <span style="color: #ed9d13">\</span>
+    --with-mysql <span style="color: #ed9d13">\</span>
+    --with-pdo-mysql <span style="color: #ed9d13">\</span>
+    --with-openssl <span style="color: #ed9d13">\</span>
+    --enable-zip <span style="color: #ed9d13">\</span>
+    --enable-mbstring
+make -j5
+make install
+</pre></div>
+
+
+<h2 id="_2">语言</h2>
+<h3 id="_3">数据类型</h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #cd2828; font-weight: bold">&lt;?php</span>
+<span style="color: #999999; font-style: italic">//数组/字典</span>
+<span style="color: #40ffff">$array</span> <span style="color: #d0d0d0">=</span> <span style="color: #6ab825; font-weight: bold">array</span><span style="color: #d0d0d0">(</span>
+    <span style="color: #ed9d13">&quot;foo&quot;</span> <span style="color: #d0d0d0">=&gt;</span> <span style="color: #ed9d13">&quot;bar&quot;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #ed9d13">&quot;bar&quot;</span> <span style="color: #d0d0d0">=&gt;</span> <span style="color: #ed9d13">&quot;foo&quot;</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #3677a9">100</span>   <span style="color: #d0d0d0">=&gt;</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">,</span>
+    <span style="color: #d0d0d0">-</span><span style="color: #3677a9">100</span>  <span style="color: #d0d0d0">=&gt;</span> <span style="color: #3677a9">100</span><span style="color: #d0d0d0">,</span>
+<span style="color: #d0d0d0">);</span>
+<span style="color: #cd2828; font-weight: bold">?&gt;</span><span style="color: #d0d0d0"></span>
+</pre></div>
+
+
+<h2 id="_4">工具</h2>
+<h3 id="composer"><a href="https://getcomposer.org/">Composer</a></h3>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic"># 安装</span>
+curl -sS https://getcomposer.org/installer | php -- --install-dir<span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/local/bin
+</pre></div>
+
+
+<h2 id="_5">框架</h2>
+<h3 id="laravel"><a href="http://laravel.com/">Laravel</a></h3>
+<h4 id="_6">安装和配置</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #999999; font-style: italic"># 安装</span>
+php composer.phar global require <span style="color: #ed9d13">&quot;laravel/installer&quot;</span>
+<span style="color: #999999; font-style: italic"># 环境变量</span>
+<span style="color: #24909d">export </span><span style="color: #40ffff">PATH</span><span style="color: #d0d0d0">=</span><span style="color: #40ffff">$HOME</span>/.composer/vendor/bin:<span style="color: #40ffff">$PATH</span>
+<span style="color: #999999; font-style: italic"># 创建项目</span>
+laravel new hello_laraval
+<span style="color: #999999; font-style: italic"># 创建数据库表</span>
+php artisan make:migration create_tasks_table --create<span style="color: #d0d0d0">=</span>tasks
+<span style="color: #999999; font-style: italic"># 创建模型</span>
+php artisan make:model Task
+<span style="color: #999999; font-style: italic"># 数据库迁移</span>
+php artisan migrate
+<span style="color: #999999; font-style: italic"># 运行</span>
+<span style="color: #24909d">cd </span>public
+php -S 127.0.0.1:9090 -t .
+</pre></div>
+
+
+<h3 id="_7">文件</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app/Http/routes.php</td>
+<td>路由</td>
+</tr>
+<tr>
+<td>database/migrations/</td>
+<td>数据库迁移文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">概念</h3>
+<h4 id="_9">路由</h4>
+<div class="codehilite" style="background: #202020"><pre style="line-height: 125%"><span style="color: #cd2828; font-weight: bold">&lt;?php</span>
+<span style="color: #d0d0d0">Route::</span><span style="color: #bbbbbb">get</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;/hello1&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #6ab825; font-weight: bold">function</span> <span style="color: #d0d0d0">()</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">view(</span><span style="color: #ed9d13">&#39;hello&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #d0d0d0">});</span>
+<span style="color: #d0d0d0">Route::</span><span style="color: #bbbbbb">get</span><span style="color: #d0d0d0">(</span><span style="color: #ed9d13">&#39;/hello2&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;HelloController@hello&#39;</span><span style="color: #d0d0d0">);</span>
+<span style="color: #cd2828; font-weight: bold">?&gt;</span><span style="color: #d0d0d0"></span>
+</pre></div>
+
+
+<h4 id="_10">模板</h4>
+<h4 id="_11">中间件</h4>
+<h4 id="_12">控制器</h4>
+<h2 id="_13">参考</h2>
 <ul>
 <li><a href="http://wulijun.github.io/2013/07/17/whats-new-in-php-5-5.html">PHP5.5新特性介绍</a></li>
 <li><a href="http://wulijun.github.io/2014/01/25/whats-new-in-php-5-6.html">PHP5.6新特性介绍</a></li>
@@ -27,6 +104,8 @@
 <li><a href="http://www.runoob.com/php/php-filter.html">PHP 过滤器</a></li>
 <li><a href="http://www.zhihu.com/question/21617669">PHP框架Laravel还是Codeigniter？</a></li>
 <li><a href="http://www.zhihu.com/question/19558755">最好的 PHP 框架是什么？为什么？</a></li>
+<li><a href="http://laravelacademy.org/">Laravel学院</a></li>
+<li><a href="http://php.net/manual/zh/install.unix.apache2.php">Unix 系统下的 Apache 2.x</a></li>
 </ul>
 </body>
 </html>
